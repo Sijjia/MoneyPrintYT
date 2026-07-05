@@ -1,0 +1,96 @@
+{
+  "name": "ARCHIVE",
+  "description": "Эксперименты, история, рассекреченное, война, документальное",
+  "applies_to": [
+    "MK-Ultra", "эксперименты", "Отряд 731", "ЦРУ", "КГБ",
+    "исторические события", "война", "рассекреченные документы", "Эпштейн",
+    "медицинские опыты", "Холодная война", "ядерные испытания"
+  ],
+  "palette": {
+    "primary": "#704214",
+    "secondary": "#52614A",
+    "accent": "#3D2817",
+    "highlight": "#C9A961",
+    "background": "#1A1108"
+  },
+  "ai_image_tags": "1950s declassified document, vintage photograph, film grain heavy, faded archive, kodak ektachrome, sepia tones, military document aesthetic, censored stamps, top secret folder, monochrome, period accurate, 8mm film",
+  "ai_image_negative": "modern, digital, clean, vibrant, neon, anime",
+  "transitions": {
+    "default": {
+      "plugin": "FilmConvert",
+      "effect": "FilmStock_8mm",
+      "params": {"grain": 0.6, "scratches": 0.4, "flicker": 0.3}
+    },
+    "between_topics": {
+      "plugin": "Sapphire",
+      "effect": "S_FilmRoll",
+      "params": {"speed": 0.5, "intensity": 0.7}
+    },
+    "between_levels": {
+      "plugin": "custom",
+      "mogrt": "templates/dive_transition.mogrt"
+    },
+    "shadow_cut": {
+      "plugin": "BuiltIn",
+      "effect": "Film Dissolve",
+      "params": {"duration_ms": 300}
+    },
+    "projector_flicker": {
+      "plugin": "RedGiant",
+      "effect": "Universe_Glitch_8mm",
+      "params": {"intensity": 0.5}
+    }
+  },
+  "music": {
+    "mood_keywords": ["vintage analog", "old radio", "documentary score", "haunted piano", "cold war suspense"],
+    "instruments": ["analog tape", "old radio", "morse code", "typewriter", "static noise"],
+    "tempo_bpm_range": [60, 90],
+    "intensity_default": 0.4,
+    "intensity_shadow": 0.65
+  },
+  "sfx_pack": [
+    "projector_running", "typewriter_typing", "radio_static", "morse_code",
+    "stamp_classified", "old_film_burn", "vintage_camera_click", "radio_tuning"
+  ],
+  "fonts": {
+    "primary": "IBM Plex Mono",
+    "secondary": "Courier Prime",
+    "mono": "JetBrains Mono",
+    "weight_primary": "500",
+    "letter_spacing": "0.05em"
+  },
+  "lut": {
+    "path": "luts/vintage_8mm.cube",
+    "intensity": 0.9
+  },
+  "overlays": [
+    {"path": "overlays/film_grain_8mm.mp4", "blend": "overlay", "opacity": 0.4},
+    {"path": "overlays/light_leak_warm.mp4", "blend": "screen", "opacity": 0.2},
+    {"path": "overlays/dust_overlay.mp4", "blend": "screen", "opacity": 0.25}
+  ],
+  "color_grading": {
+    "shadows": {"hue": 30, "saturation": 0.25, "luminance": -5},
+    "midtones": {"hue": 40, "saturation": 0.4, "luminance": 0},
+    "highlights": {"hue": 50, "saturation": 0.3, "luminance": 5},
+    "contrast": 25,
+    "saturation": -25,
+    "vignette": -2
+  },
+  "camera_movements": {
+    "default": "static",
+    "calm": "static",
+    "tense": "dolly_in",
+    "climactic": "dolly_out",
+    "mysterious": "parallax_left"
+  },
+  "subtitle_style": {
+    "font": "IBM Plex Mono",
+    "size": 48,
+    "color": "#E8DCC4",
+    "highlight_color": "#FF3300",
+    "background_opacity": 0.0,
+    "shadow": true,
+    "shadow_color": "#000000",
+    "shadow_blur": 6
+  }
+}

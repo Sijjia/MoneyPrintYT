@@ -1,0 +1,4 @@
+idea: Айсберг Грибов
+duration: 5
+levels: 2
+preset: auto

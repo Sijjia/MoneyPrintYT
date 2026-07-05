@@ -1,0 +1,59 @@
+# ===== secrets =====
+.env
+*.env
+!.env.example
+!*.env.example
+
+# ===== python =====
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# ===== node =====
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# ===== media & Adobe (large, regenerable) =====
+*.mp4
+*.mov
+*.mp3
+*.mp3
+*.wav
+*.m4a
+*.aac
+*.flac
+*.aep
+*.prproj
+*.prproj.lock
+*.prin
+*.prlock
+*.pek
+*.cfa
+*.psd
+
+# ===== images (asset renders — keep repo lean) =====
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.webp
+*.bmp
+*.tiff
+
+# ===== heavy asset / cache dirs =====
+**/assets/
+**/_yt_cache/
+**/_trimmed/
+**/Adobe Premiere Pro Auto-Save/
+**/Adobe Premiere Pro Audio Previews/
+
+# ===== OS =====
+Thumbs.db
+.DS_Store
+desktop.ini

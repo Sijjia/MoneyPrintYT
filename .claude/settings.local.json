@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(PYTHONIOENCODING=utf-8 ../webik-pipeline/.venv/Scripts/python.exe -c ' *)",
+      "Bash(PYTHONIOENCODING=utf-8 ../webik-pipeline/.venv/Scripts/python.exe webik.py --help)",
+      "Bash(PYTHONIOENCODING=utf-8 ../webik-pipeline/.venv/Scripts/python.exe webik.py new --help)",
+      "Bash(PYTHONIOENCODING=utf-8 ../webik-pipeline/.venv/Scripts/python.exe webik.py run-stage --help)",
+      "Bash(PYTHONIOENCODING=utf-8 ../webik-pipeline/.venv/Scripts/python.exe webik.py new \"Айсберг ужасов религий\" --duration 25 --levels 4)",
+      "Bash(PYTHONIOENCODING=utf-8 ../webik-pipeline/.venv/Scripts/python.exe webik.py run-stage 1 --project 2026-06-30_aysberg-uzhasov-religiy)",
+      "Bash(echo \"EXIT=$?\")",
+      "Bash(PYTHONIOENCODING=utf-8 ../webik-pipeline/.venv/Scripts/python.exe webik.py approve --project 2026-06-30_aysberg-uzhasov-religiy)",
+      "Bash(tail -12 projects/2026-06-30_aysganov)",
+      "Bash(tail -14 projects/2026-06-30_aysganov-religiy/stage2.log)",
+      "Bash(tail -14 projects/2026-06-30_aysganov-uzhasov-religiy/stage2.log)",
+      "Bash(tail -14 \"projects/2026-06-30_aysganov-uzhasov-religiy/stage2.log\")",
+      "Bash(tail -16 \"projects/2026-06-30_aysganov-uzhasov-religiy/stage2.log\")"
+    ]
+  }
+}

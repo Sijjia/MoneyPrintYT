@@ -1,0 +1,4 @@
+idea: Айсберг ужасов религий
+duration: 25
+levels: 4
+preset: auto

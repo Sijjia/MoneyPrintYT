@@ -1,0 +1,17 @@
+{
+  "project_id": "demo-vertical-slice",
+  "title": "Demo: вертикальный срез C",
+  "created_at": "2026-05-09T00:56:47.664225",
+  "updated_at": "2026-05-12T23:03:35.120298",
+  "current_stage": 5,
+  "stages_status": {
+    "4": "awaiting_approval",
+    "5": "awaiting_approval"
+  },
+  "feedback_history": [],
+  "preset": null,
+  "target_duration_min": 15,
+  "youtube_url": null,
+  "last_error": null,
+  "total_cost_usd": 0.0
+}

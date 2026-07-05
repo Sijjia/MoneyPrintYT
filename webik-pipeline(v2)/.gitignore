@@ -1,0 +1,39 @@
+# Secrets
+.env
+*.key
+youtube_credentials.json
+youtube_token.json
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+.venv/
+*.egg-info/
+.pytest_cache/
+
+# Projects (большие файлы — не коммитим)
+projects/*/assets/
+projects/*/final.mp4
+projects/*/project.prproj
+projects/*/thumbnail.jpg
+projects/*/thumbnail_variants/
+projects/*/preview.html
+
+# IDE
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# Logs
+logs/
+*.log
+
+# Cache
+.cache/

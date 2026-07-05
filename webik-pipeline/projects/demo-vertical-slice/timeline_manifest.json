@@ -1,0 +1,295 @@
+{
+  "generated_at": "2026-05-12T23:03:35",
+  "sequence_name": "Webik — demo-vertical-slice",
+  "total_duration_sec": 27.367,
+  "tracks": {
+    "V1": {
+      "name": "Video 1",
+      "clip_count": 3,
+      "clips": [
+        {
+          "index": 0,
+          "start": 0,
+          "end": 7.8,
+          "duration": 7.8,
+          "name": "scene_001__389fa004-979d-4731-b853-6ec0085ba7bc.mp4",
+          "source": "scene_001__389fa004-979d-4731-b853-6ec0085ba7bc.mp4",
+          "media_path": "C:\\Users\\aidar\\OneDrive\\Рабочий стол\\automotization-youtube\\webik-pipeline\\projects\\demo-vertical-slice\\assets\\parallax\\scene_001__389fa004-979d-4731-b853-6ec0085ba7bc.mp4"
+        },
+        {
+          "index": 1,
+          "start": 9.267,
+          "end": 16.09,
+          "duration": 6.823,
+          "name": "scene_002__1645982019_2-papik-pro-p-plakati-sssr-oboi-2.mp4",
+          "source": "scene_002__1645982019_2-papik-pro-p-plakati-sssr-oboi-2.mp4",
+          "media_path": "C:\\Users\\aidar\\OneDrive\\Рабочий стол\\automotization-youtube\\webik-pipeline\\projects\\demo-vertical-slice\\assets\\parallax\\scene_002__1645982019_2-papik-pro-p-plakati-sssr-oboi-2.mp4"
+        },
+        {
+          "index": 2,
+          "start": 16.1,
+          "end": 22.16,
+          "duration": 6.06,
+          "name": "post apocalypse climate change global warming disaster background element - Online Success Model (1080p, h264).mp4",
+          "source": "post apocalypse climate change global warming disaster background element - Online Success Model (1080p, h264).mp4",
+          "media_path": "C:\\Users\\aidar\\OneDrive\\Рабочий стол\\automotization-youtube\\webik-pipeline\\projects\\demo-vertical-slice\\assets\\videos_silent\\post apocalypse climate change global warming disaster background element - Online Success Model (1080p, h264).mp4"
+        }
+      ]
+    },
+    "V2": {
+      "name": "Video 2",
+      "clip_count": 1,
+      "clips": [
+        {
+          "index": 0,
+          "start": 7.367,
+          "end": 8.267,
+          "duration": 0.9,
+          "name": "FILM BURN (16).mp4",
+          "source": "FILM BURN (16).mp4",
+          "media_path": "E:\\YouTube Webik\\Pack media\\FILM BURN (WITH SFX)\\FILM BURN (16).mp4"
+        }
+      ]
+    },
+    "V3": {
+      "name": "Video 3",
+      "clip_count": 1,
+      "clips": [
+        {
+          "index": 0,
+          "start": 1.033,
+          "end": 4.9,
+          "duration": 3.867,
+          "name": "card_000_LOC_2cbb1074.mov",
+          "source": "card_000_LOC_2cbb1074.mov",
+          "media_path": "C:\\Users\\aidar\\OneDrive\\Рабочий стол\\automotization-youtube\\webik-pipeline\\projects\\demo-vertical-slice\\assets\\entity_cards\\card_000_LOC_2cbb1074.mov"
+        }
+      ]
+    },
+    "V4": {
+      "name": "Video 4",
+      "clip_count": 1,
+      "clips": [
+        {
+          "index": 0,
+          "start": 7.8,
+          "end": 10.267,
+          "duration": 2.467,
+          "name": "level_1_h1.55s.mov",
+          "source": "level_1_h1.55s.mov",
+          "media_path": "C:\\Users\\aidar\\OneDrive\\Рабочий стол\\automotization-youtube\\webik-pipeline\\projects\\demo-vertical-slice\\assets\\level_cards\\level_1_h1.55s.mov"
+        }
+      ]
+    },
+    "V5": {
+      "name": "Video 5",
+      "clip_count": 0,
+      "clips": []
+    },
+    "V6": {
+      "name": "Video 6",
+      "clip_count": 1,
+      "clips": [
+        {
+          "index": 0,
+          "start": 8.467,
+          "end": 18.467,
+          "duration": 10.0,
+          "name": "04356_light_leaks_element_366_wwwcutestockfootagecom (Original).mp4",
+          "source": "04356_light_leaks_element_366_wwwcutestockfootagecom (Original).mp4",
+          "media_path": "C:\\Users\\aidar\\OneDrive\\Рабочий стол\\automotization-youtube\\webik-pipeline\\projects\\demo-vertical-slice\\assets\\overlays_silent\\04356_light_leaks_element_366_wwwcutestockfootagecom (Original).mp4"
+        }
+      ]
+    },
+    "V7": {
+      "name": "Video 7",
+      "clip_count": 1,
+      "clips": [
+        {
+          "index": 0,
+          "start": 0,
+          "end": 22.16,
+          "duration": 22.16,
+          "name": "vignette.png",
+          "source": "vignette.png",
+          "media_path": "C:\\Users\\aidar\\OneDrive\\Рабочий стол\\automotization-youtube\\webik-pipeline\\projects\\demo-vertical-slice\\assets\\overlays_silent\\vignette.png"
+        }
+      ]
+    },
+    "V8": {
+      "name": "Video 8",
+      "clip_count": 1,
+      "clips": [
+        {
+          "index": 0,
+          "start": 12.6,
+          "end": 16.1,
+          "duration": 3.5,
+          "name": "scene_002_chart0_counter_bc6e2470.mov",
+          "source": "scene_002_chart0_counter_bc6e2470.mov",
+          "media_path": "C:\\Users\\aidar\\OneDrive\\Рабочий стол\\automotization-youtube\\webik-pipeline\\projects\\demo-vertical-slice\\assets\\charts\\scene_002_chart0_counter_bc6e2470.mov"
+        }
+      ]
+    },
+    "V9": {
+      "name": "Video 9",
+      "clip_count": 3,
+      "clips": [
+        {
+          "index": 0,
+          "start": 11.667,
+          "end": 12.66,
+          "duration": 0.993,
+          "name": "scene_002_burst0_cec41ce9.jpg",
+          "source": "scene_002_burst0_cec41ce9.jpg",
+          "media_path": "C:\\Users\\aidar\\OneDrive\\Рабочий стол\\automotization-youtube\\webik-pipeline\\projects\\demo-vertical-slice\\assets\\media_burst\\scene_002_burst0_cec41ce9.jpg"
+        },
+        {
+          "index": 1,
+          "start": 12.667,
+          "end": 13.66,
+          "duration": 0.993,
+          "name": "scene_002_burst1_0bb34fe6.jpg",
+          "source": "scene_002_burst1_0bb34fe6.jpg",
+          "media_path": "C:\\Users\\aidar\\OneDrive\\Рабочий стол\\automotization-youtube\\webik-pipeline\\projects\\demo-vertical-slice\\assets\\media_burst\\scene_002_burst1_0bb34fe6.jpg"
+        },
+        {
+          "index": 2,
+          "start": 13.667,
+          "end": 14.66,
+          "duration": 0.993,
+          "name": "scene_002_burst2_0a36a91c.jpg",
+          "source": "scene_002_burst2_0a36a91c.jpg",
+          "media_path": "C:\\Users\\aidar\\OneDrive\\Рабочий стол\\automotization-youtube\\webik-pipeline\\projects\\demo-vertical-slice\\assets\\media_burst\\scene_002_burst2_0a36a91c.jpg"
+        }
+      ]
+    },
+    "V10": {
+      "name": "Video 10",
+      "clip_count": 1,
+      "clips": [
+        {
+          "index": 0,
+          "start": 21.867,
+          "end": 27.367,
+          "duration": 5.5,
+          "name": "outro_e6b1ec52.mov",
+          "source": "outro_e6b1ec52.mov",
+          "media_path": "C:\\Users\\aidar\\OneDrive\\Рабочий стол\\automotization-youtube\\webik-pipeline\\projects\\demo-vertical-slice\\assets\\outro\\outro_e6b1ec52.mov"
+        }
+      ]
+    },
+    "A1": {
+      "name": "Audio 1",
+      "clip_count": 1,
+      "clips": [
+        {
+          "index": 0,
+          "start": 0,
+          "end": 22.167,
+          "duration": 22.167,
+          "name": "full.mp3",
+          "source": "full.mp3",
+          "media_path": "C:\\Users\\aidar\\OneDrive\\Рабочий стол\\automotization-youtube\\webik-pipeline\\projects\\demo-vertical-slice\\assets\\voice\\full.mp3"
+        }
+      ]
+    },
+    "A2": {
+      "name": "Audio 2",
+      "clip_count": 1,
+      "clips": [
+        {
+          "index": 0,
+          "start": 7.367,
+          "end": 8.267,
+          "duration": 0.9,
+          "name": "FILM BURN (16).mp4",
+          "source": "FILM BURN (16).mp4",
+          "media_path": "E:\\YouTube Webik\\Pack media\\FILM BURN (WITH SFX)\\FILM BURN (16).mp4"
+        }
+      ]
+    },
+    "A3": {
+      "name": "Audio 3",
+      "clip_count": 3,
+      "clips": [
+        {
+          "index": 0,
+          "start": 12.667,
+          "end": 13.133,
+          "duration": 0.467,
+          "name": "Затвор.wav",
+          "source": "Затвор.wav",
+          "media_path": "E:\\YouTube Webik\\Sound\\Old Sport SFX Pack\\Фото - щелчки\\Затвор.wav"
+        },
+        {
+          "index": 1,
+          "start": 13.667,
+          "end": 15.6,
+          "duration": 1.933,
+          "name": "фото (весомый).wav",
+          "source": "фото (весомый).wav",
+          "media_path": "E:\\YouTube Webik\\Sound\\Old Sport SFX Pack\\Фото - щелчки\\фото (весомый).wav"
+        },
+        {
+          "index": 2,
+          "start": 17.933,
+          "end": 22.16,
+          "duration": 4.227,
+          "name": "Импакт 4.wav",
+          "source": "Импакт 4.wav",
+          "media_path": "E:\\YouTube Webik\\Sound\\Old Sport SFX Pack\\Разгоны+удары\\Импакт 4.wav"
+        }
+      ]
+    },
+    "A4": {
+      "name": "Audio 4",
+      "clip_count": 0,
+      "clips": []
+    }
+  },
+  "warnings": [
+    {
+      "track": "V1",
+      "issue": "gap_covered",
+      "from": 7.8,
+      "to": 9.267,
+      "duration": 1.467,
+      "after_clip": "scene_001__389fa004-979d-4731-b853-6ec0085ba7bc.mp4",
+      "before_clip": "scene_002__1645982019_2-papik-pro-p-plakati-sssr-oboi-2.mp4",
+      "covered_by": [
+        {
+          "track": "V2",
+          "name": "FILM BURN (16).mp4"
+        },
+        {
+          "track": "V4",
+          "name": "level_1_h1.55s.mov"
+        },
+        {
+          "track": "V6",
+          "name": "04356_light_leaks_element_366_wwwcutestockfootagecom (Original).mp4"
+        },
+        {
+          "track": "V7",
+          "name": "vignette.png"
+        },
+        {
+          "track": "A1",
+          "name": "full.mp3"
+        },
+        {
+          "track": "A2",
+          "name": "FILM BURN (16).mp4"
+        }
+      ]
+    },
+    {
+      "track": "A3",
+      "issue": "short_clip",
+      "duration": 0.467,
+      "name": "Затвор.wav",
+      "start": 12.667
+    }
+  ]
+}

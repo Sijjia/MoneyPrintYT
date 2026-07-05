@@ -1,0 +1,94 @@
+{
+  "name": "MYSTIC",
+  "description": "Мистика, паранормальное, секты, призраки, шаманизм",
+  "applies_to": [
+    "Корея", "секты", "шаманизм", "городские легенды",
+    "паранормальное", "призраки", "пророчества", "магия", "оккультизм"
+  ],
+  "palette": {
+    "primary": "#2D1B4E",
+    "secondary": "#1B3A5C",
+    "accent": "#7A8C99",
+    "highlight": "#C9B068",
+    "background": "#0E0A1F"
+  },
+  "ai_image_tags": "dark folklore, fog, candle light, occult atmosphere, oriental mystery, low key lighting, mystical, ethereal, ominous shadows, ritualistic, ancient, cinematic 8k photograph",
+  "ai_image_negative": "bright, sunny, cartoon, anime, modern, neon, clean, sterile",
+  "transitions": {
+    "default": {
+      "plugin": "Sapphire",
+      "effect": "S_FilmEffect",
+      "params": {"grain": 0.3, "scratches": 0.1, "blur": 0.2}
+    },
+    "between_topics": {
+      "plugin": "Sapphire",
+      "effect": "S_LightLeak",
+      "params": {"intensity": 0.4, "color": "purple"}
+    },
+    "between_levels": {
+      "plugin": "custom",
+      "mogrt": "templates/dive_transition.mogrt"
+    },
+    "shadow_cut": {
+      "plugin": "BuiltIn",
+      "effect": "Dip to Black",
+      "params": {"duration_ms": 400}
+    },
+    "fade_to_smoke": {
+      "plugin": "Sapphire",
+      "effect": "S_Smoke",
+      "params": {"intensity": 0.7}
+    }
+  },
+  "music": {
+    "mood_keywords": ["dark ambient", "mystical drone", "ethnic instruments", "low choir", "shamanic"],
+    "instruments": ["erhu", "taiko", "gusli", "throat singing", "low drone"],
+    "tempo_bpm_range": [50, 80],
+    "intensity_default": 0.5,
+    "intensity_shadow": 0.7
+  },
+  "sfx_pack": [
+    "bell_ritual", "wind_howl", "wood_creak", "whisper_indistinct",
+    "candle_flicker", "distant_chant", "stone_grind"
+  ],
+  "fonts": {
+    "primary": "Cormorant Garamond",
+    "secondary": "EB Garamond",
+    "mono": "Courier Prime",
+    "weight_primary": "300",
+    "letter_spacing": "0.02em"
+  },
+  "lut": {
+    "path": "luts/mystic_cold.cube",
+    "intensity": 0.85
+  },
+  "overlays": [
+    {"path": "overlays/dust_overlay.mp4", "blend": "screen", "opacity": 0.2},
+    {"path": "overlays/light_leak_warm.mp4", "blend": "screen", "opacity": 0.15}
+  ],
+  "color_grading": {
+    "shadows": {"hue": 240, "saturation": 0.3, "luminance": -10},
+    "midtones": {"hue": 30, "saturation": 0.2, "luminance": 0},
+    "highlights": {"hue": 50, "saturation": 0.15, "luminance": 5},
+    "contrast": 15,
+    "saturation": -10,
+    "vignette": -1
+  },
+  "camera_movements": {
+    "default": "parallax_left",
+    "calm": "static",
+    "tense": "dolly_in",
+    "climactic": "orbit",
+    "mysterious": "parallax_right"
+  },
+  "subtitle_style": {
+    "font": "Cormorant Garamond",
+    "size": 56,
+    "color": "#E8DCC4",
+    "highlight_color": "#C9B068",
+    "background_opacity": 0.0,
+    "shadow": true,
+    "shadow_color": "#000000",
+    "shadow_blur": 8
+  }
+}

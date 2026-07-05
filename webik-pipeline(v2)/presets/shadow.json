@@ -1,0 +1,76 @@
+{
+  "name": "SHADOW",
+  "description": "МОДИФИКАТОР для самых тёмных частей (4-й уровень или особо страшные темы). Накладывается ПОВЕРХ основного пресета.",
+  "is_modifier": true,
+  "applies_to": [
+    "4-й уровень любого айсберга",
+    "темы с убийствами/насилием/исчезновениями",
+    "культы, секретные эксперименты на людях",
+    "массовые трагедии"
+  ],
+  "palette_override": {
+    "shadow_red": "#8B0000",
+    "blood_red": "#5C0000",
+    "deep_black": "#000000"
+  },
+  "ai_image_tag_additions": "extremely dark, ominous shadows, blood red accents, single light source, oppressive atmosphere, horror aesthetic, void of color",
+  "transitions": {
+    "default_replacement": {
+      "plugin": "BuiltIn",
+      "effect": "Dip to Black",
+      "params": {"duration_ms": 200, "with_bass_drop": true}
+    },
+    "heartbeat_cut": {
+      "plugin": "Sapphire",
+      "effect": "S_Pulse",
+      "params": {"intensity": 0.9, "color": "#000000"}
+    },
+    "police_strobe": {
+      "plugin": "RedGiant",
+      "effect": "Universe_Strobe",
+      "params": {"colors": ["#8B0000", "#000000"]}
+    }
+  },
+  "music_override": {
+    "intensity_multiplier": 1.4,
+    "add_subbass": true,
+    "add_silence_breaks": true,
+    "silence_after_climax_sec": 2.0
+  },
+  "sfx_additions": [
+    "bass_drop", "heart_beat", "siren_distant", "police_radio",
+    "metal_clang", "scream_distant", "breathing_heavy", "knife_sharpen"
+  ],
+  "color_grading_overlay": {
+    "saturation_delta": -20,
+    "contrast_delta": 15,
+    "vignette_delta": -2,
+    "red_lift": 0.05,
+    "shadow_crush": 10
+  },
+  "lut_overlay": {
+    "path": "luts/shadow_overlay.cube",
+    "intensity": 0.4,
+    "blend_with_base": true
+  },
+  "effects": {
+    "double_vignette": true,
+    "subtle_red_glow": true,
+    "selective_desaturation": true,
+    "film_burn_on_climax": true
+  },
+  "camera_overrides": {
+    "tension_multiplier": 1.5,
+    "shake_on_revelation": true,
+    "freeze_frame_on_horror": true
+  },
+  "subtitle_overrides": {
+    "highlight_color_override": "#FF1A1A",
+    "trigger_words_red": ["умерли", "убиты", "исчезли", "пытки", "жертв", "трагедия", "страшно"]
+  },
+  "_usage_notes": [
+    "SHADOW не выбирается отдельно — он ВСЕГДА накладывается поверх MYSTIC/ARCHIVE/CIPHER/COSMIC.",
+    "Активируется автоматически когда: scene.modifiers содержит 'SHADOW' или scene.level == 4.",
+    "Цель: сделать самый страшный момент видео максимально мощным."
+  ]
+}

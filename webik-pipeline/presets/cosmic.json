@@ -1,0 +1,95 @@
+{
+  "name": "COSMIC",
+  "description": "Наука, физика, апокалипсис, экзистенциальные темы",
+  "applies_to": [
+    "парадокс Ферми", "ложный вакуум", "апокалипсис", "нанотехнологии",
+    "теории физики", "космос", "вселенная", "теории большого взрыва",
+    "Йеллоустоун", "Кэррингтон", "наука", "квантовая физика"
+  ],
+  "palette": {
+    "primary": "#000000",
+    "secondary": "#1A0E3D",
+    "accent": "#4B0082",
+    "highlight": "#E0E0FF",
+    "background": "#000000"
+  },
+  "ai_image_tags": "cosmic horror, deep space, quantum, scientific diagram, blackboard physics, hubble photography, nebula, void, cosmic scale, astronomical, vast emptiness, cinematic 8k, james webb telescope aesthetic",
+  "ai_image_negative": "warm, sunny, earthly, mundane, cartoon, anime, low resolution",
+  "transitions": {
+    "default": {
+      "plugin": "Sapphire",
+      "effect": "S_Particles",
+      "params": {"density": 0.3, "movement": "outward"}
+    },
+    "between_topics": {
+      "plugin": "Sapphire",
+      "effect": "S_ZoomBlur",
+      "params": {"intensity": 0.7}
+    },
+    "between_levels": {
+      "plugin": "custom",
+      "mogrt": "templates/dive_transition.mogrt"
+    },
+    "shadow_cut": {
+      "plugin": "BuiltIn",
+      "effect": "Cross Dissolve",
+      "params": {"duration_ms": 800}
+    },
+    "warp_zoom": {
+      "plugin": "Sapphire",
+      "effect": "S_Warp",
+      "params": {"intensity": 0.9}
+    }
+  },
+  "music": {
+    "mood_keywords": ["sub bass drone", "gregorian chant", "cosmic ambient", "white noise", "ethereal choir"],
+    "instruments": ["sub bass", "deep choir", "white noise", "synth pad", "cosmic textures"],
+    "tempo_bpm_range": [40, 70],
+    "intensity_default": 0.5,
+    "intensity_shadow": 0.75
+  },
+  "sfx_pack": [
+    "sub_drop", "cosmic_hum", "voyager_static", "deep_space_rumble",
+    "particle_collision", "ethereal_choir_swell", "void_silence", "gravity_wave"
+  ],
+  "fonts": {
+    "primary": "Geist",
+    "secondary": "Inter Light",
+    "mono": "JetBrains Mono",
+    "weight_primary": "200",
+    "letter_spacing": "0.03em"
+  },
+  "lut": {
+    "path": "luts/deep_space.cube",
+    "intensity": 0.9
+  },
+  "overlays": [
+    {"path": "overlays/dust_overlay.mp4", "blend": "screen", "opacity": 0.1}
+  ],
+  "color_grading": {
+    "shadows": {"hue": 260, "saturation": 0.4, "luminance": -20},
+    "midtones": {"hue": 250, "saturation": 0.2, "luminance": -5},
+    "highlights": {"hue": 240, "saturation": 0.15, "luminance": 5},
+    "contrast": 40,
+    "saturation": -20,
+    "vignette": -2,
+    "dehaze": 30
+  },
+  "camera_movements": {
+    "default": "dolly_out",
+    "calm": "static",
+    "tense": "dolly_in_slow",
+    "climactic": "warp_zoom_out",
+    "mysterious": "orbit_slow"
+  },
+  "subtitle_style": {
+    "font": "Geist",
+    "size": 52,
+    "color": "#E0E0FF",
+    "highlight_color": "#A09CFF",
+    "background_opacity": 0.0,
+    "shadow": true,
+    "shadow_color": "#000020",
+    "shadow_blur": 10
+  }
+}

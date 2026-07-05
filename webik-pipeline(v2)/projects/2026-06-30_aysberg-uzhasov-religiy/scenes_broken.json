@@ -1,0 +1,3365 @@
+{
+  "project_id": "2025-06-30_aysberg-uzhasov-religiy",
+  "primary_preset": "MYSTIC",
+  "modifiers": [
+    "SHADOW"
+  ],
+  "total_duration_sec": 1500,
+  "total_scenes": 142,
+  "scenes": [
+    {
+      "id": "scene_001",
+      "section": "intro",
+      "level": 0,
+      "topic_id": null,
+      "voiceover": "Тридцатого июня две тысячи двадцать пятого года человек, считавший себя реинкарнацией Христа, получил двенадцать лет строгого режима.",
+      "duration_sec": 6.5,
+      "visual": {
+        "type": "stock_video",
+        "search_query": "prison bars shadows dramatic",
+        "ai_prompt": "",
+        "fallback_query": "prison interior dark"
+      },
+      "camera": {
+        "movement": "dolly_in",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.5,
+        "sfx": []
+      },
+      "preset": "MYSTIC",
+      "modifiers": [
+        "SHADOW"
+      ],
+      "mood": "tense",
+      "text_overlay": {
+        "text": "30 ИЮНЯ 2025",
+        "style": "serif_white",
+        "position": "center"
+      }
+    },
+    {
+      "id": "scene_002",
+      "section": "intro",
+      "level": 0,
+      "topic_id": null,
+      "voiceover": "За его спиной — тысячи последователей, разрушенные семьи и загубленные жизни.",
+      "duration_sec": 5.0,
+      "visual": {
+        "type": "ai_image",
+        "search_query": "",
+        "ai_prompt": "Crowd of people in white robes kneeling in snow, siberian forest background, cult gathering, dark mystical atmosphere, cinematic photograph, --ar 16:9",
+        "fallback_query": "religious cult gathering forest"
+      },
+      "camera": {
+        "movement": "parallax_right",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.6,
+        "sfx": []
+      },
+      "preset": "MYSTIC",
+      "modifiers": [
+        "SHADOW"
+      ],
+      "mood": "tense",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_003",
+      "section": "intro",
+      "level": 0,
+      "topic_id": null,
+      "voiceover": "В зале суда он произнёс: «Я не понял, за что меня судили». Серьёзно.",
+      "duration_sec": 5.5,
+      "visual": {
+        "type": "stock_photo",
+        "search_query": "courtroom defendant serious",
+        "ai_prompt": "",
+        "fallback_query": "court trial dramatic"
+      },
+      "camera": {
+        "movement": "dolly_in",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "heartbeat_cut",
+        "duration_ms": 300
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.7,
+        "sfx": [
+          {
+            "type": "bass_drop",
+            "trigger_word": "судили",
+            "intensity": 0.8
+          }
+        ]
+      },
+      "preset": "MYSTIC",
+      "modifiers": [
+        "SHADOW"
+      ],
+      "mood": "climactic",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_004",
+      "section": "intro",
+      "level": 0,
+      "topic_id": null,
+      "voiceover": "Религия может спасать души. Но она же может стать идеальным инструментом контроля.",
+      "duration_sec": 5.5,
+      "visual": {
+        "type": "ai_image",
+        "search_query": "",
+        "ai_prompt": "Ancient religious temple interior with chains and shadows, dark mystical atmosphere, manipulation symbolism, cinematic dramatic lighting, --ar 16:9",
+        "fallback_query": "church interior dark dramatic"
+      },
+      "camera": {
+        "movement": "parallax_left",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.6,
+        "sfx": []
+      },
+      "preset": "MYSTIC",
+      "modifiers": [],
+      "mood": "mysterious",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_005",
+      "section": "intro",
+      "level": 0,
+      "topic_id": null,
+      "voiceover": "В этом айсберге — не древние легенды из пыльных фолиантов, а реальные события последних десятилетий.",
+      "duration_sec": 6.0,
+      "visual": {
+        "type": "stock_photo",
+        "search_query": "modern newspaper headlines crime",
+        "ai_prompt": "",
+        "fallback_query": "newspaper crime headlines"
+      },
+      "camera": {
+        "movement": "dolly_out",
+        "speed": "medium"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.5,
+        "sfx": []
+      },
+      "preset": "MYSTIC",
+      "modifiers": [],
+      "mood": "tense",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_006",
+      "section": "intro",
+      "level": 0,
+      "topic_id": null,
+      "voiceover": "Секты с центрами в российских городах. Восьмидесятивосьмилетняя «богиня», выкачивающая пенсии.",
+      "duration_sec": 5.5,
+      "visual": {
+        "type": "stock_photo",
+        "search_query": "russian city industrial skyline",
+        "ai_prompt": "",
+        "fallback_query": "industrial city russia"
+      },
+      "camera": {
+        "movement": "parallax_right",
+        "speed": "medium"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.6,
+        "sfx": []
+      },
+      "preset": "MYSTIC",
+      "modifiers": [],
+      "mood": "tense",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_007",
+      "section": "intro",
+      "level": 0,
+      "topic_id": null,
+      "voiceover": "Детские лагеря, где малышей учат медитировать на портреты «святых».",
+      "duration_sec": 5.0,
+      "visual": {
+        "type": "ai_image",
+        "search_query": "",
+        "ai_prompt": "Children sitting in rows meditating in front of portrait in dark room, cult indoctrination, ominous atmosphere, cinematic photograph, --ar 16:9",
+        "fallback_query": "children meditation dark room"
+      },
+      "camera": {
+        "movement": "dolly_in",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.7,
+        "sfx": []
+      },
+      "preset": "MYSTIC",
+      "modifiers": [
+        "SHADOW"
+      ],
+      "mood": "tense",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_008",
+      "section": "intro",
+      "level": 0,
+      "topic_id": null,
+      "voiceover": "И это только верхушка.",
+      "duration_sec": 2.5,
+      "visual": {
+        "type": "ai_image",
+        "search_query": "",
+        "ai_prompt": "Iceberg tip above dark water surface, ominous underwater mass below, mystical fog, cinematic photograph, --ar 16:9",
+        "fallback_query": "iceberg tip water surface"
+      },
+      "camera": {
+        "movement": "static",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "shadow_cut",
+        "duration_ms": 400
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.8,
+        "sfx": [
+          {
+            "type": "bass_drop",
+            "trigger_word": "верхушка",
+            "intensity": 0.9
+          }
+        ]
+      },
+      "preset": "MYSTIC",
+      "modifiers": [
+        "SHADOW"
+      ],
+      "mood": "climactic",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_009",
+      "section": "intro",
+      "level": 0,
+      "topic_id": null,
+      "voiceover": "Чем глубже мы спускаемся, тем страшнее становится ответ на один простой вопрос: где заканчивается вера и начинается манипуляция?",
+      "duration_sec": 7.5,
+      "visual": {
+        "type": "ai_video",
+        "search_query": "",
+        "ai_prompt": "Camera descending into dark water depths, iceberg growing larger, ominous atmosphere, cinematic underwater footage, --ar 16:9",
+        "fallback_query": "underwater descent dark"
+      },
+      "camera": {
+        "movement": "dolly_in",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.7,
+        "sfx": []
+      },
+      "preset": "MYSTIC",
+      "modifiers": [
+        "SHADOW"
+      ],
+      "mood": "mysterious",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_010",
+      "section": "intro",
+      "level": 0,
+      "topic_id": null,
+      "voiceover": "Или она никогда не заканчивалась?",
+      "duration_sec": 3.0,
+      "visual": {
+        "type": "stock_photo",
+        "search_query": "dark water surface reflection",
+        "ai_prompt": "",
+        "fallback_query": "dark water mysterious"
+      },
+      "camera": {
+        "movement": "static",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "heartbeat_cut",
+        "duration_ms": 300
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.8,
+        "sfx": []
+      },
+      "preset": "MYSTIC",
+      "modifiers": [
+        "SHADOW"
+      ],
+      "mood": "climactic",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_011",
+      "section": "intro",
+      "level": 0,
+      "topic_id": null,
+      "voiceover": "Спускаемся.",
+      "duration_sec": 2.0,
+      "visual": {
+        "type": "ai_image",
+        "search_query": "",
+        "ai_prompt": "Deep dark abyss opening downward, mystical fog swirling, ominous descent, cinematic photograph, --ar 16:9",
+        "fallback_query": "dark abyss descent"
+      },
+      "camera": {
+        "movement": "dolly_in",
+        "speed": "fast"
+      },
+      "transition_out": {
+        "type": "between_levels",
+        "duration_ms": 1200
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.9,
+        "sfx": [
+          {
+            "type": "whoosh",
+            "trigger_word": "Спускаемся",
+            "intensity": 0.9
+          }
+        ]
+      },
+      "preset": "MYSTIC",
+      "modifiers": [
+        "SHADOW"
+      ],
+      "mood": "climactic",
+      "text_overlay": {
+        "text": "СПУСКАЕМСЯ",
+        "style": "serif_white",
+        "position": "center"
+      }
+    },
+    {
+      "id": "scene_012",
+      "section": "level_1",
+      "level": 1,
+      "topic_id": "1.1",
+      "voiceover": "Сергей Тороп. Бывший сержант милиции из Минусинска. Обычный человек из маленького провинциального городка. Ничто не предвещало.",
+      "duration_sec": 7.0,
+      "visual": {
+        "type": "stock_photo",
+        "search_query": "soviet police officer portrait 1980s",
+        "ai_prompt": "",
+        "fallback_query": "police officer portrait serious"
+      },
+      "camera": {
+        "movement": "parallax_right",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.4,
+        "sfx": []
+      },
+      "preset": "MYSTIC",
+      "modifiers": [],
+      "mood": "calm",
+      "text_overlay": {
+        "text": "ВИССАРИОН",
+        "style": "serif_white",
+        "position": "lower_third"
+      }
+    },
+    {
+      "id": "scene_013",
+      "section": "level_1",
+      "level": 1,
+      "topic_id": "1.1",
+      "voiceover": "Тысяча девятьсот девяносто первый год. Развал Союза. Духовный вакуум.",
+      "duration_sec": 5.0,
+      "visual": {
+        "type": "archive_video",
+        "search_query": "Soviet Union collapse 1991 archival footage",
+        "ai_prompt": "",
+        "fallback_query": "ussr collapse 1991"
+      },
+      "camera": {
+        "movement": "parallax_left",
+        "speed": "medium"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.5,
+        "sfx": []
+      },
+      "preset": "ARCHIVE",
+      "modifiers": [],
+      "mood": "tense",
+      "text_overlay": {
+        "text": "1991 ГОД",
+        "style": "stamp_red",
+        "position": "upper_right"
+      }
+    },
+    {
+      "id": "scene_014",
+      "section": "level_1",
+      "level": 1,
+      "topic_id": "1.1",
+      "voiceover": "Люди ищут смысл, ищут опору в хаосе разваливающейся страны.",
+      "duration_sec": 5.0,
+      "visual": {
+        "type": "stock_photo",
+        "search_query": "russian people queue 1990s despair",
+        "ai_prompt": "",
+        "fallback_query": "people waiting line despair"
+      },
+      "camera": {
+        "movement": "parallax_right",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.5,
+        "sfx": []
+      },
+      "preset": "ARCHIVE",
+      "modifiers": [],
+      "mood": "tense",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_015",
+      "section": "level_1",
+      "level": 1,
+      "topic_id": "1.1",
+      "voiceover": "И тогда бывший милиционер Тороп объявляет себя реинкарнацией Иисуса Христа.",
+      "duration_sec": 5.5,
+      "visual": {
+        "type": "ai_image",
+        "search_query": "",
+        "ai_prompt": "Man with long hair and beard in white robes standing on mountain, messianic pose, siberian landscape, mystical atmosphere, cinematic photograph, --ar 16:9",
+        "fallback_query": "religious figure white robes mountain"
+      },
+      "camera": {
+        "movement": "dolly_in",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.7,
+        "sfx": [
+          {
+            "type": "bass_drop",
+            "trigger_word": "Христа",
+            "intensity": 0.7
+          }
+        ]
+      },
+      "preset": "MYSTIC",
+      "modifiers": [],
+      "mood": "mystical",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_016",
+      "section": "level_1",
+      "level": 1,
+      "topic_id": "1.1",
+      "voiceover": "Не метафорически. Не символически. Буквально — второе пришествие во плоти.",
+      "duration_sec": 5.5,
+      "visual": {
+        "type": "stock_photo",
+        "search_query": "religious icon orthodox christ",
+        "ai_prompt": "",
+        "fallback_query": "religious painting christ"
+      },
+      "camera": {
+        "movement": "dolly_in",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.7,
+        "sfx": []
+      },
+      "preset": "MYSTIC",
+      "modifiers": [],
+      "mood": "mystical",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_017",
+      "section": "level_1",
+      "level": 1,
+      "topic_id": "1.1",
+      "voiceover": "К началу двухтысячных он построил тринадцать поселений в Красноярском крае.",
+      "duration_sec": 5.5,
+      "visual": {
+        "type": "stock_photo",
+        "search_query": "siberian village wooden houses forest",
+        "ai_prompt": "",
+        "fallback_query": "russian village siberia"
+      },
+      "camera": {
+        "movement": "parallax_left",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.6,
+        "sfx": []
+      },
+      "preset": "MYSTIC",
+      "modifiers": [],
+      "mood": "tense",
+      "text_overlay": {
+        "text": "13 ПОСЕЛЕНИЙ",
+        "style": "serif_white",
+        "position": "lower_third"
+      },
+      "charts": [
+        {
+          "kind": "counter",
+          "trigger_word": "тринадцать",
+          "duration_sec": 3.0,
+          "label": "ПОСЕЛЕНИЙ ПОСТРОЕНО",
+          "counter_target": 13,
+          "counter_format": "int",
+          "accent_color": "#ff5050"
+        }
+      ]
+    },
+    {
+      "id": "scene_018",
+      "section": "level_1",
+      "level": 1,
+      "topic_id": "1.1",
+      "voiceover": "Глубокая тайга. Полная изоляция от мира.",
+      "duration_sec": 4.0,
+      "visual": {
+        "type": "stock_video",
+        "search_query": "siberian taiga forest aerial dark",
+        "ai_prompt": "",
+        "fallback_query": "dense forest aerial siberia"
+      },
+      "camera": {
+        "movement": "dolly_out",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.6,
+        "sfx": []
+      },
+      "preset": "MYSTIC",
+      "modifiers": [],
+      "mood": "mysterious",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_019",
+      "section": "level_1",
+      "level": 1,
+      "topic_id": "1.1",
+      "voiceover": "Более пяти тысяч человек жили в «Обители рассвета» — закрытом сообществе со строгой иерархией и одним божеством. Виссарионом.",
+      "duration_sec": 7.5,
+      "visual": {
+        "type": "ai_image",
+        "search_query": "",
+        "ai_prompt": "Cult compound in siberian forest, wooden buildings arranged in circle, people in white robes gathering, ominous atmosphere, cinematic photograph, --ar 16:9",
+        "fallback_query": "religious commune buildings forest"
+      },
+      "camera": {
+        "movement": "orbit",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.7,
+        "sfx": []
+      },
+      "preset": "MYSTIC",
+      "modifiers": [
+        "SHADOW"
+      ],
+      "mood": "tense",
+      "text_overlay": {
+        "text": "5000+ ПОСЛЕДОВАТЕЛЕЙ",
+        "style": "serif_white",
+        "position": "lower_third"
+      },
+      "charts": [
+        {
+          "kind": "counter",
+          "trigger_word": "пяти",
+          "duration_sec": 3.5,
+          "label": "ПОСЛЕДОВАТЕЛЕЙ",
+          "counter_target": 5000,
+          "counter_format": "int_thousands",
+          "accent_color": "#ff5050"
+        }
+      ]
+    },
+    {
+      "id": "scene_020",
+      "section": "level_1",
+      "level": 1,
+      "topic_id": "1.1",
+      "voiceover": "У него были апостолы. Была своя церковь. Были правила.",
+      "duration_sec": 5.0,
+      "visual": {
+        "type": "stock_photo",
+        "search_query": "wooden orthodox church interior candles",
+        "ai_prompt": "",
+        "fallback_query": "church interior wooden dark"
+      },
+      "camera": {
+        "movement": "parallax_right",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.6,
+        "sfx": []
+      },
+      "preset": "MYSTIC",
+      "modifiers": [],
+      "mood": "mystical",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_021",
+      "section": "level_1",
+      "level": 1,
+      "topic_id": "1.1",
+      "voiceover": "Принудительные десятины. Психологическое насилие над детьми.",
+      "duration_sec": 5.0,
+      "visual": {
+        "type": "stock_photo",
+        "search_query": "money cash hands dark",
+        "ai_prompt": "",
+        "fallback_query": "money exchange hands"
+      },
+      "camera": {
+        "movement": "dolly_in",
+        "speed": "medium"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.7,
+        "sfx": []
+      },
+      "preset": "MYSTIC",
+      "modifiers": [
+        "SHADOW"
+      ],
+      "mood": "tense",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_022",
+      "section": "level_1",
+      "level": 1,
+      "topic_id": "1.1",
+      "voiceover": "Изоляция от родственников — общаться с «неверными» запрещалось, даже если это родители.",
+      "duration_sec": 6.0,
+      "visual": {
+        "type": "ai_image",
+        "search_query": "",
+        "ai_prompt": "Silhouette of person behind fence looking at distant figures, isolation concept, dark mystical atmosphere, cinematic photograph, --ar 16:9",
+        "fallback_query": "person behind fence isolated"
+      },
+      "camera": {
+        "movement": "parallax_left",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.7,
+        "sfx": []
+      },
+      "preset": "MYSTIC",
+      "modifiers": [
+        "SHADOW"
+      ],
+      "mood": "tense",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_023",
+      "section": "level_1",
+      "level": 1,
+      "topic_id": "1.1",
+      "voiceover": "Адепты отдавали секте всё имущество и работали бесплатно «во имя духовного роста».",
+      "duration_sec": 6.0,
+      "visual": {
+        "type": "stock_photo",
+        "search_query": "people working farm manual labor",
+        "ai_prompt": "",
+        "fallback_query": "manual labor workers field"
+      },
+      "camera": {
+        "movement": "parallax_right",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.6,
+        "sfx": []
+      },
+      "preset": "MYSTIC",
+      "modifiers": [],
+      "mood": "tense",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_024",
+      "section": "level_1",
+      "level": 1,
+      "topic_id": "1.1",
+      "voiceover": "А сам Тороп жил в отдельном доме на вершине горы, куда простым смертным вход был запрещён.",
+      "duration_sec": 6.5,
+      "visual": {
+        "type": "ai_image",
+        "search_query": "",
+        "ai_prompt": "Isolated house on mountain peak in siberian landscape, mystical atmosphere, forbidden place, cinematic photograph, --ar 16:9",
+        "fallback_query": "house mountain peak isolated"
+      },
+      "camera": {
+        "movement": "dolly_out",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.7,
+        "sfx": []
+      },
+      "preset": "MYSTIC",
+      "modifiers": [],
+      "mood": "mysterious",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_025",
+      "section": "level_1",
+      "level": 1,
+      "topic_id": "1.1",
+      "voiceover": "Две тысячи двадцатый год. Спецназ врывается в поселение на рассвете.",
+      "duration_sec": 5.0,
+      "visual": {
+        "type": "stock_video",
+        "search_query": "swat team raid dawn operation",
+        "ai_prompt": "",
+        "fallback_query": "police raid operation"
+      },
+      "camera": {
+        "movement": "shake_subtle",
+        "speed": "fast"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.8,
+        "sfx": [
+          {
+            "type": "impact",
+            "trigger_word": "врывается",
+            "intensity": 0.8
+          }
+        ]
+      },
+      "preset": "MYSTIC",
+      "modifiers": [
+        "SHADOW"
+      ],
+      "mood": "tense",
+      "text_overlay": {
+        "text": "2020 ГОД",
+        "style": "serif_white",
+        "position": "upper_right"
+      }
+    },
+    {
+      "id": "scene_026",
+      "section": "level_1",
+      "level": 1,
+      "topic_id": "1.1",
+      "voiceover": "Виссариона уводят в наручниках, под молитвы тысяч последователей, стоящих на коленях в снегу.",
+      "duration_sec": 6.5,
+      "visual": {
+        "type": "ai_image",
+        "search_query": "",
+        "ai_prompt": "Crowd of people in white robes kneeling in snow praying, cult leader being arrested, dramatic scene, cinematic photograph, --ar 16:9",
+        "fallback_query": "people kneeling snow praying"
+      },
+      "camera": {
+        "movement": "parallax_left",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.8,
+        "sfx": []
+      },
+      "preset": "MYSTIC",
+      "modifiers": [
+        "SHADOW"
+      ],
+      "mood": "climactic",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_027",
+      "section": "level_1",
+      "level": 1,
+      "topic_id": "1.1",
+      "voiceover": "Июнь две тысячи двадцать пятого года. Приговор: двенадцать лет строгого режима.",
+      "duration_sec": 5.5,
+      "visual": {
+        "type": "stock_photo",
+        "search_query": "judge gavel courtroom sentence",
+        "ai_prompt": "",
+        "fallback_query": "courtroom gavel justice"
+      },
+      "camera": {
+        "movement": "dolly_in",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.7,
+        "sfx": [
+          {
+            "type": "impact",
+            "trigger_word": "режима",
+            "intensity": 0.7
+          }
+        ]
+      },
+      "preset": "MYSTIC",
+      "modifiers": [
+        "SHADOW"
+      ],
+      "mood": "tense",
+      "text_overlay": {
+        "text": "12 ЛЕТ СТРОГОГО РЕЖИМА",
+        "style": "serif_white",
+        "position": "center"
+      }
+    },
+    {
+      "id": "scene_028",
+      "section": "level_1",
+      "level": 1,
+      "topic_id": "1.1",
+      "voiceover": "Шестнадцать пострадавших. Шестеро — с тяжким вредом здоровью. Компенсации на сорок миллионов рублей.",
+      "duration_sec": 6.5,
+      "visual": {
+        "type": "stock_photo",
+        "search_query": "legal documents court papers",
+        "ai_prompt": "",
+        "fallback_query": "documents papers legal"
+      },
+      "camera": {
+        "movement": "parallax_right",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.6,
+        "sfx": []
+      },
+      "preset": "MYSTIC",
+      "modifiers": [
+        "SHADOW"
+      ],
+      "mood": "tense",
+      "text_overlay": null,
+      "charts": [
+        {
+          "kind": "counter",
+          "trigger_word": "сорок",
+          "duration_sec": 3.0,
+          "label": "КОМПЕНСАЦИИ (РУБ)",
+          "counter_target": 40000000,
+          "counter_format": "int_thousands",
+          "accent_color": "#ff5050"
+        }
+      ]
+    },
+    {
+      "id": "scene_029",
+      "section": "level_1",
+      "level": 1,
+      "topic_id": "1.1",
+      "voiceover": "Последние слова Виссариона в суде: «Я не понял, за что меня судили».",
+      "duration_sec": 5.5,
+      "visual": {
+        "type": "stock_photo",
+        "search_query": "defendant court confused serious",
+        "ai_prompt": "",
+        "fallback_query": "man courtroom serious"
+      },
+      "camera": {
+        "movement": "dolly_in",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "heartbeat_cut",
+        "duration_ms": 300
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.8,
+        "sfx": [
+          {
+            "type": "bass_drop",
+            "trigger_word": "судили",
+            "intensity": 0.9
+          }
+        ]
+      },
+      "preset": "MYSTIC",
+      "modifiers": [
+        "SHADOW"
+      ],
+      "mood": "climactic",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_030",
+      "section": "level_1",
+      "level": 1,
+      "topic_id": "1.1",
+      "voiceover": "Тысячи людей. Годы жизни в тайге. Двенадцать лет строгого режима.",
+      "duration_sec": 5.5,
+      "visual": {
+        "type": "stock_photo",
+        "search_query": "prison bars shadows dramatic",
+        "ai_prompt": "",
+        "fallback_query": "prison bars dark"
+      },
+      "camera": {
+        "movement": "parallax_left",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.7,
+        "sfx": []
+      },
+      "preset": "MYSTIC",
+      "modifiers": [
+        "SHADOW"
+      ],
+      "mood": "tense",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_031",
+      "section": "level_1",
+      "level": 1,
+      "topic_id": "1.1",
+      "voiceover": "И он не понял.",
+      "duration_sec": 2.5,
+      "visual": {
+        "type": "stock_photo",
+        "search_query": "empty courtroom dark dramatic",
+        "ai_prompt": "",
+        "fallback_query": "courtroom empty dark"
+      },
+      "camera": {
+        "movement": "static",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "shadow_cut",
+        "duration_ms": 400
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.8,
+        "sfx": [
+          {
+            "type": "silence_hold",
+            "trigger_word": "понял",
+            "intensity": 1.0
+          }
+        ]
+      },
+      "preset": "MYSTIC",
+      "modifiers": [
+        "SHADOW"
+      ],
+      "mood": "climactic",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_032",
+      "section": "level_1",
+      "level": 1,
+      "topic_id": "1.2",
+      "voiceover": "Валентина Кузнецова. Восемьдесят восемь лет. Кандидат химических наук. Пенсионерка.",
+      "duration_sec": 6.0,
+      "visual": {
+        "type": "stock_photo",
+        "search_query": "elderly woman portrait serious",
+        "ai_prompt": "",
+        "fallback_query": "old woman portrait"
+      },
+      "camera": {
+        "movement": "dolly_in",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.5,
+        "sfx": []
+      },
+      "preset": "MYSTIC",
+      "modifiers": [],
+      "mood": "calm",
+      "text_overlay": {
+        "text": "ВЕЛИКАЯ БОЖЕСТВЕННАЯ",
+        "style": "serif_white",
+        "position": "lower_third"
+      }
+    },
+    {
+      "id": "scene_033",
+      "section": "level_1",
+      "level": 1,
+      "topic_id": "1.2",
+      "voiceover": "На вид — милейшая бабушка, с которой можно в очереди поговорить о ценах на хлеб.",
+      "duration_sec": 5.5,
+      "visual": {
+        "type": "stock_photo",
+        "search_query": "elderly woman shopping queue",
+        "ai_prompt": "",
+        "fallback_query": "old woman grocery store"
+      },
+      "camera": {
+        "movement": "parallax_right",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.4,
+        "sfx": []
+      },
+      "preset": "MYSTIC",
+      "modifiers": [],
+      "mood": "calm",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_034",
+      "section": "level_1",
+      "level": 1,
+      "topic_id": "1.2",
+      "voiceover": "Но она называла себя «Великой Божественной». И требовала, чтобы её так называли все.",
+      "duration_sec": 6.0,
+      "visual": {
+        "type": "ai_image",
+        "search_query": "",
+        "ai_prompt": "Elderly woman in ornate golden throne-like chair, cult goddess aesthetic, mystical atmosphere, cinematic photograph, --ar 16:9",
+        "fallback_query": "elderly woman throne chair"
+      },
+      "camera": {
+        "movement": "dolly_in",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.7,
+        "sfx": [
+          {
+            "type": "bass_drop",
+            "trigger_word": "Божественной",
+            "intensity": 0.7
+          }
+        ]
+      },
+      "preset": "MYSTIC",
+      "modifiers": [],
+      "mood": "mystical",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_035",
+      "section": "level_1",
+      "level": 1,
+      "topic_id": "1.2",
+      "voiceover": "Сотни пожилых граждан — таких же пенсионеров, одиноких, ищущих смысл на закате жизни — отдавали ей деньги.",
+      "duration_sec": 7.0,
+      "visual": {
+        "type": "stock_photo",
+        "search_query": "elderly people group lonely",
+        "ai_prompt": "",
+        "fallback_query": "old people sitting alone"
+      },
+      "camera": {
+        "movement": "parallax_left",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.6,
+        "sfx": []
+      },
+      "preset": "MYSTIC",
+      "modifiers": [],
+      "mood": "tense",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_036",
+      "section": "level_1",
+      "level": 1,
+      "topic_id": "1.2",
+      "voiceover": "Семь тысяч рублей ежемесячный взнос. Плюс десять-пятнадцать тысяч на «духовную литературу», которую она же и писала.",
+      "duration_sec": 7.0,
+      "visual": {
+        "type": "stock_photo",
+        "search_query": "russian rubles cash money",
+        "ai_prompt": "",
+        "fallback_query": "money cash rubles"
+      },
+      "camera": {
+        "movement": "dolly_in",
+        "speed": "medium"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.6,
+        "sfx": []
+      },
+      "preset": "MYSTIC",
+      "modifiers": [],
+      "mood": "tense",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_037",
+      "section": "level_1",
+      "level": 1,
+      "topic_id": "1.2",
+      "voiceover": "Её последователи жили на территории её храма. Работали прислугой. Убирали, готовили, ухаживали за садом. Бесплатно.",
+      "duration_sec": 7.5,
+      "visual": {
+        "type": "stock_photo",
+        "search_query": "people cleaning working servants",
+        "ai_prompt": "",
+        "fallback_query": "people cleaning house"
+      },
+      "camera": {
+        "movement": "parallax_right",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.6,
+        "sfx": []
+      },
+      "preset": "MYSTIC",
+      "modifiers": [],
+      "mood": "tense",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_038",
+      "section": "level_1",
+      "level": 1,
+      "topic_id": "1.2",
+      "voiceover": "Она называла это «служением Божественному началу». Люди считали это честью.",
+      "duration_sec": 5.5,
+      "visual": {
+        "type": "ai_image",
+        "search_query": "",
+        "ai_prompt": "People bowing in reverence before ornate altar, cult worship scene, mystical atmosphere, cinematic photograph, --ar 16:9",
+        "fallback_query": "people praying altar religious"
+      },
+      "camera": {
+        "movement": "dolly_in",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.7,
+        "sfx": []
+      },
+      "preset": "MYSTIC",
+      "modifiers": [],
+      "mood": "mystical",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_039",
+      "section": "level_1",
+      "level": 1,
+      "topic_id": "1.2",
+      "voiceover": "Две тысячи двадцать шестой год. Оперативники приходят с обыском.",
+      "duration_sec": 4.5,
+      "visual": {
+        "type": "stock_video",
+        "search_query": "police raid search operation",
+        "ai_prompt": "",
+        "fallback_query": "police search house"
+      },
+      "camera": {
+        "movement": "shake_subtle",
+        "speed": "medium"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.8,
+        "sfx": [
+          {
+            "type": "impact",
+            "trigger_word": "обыском",
+            "intensity": 0.7
+          }
+        ]
+      },
+      "preset": "MYSTIC",
+      "modifiers": [
+        "SHADOW"
+      ],
+      "mood": "tense",
+      "text_overlay": {
+        "text": "2026 ГОД",
+        "style": "serif_white",
+        "position": "upper_right"
+      }
+    },
+    {
+      "id": "scene_040",
+      "section": "level_1",
+      "level": 1,
+      "topic_id": "1.2",
+      "voiceover": "В доме — более десяти миллионов рублей наличными. Драгоценности, подаренные адептами.",
+      "duration_sec": 6.0,
+      "visual": {
+        "type": "stock_photo",
+        "search_query": "cash money stacks jewelry gold",
+        "ai_prompt": "",
+        "fallback_query": "money jewelry treasure"
+      },
+      "camera": {
+        "movement": "dolly_in",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.7,
+        "sfx": []
+      },
+      "preset": "MYSTIC",
+      "modifiers": [
+        "SHADOW"
+      ],
+      "mood": "tense",
+      "text_overlay": {
+        "text": "10+ МЛН РУБЛЕЙ",
+        "style": "serif_white",
+        "position": "lower_third"
+      },
+      "charts": [
+        {
+          "kind": "counter",
+          "trigger_word": "десяти",
+          "duration_sec": 3.5,
+          "label": "НАЛИЧНЫМИ (РУБ)",
+          "counter_target": 10000000,
+          "counter_format": "int_thousands",
+          "accent_color": "#ff5050"
+        }
+      ]
+    },
+    {
+      "id": "scene_041",
+      "section": "level_1",
+      "level": 1,
+      "topic_id": "1.2",
+      "voiceover": "По всему дому — скрытые камеры: она следила за каждым движением своих «учеников», круглосуточно.",
+      "duration_sec": 6.5,
+      "visual": {
+        "type": "ai_image",
+        "search_query": "",
+        "ai_prompt": "Hidden security cameras mounted in corners of room, surveillance aesthetic, ominous atmosphere, cinematic photograph, --ar 16:9",
+        "fallback_query": "security camera surveillance room"
+      },
+      "camera": {
+        "movement": "parallax_left",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.7,
+        "sfx": []
+      },
+      "preset": "MYSTIC",
+      "modifiers": [
+        "SHADOW"
+      ],
+      "mood": "tense",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_042",
+      "section": "level_1",
+      "level": 1,
+      "topic_id": "1.2",
+      "voiceover": "Иностранные паспорта. И схема переводов денег за границу — на Украину, в Латвию.",
+      "duration_sec": 5.5,
+      "visual": {
+        "type": "stock_photo",
+        "search_query": "passports documents money transfer",
+        "ai_prompt": "",
+        "fallback_query": "passports documents table"
+      },
+      "camera": {
+        "movement": "parallax_right",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.7,
+        "sfx": []
+      },
+      "preset": "MYSTIC",
+      "modifiers": [
+        "SHADOW"
+      ],
+      "mood": "tense",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_043",
+      "section": "level_1",
+      "level": 1,
+      "topic_id": "1.2",
+      "voiceover": "Аккуратная, продуманная система вывода средств.",
+      "duration_sec": 4.0,
+      "visual": {
+        "type": "stock_photo",
+        "search_query": "financial documents spreadsheet",
+        "ai_prompt": "",
+        "fallback_query": "documents papers financial"
+      },
+      "camera": {
+        "movement": "dolly_in",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.6,
+        "sfx": []
+      },
+      "preset": "MYSTIC",
+      "modifiers": [
+        "SHADOW"
+      ],
+      "mood": "tense",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_044",
+      "section": "level_1",
+      "level": 1,
+      "topic_id": "1.2",
+      "voiceover": "Восьмидесятивосьмилетняя бабушка-химик оказалась виртуозным манипулятором и финансовым аферистом.",
+      "duration_sec": 6.5,
+      "visual": {
+        "type": "stock_photo",
+        "search_query": "elderly woman serious portrait dark",
+        "ai_prompt": "",
+        "fallback_query": "old woman portrait serious"
+      },
+      "camera": {
+        "movement": "dolly_in",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.7,
+        "sfx": []
+      },
+      "preset": "MYSTIC",
+      "modifiers": [
+        "SHADOW"
+      ],
+      "mood": "tense",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_045",
+      "section": "level_1",
+      "level": 1,
+      "topic_id": "1.2",
+      "voiceover": "Человеком, годами обиравшим таких же стариков, как она сама. Дело находится на рассмотрении.",
+      "duration_sec": 6.0,
+      "visual": {
+        "type": "stock_photo",
+        "search_query": "elderly people sad lonely",
+        "ai_prompt": "",
+        "fallback_query": "old people sad"
+      },
+      "camera": {
+        "movement": "parallax_left",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "heartbeat_cut",
+        "duration_ms": 300
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.7,
+        "sfx": []
+      },
+      "preset": "MYSTIC",
+      "modifiers": [
+        "SHADOW"
+      ],
+      "mood": "tense",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_046",
+      "section": "level_1",
+      "level": 1,
+      "topic_id": "1.2",
+      "voiceover": "Десять миллионов наличными. Сотни обобранных пенсионеров. И статус богини.",
+      "duration_sec": 5.5,
+      "visual": {
+        "type": "stock_photo",
+        "search_query": "money cash dark dramatic",
+        "ai_prompt": "",
+        "fallback_query": "cash money pile"
+      },
+      "camera": {
+        "movement": "static",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "shadow_cut",
+        "duration_ms": 400
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.8,
+        "sfx": [
+          {
+            "type": "silence_hold",
+            "trigger_word": "богини",
+            "intensity": 1.0
+          }
+        ]
+      },
+      "preset": "MYSTIC",
+      "modifiers": [
+        "SHADOW"
+      ],
+      "mood": "climactic",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_047",
+      "section": "level_1",
+      "level": 1,
+      "topic_id": "1.3",
+      "voiceover": "Ноябрь две тысячи двадцать пятого года. Десятилетняя москвичка Алина. Обычный ребёнок.",
+      "duration_sec": 5.5,
+      "visual": {
+        "type": "stock_photo",
+        "search_query": "young girl portrait innocent",
+        "ai_prompt": "",
+        "fallback_query": "child girl portrait"
+      },
+      "camera": {
+        "movement": "dolly_in",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.5,
+        "sfx": []
+      },
+      "preset": "MYSTIC",
+      "modifiers": [],
+      "mood": "calm",
+      "text_overlay": {
+        "text": "ДЕТСКИЕ ЛАГЕРЯ САХАДЖА-ЙОГИ",
+        "style": "serif_white",
+        "position": "lower_third"
+      }
+    },
+    {
+      "id": "scene_048",
+      "section": "level_1",
+      "level": 1,
+      "topic_id": "1.3",
+      "voiceover": "Но её мать — адепт «Сахаджа-йоги». Настолько глубоко внутри секты, что решает отдать дочь «на очищение».",
+      "duration_sec": 6.5,
+      "visual": {
+        "type": "ai_image",
+        "search_query": "",
+        "ai_prompt": "Woman in meditation pose with cult symbolism, dark mystical atmosphere, manipulation concept, cinematic photograph, --ar 16:9",
+        "fallback_query": "woman meditation cult"
+      },
+      "camera": {
+        "movement": "parallax_right",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.6,
+        "sfx": []
+      },
+      "preset": "MYSTIC",
+      "modifiers": [
+        "SHADOW"
+      ],
+      "mood": "tense",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_049",
+      "section": "level_1",
+      "level": 1,
+      "topic_id": "1.3",
+      "voiceover": "Алину везут в Самарскую область. Лагерь «ПреКрасный берег».",
+      "duration_sec": 4.5,
+      "visual": {
+        "type": "stock_photo",
+        "search_query": "russian road rural area",
+        "ai_prompt": "",
+        "fallback_query": "road countryside russia"
+      },
+      "camera": {
+        "movement": "parallax_left",
+        "speed": "medium"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.6,
+        "sfx": []
+      },
+      "preset": "MYSTIC",
+      "modifiers": [
+        "SHADOW"
+      ],
+      "mood": "tense",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_050",
+      "section": "level_1",
+      "level": 1,
+      "topic_id": "1.3",
+      "voiceover": "Когда-то — турбаза АВТОВАЗа, советская здравница для работяг завода. Теперь — закрытая территория. Высокий забор.",
+      "duration_sec": 7.0,
+      "visual": {
+        "type": "stock_photo",
+        "search_query": "abandoned soviet building fence",
+        "ai_prompt": "",
+        "fallback_query": "old building fence abandoned"
+      },
+      "camera": {
+        "movement": "dolly_out",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.7,
+        "sfx": []
+      },
+      "preset": "MYSTIC",
+      "modifiers": [
+        "SHADOW"
+      ],
+      "mood": "mysterious",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_051",
+      "section": "level_1",
+      "level": 1,
+      "topic_id": "1.3",
+      "voiceover": "Руководит всем Луиза Бурлак.",
+      "duration_sec": 3.0,
+      "visual": {
+        "type": "stock_photo",
+        "search_query": "stern woman portrait authority",
+        "ai_prompt": "",
+        "fallback_query": "woman portrait serious"
+      },
+      "camera": {
+        "movement": "dolly_in",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.6,
+        "sfx": []
+      },
+      "preset": "MYSTIC",
+      "modifiers": [
+        "SHADOW"
+      ],
+      "mood": "tense",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_052",
+      "section": "level_1",
+      "level": 1,
+      "topic_id": "1.3",
+      "voiceover": "Распорядок дня простой и одновременно жуткий. Утренняя медитация перед портретом Шри Матаджи — основательницы «Сахаджа-йоги».",
+      "duration_sec": 7.5,
+      "visual": {
+        "type": "ai_image",
+        "search_query": "",
+        "ai_prompt": "Children sitting cross-legged meditating before large portrait of guru on wall, cult indoctrination scene, ominous lighting, cinematic photograph, --ar 16:9",
+        "fallback_query": "children meditation portrait"
+      },
+      "camera": {
+        "movement": "dolly_in",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.7,
+        "sfx": []
+      },
+      "preset": "MYSTIC",
+      "modifiers": [
+        "SHADOW"
+      ],
+      "mood": "mystical",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_053",
+      "section": "level_1",
+      "level": 1,
+      "topic_id": "1.3",
+      "voiceover": "Дети садятся на пол, закрывают глаза, повторяют мантры на незнакомом языке.",
+      "duration_sec": 5.5,
+      "visual": {
+        "type": "ai_image",
+        "search_query": "",
+        "ai_prompt": "Children with closed eyes sitting on floor in rows chanting, cult ritual atmosphere, dark room, cinematic photograph, --ar 16:9",
+        "fallback_query": "children sitting floor meditation"
+      },
+      "camera": {
+        "movement": "parallax_right",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.7,
+        "sfx": []
+      },
+      "preset": "MYSTIC",
+      "modifiers": [
+        "SHADOW"
+      ],
+      "mood": "mystical",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_054",
+      "section": "level_1",
+      "level": 1,
+      "topic_id": "1.3",
+      "voiceover": "Вечером — снова портрет, снова час неподвижности. Между сеансами — «духовные практики».",
+      "duration_sec": 6.0,
+      "visual": {
+        "type": "stock_photo",
+        "search_query": "children sitting still meditation",
+        "ai_prompt": "",
+        "fallback_query": "children meditation group"
+      },
+      "camera": {
+        "movement": "parallax_left",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.7,
+        "sfx": []
+      },
+      "preset": "MYSTIC",
+      "modifiers": [
+        "SHADOW"
+      ],
+      "mood": "tense",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_055",
+      "section": "level_1",
+      "level": 1,
+      "topic_id": "1.3",
+      "voiceover": "Никаких звонков родителям. Никакой связи с внешним миром.",
+      "duration_sec": 4.5,
+      "visual": {
+        "type": "stock_photo",
+        "search_query": "phone disconnected isolated",
+        "ai_prompt": "",
+        "fallback_query": "phone unplugged dark"
+      },
+      "camera": {
+        "movement": "dolly_in",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.7,
+        "sfx": []
+      },
+      "preset": "MYSTIC",
+      "modifiers": [
+        "SHADOW"
+      ],
+      "mood": "tense",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_056",
+      "section": "level_1",
+      "level": 1,
+      "topic_id": "1.3",
+      "voiceover": "Есть «дни мальчиков». Девочек приучают прислуживать: накрывать на стол, убирать за мальчиками, молча выполнять указания.",
+      "duration_sec": 7.0,
+      "visual": {
+        "type": "ai_image",
+        "search_query": "",
+        "ai_prompt": "Young girls serving food to boys at table, gender indoctrination scene, oppressive atmosphere, cinematic photograph, --ar 16:9",
+        "fallback_query": "children dining table serving"
+      },
+      "camera": {
+        "movement": "parallax_right",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.7,
+        "sfx": []
+      },
+      "preset": "MYSTIC",
+      "modifiers": [
+        "SHADOW"
+      ],
+      "mood": "tense",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_057",
+      "section": "level_1",
+      "level": 1,
+      "topic_id": "1.3",
+      "voiceover": "Это подаётся как «обучение гармонии и женственности».",
+      "duration_sec": 4.0,
+      "visual": {
+        "type": "stock_photo",
+        "search_query": "young girl cleaning serving",
+        "ai_prompt": "",
+        "fallback_query": "girl cleaning table"
+      },
+      "camera": {
+        "movement": "parallax_left",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.6,
+        "sfx": []
+      },
+      "preset": "MYSTIC",
+      "modifiers": [
+        "SHADOW"
+      ],
+      "mood": "tense",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_058",
+      "section": "level_1",
+      "level": 1,
+      "topic_id": "1.3",
+      "voiceover": "Мать оформила доверенность на чужого человека. Дедушка и бабушка Алины приехали забрать внучку — их не впустили на территорию.",
+      "duration_sec": 7.0,
+      "visual": {
+        "type": "stock_photo",
+        "search_query": "elderly couple worried sad",
+        "ai_prompt": "",
+        "fallback_query": "old couple concerned"
+      },
+      "camera": {
+        "movement": "dolly_in",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.7,
+        "sfx": []
+      },
+      "preset": "MYSTIC",
+      "modifiers": [
+        "SHADOW"
+      ],
+      "mood": "tense",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_059",
+      "section": "level_1",
+      "level": 1,
+      "topic_id": "1.3",
+      "voiceover": "Охранник сказал: ребёнок здесь «по согласию законного представителя».",
+      "duration_sec": 5.0,
+      "visual": {
+        "type": "stock_photo",
+        "search_query": "security guard gate fence",
+        "ai_prompt": "",
+        "fallback_query": "guard standing gate"
+      },
+      "camera": {
+        "movement": "parallax_right",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.7,
+        "sfx": []
+      },
+      "preset": "MYSTIC",
+      "modifiers": [
+        "SHADOW"
+      ],
+      "mood": "tense",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_060",
+      "section": "level_1",
+      "level": 1,
+      "topic_id": "1.3",
+      "voiceover": "Сентябрь две тысячи двадцать пятого. Мать неожиданно забирает Алину, переводит на домашнее обучение и исчезает в неизвестном направлении.",
+      "duration_sec": 7.0,
+      "visual": {
+        "type": "stock_photo",
+        "search_query": "empty road disappearing horizon",
+        "ai_prompt": "",
+        "fallback_query": "road empty mysterious"
+      },
+      "camera": {
+        "movement": "dolly_out",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.8,
+        "sfx": []
+      },
+      "preset": "MYSTIC",
+      "modifiers": [
+        "SHADOW"
+      ],
+      "mood": "mysterious",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_061",
+      "section": "level_1",
+      "level": 1,
+      "topic_id": "1.3",
+      "voiceover": "Родственники подали в розыск. Координаты матери и дочери до сих пор неизвестны.",
+      "duration_sec": 5.5,
+      "visual": {
+        "type": "stock_photo",
+        "search_query": "missing person poster",
+        "ai_prompt": "",
+        "fallback_query": "missing person notice"
+      },
+      "camera": {
+        "movement": "dolly_in",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "heartbeat_cut",
+        "duration_ms": 300
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.8,
+        "sfx": [
+          {
+            "type": "bass_drop",
+            "trigger_word": "неизвестны",
+            "intensity": 0.8
+          }
+        ]
+      },
+      "preset": "MYSTIC",
+      "modifiers": [
+        "SHADOW"
+      ],
+      "mood": "climactic",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_062",
+      "section": "level_1",
+      "level": 1,
+      "topic_id": "1.3",
+      "voiceover": "Медитация на портрет. Служение мужчинам. Исчезновение.",
+      "duration_sec": 4.5,
+      "visual": {
+        "type": "stock_photo",
+        "search_query": "dark empty room ominous",
+        "ai_prompt": "",
+        "fallback_query": "empty dark room"
+      },
+      "camera": {
+        "movement": "static",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.7,
+        "sfx": []
+      },
+      "preset": "MYSTIC",
+      "modifiers": [
+        "SHADOW"
+      ],
+      "mood": "tense",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_063",
+      "section": "level_1",
+      "level": 1,
+      "topic_id": "1.3",
+      "voiceover": "Алине десять лет.",
+      "duration_sec": 2.5,
+      "visual": {
+        "type": "stock_photo",
+        "search_query": "child silhouette alone",
+        "ai_prompt": "",
+        "fallback_query": "child alone dark"
+      },
+      "camera": {
+        "movement": "static",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "shadow_cut",
+        "duration_ms": 400
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.8,
+        "sfx": [
+          {
+            "type": "silence_hold",
+            "trigger_word": "лет",
+            "intensity": 1.0
+          }
+        ]
+      },
+      "preset": "MYSTIC",
+      "modifiers": [
+        "SHADOW"
+      ],
+      "mood": "climactic",
+      "text_overlay": {
+        "text": "10 ЛЕТ",
+        "style": "serif_white",
+        "position": "center"
+      }
+    },
+    {
+      "id": "scene_064",
+      "section": "level_1",
+      "level": 1,
+      "topic_id": "1.4",
+      "voiceover": "Тысяча пятьсот семьдесят восьмой год. Издаётся книга. Название: «Руководство инквизиторов».",
+      "duration_sec": 6.0,
+      "visual": {
+        "type": "archive",
+        "search_query": "",
+        "ai_prompt": "",
+        "fallback_query": "medieval book manuscript 1578"
+      },
+      "camera": {
+        "movement": "dolly_in",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "film_burn",
+        "duration_ms": 800
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.6,
+        "sfx": []
+      },
+      "preset": "ARCHIVE",
+      "modifiers": [],
+      "mood": "mysterious",
+      "text_overlay": {
+        "text": "ИНКВИЗИЦИЯ",
+        "style": "stamp_red",
+        "position": "lower_third"
+      }
+    },
+    {
+      "id": "scene_065",
+      "section": "level_1",
+      "level": 1,
+      "topic_id": "1.4",
+      "voiceover": "Автор: Николау Эймерик, великий инквизитор Арагона. Это не художественное произведение. Это официальный документ католической церкви.",
+      "duration_sec": 7.5,
+      "visual": {
+        "type": "archive",
+        "search_query": "",
+        "ai_prompt": "",
+        "fallback_query": "medieval inquisitor portrait"
+      },
+      "camera": {
+        "movement": "parallax_right",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.7,
+        "sfx": []
+      },
+      "preset": "ARCHIVE",
+      "modifiers": [
+        "SHADOW"
+      ],
+      "mood": "tense",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_066",
+      "section": "level_1",
+      "level": 1,
+      "topic_id": "1.4",
+      "voiceover": "Учебник для тех, кто «искореняет ересь».",
+      "duration_sec": 4.0,
+      "visual": {
+        "type": "archive",
+        "search_query": "",
+        "ai_prompt": "",
+        "fallback_query": "medieval manuscript torture methods"
+      },
+      "camera": {
+        "movement": "dolly_in",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.7,
+        "sfx": []
+      },
+      "preset": "ARCHIVE",
+      "modifiers": [
+        "SHADOW"
+      ],
+      "mood": "tense",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_067",
+      "section": "level_1",
+      "level": 1,
+      "topic_id": "1.4",
+      "voiceover": "Там — подробные инструкции по «правильным» пыткам. Дыба — растягивание тела до вывиха суставов.",
+      "duration_sec": 6.5,
+      "visual": {
+        "type": "archive",
+        "search_query": "",
+        "ai_prompt": "",
+        "fallback_query": "medieval torture device rack"
+      },
+      "camera": {
+        "movement": "parallax_left",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.8,
+        "sfx": []
+      },
+      "preset": "ARCHIVE",
+      "modifiers": [
+        "SHADOW"
+      ],
+      "mood": "tense",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_068",
+      "section": "level_1",
+      "level": 1,
+      "topic_id": "1.4",
+      "voiceover": "Испанский сапог — устройство, дробящее кости ног. Водная пытка — имитация утопления.",
+      "duration_sec": 6.0,
+      "visual": {
+        "type": "archive",
+        "search_query": "",
+        "ai_prompt": "",
+        "fallback_query": "medieval torture instruments"
+      },
+      "camera": {
+        "movement": "parallax_right",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.8,
+        "sfx": []
+      },
+      "preset": "ARCHIVE",
+      "modifiers": [
+        "SHADOW"
+      ],
+      "mood": "tense",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_069",
+      "section": "level_1",
+      "level": 1,
+      "topic_id": "1.4",
+      "voiceover": "Всё с одобрения Папы. Всё задокументировано.",
+      "duration_sec": 4.5,
+      "visual": {
+        "type": "archive",
+        "search_query": "",
+        "ai_prompt": "",
+        "fallback_query": "papal seal document medieval"
+      },
+      "camera": {
+        "movement": "dolly_in",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.7,
+        "sfx": []
+      },
+      "preset": "ARCHIVE",
+      "modifiers": [
+        "SHADOW"
+      ],
+      "mood": "tense",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_070",
+      "section": "level_1",
+      "level": 1,
+      "topic_id": "1.4",
+      "voiceover": "Жертв заставляли сознаваться в сговоре с дьяволом. Под пытками люди признавались в чём угодно.",
+      "duration_sec": 6.0,
+      "visual": {
+        "type": "archive",
+        "search_query": "",
+        "ai_prompt": "",
+        "fallback_query": "inquisition trial medieval"
+      },
+      "camera": {
+        "movement": "parallax_left",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.8,
+        "sfx": []
+      },
+      "preset": "ARCHIVE",
+      "modifiers": [
+        "SHADOW"
+      ],
+      "mood": "tense",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_071",
+      "section": "level_1",
+      "level": 1,
+      "topic_id": "1.4",
+      "voiceover": "Признание записывалось. После признания — костёр. Сжигали живьём, на городской площади, при толпах зевак, приходивших целыми семьями.",
+      "duration_sec": 7.5,
+      "visual": {
+        "type": "archive",
+        "search_query": "",
+        "ai_prompt": "",
+        "fallback_query": "burning at stake medieval"
+      },
+      "camera": {
+        "movement": "dolly_out",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.9,
+        "sfx": [
+          {
+            "type": "bass_drop",
+            "trigger_word": "костёр",
+            "intensity": 0.8
+          }
+        ]
+      },
+      "preset": "ARCHIVE",
+      "modifiers": [
+        "SHADOW"
+      ],
+      "mood": "climactic",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_072",
+      "section": "level_1",
+      "level": 1,
+      "topic_id": "1.4",
+      "voiceover": "Церковь считала это не убийством, а «спасением души через очищение плоти».",
+      "duration_sec": 6.0,
+      "visual": {
+        "type": "archive",
+        "search_query": "",
+        "ai_prompt": "",
+        "fallback_query": "church clergy medieval"
+      },
+      "camera": {
+        "movement": "parallax_right",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.7,
+        "sfx": []
+      },
+      "preset": "ARCHIVE",
+      "modifiers": [
+        "SHADOW"
+      ],
+      "mood": "mystical",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_073",
+      "section": "level_1",
+      "level": 1,
+      "topic_id": "1.4",
+      "voiceover": "Боль — путь к искуплению. Огонь — милость, выжигающая скверну.",
+      "duration_sec": 5.0,
+      "visual": {
+        "type": "stock_video",
+        "search_query": "fire flames burning dark",
+        "ai_prompt": "",
+        "fallback_query": "flames fire dark"
+      },
+      "camera": {
+        "movement": "dolly_in",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.8,
+        "sfx": []
+      },
+      "preset": "ARCHIVE",
+      "modifiers": [
+        "SHADOW"
+      ],
+      "mood": "mystical",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_074",
+      "section": "level_1",
+      "level": 1,
+      "topic_id": "1.4",
+      "voiceover": "Если человек кричал — значит, из него выходят бесы. Если молчал — значит, дьявол держит его язык.",
+      "duration_sec": 6.5,
+      "visual": {
+        "type": "ai_image",
+        "search_query": "",
+        "ai_prompt": "Medieval torture scene dark shadows, victim in agony, demonic atmosphere, historical painting style, --ar 16:9",
+        "fallback_query": "medieval torture dark"
+      },
+      "camera": {
+        "movement": "parallax_left",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.8,
+        "sfx": []
+      },
+      "preset": "ARCHIVE",
+      "modifiers": [
+        "SHADOW"
+      ],
+      "mood": "tense",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_075",
+      "section": "level_1",
+      "level": 1,
+      "topic_id": "1.4",
+      "voiceover": "Инквизиция действовала веками. Столетия костров, пыток и криков на городских площадях.",
+      "duration_sec": 6.0,
+      "visual": {
+        "type": "archive",
+        "search_query": "",
+        "ai_prompt": "",
+        "fallback_query": "medieval city square execution"
+      },
+      "camera": {
+        "movement": "orbit",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.8,
+        "sfx": []
+      },
+      "preset": "ARCHIVE",
+      "modifiers": [
+        "SHADOW"
+      ],
+      "mood": "tense",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_076",
+      "section": "level_1",
+      "level": 1,
+      "topic_id": "1.4",
+      "voiceover": "Последняя казнь инквизиции состоялась в тысяча восемьсот двадцать шестом году. Испания.",
+      "duration_sec": 5.5,
+      "visual": {
+        "type": "archive",
+        "search_query": "",
+        "ai_prompt": "",
+        "fallback_query": "spain 1826 historical"
+      },
+      "camera": {
+        "movement": "dolly_in",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.7,
+        "sfx": []
+      },
+      "preset": "ARCHIVE",
+      "modifiers": [
+        "SHADOW"
+      ],
+      "mood": "tense",
+      "text_overlay": {
+        "text": "1826 ГОД",
+        "style": "stamp_red",
+        "position": "upper_right"
+      }
+    },
+    {
+      "id": "scene_077",
+      "section": "level_1",
+      "level": 1,
+      "topic_id": "1.4",
+      "voiceover": "Школьный учитель Каэтано Риполл, обвинённый в ереси, был повешен и сожжён.",
+      "duration_sec": 5.5,
+      "visual": {
+        "type": "archive",
+        "search_query": "",
+        "ai_prompt": "",
+        "fallback_query": "execution 19th century"
+      },
+      "camera": {
+        "movement": "parallax_right",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.8,
+        "sfx": []
+      },
+      "preset": "ARCHIVE",
+      "modifiers": [
+        "SHADOW"
+      ],
+      "mood": "climactic",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_078",
+      "section": "level_1",
+      "level": 1,
+      "topic_id": "1.4",
+      "voiceover": "Девятнадцатый век. Эпоха пара и электричества. А церковь всё ещё жгла людей за неправильные мысли.",
+      "duration_sec": 6.5,
+      "visual": {
+        "type": "archive",
+        "search_query": "",
+        "ai_prompt": "",
+        "fallback_query": "19th century industrial revolution"
+      },
+      "camera": {
+        "movement": "parallax_left",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "heartbeat_cut",
+        "duration_ms": 300
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.8,
+        "sfx": [
+          {
+            "type": "bass_drop",
+            "trigger_word": "жгла",
+            "intensity": 0.8
+          }
+        ]
+      },
+      "preset": "ARCHIVE",
+      "modifiers": [
+        "SHADOW"
+      ],
+      "mood": "climactic",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_079",
+      "section": "level_1",
+      "level": 1,
+      "topic_id": "1.4",
+      "voiceover": "Пытки как путь к Богу. Костры как милость.",
+      "duration_sec": 4.5,
+      "visual": {
+        "type": "stock_video",
+        "search_query": "fire burning dark ominous",
+        "ai_prompt": "",
+        "fallback_query": "fire flames dark"
+      },
+      "camera": {
+        "movement": "static",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.7,
+        "sfx": []
+      },
+      "preset": "ARCHIVE",
+      "modifiers": [
+        "SHADOW"
+      ],
+      "mood": "climactic",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_080",
+      "section": "level_1",
+      "level": 1,
+      "topic_id": "1.4",
+      "voiceover": "И всё это — официально.",
+      "duration_sec": 3.0,
+      "visual": {
+        "type": "archive",
+        "search_query": "",
+        "ai_prompt": "",
+        "fallback_query": "official church document seal"
+      },
+      "camera": {
+        "movement": "static",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "between_levels",
+        "duration_ms": 1200
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.8,
+        "sfx": [
+          {
+            "type": "silence_hold",
+            "trigger_word": "официально",
+            "intensity": 1.0
+          }
+        ]
+      },
+      "preset": "ARCHIVE",
+      "modifiers": [
+        "SHADOW"
+      ],
+      "mood": "climactic",
+      "text_overlay": {
+        "text": "ОФИЦИАЛЬНО",
+        "style": "stamp_red",
+        "position": "center"
+      }
+    },
+    {
+      "id": "scene_081",
+      "section": "level_2",
+      "level": 2,
+      "topic_id": "2.1",
+      "voiceover": "«Сахаджа-йога» — единственная в мире тоталитарная секта, чья столица находится не в Индии, откуда родом учение, а в российском промышленном городе.",
+      "duration_sec": 8.0,
+      "visual": {
+        "type": "stock_photo",
+        "search_query": "tolyatti city industrial skyline",
+        "ai_prompt": "",
+        "fallback_query": "russian industrial city"
+      },
+      "camera": {
+        "movement": "parallax_right",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.6,
+        "sfx": []
+      },
+      "preset": "MYSTIC",
+      "modifiers": [],
+      "mood": "mysterious",
+      "text_overlay": {
+        "text": "ТОЛЬЯТТИ — СТОЛИЦА СЕКТЫ",
+        "style": "serif_white",
+        "position": "lower_third"
+      }
+    },
+    {
+      "id": "scene_082",
+      "section": "level_2",
+      "level": 2,
+      "topic_id": "2.1",
+      "voiceover": "Тольятти, Самарская область. Город АВТОВАЗа.",
+      "duration_sec": 4.0,
+      "visual": {
+        "type": "stock_photo",
+        "search_query": "avtovaz factory tolyatti",
+        "ai_prompt": "",
+        "fallback_query": "russian car factory"
+      },
+      "camera": {
+        "movement": "parallax_left",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.5,
+        "sfx": []
+      },
+      "preset": "MYSTIC",
+      "modifiers": [],
+      "mood": "calm",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_083",
+      "section": "level_2",
+      "level": 2,
+      "topic_id": "2.1",
+      "voiceover": "Тысяча девятьсот девяносто пятый год. В Тольятти прилетает Нирмала Шривастава — основательница секты, известная последователям как Шри Матаджи.",
+      "duration_sec": 7.5,
+      "visual": {
+        "type": "archive",
+        "search_query": "",
+        "ai_prompt": "",
+        "fallback_query": "indian guru woman portrait 1990s"
+      },
+      "camera": {
+        "movement": "dolly_in",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.6,
+        "sfx": []
+      },
+      "preset": "MYSTIC",
+      "modifiers": [],
+      "mood": "mystical",
+      "text_overlay": {
+        "text": "1995 ГОД",
+        "style": "serif_white",
+        "position": "upper_right"
+      }
+    },
+    {
+      "id": "scene_084",
+      "section": "level_2",
+      "level": 2,
+      "topic_id": "2.1",
+      "voiceover": "Её везут на самолёте АВТОВАЗа. Президент завода Владимир Каданников лично выделяет транспорт и встречает её на аэродроме.",
+      "duration_sec": 7.0,
+      "visual": {
+        "type": "stock_photo",
+        "search_query": "private airplane arrival vip",
+        "ai_prompt": "",
+        "fallback_query": "airplane arrival airport"
+      },
+      "camera": {
+        "movement": "parallax_right",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.6,
+        "sfx": []
+      },
+      "preset": "MYSTIC",
+      "modifiers": [],
+      "mood": "tense",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_085",
+      "section": "level_2",
+      "level": 2,
+      "topic_id": "2.1",
+      "voiceover": "Оценки числа последователей разнятся, но по данным девяностых в городе насчитывалось от тридцати до восьмидесяти тысяч адептов.",
+      "duration_sec": 7.0,
+      "visual": {
+        "type": "stock_photo",
+        "search_query": "large crowd gathering people",
+        "ai_prompt": "",
+        "fallback_query": "crowd people gathering"
+      },
+      "camera": {
+        "movement": "dolly_out",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.7,
+        "sfx": []
+      },
+      "preset": "MYSTIC",
+      "modifiers": [],
+      "mood": "tense",
+      "text_overlay": {
+        "text": "30-80 ТЫСЯЧ АДЕПТОВ",
+        "style": "serif_white",
+        "position": "lower_third"
+      },
+      "charts": [
+        {
+          "kind": "counter",
+          "trigger_word": "тридцати",
+          "duration_sec": 3.5,
+          "label": "ПОСЛЕДОВАТЕЛЕЙ В ГОРОДЕ",
+          "counter_target": 80000,
+          "counter_format": "int_thousands",
+          "accent_color": "#ff5050"
+        }
+      ]
+    },
+    {
+      "id": "scene_086",
+      "section": "level_2",
+      "level": 2,
+      "topic_id": "2.1",
+      "voiceover": "В городе с населением около семисот тысяч — это каждый десятый.",
+      "duration_sec": 5.0,
+      "visual": {
+        "type": "stock_photo",
+        "search_query": "city crowd urban people",
+        "ai_prompt": "",
+        "fallback_query": "urban crowd city"
+      },
+      "camera": {
+        "movement": "parallax_left",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.7,
+        "sfx": []
+      },
+      "preset": "MYSTIC",
+      "modifiers": [],
+      "mood": "tense",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_087",
+      "section": "level_2",
+      "level": 2,
+      "topic_id": "2.1",
+      "voiceover": "Тысяча девятьсот девяносто шестой год. Мэр Тольятти Сергей Жилкин встречается с Шри Матаджи, преподносит цветы, говорит о «духовном возрождении города».",
+      "duration_sec": 7.5,
+      "visual": {
+        "type": "archive",
+        "search_query": "",
+        "ai_prompt": "",
+        "fallback_query": "russian mayor meeting 1990s"
+      },
+      "camera": {
+        "movement": "parallax_right",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.6,
+        "sfx": []
+      },
+      "preset": "MYSTIC",
+      "modifiers": [],
+      "mood": "tense",
+      "text_overlay": {
+        "text": "1996 ГОД",
+        "style": "serif_white",
+        "position": "upper_right"
+      }
+    },
+    {
+      "id": "scene_088",
+      "section": "level_2",
+      "level": 2,
+      "topic_id": "2.1",
+      "voiceover": "Две тысячи пятый год. Юрий Александров, лидер тольяттинских йогов, становится депутатом городской думы.",
+      "duration_sec": 6.0,
+      "visual": {
+        "type": "stock_photo",
+        "search_query": "government building russia official",
+        "ai_prompt": "",
+        "fallback_query": "government building official"
+      },
+      "camera": {
+        "movement": "dolly_in",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.7,
+        "sfx": []
+      },
+      "preset": "MYSTIC",
+      "modifiers": [],
+      "mood": "tense",
+      "text_overlay": {
+        "text": "2005 ГОД",
+        "style": "serif_white",
+        "position": "upper_right"
+      }
+    },
+    {
+      "id": "scene_089",
+      "section": "level_2",
+      "level": 2,
+      "topic_id": "2.1",
+      "voiceover": "Первый в мире случай, когда представитель секты проходит в законодательную власть через официальные выборы.",
+      "duration_sec": 6.5,
+      "visual": {
+        "type": "stock_photo",
+        "search_query": "voting ballot election box",
+        "ai_prompt": "",
+        "fallback_query": "voting ballot election"
+      },
+      "camera": {
+        "movement": "parallax_left",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.7,
+        "sfx": []
+      },
+      "preset": "MYSTIC",
+      "modifiers": [
+        "SHADOW"
+      ],
+      "mood": "tense",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_090",
+      "section": "level_2",
+      "level": 2,
+      "topic_id": "2.1",
+      "voiceover": "Две тысячи восьмой год. Сергей Жилкин убит двумя неизвестными с заточками возле подъезда собственного дома.",
+      "duration_sec": 6.5,
+      "visual": {
+        "type": "stock_photo",
+        "search_query": "crime scene tape night",
+        "ai_prompt": "",
+        "fallback_query": "crime scene police tape"
+      },
+      "camera": {
+        "movement": "dolly_in",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.8,
+        "sfx": [
+          {
+            "type": "bass_drop",
+            "trigger_word": "убит",
+            "intensity": 0.8
+          }
+        ]
+      },
+      "preset": "MYSTIC",
+      "modifiers": [
+        "SHADOW"
+      ],
+      "mood": "climactic",
+      "text_overlay": {
+        "text": "2008 ГОД",
+        "style": "serif_white",
+        "position": "upper_right"
+      }
+    },
+    {
+      "id": "scene_091",
+      "section": "level_2",
+      "level": 2,
+      "topic_id": "2.1",
+      "voiceover": "Дело не раскрыто. Мотивы неизвестны.",
+      "duration_sec": 4.0,
+      "visual": {
+        "type": "stock_photo",
+        "search_query": "unsolved case files dark",
+        "ai_prompt": "",
+        "fallback_query": "case files unsolved"
+      },
+      "camera": {
+        "movement": "static",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.7,
+        "sfx": []
+      },
+      "preset": "MYSTIC",
+      "modifiers": [
+        "SHADOW"
+      ],
+      "mood": "mysterious",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_092",
+      "section": "level_2",
+      "level": 2,
+      "topic_id": "2.1",
+      "voiceover": "Секта до сих пор действует в Тольятти.",
+      "duration_sec": 3.5,
+      "visual": {
+        "type": "stock_photo",
+        "search_query": "tolyatti city night lights",
+        "ai_prompt": "",
+        "fallback_query": "city night lights"
+      },
+      "camera": {
+        "movement": "parallax_right",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "heartbeat_cut",
+        "duration_ms": 300
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.7,
+        "sfx": []
+      },
+      "preset": "MYSTIC",
+      "modifiers": [
+        "SHADOW"
+      ],
+      "mood": "tense",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_093",
+      "section": "level_2",
+      "level": 2,
+      "topic_id": "2.1",
+      "voiceover": "Самолёт от президента завода. Депутат от секты. Убийство мэра.",
+      "duration_sec": 5.0,
+      "visual": {
+        "type": "ai_image",
+        "search_query": "",
+        "ai_prompt": "Dark collage of airplane, government building, crime scene, ominous atmosphere, cinematic photograph, --ar 16:9",
+        "fallback_query": "dark collage mysterious"
+      },
+      "camera": {
+        "movement": "static",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "default",
+        "duration_ms": 600
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.8,
+        "sfx": []
+      },
+      "preset": "MYSTIC",
+      "modifiers": [
+        "SHADOW"
+      ],
+      "mood": "climactic",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_094",
+      "section": "level_2",
+      "level": 2,
+      "topic_id": "2.1",
+      "voiceover": "Тольятти. Столица.",
+      "duration_sec": 2.5,
+      "visual": {
+        "type": "stock_photo",
+        "search_query": "tolyatti skyline dramatic",
+        "ai_prompt": "",
+        "fallback_query": "city skyline dramatic"
+      },
+      "camera": {
+        "movement": "static",
+        "speed": "slow"
+      },
+      "transition_out": {
+        "type": "shadow_cut",
+        "duration_ms": 400
+      },
+      "audio": {
+        "music_layer": "main",
+        "music_intensity": 0.8,
+        "sfx": [
+          {
+            "type": "silence_hold",
+            "trigger_word": "Столица",
+            "intensity": 1.0
+          }
+        ]
+      },
+      "preset": "MYSTIC",
+      "modifiers": [
+        "SHADOW"
+      ],
+      "mood": "climactic",
+      "text_overlay": {
+        "text": "СТОЛИЦА",
+        "style": "serif_white",
+        "position": "center"
+      }
+    }
+  ],
+  "topics_index": [
+    {
+      "id": "1.1",
+      "title": "Виссарион — сибирский Христос",
+      "scene_start": "scene_012",
+      "scene_end": "scene_031"
+    },
+    {
+      "id": "1.2",
+      "title": "«Великая Божественная» — бабушка-богиня",
+      "scene_start": "scene_032",
+      "scene_end": "scene_046"
+    },
+    {
+      "id": "1.3",
+      "title": "Детские лагеря «Сахаджа-йоги»",
+      "scene_start": "scene_047",
+      "scene_end": "scene_063"
+    },
+    {
+      "id": "1.4",
+      "title": "Инквизиция: пытки как богоугодное дело",
+      "scene_start": "scene_064",
+      "scene_end": "scene_080"
+    },
+    {
+      "id": "2.1",
+      "title": "Тольятти — столица секты",
+      "scene_start": "scene_081",
+      "scene_end": "scene_094"
+    }
+  ],
+  "level_transitions": [
+    {
+      "after_scene": "scene_011",
+      "from_level": 0,
+      "to_level": 1,
+      "mogrt": "level_card_1.mogrt"
+    },
+    {
+      "after_scene": "scene_080",
+      "from_level": 1,
+      "to_level": 2,
+      "mogrt": "level_card_2.mogrt"
+    }
+  ],
+  "level_titles": {
+    "1": "ВЕРХУШКА АЙСБЕРГА",
+    "2": "ВОДНАЯ ГЛАДЬ",
+    "3": "ПОГРУЖЕНИЕ",
+    "4": "БЕЗДНА"
+  },
+  "music_plan": {
+    "main_mood": "dark mystical, religious horror, ominous tension",
+    "shadow_mood": "deep dread, sub bass, psychological horror",
+    "estimated_main_duration_sec": 1500
+  }
+}

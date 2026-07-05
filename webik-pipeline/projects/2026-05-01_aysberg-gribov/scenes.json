@@ -1,0 +1,478 @@
+{
+  "_note": "Это ОБРАЗЕЦ первых 20 сцен. Полный scenes.json генерируется автоматически stage_03_scenes.py через Claude API на твоём ПК и содержит ~150-200 сцен на весь сценарий.",
+  "project_id": "2026-05-01_aysberg-gribov",
+  "primary_preset": "MYSTIC",
+  "modifiers": ["SHADOW"],
+  "total_duration_sec": 1632,
+  "total_scenes": 187,
+  "_partial_scenes_shown": 20,
+  "scenes": [
+    {
+      "id": "scene_001",
+      "section": "intro",
+      "level": 0,
+      "topic_id": null,
+      "voiceover": "Самое крупное живое существо на Земле — не кит и не секвойя.",
+      "duration_sec": 4.5,
+      "visual": {
+        "type": "ai_image",
+        "search_query": "blue whale ocean cinematic",
+        "ai_prompt": "Massive blue whale swimming in deep dark ocean, cinematic underwater photograph, dramatic god rays, mysterious, 8k, --ar 16:9",
+        "fallback_query": "blue whale deep ocean"
+      },
+      "camera": {"movement": "dolly_out", "speed": "slow"},
+      "transition_out": {"type": "default", "duration_ms": 600},
+      "audio": {"music_layer": "main", "music_intensity": 0.3, "sfx": []},
+      "preset": "MYSTIC",
+      "modifiers": [],
+      "mood": "mysterious",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_002",
+      "section": "intro",
+      "level": 0,
+      "voiceover": "Это гриб в Орегоне площадью с шестнадцать футбольных полей.",
+      "duration_sec": 4.8,
+      "visual": {
+        "type": "ai_image",
+        "search_query": "armillaria mushroom forest oregon aerial",
+        "ai_prompt": "Vast dark forest aerial view, hidden underground mycelium glowing faintly, mystical atmosphere, foggy, ominous scale, cinematic 8k, --ar 16:9",
+        "fallback_query": "dense oregon forest aerial fog"
+      },
+      "camera": {"movement": "dolly_in", "speed": "slow"},
+      "transition_out": {"type": "default", "duration_ms": 500},
+      "audio": {"music_layer": "main", "music_intensity": 0.4, "sfx": []},
+      "preset": "MYSTIC",
+      "modifiers": [],
+      "mood": "mysterious",
+      "text_overlay": {
+        "text": "9 КМ²",
+        "style": "serif_white",
+        "position": "lower_third",
+        "duration_ms": 2000
+      }
+    },
+    {
+      "id": "scene_003",
+      "section": "intro",
+      "level": 0,
+      "voiceover": "И ему четыре с половиной тысячи лет.",
+      "duration_sec": 3.5,
+      "visual": {
+        "type": "ai_image",
+        "search_query": "ancient mushroom roots underground",
+        "ai_prompt": "Ancient mycelium network underground, glowing tendrils stretching through dark soil, otherworldly mystical atmosphere, deep underground, cinematic 8k, --ar 16:9",
+        "fallback_query": "underground roots dark soil"
+      },
+      "camera": {"movement": "parallax_left", "speed": "slow"},
+      "transition_out": {"type": "fade_to_smoke", "duration_ms": 800},
+      "audio": {"music_layer": "main", "music_intensity": 0.5, "sfx": [
+        {"type": "reverb_tail", "trigger_word": "тысячи", "intensity": 0.7}
+      ]},
+      "preset": "MYSTIC",
+      "modifiers": [],
+      "mood": "mystical",
+      "text_overlay": {
+        "text": "4500 ЛЕТ",
+        "style": "serif_white",
+        "position": "center",
+        "duration_ms": 2500
+      }
+    },
+    {
+      "id": "scene_004",
+      "section": "intro",
+      "level": 0,
+      "voiceover": "Грибы не растения и не животные. Это отдельное царство, существовавшее на планете задолго до нас.",
+      "duration_sec": 7.5,
+      "visual": {
+        "type": "ai_image",
+        "search_query": "mushroom kingdom diverse species",
+        "ai_prompt": "Surreal collection of diverse mushroom species in misty forest, dramatic lighting, scientific illustration meets cinematic, dark mystical atmosphere, --ar 16:9",
+        "fallback_query": "diverse mushroom species forest"
+      },
+      "camera": {"movement": "orbit", "speed": "medium"},
+      "transition_out": {"type": "default", "duration_ms": 600},
+      "audio": {"music_layer": "main", "music_intensity": 0.5, "sfx": []},
+      "preset": "MYSTIC",
+      "modifiers": [],
+      "mood": "scientific",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_005",
+      "section": "intro",
+      "level": 0,
+      "voiceover": "И которое, скорее всего, переживёт нас.",
+      "duration_sec": 3.5,
+      "visual": {
+        "type": "ai_image",
+        "search_query": "abandoned city mushrooms growing",
+        "ai_prompt": "Abandoned post-apocalyptic city overgrown with massive mushrooms, dark atmospheric, nature reclaiming, eerie silence, cinematic 8k, --ar 16:9",
+        "fallback_query": "abandoned city overgrown nature"
+      },
+      "camera": {"movement": "dolly_in", "speed": "slow"},
+      "transition_out": {"type": "shadow_cut", "duration_ms": 300},
+      "audio": {"music_layer": "main", "music_intensity": 0.7, "sfx": [
+        {"type": "bass_drop", "trigger_word": "переживёт", "intensity": 0.6}
+      ]},
+      "preset": "MYSTIC",
+      "modifiers": ["SHADOW"],
+      "mood": "tense",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_006",
+      "section": "intro",
+      "level": 0,
+      "voiceover": "Они едят бетон. Светятся в темноте. Заставляют муравьёв совершать самоубийство.",
+      "duration_sec": 8.0,
+      "visual": {
+        "type": "ai_image",
+        "search_query": "bioluminescent mushroom dark forest macro",
+        "ai_prompt": "Glowing bioluminescent mushrooms in pitch dark forest, ethereal green light, macro photography, mystical otherworldly, cinematic 8k, --ar 16:9",
+        "fallback_query": "bioluminescent mushroom night"
+      },
+      "camera": {"movement": "parallax_right", "speed": "medium"},
+      "transition_out": {"type": "default", "duration_ms": 500},
+      "audio": {"music_layer": "main", "music_intensity": 0.6, "sfx": []},
+      "preset": "MYSTIC",
+      "modifiers": [],
+      "mood": "mystical",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_007",
+      "section": "intro",
+      "level": 0,
+      "voiceover": "И могут общаться через подземные сети, передавая сигналы быстрее, чем мы реагируем на боль.",
+      "duration_sec": 7.0,
+      "visual": {
+        "type": "ai_image",
+        "search_query": "mycelium network glowing underground",
+        "ai_prompt": "Vast underground mycelium network with glowing electrical signals traveling through fungal threads, neural network visualization aesthetic, mystical, 8k, --ar 16:9",
+        "fallback_query": "neural network underground roots"
+      },
+      "camera": {"movement": "dolly_in", "speed": "fast"},
+      "transition_out": {"type": "default", "duration_ms": 400},
+      "audio": {"music_layer": "main", "music_intensity": 0.7, "sfx": []},
+      "preset": "MYSTIC",
+      "modifiers": [],
+      "mood": "tense",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_008",
+      "section": "intro",
+      "level": 0,
+      "voiceover": "Сегодня мы спустимся в айсберг грибов.",
+      "duration_sec": 4.0,
+      "visual": {
+        "type": "diagram",
+        "search_query": "iceberg diagram mushroom",
+        "ai_prompt": "Iceberg diagram with mushroom imagery, dark mysterious aesthetic, layered depth, cinematic illustration, --ar 16:9",
+        "fallback_query": "iceberg diagram dark"
+      },
+      "camera": {"movement": "dolly_in", "speed": "medium"},
+      "transition_out": {"type": "between_levels", "duration_ms": 1500},
+      "audio": {"music_layer": "main", "music_intensity": 0.6, "sfx": [
+        {"type": "whoosh", "trigger_word": "айсберг", "intensity": 0.8}
+      ]},
+      "preset": "MYSTIC",
+      "modifiers": [],
+      "mood": "climactic",
+      "text_overlay": {
+        "text": "АЙСБЕРГ ГРИБОВ",
+        "style": "serif_white",
+        "position": "center",
+        "duration_ms": 3000
+      }
+    },
+    {
+      "id": "scene_009",
+      "section": "intro",
+      "level": 0,
+      "voiceover": "И к концу этого видео вы поймёте, почему это самое странное, самое древнее и самое пугающее, что когда-либо росло на этой планете.",
+      "duration_sec": 9.5,
+      "visual": {
+        "type": "ai_image",
+        "search_query": "ancient giant mushroom prehistoric",
+        "ai_prompt": "Massive ancient prehistoric mushroom in primordial Earth landscape, towering scale, mystical golden hour lighting, cinematic 8k photograph, --ar 16:9",
+        "fallback_query": "giant ancient mushroom landscape"
+      },
+      "camera": {"movement": "orbit", "speed": "slow"},
+      "transition_out": {"type": "between_levels", "duration_ms": 2000},
+      "audio": {"music_layer": "main", "music_intensity": 0.8, "sfx": [
+        {"type": "impact", "trigger_word": "пугающее", "intensity": 0.7}
+      ]},
+      "preset": "MYSTIC",
+      "modifiers": [],
+      "mood": "climactic",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_010",
+      "section": "level_1_card",
+      "level": 1,
+      "voiceover": "",
+      "duration_sec": 3.0,
+      "visual": {
+        "type": "mogrt",
+        "mogrt_template": "level_card_1.mogrt",
+        "search_query": null,
+        "ai_prompt": null,
+        "fallback_query": null
+      },
+      "camera": {"movement": "static", "speed": "none"},
+      "transition_out": {"type": "default", "duration_ms": 500},
+      "audio": {"music_layer": "main", "music_intensity": 0.5, "sfx": [
+        {"type": "whoosh", "trigger_word": null, "intensity": 0.8}
+      ]},
+      "preset": "MYSTIC",
+      "modifiers": [],
+      "mood": "calm",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_011",
+      "section": "topic_1.1",
+      "level": 1,
+      "topic_id": "1.1",
+      "voiceover": "Начнём с того, что почти все мы выучили в школе неправильно. Грибы — это не растения. И никогда ими не были.",
+      "duration_sec": 8.0,
+      "visual": {
+        "type": "ai_image",
+        "search_query": "vintage botany textbook mushroom illustration",
+        "ai_prompt": "Vintage botany textbook open showing mushroom illustration, sepia tones, old paper, scientific drawings, mystical academic atmosphere, --ar 16:9",
+        "fallback_query": "old botany textbook plants"
+      },
+      "camera": {"movement": "parallax_left", "speed": "slow"},
+      "transition_out": {"type": "default", "duration_ms": 500},
+      "audio": {"music_layer": "main", "music_intensity": 0.4, "sfx": []},
+      "preset": "MYSTIC",
+      "modifiers": [],
+      "mood": "calm",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_012",
+      "section": "topic_1.1",
+      "level": 1,
+      "topic_id": "1.1",
+      "voiceover": "Биология делит всё живое на царства. И до двадцатого века учёные относили грибы к растениям.",
+      "duration_sec": 6.5,
+      "visual": {
+        "type": "stock_photo",
+        "search_query": "tree of life biology diagram",
+        "ai_prompt": "Tree of life biological taxonomy diagram, dark academic aesthetic, scientific illustration, mystical lighting, --ar 16:9",
+        "fallback_query": "biological taxonomy diagram"
+      },
+      "camera": {"movement": "parallax_right", "speed": "slow"},
+      "transition_out": {"type": "default", "duration_ms": 500},
+      "audio": {"music_layer": "main", "music_intensity": 0.4, "sfx": []},
+      "preset": "MYSTIC",
+      "modifiers": [],
+      "mood": "scientific",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_013",
+      "section": "topic_1.1",
+      "level": 1,
+      "topic_id": "1.1",
+      "voiceover": "Они растут в земле, не двигаются, выглядят похоже. Логично же?",
+      "duration_sec": 4.5,
+      "visual": {
+        "type": "stock_photo",
+        "search_query": "mushroom growing soil forest",
+        "ai_prompt": "Wild mushroom emerging from forest soil, macro shot, mystical atmosphere, dark moody lighting, --ar 16:9",
+        "fallback_query": "mushroom forest floor"
+      },
+      "camera": {"movement": "dolly_in", "speed": "slow"},
+      "transition_out": {"type": "default", "duration_ms": 400},
+      "audio": {"music_layer": "main", "music_intensity": 0.3, "sfx": []},
+      "preset": "MYSTIC",
+      "modifiers": [],
+      "mood": "calm",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_014",
+      "section": "topic_1.1",
+      "level": 1,
+      "topic_id": "1.1",
+      "voiceover": "Только когда смогли посмотреть в микроскоп на их клеточные стенки, всё перевернулось.",
+      "duration_sec": 7.0,
+      "visual": {
+        "type": "ai_image",
+        "search_query": "microscope view fungal cells chitin",
+        "ai_prompt": "Extreme close up microscopic view of fungal cells with chitin walls, scientific photography, glowing intricate patterns, dark academic, --ar 16:9",
+        "fallback_query": "microscope cells biology"
+      },
+      "camera": {"movement": "dolly_in", "speed": "fast"},
+      "transition_out": {"type": "default", "duration_ms": 400},
+      "audio": {"music_layer": "main", "music_intensity": 0.5, "sfx": []},
+      "preset": "MYSTIC",
+      "modifiers": [],
+      "mood": "scientific",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_015",
+      "section": "topic_1.1",
+      "level": 1,
+      "topic_id": "1.1",
+      "voiceover": "У растений стенки сделаны из целлюлозы. У грибов — из хитина. Того самого хитина, из которого панцири жуков и крабов.",
+      "duration_sec": 9.5,
+      "visual": {
+        "type": "ai_image",
+        "search_query": "beetle exoskeleton macro insect chitin",
+        "ai_prompt": "Macro shot of beetle exoskeleton showing intricate chitin structures, scientific photography, dark dramatic lighting, surreal connection between insects and mushrooms, --ar 16:9",
+        "fallback_query": "beetle exoskeleton macro"
+      },
+      "camera": {"movement": "orbit", "speed": "slow"},
+      "transition_out": {"type": "default", "duration_ms": 500},
+      "audio": {"music_layer": "main", "music_intensity": 0.5, "sfx": []},
+      "preset": "MYSTIC",
+      "modifiers": [],
+      "mood": "scientific",
+      "text_overlay": {
+        "text": "ХИТИН",
+        "style": "serif_white",
+        "position": "lower_third",
+        "duration_ms": 2000
+      }
+    },
+    {
+      "id": "scene_016",
+      "section": "topic_1.1",
+      "level": 1,
+      "topic_id": "1.1",
+      "voiceover": "Грибы не делают фотосинтез. Они дышат кислородом.",
+      "duration_sec": 5.0,
+      "visual": {
+        "type": "stock_video",
+        "search_query": "mushroom breathing time lapse",
+        "ai_prompt": "Time-lapse of mushroom growth and respiration, mystical atmospheric, slow ethereal movement, --ar 16:9",
+        "fallback_query": "mushroom growth time lapse"
+      },
+      "camera": {"movement": "static", "speed": "none"},
+      "transition_out": {"type": "default", "duration_ms": 400},
+      "audio": {"music_layer": "main", "music_intensity": 0.4, "sfx": []},
+      "preset": "MYSTIC",
+      "modifiers": [],
+      "mood": "calm",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_017",
+      "section": "topic_1.1",
+      "level": 1,
+      "topic_id": "1.1",
+      "voiceover": "Они переваривают пищу — только наоборот, выделяя ферменты наружу и впитывая обратно растворённое вещество.",
+      "duration_sec": 9.0,
+      "visual": {
+        "type": "ai_image",
+        "search_query": "mycelium decomposing wood macro",
+        "ai_prompt": "Macro shot of fungal mycelium decomposing wood, white threads spreading, scientific time-lapse aesthetic, mystical decay process, --ar 16:9",
+        "fallback_query": "fungal decomposition wood"
+      },
+      "camera": {"movement": "dolly_in", "speed": "slow"},
+      "transition_out": {"type": "default", "duration_ms": 500},
+      "audio": {"music_layer": "main", "music_intensity": 0.4, "sfx": []},
+      "preset": "MYSTIC",
+      "modifiers": [],
+      "mood": "scientific",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_018",
+      "section": "topic_1.1",
+      "level": 1,
+      "topic_id": "1.1",
+      "voiceover": "По биохимии они ближе к нам, чем к дубу за окном.",
+      "duration_sec": 5.5,
+      "visual": {
+        "type": "ai_image",
+        "search_query": "human dna mushroom comparison surreal",
+        "ai_prompt": "Surreal split image: human DNA helix on one side, mushroom mycelium on other, biological connection visualization, dark mystical, --ar 16:9",
+        "fallback_query": "dna helix biology"
+      },
+      "camera": {"movement": "parallax_left", "speed": "medium"},
+      "transition_out": {"type": "default", "duration_ms": 500},
+      "audio": {"music_layer": "main", "music_intensity": 0.5, "sfx": [
+        {"type": "reverb_tail", "trigger_word": "ближе", "intensity": 0.6}
+      ]},
+      "preset": "MYSTIC",
+      "modifiers": [],
+      "mood": "mystical",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_019",
+      "section": "topic_1.1",
+      "level": 1,
+      "topic_id": "1.1",
+      "voiceover": "В тысяча девятьсот шестьдесят девятом году им наконец выделили отдельное царство — Fungi.",
+      "duration_sec": 7.5,
+      "visual": {
+        "type": "archive",
+        "search_query": "1969 biology textbook scientist",
+        "ai_prompt": "1969 vintage scientific document about fungi kingdom, sepia archive aesthetic, old typewriter text, biology, --ar 16:9",
+        "fallback_query": "vintage biology document 1960s"
+      },
+      "camera": {"movement": "parallax_right", "speed": "slow"},
+      "transition_out": {"type": "default", "duration_ms": 500},
+      "audio": {"music_layer": "main", "music_intensity": 0.4, "sfx": []},
+      "preset": "MYSTIC",
+      "modifiers": [],
+      "mood": "scientific",
+      "text_overlay": {
+        "text": "1969 — FUNGI",
+        "style": "serif_white",
+        "position": "lower_third",
+        "duration_ms": 2500
+      }
+    },
+    {
+      "id": "scene_020",
+      "section": "topic_1.1",
+      "level": 1,
+      "topic_id": "1.1",
+      "voiceover": "И теперь когда вы смотрите на гриб, помните: вы смотрите на двоюродного брата по биологическому древу. Странного. Но брата.",
+      "duration_sec": 9.0,
+      "visual": {
+        "type": "ai_image",
+        "search_query": "mushroom portrait personified close up",
+        "ai_prompt": "Close up portrait of single mushroom in moody forest light, almost personified, scientific yet emotional, mysterious presence, cinematic 8k, --ar 16:9",
+        "fallback_query": "mushroom close up portrait"
+      },
+      "camera": {"movement": "dolly_in", "speed": "very_slow"},
+      "transition_out": {"type": "between_topics", "duration_ms": 1000},
+      "audio": {"music_layer": "main", "music_intensity": 0.5, "sfx": []},
+      "preset": "MYSTIC",
+      "modifiers": [],
+      "mood": "mystical",
+      "text_overlay": null
+    }
+  ],
+  "topics_index": [
+    {"id": "1.1", "title": "Грибы — отдельное царство природы", "scene_start": "scene_011", "scene_end": "scene_020"},
+    {"id": "1.2", "title": "Армиллярия — крупнейшее существо на Земле", "scene_start": "scene_021", "scene_end": "scene_032"},
+    {"id": "1.3", "title": "Светящиеся грибы — биолюминесценция", "scene_start": "scene_033", "scene_end": "scene_042"},
+    {"id": "1.4", "title": "Микоризные сети — лесной интернет", "scene_start": "scene_043", "scene_end": "scene_054"}
+  ],
+  "level_transitions": [
+    {"after_scene": "scene_009", "from_level": 0, "to_level": 1, "mogrt": "level_card_1.mogrt"},
+    {"after_scene": "scene_054", "from_level": 1, "to_level": 2, "mogrt": "level_card_2.mogrt"},
+    {"after_scene": "scene_106", "from_level": 2, "to_level": 3, "mogrt": "level_card_3.mogrt"},
+    {"after_scene": "scene_146", "from_level": 3, "to_level": 4, "mogrt": "level_card_4.mogrt"}
+  ],
+  "music_plan": {
+    "main_mood": "dark mystical drone, mycelium ambient, ethnic instruments, low choir",
+    "shadow_mood": "horror sub bass, decay textures, distant whispers, fungal threat",
+    "estimated_main_duration_sec": 1632,
+    "shadow_sections": ["level_4_full", "scene_005", "scenes_around_zombie_ants"]
+  }
+}

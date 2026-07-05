@@ -1,0 +1,94 @@
+{
+  "name": "CIPHER",
+  "description": "Современный мир, IT, цифровая антиутопия, корпорации",
+  "applies_to": [
+    "Китай", "TikTok", "цифровое рабство", "AI", "корпорации",
+    "слежка", "интернет", "хакеры", "крипта", "соцсети", "Foxconn"
+  ],
+  "palette": {
+    "primary": "#00F0FF",
+    "secondary": "#FF003C",
+    "accent": "#0A0A0A",
+    "highlight": "#39FF14",
+    "background": "#050511"
+  },
+  "ai_image_tags": "cyberpunk surveillance, neon dystopia, data center, oppressive megacity, cctv aesthetic, digital decay, server room, glitch art, dark techno, blade runner aesthetic, 8k cinematic",
+  "ai_image_negative": "warm, vintage, cozy, organic, natural, daylight, pastoral",
+  "transitions": {
+    "default": {
+      "plugin": "RedGiant",
+      "effect": "Universe_Glitch",
+      "params": {"intensity": 0.5, "rgb_split": 0.3}
+    },
+    "between_topics": {
+      "plugin": "RedGiant",
+      "effect": "Universe_Datamosh",
+      "params": {"intensity": 0.6}
+    },
+    "between_levels": {
+      "plugin": "custom",
+      "mogrt": "templates/dive_transition.mogrt"
+    },
+    "shadow_cut": {
+      "plugin": "RedGiant",
+      "effect": "Universe_Pixel_Sort",
+      "params": {"duration_ms": 300}
+    },
+    "scanline_dissolve": {
+      "plugin": "Sapphire",
+      "effect": "S_Scanlines",
+      "params": {"density": 0.7}
+    }
+  },
+  "music": {
+    "mood_keywords": ["industrial", "modular synth", "IDM", "dark techno", "dystopian electronic"],
+    "instruments": ["synth", "drum machine", "industrial percussion", "glitchy textures"],
+    "tempo_bpm_range": [80, 130],
+    "intensity_default": 0.6,
+    "intensity_shadow": 0.85
+  },
+  "sfx_pack": [
+    "digital_glitch", "error_beep", "dial_up_modem", "keyboard_typing",
+    "server_hum", "notification_alert", "system_failure", "data_corruption"
+  ],
+  "fonts": {
+    "primary": "JetBrains Mono",
+    "secondary": "Inter Tight",
+    "mono": "JetBrains Mono",
+    "weight_primary": "500",
+    "letter_spacing": "0.0em"
+  },
+  "lut": {
+    "path": "luts/neon_dystopia.cube",
+    "intensity": 0.95
+  },
+  "overlays": [
+    {"path": "overlays/glitch_rgb.mp4", "blend": "screen", "opacity": 0.15},
+    {"path": "overlays/code_rain.mp4", "blend": "screen", "opacity": 0.1}
+  ],
+  "color_grading": {
+    "shadows": {"hue": 200, "saturation": 0.6, "luminance": -15},
+    "midtones": {"hue": 180, "saturation": 0.4, "luminance": 0},
+    "highlights": {"hue": 350, "saturation": 0.5, "luminance": 10},
+    "contrast": 35,
+    "saturation": 15,
+    "vignette": -1
+  },
+  "camera_movements": {
+    "default": "parallax_left",
+    "calm": "static",
+    "tense": "zoom_in_fast",
+    "climactic": "shake_subtle",
+    "mysterious": "dolly_in"
+  },
+  "subtitle_style": {
+    "font": "JetBrains Mono",
+    "size": 50,
+    "color": "#00F0FF",
+    "highlight_color": "#FF003C",
+    "background_opacity": 0.0,
+    "shadow": true,
+    "shadow_color": "#000000",
+    "shadow_blur": 4
+  }
+}

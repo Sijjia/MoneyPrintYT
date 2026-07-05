@@ -1,0 +1,85 @@
+{
+  "project_id": "demo-vertical-slice",
+  "primary_preset": "MYSTIC",
+  "modifiers": [],
+  "total_duration_sec": 30,
+  "total_scenes": 3,
+  "scenes": [
+    {
+      "id": "scene_001",
+      "section": "intro",
+      "level": 0,
+      "topic_id": null,
+      "voiceover": "Глубоко в горах Кореи существуют шаманы, которые до сих пор практикуют древние ритуалы. Их сила пугает даже бывалых путешественников.",
+      "duration_sec": 10.0,
+      "visual": {
+        "type": "stock_photo",
+        "search_query": "abandoned soviet laboratory",
+        "ai_prompt": "Korean shaman performing ritual in foggy mountain temple, mystical atmosphere, low key lighting, --ar 16:9",
+        "fallback_query": "asian temple mountain"
+      },
+      "camera": {"movement": "dolly_in"},
+      "transition_out": "default",
+      "mood": "mystical",
+      "sfx": []
+    },
+    {
+      "id": "scene_002",
+      "section": "topic_1",
+      "level": 1,
+      "topic_id": "topic_1",
+      "voiceover": "В деревнях верят, что эти шаманы могут говорить с духами умерших родственников. Иногда они приносят страшные предсказания.",
+      "duration_sec": 10.0,
+      "visual": {
+        "type": "stock_photo",
+        "search_query": "old soviet propaganda poster",
+        "ai_prompt": "Dark folkloric ritual with candles, mysterious atmosphere, --ar 16:9",
+        "fallback_query": "candle dark"
+      },
+      "camera": {"movement": "parallax_left"},
+      "transition_out": "default",
+      "mood": "tense",
+      "sfx": [],
+      "charts": [
+        {
+          "kind": "counter",
+          "trigger_word": "родственников",
+          "duration_sec": 3.5,
+          "counter_target": 1247,
+          "counter_format": "int_thousands",
+          "counter_suffix": "",
+          "label": "ПРОПАЛО ЗА 10 ЛЕТ",
+          "accent_color": "#ff5050"
+        }
+      ],
+      "media_burst": {
+        "trigger_word": "духами",
+        "items": [
+          {"keyword": "ghost forest mist"},
+          {"keyword": "shaman ritual fire"},
+          {"keyword": "ancient ancestral mask"}
+        ],
+        "item_duration_sec": 1.0,
+        "sfx_between": "camera_click"
+      }
+    },
+    {
+      "id": "scene_003",
+      "section": "topic_1",
+      "level": 1,
+      "topic_id": "topic_1",
+      "voiceover": "Один из таких ритуалов закончился исчезновением целой семьи. До сих пор никто не знает, что с ними стало.",
+      "duration_sec": 10.0,
+      "visual": {
+        "type": "stock_photo",
+        "search_query": "abandoned village forest mist",
+        "ai_prompt": "Abandoned village in misty forest, cinematic dark mood, --ar 16:9",
+        "fallback_query": "abandoned village"
+      },
+      "camera": {"movement": "static"},
+      "transition_out": "shadow_cut",
+      "mood": "climactic",
+      "sfx": [{"type": "bass_drop", "trigger_word": "исчезновением", "intensity": 0.8}]
+    }
+  ]
+}

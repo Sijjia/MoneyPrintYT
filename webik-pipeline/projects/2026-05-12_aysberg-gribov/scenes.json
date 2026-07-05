@@ -1,0 +1,711 @@
+{
+  "project_id": "2026-05-12_aysberg-gribov",
+  "primary_preset": "MYSTIC",
+  "modifiers": [],
+  "total_duration_sec": 298,
+  "total_scenes": 33,
+  "level_titles": {
+    "1": "ЗНАКОМЫЕ НЕЗНАКОМЦЫ",
+    "2": "ТО ЧТО НЕ ХОЧЕТ БЫТЬ НАЙДЕНО"
+  },
+  "topics_index": [
+    {"id": "1.1", "title": "Мухомор", "scene_start": "scene_005", "scene_end": "scene_009"},
+    {"id": "1.2", "title": "Армиллярия", "scene_start": "scene_010", "scene_end": "scene_012"},
+    {"id": "1.3", "title": "Светящиеся грибы", "scene_start": "scene_013", "scene_end": "scene_015"},
+    {"id": "2.1", "title": "Кордицепс", "scene_start": "scene_017", "scene_end": "scene_022"},
+    {"id": "2.2", "title": "MK-Ultra", "scene_start": "scene_023", "scene_end": "scene_026"},
+    {"id": "2.3", "title": "Кровавый зуб", "scene_start": "scene_027", "scene_end": "scene_030"}
+  ],
+  "level_transitions": [
+    {"after_scene": "scene_015", "from_level": 1, "to_level": 2, "mogrt": "level_card_2.mogrt"}
+  ],
+  "music_plan": {
+    "main_mood": "dark mystical forest, ambient drone, low strings",
+    "shadow_mood": "horror sub bass, dissonant, ritualistic",
+    "estimated_main_duration_sec": 298
+  },
+  "scenes": [
+    {
+      "id": "scene_001",
+      "section": "intro",
+      "level": 0,
+      "topic_id": null,
+      "voiceover": "В Орегоне живёт организм возрастом две тысячи четыреста лет и площадью четыре квадратных километра. И это не дерево. Это гриб.",
+      "duration_sec": 12.0,
+      "visual": {
+        "type": "stock_video",
+        "search_query": "dark forest fog ancient trees",
+        "ai_prompt": "Ancient misty old growth forest, towering trees with moss and fungi, dark mystical atmosphere, low key lighting, foggy ground, cinematic --ar 16:9",
+        "fallback_query": "dark forest fog"
+      },
+      "camera": {"movement": "dolly_in", "speed": "slow"},
+      "transition_out": "default",
+      "mood": "mystical",
+      "sfx": [],
+      "charts": [
+        {
+          "kind": "counter",
+          "trigger_word": "четыреста",
+          "duration_sec": 3.5,
+          "label": "ЛЕТ ВОЗРАСТ",
+          "counter_target": 2400,
+          "counter_format": "int_thousands",
+          "counter_suffix": "",
+          "accent_color": "#50a0ff"
+        }
+      ]
+    },
+    {
+      "id": "scene_002",
+      "section": "intro",
+      "level": 0,
+      "topic_id": null,
+      "voiceover": "Грибы — самые странные существа планеты. Они не животные. Не растения.",
+      "duration_sec": 8.0,
+      "visual": {
+        "type": "stock_photo",
+        "search_query": "strange mushroom macro forest",
+        "ai_prompt": "Strange alien-looking mushroom in dark forest, macro photography, mysterious atmosphere, --ar 16:9",
+        "fallback_query": "mushroom dark"
+      },
+      "camera": {"movement": "parallax_left", "speed": "medium"},
+      "transition_out": "default",
+      "mood": "mysterious",
+      "sfx": []
+    },
+    {
+      "id": "scene_003",
+      "section": "intro",
+      "level": 0,
+      "topic_id": null,
+      "voiceover": "Целое отдельное царство. Которое мы только начинаем понимать.",
+      "duration_sec": 6.0,
+      "visual": {
+        "type": "stock_video",
+        "search_query": "misty forest dawn",
+        "ai_prompt": "Misty forest at dawn, ethereal light through trees, mysterious kingdom feeling, --ar 16:9",
+        "fallback_query": "misty forest"
+      },
+      "camera": {"movement": "dolly_in", "speed": "slow"},
+      "transition_out": "default",
+      "mood": "mystical",
+      "sfx": []
+    },
+    {
+      "id": "scene_004",
+      "section": "intro",
+      "level": 0,
+      "topic_id": null,
+      "voiceover": "Сегодня — айсберг грибов. От того что вы знали с детства до того что захотите забыть.",
+      "duration_sec": 8.0,
+      "visual": {
+        "type": "stock_photo",
+        "search_query": "iceberg dark water ocean",
+        "ai_prompt": "Massive dark iceberg in deep ocean water, ominous, half submerged, cinematic, dark and mysterious, --ar 16:9",
+        "fallback_query": "iceberg ocean"
+      },
+      "camera": {"movement": "dolly_out", "speed": "slow"},
+      "transition_out": "between_levels",
+      "mood": "climactic",
+      "sfx": [],
+      "text_overlay": null
+    },
+    {
+      "id": "scene_005",
+      "section": "topic_1.1",
+      "level": 1,
+      "topic_id": "1.1",
+      "voiceover": "Красная шапка с белыми точками. Этот гриб знает каждый ребёнок с первой сказки.",
+      "duration_sec": 8.0,
+      "visual": {
+        "type": "stock_photo",
+        "search_query": "fly agaric red mushroom forest",
+        "ai_prompt": "Classic red fly agaric mushroom Amanita muscaria with white dots in forest, fairy tale aesthetic, --ar 16:9",
+        "fallback_query": "red mushroom forest"
+      },
+      "camera": {"movement": "parallax_right", "speed": "medium"},
+      "transition_out": "default",
+      "mood": "calm",
+      "sfx": []
+    },
+    {
+      "id": "scene_006",
+      "section": "topic_1.1",
+      "level": 1,
+      "topic_id": "1.1",
+      "voiceover": "Но сибирские шаманы знали его под другим именем. И способ его применения у них был особым.",
+      "duration_sec": 9.0,
+      "visual": {
+        "type": "ai_image",
+        "search_query": "siberian shaman ritual fire snow",
+        "ai_prompt": "Siberian shaman in fur clothing performing ritual by fire in snowy forest, ancient ritualistic atmosphere, dark folkloric, dramatic light, --ar 16:9",
+        "fallback_query": "shaman ritual"
+      },
+      "camera": {"movement": "dolly_in", "speed": "slow"},
+      "transition_out": "default",
+      "mood": "mystical",
+      "sfx": []
+    },
+    {
+      "id": "scene_007",
+      "section": "topic_1.1",
+      "level": 1,
+      "topic_id": "1.1",
+      "voiceover": "Они пили мочу оленей. Тех самых что съели мухомор раньше.",
+      "duration_sec": 8.0,
+      "visual": {
+        "type": "stock_photo",
+        "search_query": "reindeer snow forest siberia",
+        "ai_prompt": "Reindeer in snowy taiga forest, golden hour light, atmospheric, --ar 16:9",
+        "fallback_query": "reindeer snow"
+      },
+      "camera": {"movement": "parallax_left", "speed": "medium"},
+      "transition_out": "default",
+      "mood": "tense",
+      "sfx": [],
+      "text_overlay": {
+        "text": "ПИЛИ МОЧУ ОЛЕНЕЙ",
+        "style": "serif_white"
+      }
+    },
+    {
+      "id": "scene_008",
+      "section": "topic_1.1",
+      "level": 1,
+      "topic_id": "1.1",
+      "voiceover": "Психоактивное вещество мусцимол проходило через тело животного, теряя токсичность. А эффект — оставался.",
+      "duration_sec": 10.0,
+      "visual": {
+        "type": "stock_photo",
+        "search_query": "fly agaric mushroom macro detail",
+        "ai_prompt": "Macro close up of fly agaric mushroom cap with white spots, dark moody, dewdrops, --ar 16:9",
+        "fallback_query": "mushroom macro"
+      },
+      "camera": {"movement": "dolly_in", "speed": "slow"},
+      "transition_out": "default",
+      "mood": "tense",
+      "sfx": []
+    },
+    {
+      "id": "scene_009",
+      "section": "topic_1.1",
+      "level": 1,
+      "topic_id": "1.1",
+      "voiceover": "Дед Мороз — красная шуба с белым, олени, дома в снежных лесах — пришёл от этих же шаманов. От мухомора.",
+      "duration_sec": 11.0,
+      "visual": {
+        "type": "ai_image",
+        "search_query": "santa claus red coat snow forest mushroom",
+        "ai_prompt": "Mystical Santa figure in red and white fur coat standing in snowy forest beside giant red fly agaric mushroom, dark folklore aesthetic, mysterious, --ar 16:9",
+        "fallback_query": "santa winter forest"
+      },
+      "camera": {"movement": "dolly_in", "speed": "slow"},
+      "transition_out": "shadow_cut",
+      "mood": "climactic",
+      "sfx": [
+        {"type": "bass_drop", "trigger_word": "мухомора", "intensity": 0.75}
+      ]
+    },
+    {
+      "id": "scene_010",
+      "section": "topic_1.2",
+      "level": 1,
+      "topic_id": "1.2",
+      "voiceover": "Орегон. Лесной массив Малер. Под землёй на четыре квадратных километра растёт грибница.",
+      "duration_sec": 9.0,
+      "visual": {
+        "type": "stock_video",
+        "search_query": "oregon forest aerial mountain",
+        "ai_prompt": "Aerial view of vast Oregon forest with mountains, cinematic wide shot, mysterious vastness, --ar 16:9",
+        "fallback_query": "forest aerial mountain"
+      },
+      "camera": {"movement": "parallax_right", "speed": "slow"},
+      "transition_out": "default",
+      "mood": "scientific",
+      "sfx": []
+    },
+    {
+      "id": "scene_011",
+      "section": "topic_1.2",
+      "level": 1,
+      "topic_id": "1.2",
+      "voiceover": "Её возраст — две тысячи четыреста лет. Вес — больше тысячи синих китов.",
+      "duration_sec": 8.0,
+      "visual": {
+        "type": "stock_photo",
+        "search_query": "blue whale ocean underwater",
+        "ai_prompt": "Blue whale underwater massive scale, sunbeams from surface, cinematic, --ar 16:9",
+        "fallback_query": "blue whale"
+      },
+      "camera": {"movement": "dolly_out", "speed": "slow"},
+      "transition_out": "default",
+      "mood": "climactic",
+      "sfx": []
+    },
+    {
+      "id": "scene_012",
+      "section": "topic_1.2",
+      "level": 1,
+      "topic_id": "1.2",
+      "voiceover": "Это самый большой организм на планете. И всё это — один гриб.",
+      "duration_sec": 7.0,
+      "visual": {
+        "type": "stock_photo",
+        "search_query": "mycelium roots underground network",
+        "ai_prompt": "Underground mycelium network roots tendrils macro, dark soil, organic alien, --ar 16:9",
+        "fallback_query": "mycelium roots"
+      },
+      "camera": {"movement": "dolly_in", "speed": "slow"},
+      "transition_out": "default",
+      "mood": "mystical",
+      "sfx": []
+    },
+    {
+      "id": "scene_013",
+      "section": "topic_1.3",
+      "level": 1,
+      "topic_id": "1.3",
+      "voiceover": "В тропических лесах ночью светится сама земля. Это грибы рода Mycena.",
+      "duration_sec": 8.0,
+      "visual": {
+        "type": "ai_image",
+        "search_query": "bioluminescent glowing mushroom night",
+        "ai_prompt": "Bioluminescent glowing green mushrooms on forest floor at night, ethereal cyan-green light, magical mysterious, dark surroundings, --ar 16:9",
+        "fallback_query": "glowing mushroom"
+      },
+      "camera": {"movement": "dolly_in", "speed": "slow"},
+      "transition_out": "default",
+      "mood": "mystical",
+      "sfx": []
+    },
+    {
+      "id": "scene_014",
+      "section": "topic_1.3",
+      "level": 1,
+      "topic_id": "1.3",
+      "voiceover": "Древние моряки звали этот зелёный свет огнями святого Эльма. Думали — души утопленников.",
+      "duration_sec": 10.0,
+      "visual": {
+        "type": "stock_photo",
+        "search_query": "old sailing ship storm night",
+        "ai_prompt": "Old wooden sailing ship in stormy night sea, glowing green lights on masts, mystical, vintage painting aesthetic, --ar 16:9",
+        "fallback_query": "old ship storm"
+      },
+      "camera": {"movement": "shake_subtle", "speed": "slow"},
+      "transition_out": "default",
+      "mood": "mysterious",
+      "sfx": []
+    },
+    {
+      "id": "scene_015",
+      "section": "topic_1.3",
+      "level": 1,
+      "topic_id": "1.3",
+      "voiceover": "Эволюционный смысл свечения биологам до сих пор не ясен. Никто не знает зачем грибу светиться.",
+      "duration_sec": 10.0,
+      "visual": {
+        "type": "ai_image",
+        "search_query": "glowing mushroom forest night macro",
+        "ai_prompt": "Macro close up of single glowing bioluminescent mushroom in pitch dark forest, ethereal green light, mystery, --ar 16:9",
+        "fallback_query": "glowing mushroom dark"
+      },
+      "camera": {"movement": "dolly_in", "speed": "slow"},
+      "transition_out": "between_levels",
+      "mood": "mystical",
+      "sfx": [
+        {"type": "reverb_tail", "trigger_word": "светиться", "intensity": 0.6}
+      ]
+    },
+    {
+      "id": "scene_016",
+      "section": "level_transition",
+      "level": 1,
+      "topic_id": null,
+      "voiceover": "Это были грибы которых мы знаем. Любим. Боимся как ребёнок боится темноты. Но настоящие тайны грибного царства — не на витрине. Они глубже.",
+      "duration_sec": 16.0,
+      "visual": {
+        "type": "stock_video",
+        "search_query": "dark water descent deep",
+        "ai_prompt": "Descending into dark deep water, light fading above, mysterious depth, cinematic, --ar 16:9",
+        "fallback_query": "deep dark water"
+      },
+      "camera": {"movement": "dolly_in", "speed": "slow"},
+      "transition_out": "between_levels",
+      "mood": "climactic",
+      "sfx": [
+        {"type": "bass_drop", "trigger_word": "глубже", "intensity": 0.85}
+      ],
+      "charts": [
+        {
+          "kind": "iceberg_pyramid",
+          "trigger_word": "глубже",
+          "duration_sec": 4.5,
+          "iceberg_levels": ["ЗНАКОМЫЕ", "ТО ЧТО СКРЫТО"],
+          "iceberg_current_level": 2,
+          "label": "СПУСКАЕМСЯ ГЛУБЖЕ",
+          "accent_color": "#ff5050"
+        }
+      ]
+    },
+    {
+      "id": "scene_017",
+      "section": "topic_2.1",
+      "level": 2,
+      "topic_id": "2.1",
+      "voiceover": "Кордицепс однобокий. Гриб который не убивает свою жертву. Он берёт её под контроль.",
+      "duration_sec": 9.0,
+      "visual": {
+        "type": "ai_image",
+        "search_query": "cordyceps fungus ant zombie",
+        "ai_prompt": "Cordyceps fungus growing from dead ant head, macro horror nature photography, dark moss background, scientific horror, --ar 16:9",
+        "fallback_query": "fungus ant insect"
+      },
+      "camera": {"movement": "dolly_in", "speed": "slow"},
+      "transition_out": "default",
+      "mood": "tense",
+      "modifiers": ["SHADOW"],
+      "sfx": []
+    },
+    {
+      "id": "scene_018",
+      "section": "topic_2.1",
+      "level": 2,
+      "topic_id": "2.1",
+      "voiceover": "Споры попадают в мозг муравья. Через несколько дней насекомое уходит из колонии.",
+      "duration_sec": 9.0,
+      "visual": {
+        "type": "stock_video",
+        "search_query": "ants colony macro forest",
+        "ai_prompt": "Ant colony close up macro view, organic behavior, dark forest floor, --ar 16:9",
+        "fallback_query": "ants macro"
+      },
+      "camera": {"movement": "parallax_left", "speed": "medium"},
+      "transition_out": "default",
+      "mood": "tense",
+      "modifiers": ["SHADOW"],
+      "sfx": []
+    },
+    {
+      "id": "scene_019",
+      "section": "topic_2.1",
+      "level": 2,
+      "topic_id": "2.1",
+      "voiceover": "Поднимается по стеблю на нужную высоту. Цепляется челюстями за лист. И умирает.",
+      "duration_sec": 10.0,
+      "visual": {
+        "type": "stock_photo",
+        "search_query": "ant macro leaf jungle",
+        "ai_prompt": "Single ant clinging to underside of leaf, macro photography, jungle, dramatic moody light, --ar 16:9",
+        "fallback_query": "ant leaf macro"
+      },
+      "camera": {"movement": "dolly_in", "speed": "slow"},
+      "transition_out": "shadow_cut",
+      "mood": "climactic",
+      "modifiers": ["SHADOW"],
+      "sfx": [
+        {"type": "bass_drop", "trigger_word": "умирает", "intensity": 0.85}
+      ]
+    },
+    {
+      "id": "scene_020",
+      "section": "topic_2.1",
+      "level": 2,
+      "topic_id": "2.1",
+      "voiceover": "Из его головы прорастает гриб. И рассеивает споры на новых муравьёв. Идеальный паразит.",
+      "duration_sec": 10.0,
+      "visual": {
+        "type": "ai_image",
+        "search_query": "cordyceps spores releasing fungus",
+        "ai_prompt": "Cordyceps fungus stalk releasing spore cloud, macro horror nature, dark background, scientific aesthetic, --ar 16:9",
+        "fallback_query": "fungus spores"
+      },
+      "camera": {"movement": "dolly_out", "speed": "slow"},
+      "transition_out": "default",
+      "mood": "tense",
+      "modifiers": ["SHADOW"],
+      "sfx": []
+    },
+    {
+      "id": "scene_021",
+      "section": "topic_2.1",
+      "level": 2,
+      "topic_id": "2.1",
+      "voiceover": "Игра The Last of Us построена на простой мысли — что если кордицепс мутирует на человека.",
+      "duration_sec": 9.0,
+      "visual": {
+        "type": "stock_photo",
+        "search_query": "post apocalyptic city overgrown",
+        "ai_prompt": "Post apocalyptic abandoned city overgrown with vegetation and fungus, dark green tones, cinematic, --ar 16:9",
+        "fallback_query": "abandoned city overgrown"
+      },
+      "camera": {"movement": "parallax_right", "speed": "medium"},
+      "transition_out": "default",
+      "mood": "tense",
+      "modifiers": ["SHADOW"],
+      "sfx": [],
+      "text_overlay": {
+        "text": "THE LAST OF US",
+        "style": "serif_white"
+      }
+    },
+    {
+      "id": "scene_022",
+      "section": "topic_2.1",
+      "level": 2,
+      "topic_id": "2.1",
+      "voiceover": "Учёные смеются. Но мягко. Не громко.",
+      "duration_sec": 5.0,
+      "visual": {
+        "type": "stock_photo",
+        "search_query": "scientist microscope laboratory dark",
+        "ai_prompt": "Scientist looking through microscope in dark laboratory, dim light, serious expression, --ar 16:9",
+        "fallback_query": "scientist microscope"
+      },
+      "camera": {"movement": "static", "speed": "slow"},
+      "transition_out": "shadow_cut",
+      "mood": "climactic",
+      "modifiers": ["SHADOW"],
+      "sfx": [
+        {"type": "silence_hold", "trigger_word": "громко", "intensity": 0.7}
+      ]
+    },
+    {
+      "id": "scene_023",
+      "section": "topic_2.2",
+      "level": 2,
+      "topic_id": "2.2",
+      "voiceover": "ЦРУ. Тысяча девятьсот пятьдесят третий год. Операция MK-Ultra.",
+      "duration_sec": 8.0,
+      "visual": {
+        "type": "archive",
+        "search_query": "cia building washington 1950s",
+        "ai_prompt": "CIA headquarters 1950s archival photograph, government building, sepia tones, vintage, --ar 16:9",
+        "fallback_query": "government building 1950s"
+      },
+      "camera": {"movement": "dolly_in", "speed": "slow"},
+      "transition_out": "film_burn",
+      "mood": "tense",
+      "modifiers": ["SHADOW"],
+      "sfx": [],
+      "text_overlay": {
+        "text": "MK-ULTRA · 1953",
+        "style": "stamp_red"
+      }
+    },
+    {
+      "id": "scene_024",
+      "section": "topic_2.2",
+      "level": 2,
+      "topic_id": "2.2",
+      "voiceover": "Сотрудникам подмешивали ЛСД и псилоцибин в напитки. Без их ведома и согласия.",
+      "duration_sec": 10.0,
+      "visual": {
+        "type": "stock_photo",
+        "search_query": "glass whiskey ice dark bar",
+        "ai_prompt": "Glass of whiskey with ice on dark bar table, moody dramatic lighting, noir aesthetic, --ar 16:9",
+        "fallback_query": "whiskey glass"
+      },
+      "camera": {"movement": "dolly_in", "speed": "slow"},
+      "transition_out": "default",
+      "mood": "tense",
+      "modifiers": ["SHADOW"],
+      "sfx": []
+    },
+    {
+      "id": "scene_025",
+      "section": "topic_2.2",
+      "level": 2,
+      "topic_id": "2.2",
+      "voiceover": "Учёный Фрэнк Олсон выпал из окна нью-йоркской гостиницы. Через девять дней после своей дозы.",
+      "duration_sec": 12.0,
+      "visual": {
+        "type": "stock_photo",
+        "search_query": "new york hotel window night vintage",
+        "ai_prompt": "Old New York hotel window at night with city lights, vintage 1950s aesthetic, dark mood, --ar 16:9",
+        "fallback_query": "new york hotel window"
+      },
+      "camera": {"movement": "dolly_in", "speed": "slow"},
+      "transition_out": "shadow_cut",
+      "mood": "climactic",
+      "modifiers": ["SHADOW"],
+      "sfx": [
+        {"type": "bass_drop", "trigger_word": "девять", "intensity": 0.8}
+      ],
+      "charts": [
+        {
+          "kind": "counter",
+          "trigger_word": "девять",
+          "duration_sec": 3.0,
+          "label": "ДНЕЙ ДО СМЕРТИ",
+          "counter_target": 9,
+          "counter_format": "int",
+          "counter_suffix": "",
+          "accent_color": "#ff5050"
+        }
+      ]
+    },
+    {
+      "id": "scene_026",
+      "section": "topic_2.2",
+      "level": 2,
+      "topic_id": "2.2",
+      "voiceover": "Документы рассекретили только в семьдесят пятом. Сын учёного всю жизнь считал это убийством.",
+      "duration_sec": 10.0,
+      "visual": {
+        "type": "archive",
+        "search_query": "classified document declassified stamp",
+        "ai_prompt": "Declassified document with TOP SECRET stamp redacted black bars, archival photograph, paper aged, --ar 16:9",
+        "fallback_query": "classified document"
+      },
+      "camera": {"movement": "parallax_left", "speed": "slow"},
+      "transition_out": "film_burn",
+      "mood": "tense",
+      "modifiers": ["SHADOW"],
+      "sfx": []
+    },
+    {
+      "id": "scene_027",
+      "section": "topic_2.3",
+      "level": 2,
+      "topic_id": "2.3",
+      "voiceover": "Hydnellum peckii. На севере Европы его зовут — кровавый зуб.",
+      "duration_sec": 8.0,
+      "visual": {
+        "type": "ai_image",
+        "search_query": "bleeding tooth fungus mushroom red",
+        "ai_prompt": "Hydnellum peckii bleeding tooth fungus mushroom with red blood-like droplets on white surface, macro horror nature, dark forest floor, --ar 16:9",
+        "fallback_query": "red liquid mushroom"
+      },
+      "camera": {"movement": "dolly_in", "speed": "slow"},
+      "transition_out": "default",
+      "mood": "tense",
+      "modifiers": ["SHADOW"],
+      "sfx": []
+    },
+    {
+      "id": "scene_028",
+      "section": "topic_2.3",
+      "level": 2,
+      "topic_id": "2.3",
+      "voiceover": "Из его шляпки сочится густая красная жидкость. Как настоящая кровь.",
+      "duration_sec": 8.0,
+      "visual": {
+        "type": "ai_image",
+        "search_query": "blood drop macro red liquid",
+        "ai_prompt": "Macro close up of red blood-like droplet on white mushroom surface, dramatic light, horror nature, --ar 16:9",
+        "fallback_query": "red drop macro"
+      },
+      "camera": {"movement": "dolly_in", "speed": "slow"},
+      "transition_out": "default",
+      "mood": "tense",
+      "modifiers": ["SHADOW"],
+      "sfx": []
+    },
+    {
+      "id": "scene_029",
+      "section": "topic_2.3",
+      "level": 2,
+      "topic_id": "2.3",
+      "voiceover": "Содержит атроментин — мощное вещество против тромбов. Современные лекарства основаны на нём.",
+      "duration_sec": 10.0,
+      "visual": {
+        "type": "stock_photo",
+        "search_query": "medicine pills laboratory dark",
+        "ai_prompt": "Pills and capsules on dark laboratory table, scientific aesthetic, low key dramatic lighting, --ar 16:9",
+        "fallback_query": "medicine pills"
+      },
+      "camera": {"movement": "parallax_right", "speed": "medium"},
+      "transition_out": "default",
+      "mood": "scientific",
+      "modifiers": ["SHADOW"],
+      "sfx": []
+    },
+    {
+      "id": "scene_030",
+      "section": "topic_2.3",
+      "level": 2,
+      "topic_id": "2.3",
+      "voiceover": "В народе же его зовут проклятым. Кто увидит в лесу — не возвращается тем же.",
+      "duration_sec": 10.0,
+      "visual": {
+        "type": "ai_image",
+        "search_query": "lone figure dark forest mist back",
+        "ai_prompt": "Lone hooded figure standing in dark misty forest, viewed from behind, ominous, folk horror aesthetic, --ar 16:9",
+        "fallback_query": "figure dark forest"
+      },
+      "camera": {"movement": "dolly_in", "speed": "slow"},
+      "transition_out": "shadow_cut",
+      "mood": "climactic",
+      "modifiers": ["SHADOW"],
+      "sfx": [
+        {"type": "bass_drop", "trigger_word": "проклятым", "intensity": 0.75}
+      ]
+    },
+    {
+      "id": "scene_031",
+      "section": "outro",
+      "level": 0,
+      "topic_id": null,
+      "voiceover": "Грибы пережили всё. Динозавров. Ледники. Падение метеоритов.",
+      "duration_sec": 8.0,
+      "visual": {
+        "type": "stock_photo",
+        "search_query": "earth space ancient",
+        "ai_prompt": "Earth from space ancient timeless, cosmic perspective, --ar 16:9",
+        "fallback_query": "earth space"
+      },
+      "camera": {"movement": "dolly_in", "speed": "slow"},
+      "transition_out": "default",
+      "mood": "mystical",
+      "sfx": [],
+      "media_burst": {
+        "trigger_word": "Динозавров",
+        "items": [
+          {"keyword": "dinosaur extinction asteroid"},
+          {"keyword": "ice age glacier"},
+          {"keyword": "asteroid impact earth"}
+        ],
+        "item_duration_sec": 1.0,
+        "sfx_between": "camera_click"
+      }
+    },
+    {
+      "id": "scene_032",
+      "section": "outro",
+      "level": 0,
+      "topic_id": null,
+      "voiceover": "Они старше нас на миллиарды лет. И когда мы исчезнем — они будут здесь.",
+      "duration_sec": 9.0,
+      "visual": {
+        "type": "stock_photo",
+        "search_query": "mushroom mycelium ancient",
+        "ai_prompt": "Ancient mycelium spreading in dark earth, timeless underground network, --ar 16:9",
+        "fallback_query": "mycelium underground"
+      },
+      "camera": {"movement": "parallax_left", "speed": "slow"},
+      "transition_out": "default",
+      "mood": "mystical",
+      "sfx": []
+    },
+    {
+      "id": "scene_033",
+      "section": "outro",
+      "level": 0,
+      "topic_id": null,
+      "voiceover": "В темноте под нашими ногами. Прорастая через бетон. Через кости. И ждать.",
+      "duration_sec": 11.0,
+      "visual": {
+        "type": "ai_image",
+        "search_query": "mushroom growing through concrete crack",
+        "ai_prompt": "Mushroom growing through cracked urban concrete pavement, post apocalyptic feeling, dark moody, slow takeover, --ar 16:9",
+        "fallback_query": "mushroom concrete"
+      },
+      "camera": {"movement": "dolly_out", "speed": "slow"},
+      "transition_out": "shadow_cut",
+      "mood": "climactic",
+      "sfx": [
+        {"type": "bass_drop", "trigger_word": "ждать", "intensity": 0.9}
+      ]
+    }
+  ]
+}
