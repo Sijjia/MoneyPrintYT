@@ -384,6 +384,24 @@ def main() -> int:
         except Exception as ex:
             log(f"[8.5] archive skipped: {ex}")
 
+    # [8.6] динамические оверлеи (StatPop/NameLabel/KineticPhrase). Требуют заранее
+    # отрендеренный overlays_rendered.json (tests/detect_overlays.py + render_overlays.py).
+    if MINI_LIMIT_LEVEL >= 0:
+        log("[8.6] dynamic overlays SKIPPED (mini)")
+    else:
+        try:
+            import json as _json
+            man = PROJECT_DIR / "overlays_rendered.json"
+            if man.exists():
+                from services.premiere.overlay_placer import place_overlays
+                ovs = _json.loads(man.read_text(encoding="utf-8")).get("overlays", [])
+                n_ov = place_overlays(seq, ovs, PROJECT_DIR)
+                log(f"[8.6] dynamic overlays: {n_ov}")
+            else:
+                log("[8.6] overlays_rendered.json нет — оверлеи пропущены")
+        except Exception as ex:
+            log(f"[8.6] overlays skipped: {ex}")
+
     log("[9] save")
     save_project()
     log(f"DONE — {COPY_PRPROJ.name} собран, играй с начала.")
