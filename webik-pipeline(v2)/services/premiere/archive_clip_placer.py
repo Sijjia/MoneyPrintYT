@@ -52,6 +52,31 @@ def _pick_cutaway_track_idx(sequence, preferred: Optional[int]) -> int:
     return n - 1
 
 
+def _lower_track_clips(sequence, cutaway_idx: int):
+    """Снимок (name, start, end) всех клипов на дорожках НИЖЕ накладочной.
+
+    Читаем один раз, чтобы дедуп ниже не гонял pymiere по round-trip на каждый
+    клип каждого джоба.
+    """
+    snapshot = []
+    for i in range(cutaway_idx):
+        for c in sequence.videoTracks[i].clips:
+            snapshot.append((c.name, c.start.seconds, c.end.seconds))
+    return snapshot
+
+
+def _is_body_duplicate(lower_clips, name: str, start: float) -> bool:
+    """True, если тот же файл уже лежит телом (нижняя дорожка) в этот момент.
+
+    Тогда накладка = точный дубль тела и смысла не имеет — пропускаем.
+    """
+    probe = start + 0.05
+    for nm, s, e in lower_clips:
+        if nm == name and s <= probe < e:
+            return True
+    return False
+
+
 def place_archive_clips(
     sequence,
     manifest: Dict[str, dict],
@@ -94,11 +119,15 @@ def place_archive_clips(
     track = sequence.videoTracks[idx]
     log.info(f"Укладываю {len(jobs)} архив-клип(ов) на V{idx + 1} (cutaway)")
 
+    # снимок тела (нижних дорожек) для дедупа накладок-дублей
+    lower_clips = _lower_track_clips(sequence, idx)
+
     # импорт всех клипов одним пакетом
     imported = import_files([j[3] for j in jobs])
     by_name = {it.name: it for it in imported}
 
     placed = 0
+    skipped_dup = 0
     for sid, mani, timing, clip_path in jobs:
         item = by_name.get(clip_path.name) or by_name.get(clip_path.stem)
         if item is None:
@@ -108,6 +137,16 @@ def place_archive_clips(
         start = float(timing["start"])
         scene_len = max(0.5, float(timing["end"]) - start)
         target_len = min(scene_len, max_clip_sec)
+
+        # дедуп: если тот же файл уже лежит телом (V3) в этот момент — накладка
+        # была бы точным дублем самого себя, пропускаем.
+        if _is_body_duplicate(lower_clips, clip_path.name, start):
+            skipped_dup += 1
+            log.info(
+                f"  {sid}: '{clip_path.name}' уже в теле на {start:.2f}s — "
+                f"накладка пропущена (дубль)"
+            )
+            continue
 
         try:
             track.overwriteClip(item, time_from_seconds(start))
@@ -144,4 +183,9 @@ def place_archive_clips(
             f"@{start:.2f}s len={target_len:.2f}s ({clip_path.name})"
         )
 
+    if skipped_dup:
+        log.info(
+            f"Накладок пропущено как дубли тела: {skipped_dup} "
+            f"(тот же файл уже на нижней дорожке)"
+        )
     return placed
