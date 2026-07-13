@@ -1,12 +1,21 @@
 """
 services/overlays/detector.py
-LLM-детектор моментов для динамических оверлеев (StatPop / NameLabel / KineticPhrase).
+LLM-детектор моментов для динамических оверлеев.
 
 Сканит voiceover'ы сцен (scenes.json) + тайминги (alignment.json), просит дешёвую
-LLM выбрать ТОЛЬКО сильные моменты и классифицировать их в один из трёх типов
-графики. Затем жёстко ограничивает плотность (макс на уровень + мин. зазор), чтобы
-не перегружать ролик. Результат — overlays.json, который потом рендерит рендер-мост
-и раскладывает Premiere-placer.
+LLM выбрать ТОЛЬКО сильные моменты, классифицировать их в подходящий ТИП графики
+и дать якорь для точного тайминга. Затем привязывает оверлей к моменту речи
+(fuzzy по пословному alignment) и жёстко ограничивает плотность (макс на уровень +
+мин. зазор), чтобы не перегружать ролик. Результат — overlays.json.
+
+Типы → композиции Remotion:
+  stat     → StatPop          одиночное ударное число
+  percent  → DonutProportion  процент/доля
+  ratio    → Pictograph       «X из Y» (фигурки)
+  compare  → BarCompare       сравнение 2–4 величин (только реальные числа!)
+  name     → NameLabel        человек/место/культ (нижний третий)
+  phrase   → KineticPhrase    короткая хлёсткая фраза
+  evidence → EvidenceFrame    закадр ссылается на показанные кадры/фото/запись
 
 Ключевой принцип (Айдар): графика НЕ на каждом шагу — только на реально ударных
 точках, с воздухом между ними.
@@ -26,13 +35,37 @@ log = setup_logger("overlay_detector")
 DETECT_MODEL = "google/gemini-2.5-flash"
 
 # Длительность оверлея по типу (сек).
-DUR = {"stat": 3.7, "name": 3.7, "phrase": 4.0}
+DUR = {
+    "stat": 3.7,
+    "percent": 3.7,
+    "ratio": 3.7,
+    "compare": 4.5,
+    "name": 3.7,
+    "phrase": 4.0,
+    "evidence": 3.5,
+}
 
 # Композиция Remotion по типу.
-COMPOSITION = {"stat": "StatPop", "name": "NameLabel", "phrase": "KineticPhrase"}
+COMPOSITION = {
+    "stat": "StatPop",
+    "percent": "DonutProportion",
+    "ratio": "Pictograph",
+    "compare": "BarCompare",
+    "name": "NameLabel",
+    "phrase": "KineticPhrase",
+    "evidence": "EvidenceFrame",
+}
 
-# Небольшая задержка появления после старта сцены.
+# Небольшая задержка появления после старта сцены (fallback, если якорь не нашёлся).
 START_OFFSET = 0.3
+
+
+def _num(x: Any, default: Optional[float] = None) -> Optional[float]:
+    """Достаёт число из int/float/строки ('75 000', '87%')."""
+    if isinstance(x, (int, float)):
+        return float(x)
+    m = re.search(r"-?\d[\d\s]*", str(x or ""))
+    return float(m.group().replace(" ", "")) if m else default
 
 
 def _scene_rows(scenes: List[dict], alignment: dict) -> List[dict]:
@@ -49,7 +82,6 @@ def _scene_rows(scenes: List[dict], alignment: dict) -> List[dict]:
         end = a.get("end")
         if start in (None, 0.0) or end in (None, 0.0) or end <= start:
             continue
-        # плашки уровней/тем не трогаем — на них своя графика, не оверлеи
         vtype = (s.get("visual") or {}).get("type", "")
         if vtype in ("level_card", "topic_card"):
             continue
@@ -68,37 +100,50 @@ SYSTEM = (
     "в тёмном формате «айсберг» про религиозный террор и культы. Твоя задача — выбрать "
     "в закадровом тексте ТОЛЬКО самые ударные моменты и усилить их анимированной "
     "графикой поверх кадра. Будь скупым: большинство сцен НЕ получают ничего. Перегруз "
-    "графикой выглядит дёшево."
+    "графикой выглядит дёшево. Для каждого момента выбери НАИБОЛЕЕ ПОДХОДЯЩИЙ тип."
 )
 
 
 def _build_prompt(rows: List[dict], max_per_level: int) -> str:
     lines = [
-        "Ниже — сцены закадра (id + текст). Выбери сильные моменты и классифицируй в один",
-        "из ТРЁХ типов графики:",
+        "Ниже — сцены закадра (id + текст). Выбери сильные моменты и подбери каждому",
+        "ПОДХОДЯЩИЙ тип графики:",
         "",
-        '1. "stat" — одна яркая ЦИФРА, прозвучавшая в тексте (число жертв, год, количество,',
-        '   процент, сумма). Поля: value (только цифры, можно с разделителями), label',
-        "   (≤4 слова — что считаем), suffix (опц. \"%\", \"+\").",
-        '2. "name" — ключевой ЧЕЛОВЕК, МЕСТО или КУЛЬТ, который стоит подписать. Поля:',
-        "   name (≤3 слова), sub (опц.: страна · год / роль, ≤3 слова).",
-        '3. "phrase" — КОРОТКАЯ хлёсткая фраза (3–6 слов) из текста или плотно его',
-        "   передающая, на драматичной точке. Поля: phrase (3–6 слов), highlight (массив",
-        "   индексов слов для акцента, с 0, 0–2 слова).",
+        '• "stat" — одно ударное ЧИСЛО (жертвы, год, сумма, количество).',
+        "     value = ПОЛНОЕ число цифрами («7 000 000», не «7»; «75 000», не «75»).",
+        "     НЕ сокращай словами (никаких «млн/тыс» в value). label (≤4 слова).",
+        '     suffix — ТОЛЬКО символ: «%», «₽», «$». «+» добавляй лишь если в тексте',
+        "     «более/свыше/около/до».",
+        '• "percent" — ПРОЦЕНТ/доля («87% не вернулись»).',
+        "     поля: percent (0–100), label (≤4 слова).",
+        '• "ratio" — соотношение «X из Y» (X,Y небольшие, Y≤20).',
+        "     поля: filled (X), total (Y), label (≤4 слова).",
+        '• "compare" — СРАВНЕНИЕ 2–4 величин. ТОЛЬКО если в тексте реально названо',
+        "     несколько сопоставимых чисел — НЕ выдумывай значения.",
+        "     поля: title (≤4 слова), items:[{label,value}, ...] (2–4 шт).",
+        '• "name" — ключевой ЧЕЛОВЕК/МЕСТО/КУЛЬТ. поля: name (≤3 слова), sub (опц.',
+        "     страна · год / роль, ≤3 слова).",
+        '• "phrase" — КОРОТКАЯ хлёсткая фраза (3–6 слов). поля: phrase, highlight',
+        "     (индексы 0–2 слов для акцента).",
+        '• "evidence" — закадр ССЫЛАЕТСЯ на показанные кадры/фото/запись («на этих',
+        "     кадрах видно…», «сохранилась запись», «на этом фото»). поля: label",
+        "     (напр. «АРХИВ»/«ФОТО»/«ЗАПИСЬ»), sub (опц. год · место).",
         "",
-        "ВАЖНО — ЯКОРЬ ТАЙМИНГА:",
-        '- Для КАЖДОГО оверлея добавь поле "anchor" — 2–5 слов, скопированных ДОСЛОВНО',
-        "  из текста этой сцены, ровно в том месте, где произносится это число/имя/факт.",
-        "  По ним я привяжу оверлей к точному моменту речи. Копируй буквально как в тексте",
-        '  (напр. для «307» anchor = "трёхсот семи человек"; для имени — само имя как в тексте).',
+        "ЯКОРЬ ТАЙМИНГА (обязательно для каждого):",
+        '• "anchor" — 2–5 слов, скопированных ДОСЛОВНО из текста сцены, ровно там, где',
+        "     звучит этот факт. По ним привяжу оверлей к точному моменту речи.",
+        '     (напр. для «307» anchor = "около 307 человек").',
         "",
         "ПРАВИЛА:",
         f"- Примерно 2–{max_per_level} оверлея на уровень, хорошо разнесённые по времени.",
         "- Не ставь графику на соседние сцены — оставляй воздух.",
         "- Ссылайся на существующий scene_id из списка.",
-        "- value/name/phrase должны быть ВЕРНЫ содержанию этой сцены — не выдумывай факты.",
-        "- Разнообразь типы (не только цифры).",
-        '- Ответ — СТРОГО JSON: {"overlays":[{"scene_id","type","anchor", ...поля}]}. Без пояснений.',
+        "- Значения ВЕРНЫ содержанию сцены — не выдумывай факты и числа.",
+        "- БАЛАНС ТИПОВ: не делай уровень из одинаковых типов. Не более 1 «name» на",
+        "  уровень; ключевые имена оставляй, но остальное — числа/сравнения/фразы.",
+        "- Где в тексте есть проценты/доли — бери percent; «X из Y» — ratio; пара",
+        "  сопоставимых чисел — compare. Ищи их активно, но не выдумывай.",
+        '- Ответ — СТРОГО JSON: {"overlays":[{"scene_id","type","anchor", ...поля}]}.',
         "",
         "СЦЕНЫ:",
     ]
@@ -112,15 +157,11 @@ def _norm_tokens(s: str) -> List[str]:
 
 
 def _resolve_start(
-    anchor: str,
-    words: List[dict],
-    win_start: float,
-    win_end: float,
-    fallback: float,
+    anchor: str, words: List[dict], win_start: float, win_end: float, fallback: float
 ) -> float:
     """Точный момент по якорю: fuzzy-ищем слова anchor среди whisper-слов в окне
-    сцены (±1с). Возвращаем старт лучшего совпадения (чуть раньше — появиться к
-    слову). Если совпадение слабое — fallback (старт сцены)."""
+    сцены (±1с). Возвращаем старт лучшего совпадения (чуть раньше). Слабое
+    совпадение → fallback (старт сцены)."""
     toks = _norm_tokens(anchor)
     if not toks or not words:
         return fallback
@@ -147,9 +188,9 @@ def _enforce_density(
     words: List[dict],
     max_per_level: int,
     min_gap_sec: float,
+    type_caps: Dict[str, int],
 ) -> List[dict]:
-    """Резолвим точный тайминг по якорю, затем лимит плотности: сортируем по
-    времени, жадно оставляем с зазором, капим на уровень."""
+    """Резолвим точный тайминг по якорю, затем лимит плотности + кэпы по типам."""
     valid = []
     for c in cues:
         sid = c.get("scene_id")
@@ -160,9 +201,7 @@ def _enforce_density(
             continue
         c = dict(c)
         fallback = row["start"] + START_OFFSET
-        c["_start"] = _resolve_start(
-            c.get("anchor", ""), words, row["start"], row["end"], fallback
-        )
+        c["_start"] = _resolve_start(c.get("anchor", ""), words, row["start"], row["end"], fallback)
         c["_level"] = row["level"]
         valid.append(c)
 
@@ -170,17 +209,78 @@ def _enforce_density(
 
     accepted: List[dict] = []
     per_level: Dict[int, int] = {}
+    per_level_type: Dict[tuple, int] = {}
     last_start = -1e9
     for c in valid:
         if c["_start"] - last_start < min_gap_sec:
             continue
-        lvl = c["_level"]
+        lvl, typ = c["_level"], c["type"]
         if per_level.get(lvl, 0) >= max_per_level:
+            continue
+        # мягкий кэп по типу на уровень — держим баланс (имя ≤1, stat ≤2 и т.п.)
+        cap = type_caps.get(typ)
+        if cap is not None and per_level_type.get((lvl, typ), 0) >= cap:
             continue
         accepted.append(c)
         per_level[lvl] = per_level.get(lvl, 0) + 1
+        per_level_type[(lvl, typ)] = per_level_type.get((lvl, typ), 0) + 1
         last_start = c["_start"]
     return accepted
+
+
+def _build_props(c: dict) -> Optional[Dict[str, Any]]:
+    """Строит props под нужный компонент. None → куль невалиден, пропустить."""
+    typ = c["type"]
+    if typ == "stat":
+        value = str(c.get("value", "")).strip()
+        suffix = str(c.get("suffix", "")).strip()
+        if value and value[-1] in "+%" and not suffix:
+            suffix, value = value[-1], value[:-1].strip()
+        if not value:
+            return None
+        return {"value": value, "label": c.get("label", ""), "suffix": suffix}
+
+    if typ == "percent":
+        p = _num(c.get("percent"))
+        if p is None:
+            return None
+        return {"percent": max(0.0, min(100.0, p)), "label": c.get("label", "")}
+
+    if typ == "ratio":
+        fil, tot = _num(c.get("filled")), _num(c.get("total"))
+        if not fil or not tot or tot <= 0:
+            return None
+        return {"filled": int(fil), "total": int(tot), "label": c.get("label", "")}
+
+    if typ == "compare":
+        items = []
+        for it in c.get("items") or []:
+            v = _num(it.get("value"))
+            if v is not None and it.get("label"):
+                items.append({"label": str(it["label"]), "value": v})
+        if len(items) < 2:
+            return None
+        return {"title": c.get("title", ""), "items": items[:4]}
+
+    if typ == "name":
+        if not c.get("name"):
+            return None
+        return {"name": c.get("name", ""), "sub": c.get("sub", "")}
+
+    if typ == "phrase":
+        phrase = c.get("phrase", "")
+        if not phrase:
+            return None
+        hl = [int(x) for x in (c.get("highlight") or []) if isinstance(x, (int, float))]
+        nw = len(phrase.split())
+        if len(hl) > 2 or (nw and len(hl) >= nw):
+            hl = hl[:2]
+        return {"phrase": phrase, "highlight": hl}
+
+    if typ == "evidence":
+        return {"label": (c.get("label") or "АРХИВ"), "sub": c.get("sub", "")}
+
+    return None
 
 
 def detect_overlays(
@@ -189,9 +289,15 @@ def detect_overlays(
     *,
     max_per_level: int = 4,
     min_gap_sec: float = 12.0,
+    type_caps: Optional[Dict[str, int]] = None,
     model: str = DETECT_MODEL,
 ) -> Dict[str, Any]:
-    """Главный вход. Возвращает {"overlays": [...]} готовый к рендеру."""
+    """Главный вход. Возвращает {"overlays": [...]} готовый к рендеру.
+
+    type_caps — мягкий лимит на тип в пределах уровня (баланс микса).
+    """
+    if type_caps is None:
+        type_caps = {"name": 1, "stat": 2}
     rows = _scene_rows(scenes, alignment)
     if not rows:
         log.warning("Нет пригодных сцен для детекции оверлеев")
@@ -210,42 +316,29 @@ def detect_overlays(
     log.info(f"LLM предложил {len(raw)} кулей, привязываю тайминг + лимит плотности...")
 
     words = alignment.get("words", []) or []
-    accepted = _enforce_density(raw, rows_by_id, words, max_per_level, min_gap_sec)
+    accepted = _enforce_density(
+        raw, rows_by_id, words, max_per_level, min_gap_sec, type_caps
+    )
 
     overlays = []
-    for i, c in enumerate(accepted, 1):
+    by_type: Dict[str, int] = {}
+    for c in accepted:
+        props = _build_props(c)
+        if props is None:
+            log.warning(f"  {c['scene_id']} [{c['type']}]: невалидные поля — пропуск")
+            continue
         typ = c["type"]
-        ov = {
-            "id": f"ov_{i:03d}",
+        overlays.append({
+            "id": f"ov_{len(overlays) + 1:03d}",
             "type": typ,
             "composition": COMPOSITION[typ],
             "scene_id": c["scene_id"],
             "anchor": c.get("anchor", ""),
             "start": round(c["_start"], 2),
             "duration_sec": DUR[typ],
-        }
-        if typ == "stat":
-            value = str(c.get("value", "")).strip()
-            suffix = str(c.get("suffix", "")).strip()
-            # хвостовой + или % переносим в suffix, чтобы счётчик их не съел
-            if value and value[-1] in "+%" and not suffix:
-                suffix = value[-1]
-                value = value[:-1].strip()
-            ov["props"] = {"value": value, "label": c.get("label", ""), "suffix": suffix}
-        elif typ == "name":
-            ov["props"] = {"name": c.get("name", ""), "sub": c.get("sub", "")}
-        else:  # phrase
-            # акцент максимум на 2 словах — иначе теряется смысл хайлайта
-            hl = [int(x) for x in (c.get("highlight") or []) if isinstance(x, (int, float))]
-            phrase = c.get("phrase", "")
-            n_words = len(phrase.split())
-            if len(hl) > 2 or (n_words and len(hl) >= n_words):
-                hl = hl[:2]
-            ov["props"] = {"phrase": phrase, "highlight": hl}
-        overlays.append(ov)
+            "props": props,
+        })
+        by_type[typ] = by_type.get(typ, 0) + 1
 
-    by_level: Dict[int, int] = {}
-    for c in accepted:
-        by_level[c["_level"]] = by_level.get(c["_level"], 0) + 1
-    log.info(f"Принято {len(overlays)} оверлеев. По уровням: {dict(sorted(by_level.items()))}")
+    log.info(f"Принято {len(overlays)} оверлеев. По типам: {dict(sorted(by_type.items()))}")
     return {"overlays": overlays, "model": model, "n_scenes": len(rows)}
