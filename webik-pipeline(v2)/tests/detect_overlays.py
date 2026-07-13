@@ -16,7 +16,13 @@ PROJECT = Path("projects/2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-
 def main():
     scenes = json.loads((PROJECT / "scenes.json").read_text(encoding="utf-8"))["scenes"]
     alignment = json.loads((PROJECT / "assets" / "alignment.json").read_text(encoding="utf-8"))
-    result = detect_overlays(scenes, alignment, max_per_level=4, min_gap_sec=12.0)
+    result = detect_overlays(
+        scenes,
+        alignment,
+        max_per_level=6,
+        min_gap_sec=9.0,
+        type_caps={"name": 1, "stat": 3},
+    )
 
     out = PROJECT / "overlays.json"
     out.write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
