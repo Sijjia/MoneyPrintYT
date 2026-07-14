@@ -326,7 +326,8 @@ def detect_overlays(
     log.info(f"Детектирую оверлеи по {len(rows)} сценам (model={model})...")
     llm = ClaudeService(model=model)
     prompt = _build_prompt(rows, max_per_level)
-    data = llm.call_json(prompt, max_tokens=8000, temperature=0.4, system=SYSTEM)
+    # низкая температура — стабильный набор между прогонами (меньше «пропаданий»)
+    data = llm.call_json(prompt, max_tokens=8000, temperature=0.15, system=SYSTEM)
 
     raw = data.get("overlays", data) if isinstance(data, dict) else data
     if not isinstance(raw, list):
