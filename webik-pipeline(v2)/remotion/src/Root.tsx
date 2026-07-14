@@ -253,6 +253,11 @@ export const RemotionRoot: React.FC = () => {
         fps={30}
         width={W}
         height={H}
+        calculateMetadata={({ props }: any) => {
+          const shots = (props?.shots || []) as Array<{ move: number; hold: number }>;
+          const total = shots.reduce((a, s) => a + (s.move || 0) + (s.hold || 0), 0) + 24;
+          return { durationInFrames: Math.max(60, total) };
+        }}
         defaultProps={{
           bgImage: "preview_bg2.jpg" as string | null,
           blocks: [

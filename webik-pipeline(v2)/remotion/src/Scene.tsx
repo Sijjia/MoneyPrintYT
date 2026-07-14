@@ -24,12 +24,15 @@ export type SceneBlock = {
   sub?: string;
 };
 
-// Остановка камеры: на какой блок смотрим, зум, сколько кадров едем и держим.
+// Остановка камеры: на какой блок смотрим, зум, вращения (облёт/наклон),
+// сколько кадров едем и держим.
 export type SceneShot = {
   focus: string; // id блока
   zoom: number;
   move: number; // кадров на переезд к этой остановке
   hold: number; // кадров выдержки
+  rotY?: number; // облёт по горизонтали (deg)
+  rotX?: number; // наклон по вертикали (deg)
 };
 
 export type SceneProps = {
@@ -122,6 +125,39 @@ const BlockView: React.FC<{
   );
 };
 
+// Плавающая пыль — «живность» атмосферы (детерминированно по индексу).
+const Particles: React.FC<{ accent: string; frame: number }> = ({ accent, frame }) => {
+  const N = 44;
+  return (
+    <AbsoluteFill style={{ pointerEvents: "none" }}>
+      {Array.from({ length: N }).map((_, i) => {
+        const bx = (i * 137) % 100;
+        const speed = 0.14 + (i % 6) * 0.04;
+        const yBase = (i * 61) % 120;
+        const y = ((yBase - frame * speed) % 120 + 120) % 120;
+        const size = 2 + (i % 4);
+        const tw = 0.3 + 0.35 * (0.5 + 0.5 * Math.sin(frame / 22 + i));
+        return (
+          <div
+            key={i}
+            style={{
+              position: "absolute",
+              left: `${bx}%`,
+              top: `${y - 10}%`,
+              width: size,
+              height: size,
+              borderRadius: "50%",
+              background: i % 5 === 0 ? accent : "#ffffff",
+              opacity: tw * 0.4,
+              filter: "blur(0.6px)",
+            }}
+          />
+        );
+      })}
+    </AbsoluteFill>
+  );
+};
+
 // Обобщённая кино-сцена: камера ведёт зрителя по блокам согласно shots.
 // Длительность = сумма (move+hold) + хвост (задаётся durationInFrames).
 export const Scene: React.FC<SceneProps> = ({
@@ -162,14 +198,23 @@ export const Scene: React.FC<SceneProps> = ({
   const camX = lerp(pf.x, cf.x, p);
   const camY = lerp(pf.y, cf.y, p);
   const zoom = lerp(prev.zoom, cur.zoom, p);
+  const rotY = lerp(prev.rotY || 0, cur.rotY || 0, p);
+  const rotX = lerp(prev.rotX || 0, cur.rotX || 0, p);
 
-  const tx = 960 - camX * zoom + Math.cos(frame / 52) * 7;
-  const ty = 540 - camY * zoom + Math.sin(frame / 44) * 6;
+  // непрерывный микро-дрейф — камера всегда «дышит»
+  const driftX = Math.cos(frame / 52) * 7;
+  const driftY = Math.sin(frame / 44) * 6;
+  // вращение вокруг ТОЧКИ ФОКУСА: сдвигаем фокус в ноль → крутим/зумим → в центр экрана
+  const worldTransform =
+    `translate(${960 + driftX}px, ${540 + driftY}px) ` +
+    `rotateX(${rotX}deg) rotateY(${rotY}deg) scale(${zoom}) ` +
+    `translate(${-camX}px, ${-camY}px)`;
 
-  // кадр появления блока = старт первой остановки, что на него смотрит
+  // кадр появления блока = ПРИЕЗД камеры (moveEnd) на первую остановку, что на
+  // него смотрит — так раскрытие синхронно с речью.
   const revealOf = (id: string) => {
     const w = wins.find((x) => x.focus === id);
-    return w ? w.start : 0;
+    return w ? w.moveEnd : 0;
   };
 
   const bgScale = interpolate(frame, [0, durationInFrames], [1.32, 1.14]);
@@ -193,7 +238,7 @@ export const Scene: React.FC<SceneProps> = ({
             left: 0,
             top: 0,
             transformStyle: "preserve-3d",
-            transform: `translate(${tx}px, ${ty}px) scale(${zoom})`,
+            transform: worldTransform,
             transformOrigin: "0 0",
           }}
         >
@@ -202,6 +247,8 @@ export const Scene: React.FC<SceneProps> = ({
           ))}
         </div>
       </AbsoluteFill>
+
+      <Particles accent={accent} frame={frame} />
     </AbsoluteFill>
   );
 };
