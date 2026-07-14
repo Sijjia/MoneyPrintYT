@@ -19,8 +19,10 @@ def main():
     data = json.loads((PROJECT / "overlays.json").read_text(encoding="utf-8"))
     overlays = data["overlays"]
 
-    # пер-видео тема (авто по имени проекта; можно перебить override="Амбер")
-    theme = pick_theme(PROJECT.name)
+    # пер-видео тема (авто по имени проекта; файл .overlay_theme перебивает вручную)
+    ovr_file = PROJECT / ".overlay_theme"
+    override = ovr_file.read_text(encoding="utf-8").strip() if ovr_file.exists() else None
+    theme = pick_theme(PROJECT.name, override=override)
     apply_theme(overlays, theme)
     print(f"тема проекта: {theme['name']} ({theme['accent']}), align={theme['align']}")
 

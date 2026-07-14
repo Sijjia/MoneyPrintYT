@@ -42,6 +42,8 @@ DUR = {
     "compare": 4.5,
     "timeline": 5.0,
     "map": 5.0,
+    "quote": 4.5,
+    "spotlight": 3.5,
     "name": 3.7,
     "phrase": 4.0,
     "evidence": 3.5,
@@ -56,6 +58,8 @@ COMPOSITION = {
     "compare": "BarCompare",
     "timeline": "Timeline",
     "map": "MapPins",
+    "quote": "QuoteCard",
+    "spotlight": "Spotlight",
     "name": "NameLabel",
     "phrase": "KineticPhrase",
     "evidence": "EvidenceFrame",
@@ -141,6 +145,11 @@ def _build_prompt(rows: List[dict], max_per_level: int) -> str:
         '• "evidence" — закадр ССЫЛАЕТСЯ на показанные кадры/фото/запись («на этих',
         "     кадрах видно…», «сохранилась запись», «на этом фото»). поля: label",
         "     (напр. «АРХИВ»/«ФОТО»/«ЗАПИСЬ»), sub (опц. год · место).",
+        '• "quote" — ТОЛЬКО если в тексте есть ПРЯМАЯ цитата/высказывание конкретного',
+        "     человека («он заявил…», «называл себя…», прямая речь). поля: text",
+        "     (сама цитата, ≤10 слов), author (кто сказал).",
+        '• "spotlight" — ТОЛЬКО если закадр ПРЯМО просит присмотреться к кадру',
+        "     («обратите внимание», «посмотрите», «вот здесь»). поля: label (≤3 слова).",
         "",
         "ЯКОРЬ ТАЙМИНГА (обязательно для каждого):",
         '• "anchor" — 2–5 слов, скопированных ДОСЛОВНО из текста сцены, ровно там, где',
@@ -148,6 +157,10 @@ def _build_prompt(rows: List[dict], max_per_level: int) -> str:
         '     (напр. для «307» anchor = "около 307 человек").',
         "",
         "ПРАВИЛА:",
+        "- УМЕСТНОСТЬ ПРЕВЫШЕ ВСЕГО: тип бери ТОЛЬКО если сцена реально ему",
+        "  соответствует. Лучше не ставить оверлей, чем поставить неподходящий или",
+        "  с выдуманными данными. Никогда не притягивай quote/spotlight/map/timeline",
+        "  за уши — только когда условие типа явно выполнено.",
         f"- Примерно 2–{max_per_level} оверлея на уровень, хорошо разнесённые по времени.",
         "- Не ставь графику на соседние сцены — оставляй воздух.",
         "- Ссылайся на существующий scene_id из списка.",
@@ -297,6 +310,16 @@ def _build_props(c: dict) -> Optional[Dict[str, Any]]:
         if len(places) < 2:
             return None
         return {"title": c.get("title", ""), "places": places[:6]}
+
+    if typ == "quote":
+        text = str(c.get("text", "")).strip()
+        if len(text.split()) < 2:
+            return None
+        return {"text": text, "author": c.get("author", "")}
+
+    if typ == "spotlight":
+        label = str(c.get("label", "")).strip()
+        return {"label": label, "x": _num(c.get("x"), 50), "y": _num(c.get("y"), 48)}
 
     if typ == "name":
         if not c.get("name"):

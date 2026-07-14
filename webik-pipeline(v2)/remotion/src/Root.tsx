@@ -9,6 +9,8 @@ import { Pictograph } from "./Pictograph";
 import { DonutProportion } from "./DonutProportion";
 import { Timeline } from "./Timeline";
 import { MapPins } from "./MapPins";
+import { QuoteCard } from "./QuoteCard";
+import { Spotlight } from "./Spotlight";
 
 const W = 1920;
 const H = 1080;
@@ -178,6 +180,35 @@ export const RemotionRoot: React.FC = () => {
             { label: "Кадуна", lat: 10.5, lon: 7.4 },
           ],
           bgImage: null as string | null,
+        }}
+      />
+
+      <Composition
+        id="QuoteCard"
+        component={QuoteCard}
+        durationInFrames={140}
+        fps={30}
+        width={W}
+        height={H}
+        defaultProps={{
+          text: "Я — реинкарнация Иисуса Христа",
+          author: "Анна Хэмилтон-Бирн",
+          bgImage: "preview_bg2.jpg" as string | null,
+        }}
+      />
+
+      <Composition
+        id="Spotlight"
+        component={Spotlight}
+        durationInFrames={120}
+        fps={30}
+        width={W}
+        height={H}
+        defaultProps={{
+          label: "Обратите внимание",
+          x: 50,
+          y: 48,
+          bgImage: "preview_bg3.jpg" as string | null,
         }}
       />
     </>
