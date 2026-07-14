@@ -8,6 +8,7 @@ import { BarCompare } from "./BarCompare";
 import { Pictograph } from "./Pictograph";
 import { DonutProportion } from "./DonutProportion";
 import { Timeline } from "./Timeline";
+import { MapPins } from "./MapPins";
 
 const W = 1920;
 const H = 1080;
@@ -157,6 +158,26 @@ export const RemotionRoot: React.FC = () => {
             { year: "2000", label: "Уганда" },
           ],
           bgImage: "preview_bg2.jpg" as string | null,
+        }}
+      />
+
+      <Composition
+        id="MapPins"
+        component={MapPins}
+        durationInFrames={160}
+        fps={30}
+        width={W}
+        height={H}
+        defaultProps={{
+          title: "География культов",
+          places: [
+            { label: "Джонстаун", lat: 4.9, lon: -58.9 },
+            { label: "Колония Дигнидад", lat: -36.4, lon: -71.9 },
+            { label: "Шакахола", lat: -3.0, lon: 39.9 },
+            { label: "Уэйко", lat: 31.5, lon: -97.2 },
+            { label: "Кадуна", lat: 10.5, lon: 7.4 },
+          ],
+          bgImage: null as string | null,
         }}
       />
     </>

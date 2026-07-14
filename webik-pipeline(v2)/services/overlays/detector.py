@@ -41,6 +41,7 @@ DUR = {
     "ratio": 3.7,
     "compare": 4.5,
     "timeline": 5.0,
+    "map": 5.0,
     "name": 3.7,
     "phrase": 4.0,
     "evidence": 3.5,
@@ -54,6 +55,7 @@ COMPOSITION = {
     "ratio": "Pictograph",
     "compare": "BarCompare",
     "timeline": "Timeline",
+    "map": "MapPins",
     "name": "NameLabel",
     "phrase": "KineticPhrase",
     "evidence": "EvidenceFrame",
@@ -127,6 +129,10 @@ def _build_prompt(rows: List[dict], max_per_level: int) -> str:
         '• "timeline" — ХРОНОЛОГИЯ: 2–5 событий с годами (если в тексте перечислены',
         "     годы/даты событий). поля: title (≤4 слова), events:[{year,label}] —",
         "     label ≤2 слова. Годы и события — только реальные из текста.",
+        '• "map" — КАРТА С ПИНАМИ: 2–6 географических мест (если в тексте',
+        "     перечислены СТРАНЫ/ГОРОДА событий). поля: title (≤4 слова),",
+        "     places:[{label, lat, lon}] — lat/lon реальные координаты места",
+        "     (широта -90..90, долгота -180..180). Только реальные места из текста.",
         '• "name" — ключевой ЧЕЛОВЕК/МЕСТО/КУЛЬТ. name = ПОЛНОЕ имя (имя+фамилия)',
         "     или официальное название; НЕ клички/прозвища/одиночные разговорные",
         "     имена (не «Кузя» — а «Пётр Кузнецов»). sub (опц. страна · год / роль).",
@@ -280,6 +286,17 @@ def _build_props(c: dict) -> Optional[Dict[str, Any]]:
         if len(events) < 2:
             return None
         return {"title": c.get("title", ""), "events": events[:5]}
+
+    if typ == "map":
+        places = []
+        for p in c.get("places") or []:
+            lat, lon = _num(p.get("lat")), _num(p.get("lon"))
+            if p.get("label") and lat is not None and lon is not None \
+                    and -90 <= lat <= 90 and -180 <= lon <= 180:
+                places.append({"label": str(p["label"]), "lat": lat, "lon": lon})
+        if len(places) < 2:
+            return None
+        return {"title": c.get("title", ""), "places": places[:6]}
 
     if typ == "name":
         if not c.get("name"):
