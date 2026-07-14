@@ -106,34 +106,35 @@ export const CinematicScene: React.FC<CinematicSceneProps> = ({
   const frame = useCurrentFrame();
   const { durationInFrames } = useVideoConfig();
 
-  // камера: фокус (fx,fy) + зум по фазам
+  // камера: фокус (fx,fy) + зум по фазам — быстрее и без длинных пауз
   const fx = seg(frame, [
-    [0, 150, AX, AX],
-    [150, 250, AX, BX],
-    [250, 320, BX, BX],
-    [320, 430, BX, HX],
-    [430, 999, HX, HX],
+    [0, 85, AX, AX],
+    [85, 150, AX, BX],
+    [150, 195, BX, BX],
+    [195, 285, BX, HX],
+    [285, 999, HX, HX],
   ]);
   const fy = seg(frame, [
-    [0, 320, AY, AY],
-    [320, 430, AY, 560],
-    [430, 999, 560, 560],
+    [0, 195, AY, AY],
+    [195, 285, AY, 560],
+    [285, 999, 560, 560],
   ]);
   const zoom = seg(frame, [
-    [0, 320, 1.55, 1.55],
-    [320, 430, 1.55, 0.82],
-    [430, 999, 0.82, 0.82],
+    [0, 195, 1.6, 1.6],
+    [195, 285, 1.6, 0.82],
+    [285, 999, 0.82, 0.82],
   ]);
   const rotY = seg(frame, [
-    [0, 250, 6, -6],
-    [250, 430, -6, 0],
-    [430, 999, 0, 0],
+    [0, 150, 8, -8],
+    [150, 285, -8, 0],
+    [285, 999, 0, 0],
   ]);
 
-  const tx = 960 - fx * zoom;
-  const ty = 540 - fy * zoom;
+  // непрерывный микро-дрейф — камера всегда «дышит»
+  const tx = 960 - fx * zoom + Math.cos(frame / 52) * 7;
+  const ty = 540 - fy * zoom + Math.sin(frame / 44) * 6;
 
-  const headOpacity = interpolate(frame, [360, 410], [0, 1], {
+  const headOpacity = interpolate(frame, [240, 280], [0, 1], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
@@ -182,8 +183,8 @@ export const CinematicScene: React.FC<CinematicSceneProps> = ({
               {headline}
             </div>
           )}
-          <StatBlock x={AX} y={AY} stat={a} startF={10} accent={accent} textColor={textColor} frame={frame} />
-          <StatBlock x={BX} y={BY} stat={b} startF={175} accent={accent} textColor={textColor} frame={frame} />
+          <StatBlock x={AX} y={AY} stat={a} startF={6} accent={accent} textColor={textColor} frame={frame} />
+          <StatBlock x={BX} y={BY} stat={b} startF={95} accent={accent} textColor={textColor} frame={frame} />
         </div>
       </AbsoluteFill>
     </AbsoluteFill>
