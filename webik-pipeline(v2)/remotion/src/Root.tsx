@@ -12,6 +12,7 @@ import { MapPins } from "./MapPins";
 import { QuoteCard } from "./QuoteCard";
 import { Spotlight } from "./Spotlight";
 import { CinematicStat } from "./CinematicStat";
+import { CinematicScene } from "./CinematicScene";
 
 const W = 1920;
 const H = 1080;
@@ -225,6 +226,21 @@ export const RemotionRoot: React.FC = () => {
           label: "жертв за одну ночь",
           suffix: "",
           sub: "Кадуна · Нигерия",
+          bgImage: "preview_bg.jpg" as string | null,
+        }}
+      />
+
+      <Composition
+        id="CinematicScene"
+        component={CinematicScene}
+        durationInFrames={570}
+        fps={30}
+        width={W}
+        height={H}
+        defaultProps={{
+          headline: "Кадуна · 2019",
+          a: { value: "307", label: "погибших", suffix: "" },
+          b: { value: "300", label: "освобождено", suffix: "" },
           bgImage: "preview_bg.jpg" as string | null,
         }}
       />
