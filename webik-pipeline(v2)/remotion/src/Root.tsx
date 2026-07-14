@@ -11,6 +11,7 @@ import { Timeline } from "./Timeline";
 import { MapPins } from "./MapPins";
 import { QuoteCard } from "./QuoteCard";
 import { Spotlight } from "./Spotlight";
+import { CinematicStat } from "./CinematicStat";
 
 const W = 1920;
 const H = 1080;
@@ -209,6 +210,22 @@ export const RemotionRoot: React.FC = () => {
           x: 50,
           y: 48,
           bgImage: "preview_bg3.jpg" as string | null,
+        }}
+      />
+
+      <Composition
+        id="CinematicStat"
+        component={CinematicStat}
+        durationInFrames={300}
+        fps={30}
+        width={W}
+        height={H}
+        defaultProps={{
+          value: "307",
+          label: "жертв за одну ночь",
+          suffix: "",
+          sub: "Кадуна · Нигерия",
+          bgImage: "preview_bg.jpg" as string | null,
         }}
       />
     </>
