@@ -7,6 +7,7 @@ import { CountUpBar } from "./CountUpBar";
 import { BarCompare } from "./BarCompare";
 import { Pictograph } from "./Pictograph";
 import { DonutProportion } from "./DonutProportion";
+import { Timeline } from "./Timeline";
 
 const W = 1920;
 const H = 1080;
@@ -136,6 +137,25 @@ export const RemotionRoot: React.FC = () => {
         defaultProps={{
           percent: 87,
           label: "не вернулись домой",
+          bgImage: "preview_bg2.jpg" as string | null,
+        }}
+      />
+
+      <Composition
+        id="Timeline"
+        component={Timeline}
+        durationInFrames={150}
+        fps={30}
+        width={W}
+        height={H}
+        defaultProps={{
+          title: "Крупнейшие трагедии культов",
+          events: [
+            { year: "1978", label: "Джонстаун" },
+            { year: "1993", label: "Уэйко" },
+            { year: "1997", label: "Хевенс-Гейт" },
+            { year: "2000", label: "Уганда" },
+          ],
           bgImage: "preview_bg2.jpg" as string | null,
         }}
       />

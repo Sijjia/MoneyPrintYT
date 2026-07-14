@@ -21,7 +21,7 @@ def main():
         alignment,
         max_per_level=6,
         min_gap_sec=9.0,
-        type_caps={"name": 1, "stat": 3},
+        type_caps={"name": 1, "phrase": 1, "stat": 3},
     )
 
     out = PROJECT / "overlays.json"

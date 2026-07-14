@@ -40,17 +40,20 @@ DUR = {
     "percent": 3.7,
     "ratio": 3.7,
     "compare": 4.5,
+    "timeline": 5.0,
     "name": 3.7,
     "phrase": 4.0,
     "evidence": 3.5,
 }
 
-# Композиция Remotion по типу.
+# Композиция Remotion по типу. stat → CountUpBar (число как мера-чарт, а не
+# плоский текст — больше графики).
 COMPOSITION = {
-    "stat": "StatPop",
+    "stat": "CountUpBar",
     "percent": "DonutProportion",
     "ratio": "Pictograph",
     "compare": "BarCompare",
+    "timeline": "Timeline",
     "name": "NameLabel",
     "phrase": "KineticPhrase",
     "evidence": "EvidenceFrame",
@@ -121,6 +124,9 @@ def _build_prompt(rows: List[dict], max_per_level: int) -> str:
         '• "compare" — СРАВНЕНИЕ 2–4 величин. ТОЛЬКО если в тексте реально названо',
         "     несколько сопоставимых чисел — НЕ выдумывай значения.",
         "     поля: title (≤4 слова), items:[{label,value}, ...] (2–4 шт).",
+        '• "timeline" — ХРОНОЛОГИЯ: 2–5 событий с годами (если в тексте перечислены',
+        "     годы/даты событий). поля: title (≤4 слова), events:[{year,label}] —",
+        "     label ≤2 слова. Годы и события — только реальные из текста.",
         '• "name" — ключевой ЧЕЛОВЕК/МЕСТО/КУЛЬТ. name = ПОЛНОЕ имя (имя+фамилия)',
         "     или официальное название; НЕ клички/прозвища/одиночные разговорные",
         "     имена (не «Кузя» — а «Пётр Кузнецов»). sub (опц. страна · год / роль).",
@@ -140,10 +146,11 @@ def _build_prompt(rows: List[dict], max_per_level: int) -> str:
         "- Не ставь графику на соседние сцены — оставляй воздух.",
         "- Ссылайся на существующий scene_id из списка.",
         "- Значения ВЕРНЫ содержанию сцены — не выдумывай факты и числа.",
-        "- БАЛАНС ТИПОВ: не делай уровень из одинаковых типов. Не более 1 «name» на",
-        "  уровень; ключевые имена оставляй, но остальное — числа/сравнения/фразы.",
-        "- Где в тексте есть проценты/доли — бери percent; «X из Y» — ratio; пара",
-        "  сопоставимых чисел — compare. Ищи их активно, но не выдумывай.",
+        "- ПРЕДПОЧИТАЙ ВИЗУАЛЬНЫЕ ГРАФИКИ (compare, ratio, percent, timeline, stat)",
+        "  простому тексту. name и phrase — по МИНИМУМУ (не более 1 каждого на уровень).",
+        "- Активно ищи: проценты/доли → percent; «X из Y» → ratio; пары сопоставимых",
+        "  чисел → compare; перечисления годов → timeline. Не выдумывай значения.",
+        "- Не делай уровень из одинаковых типов — разнообразь графику.",
         '- Ответ — СТРОГО JSON: {"overlays":[{"scene_id","type","anchor", ...поля}]}.',
         "",
         "СЦЕНЫ:",
@@ -262,6 +269,17 @@ def _build_props(c: dict) -> Optional[Dict[str, Any]]:
         if len(items) < 2:
             return None
         return {"title": c.get("title", ""), "items": items[:4]}
+
+    if typ == "timeline":
+        events = []
+        for e in c.get("events") or []:
+            year = str(e.get("year", "")).strip()
+            label = str(e.get("label", "")).strip()
+            if year and label:
+                events.append({"year": year, "label": label})
+        if len(events) < 2:
+            return None
+        return {"title": c.get("title", ""), "events": events[:5]}
 
     if typ == "name":
         if not c.get("name"):
