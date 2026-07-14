@@ -263,8 +263,8 @@ export const RemotionRoot: React.FC = () => {
           bgImage: "preview_bg2.jpg" as string | null,
           blocks: [
             { id: "a", kind: "stat" as const, x: 700, y: 640, value: "918", label: "Джонстаун" },
-            { id: "b", kind: "stat" as const, x: 1500, y: 640, value: "74", label: "Храм Солнца" },
-            { id: "c", kind: "stat" as const, x: 2300, y: 640, value: "39", label: "Хевенс-Гейт" },
+            { id: "b", kind: "bars" as const, x: 1500, y: 640, items: [{ label: "Взрослые", value: 12 }, { label: "Дети", value: 22 }] },
+            { id: "c", kind: "ratio" as const, x: 2300, y: 640, filled: 9, total: 10, label: "не выжили" },
             { id: "h", kind: "headline" as const, x: 1500, y: 300, text: "Массовые трагедии культов" },
           ],
           shots: [

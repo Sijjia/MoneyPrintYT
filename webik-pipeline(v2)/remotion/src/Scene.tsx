@@ -14,7 +14,7 @@ import { Censored } from "./censor";
 // Блок в мировой плоскости.
 export type SceneBlock = {
   id: string;
-  kind: "stat" | "headline";
+  kind: "stat" | "headline" | "bars" | "ratio";
   x: number;
   y: number;
   value?: string;
@@ -22,6 +22,9 @@ export type SceneBlock = {
   suffix?: string;
   text?: string;
   sub?: string;
+  items?: { label: string; value: number }[]; // bars
+  filled?: number; // ratio
+  total?: number; // ratio
 };
 
 // Остановка камеры: на какой блок смотрим, зум, вращения (облёт/наклон),
@@ -93,6 +96,64 @@ const BlockView: React.FC<{
             {b.sub}
           </div>
         )}
+      </div>
+    );
+  }
+
+  if (b.kind === "bars") {
+    const items = (b.items || []).slice(0, 3);
+    const maxV = Math.max(1, ...items.map((it) => it.value));
+    return (
+      <div style={{ ...wrap, width: 780 }}>
+        {items.map((it, i) => {
+          const g = interpolate(frame, [revealF + 8 + i * 8, revealF + 32 + i * 8], [0, 1], {
+            extrapolateLeft: "clamp",
+            extrapolateRight: "clamp",
+            easing: Easing.out(Easing.cubic),
+          });
+          const w = (it.value / maxV) * g * 540;
+          const top = i === 0;
+          return (
+            <div key={i} style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 16 }}>
+              <div style={{ width: 210, textAlign: "right", color: textColor, fontSize: 32, fontWeight: 600, opacity: g, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                {it.label}
+              </div>
+              <div style={{ height: 44, width: w, background: top ? accent : "rgba(255,255,255,0.3)", borderRadius: 6, display: "flex", alignItems: "center", justifyContent: "flex-end", paddingRight: 12, boxShadow: top ? `0 0 18px ${accent}aa` : "none" }}>
+                <span style={{ color: top ? "#fff" : textColor, fontSize: 28, fontWeight: 800, opacity: interpolate(g, [0.5, 1], [0, 1], { extrapolateLeft: "clamp" }) }}>
+                  {Math.round(it.value * g).toLocaleString("ru-RU")}
+                </span>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    );
+  }
+
+  if (b.kind === "ratio") {
+    const n = Math.max(1, Math.min(b.total || 10, 16));
+    const nf = Math.max(0, Math.min(b.filled || 0, n));
+    return (
+      <div style={{ ...wrap }}>
+        <div style={{ color: textColor, fontSize: 72, fontWeight: 800, marginBottom: 22, textShadow: "0 12px 40px rgba(0,0,0,0.85)" }}>
+          {nf} <span style={{ color: accent }}>из</span> {n}
+        </div>
+        <div style={{ display: "flex", gap: 12, justifyContent: "center", marginBottom: 18 }}>
+          {Array.from({ length: n }).map((_, i) => {
+            const on = i < nf;
+            const ap = interpolate(frame, [revealF + 10 + i * 3, revealF + 22 + i * 3], [0, 1], {
+              extrapolateLeft: "clamp",
+              extrapolateRight: "clamp",
+            });
+            return (
+              <svg key={i} width="44" height="62" viewBox="0 0 58 82" style={{ opacity: ap, transform: `scale(${ap})` }}>
+                <circle cx="29" cy="17" r="15" fill={on ? accent : "rgba(255,255,255,0.28)"} />
+                <path d="M6 82 C6 52 18 40 29 40 C40 40 52 52 52 82 Z" fill={on ? accent : "rgba(255,255,255,0.28)"} />
+              </svg>
+            );
+          })}
+        </div>
+        <Censored text={b.label || ""} style={{ color: textColor, fontSize: 42, fontWeight: 600, letterSpacing: 2, textTransform: "uppercase", display: "inline-block" }} />
       </div>
     );
   }
