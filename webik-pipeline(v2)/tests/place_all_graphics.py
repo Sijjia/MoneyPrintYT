@@ -22,6 +22,7 @@ def main():
     cine = json.loads((PROJECT / "cine_scenes.json").read_text(encoding="utf-8"))["scenes"]
     for c in cine:
         c["file"] = str((PROJECT / "assets" / "cine" / f"{c['id']}.mov"))
+        c.setdefault("type", "cine")
 
     spans = [(c["start"], c["start"] + c["duration_sec"]) for c in cine]
     quick2 = [q for q in quick if not any(s <= q["start"] < e for s, e in spans)]

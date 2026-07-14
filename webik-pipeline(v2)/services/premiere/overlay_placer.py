@@ -92,7 +92,7 @@ def place_overlays(
         placed += 1
         p = ov.get("props", {})
         desc = p.get("value") or p.get("name") or p.get("phrase") or ""
-        log.info(f"  V{idx + 1} ← {ov['id']} [{ov['type']}] @{start:.2f}s '{desc}'")
+        log.info(f"  V{idx + 1} ← {ov['id']} [{ov.get('type', 'scene')}] @{start:.2f}s '{desc}'")
 
     log.info(f"Уложено {placed}/{len(jobs)} оверлеев")
     return placed
