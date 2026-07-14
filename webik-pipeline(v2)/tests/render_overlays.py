@@ -10,6 +10,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from services.overlays.render_bridge import render_overlays
+from services.overlays.themes import pick_theme, apply_theme
 
 PROJECT = Path("projects/2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-i-maloizvestnye-")
 
@@ -17,6 +18,12 @@ PROJECT = Path("projects/2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-
 def main():
     data = json.loads((PROJECT / "overlays.json").read_text(encoding="utf-8"))
     overlays = data["overlays"]
+
+    # пер-видео тема (авто по имени проекта; можно перебить override="Амбер")
+    theme = pick_theme(PROJECT.name)
+    apply_theme(overlays, theme)
+    print(f"тема проекта: {theme['name']} ({theme['accent']}), align={theme['align']}")
+
     out_dir = PROJECT / "assets" / "overlays"
     rendered = render_overlays(overlays, out_dir)
 

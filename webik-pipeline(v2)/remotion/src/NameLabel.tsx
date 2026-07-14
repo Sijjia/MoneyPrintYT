@@ -18,6 +18,8 @@ export type NameLabelProps = {
   accent?: string;
   textColor?: string;
   font?: FontName;
+  align?: "left" | "right";
+  energy?: number;
 };
 
 // Нижний третий — представление человека/места/культа.
@@ -28,11 +30,14 @@ export const NameLabel: React.FC<NameLabelProps> = ({
   accent = PALETTE.red,
   textColor = PALETTE.cream,
   font = "oswald",
+  align = "left",
+  energy = 1,
 }) => {
   const frame = useCurrentFrame();
   const { fps, durationInFrames } = useVideoConfig();
+  const right = align === "right";
 
-  const enter = spring({ frame, fps, config: { damping: 200, mass: 0.7 } });
+  const enter = spring({ frame, fps, config: { damping: 200, mass: 0.7 / Math.max(0.5, energy) } });
   const lineW = interpolate(enter, [0, 1], [0, 620]);
   const nameY = interpolate(enter, [0, 1], [40, 0]);
   const nameOpacity = interpolate(frame, [2, 16], [0, 1], { extrapolateRight: "clamp" });
@@ -56,7 +61,16 @@ export const NameLabel: React.FC<NameLabelProps> = ({
             "linear-gradient(0deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.35) 22%, transparent 42%)",
         }}
       />
-      <AbsoluteFill style={{ justifyContent: "flex-end", paddingLeft: 150, paddingBottom: 165 }}>
+      <AbsoluteFill
+        style={{
+          justifyContent: "flex-end",
+          alignItems: right ? "flex-end" : "flex-start",
+          textAlign: right ? "right" : "left",
+          paddingLeft: right ? 0 : 150,
+          paddingRight: right ? 150 : 0,
+          paddingBottom: 165,
+        }}
+      >
         <div style={{ height: 4, width: lineW, background: accent, borderRadius: 2, marginBottom: 26 }} />
         <div style={{ overflow: "hidden" }}>
           <Censored

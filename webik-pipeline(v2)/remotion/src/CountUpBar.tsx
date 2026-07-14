@@ -21,6 +21,8 @@ export type CountUpBarProps = {
   accent?: string;
   textColor?: string;
   font?: FontName;
+  align?: "left" | "center";
+  energy?: number;
 };
 
 // Счётчик + шкала: число накручивается, под ним растёт «мера» — масштаб числа.
@@ -33,13 +35,16 @@ export const CountUpBar: React.FC<CountUpBarProps> = ({
   accent = PALETTE.red,
   textColor = PALETTE.cream,
   font = "oswald",
+  align = "left",
+  energy = 1,
 }) => {
   const frame = useCurrentFrame();
   const { durationInFrames } = useVideoConfig();
+  const centered = align === "center";
 
   const target = parseInt(value.replace(/\D/g, ""), 10);
   const hasNum = !Number.isNaN(target);
-  const t = interpolate(frame, [0, 24], [0, 1], {
+  const t = interpolate(frame, [0, 24 / Math.max(0.5, energy)], [0, 1], {
     extrapolateRight: "clamp",
     easing: Easing.out(Easing.cubic),
   });
@@ -64,11 +69,19 @@ export const CountUpBar: React.FC<CountUpBarProps> = ({
       )}
       <AbsoluteFill
         style={{
-          background:
-            "linear-gradient(90deg, rgba(0,0,0,0.74) 0%, rgba(0,0,0,0.4) 40%, transparent 68%)",
+          background: centered
+            ? "radial-gradient(circle at 50% 50%, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 45%, transparent 75%)"
+            : "linear-gradient(90deg, rgba(0,0,0,0.74) 0%, rgba(0,0,0,0.4) 40%, transparent 68%)",
         }}
       />
-      <AbsoluteFill style={{ justifyContent: "center", paddingLeft: 150 }}>
+      <AbsoluteFill
+        style={{
+          justifyContent: "center",
+          alignItems: centered ? "center" : "flex-start",
+          paddingLeft: centered ? 0 : 150,
+          textAlign: centered ? "center" : "left",
+        }}
+      >
         <div
           style={{
             opacity: numOpacity,
