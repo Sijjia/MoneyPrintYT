@@ -16,7 +16,7 @@ from typing import Any, Dict, List, Optional
 
 from core.logger import setup_logger
 from services.llm.claude import ClaudeService
-from services.overlays.detector import DETECT_MODEL, _scene_rows
+from services.overlays.detector import DETECT_MODEL, _num, _scene_rows
 
 log = setup_logger("scene_director")
 
@@ -54,15 +54,25 @@ SYSTEM = (
 
 def _build_prompt(rows: List[dict], max_scenes: int) -> str:
     lines = [
-        f"Найди до {max_scenes} кино-сегментов. Для каждого верни 2–4 «бита» (факт/число",
-        "с короткой подписью) и общую шапку-вывод. Биты — в порядке появления в тексте.",
+        f"Найди до {max_scenes} сильных кино-сегментов. Каждый — один из ДВУХ типов:",
         "",
-        "Для КАЖДОГО бита обязателен anchor — 2–5 слов ДОСЛОВНО из текста, где он звучит",
-        "(по нему привяжу тайминг камеры к речи).",
-        "value — ПОЛНОЕ число цифрами (или короткий текст), label — ≤3 слова.",
+        'A) "scene" — связка из 2–4 ДАННЫХ, что ведут к одной мысли.',
+        '   поля: {"type":"scene","headline":<вывод ≤5 слов>,"beats":[...]}.',
+        "   Каждый бит — ОДИН из:",
+        '     • {"kind":"stat","value":<полное число цифрами>,"label":<≤3 слова>,"anchor":...}',
+        '     • {"kind":"bars","label":<заголовок ≤3 слова>,"items":[{"label","value"}...] (2-3),"anchor":...}',
+        "         — только если в тексте реально СРАВНИВАЮТСЯ числа.",
+        '     • {"kind":"ratio","filled":X,"total":Y,"label":<≤3 слова>,"anchor":...}',
+        "         — только если в тексте «X из Y».",
         "",
-        'Ответ СТРОГО JSON: {"scenes":[{"headline":"...","beats":[{"value","label","anchor"}]}]}.',
-        "Факты и числа — только реальные из текста, не выдумывай.",
+        'B) "globe" — сегмент про ГЕОГРАФИЮ (перечислены страны/города событий).',
+        '   поля: {"type":"globe","title":<≤4 слова>,"places":[{"label","lat","lon"}...] (2-6),"anchor":...}.',
+        "   lat/lon — реальные координаты места.",
+        "",
+        "anchor — 2–5 слов ДОСЛОВНО из текста, где это звучит (для тайминга камеры).",
+        "Числа/места/факты — ТОЛЬКО реальные из текста, не выдумывай. Разнообразь типы битов.",
+        "",
+        'Ответ СТРОГО JSON: {"scenes":[{"type":"scene"|"globe", ...}]}.',
         "",
         "СЦЕНЫ ЗАКАДРА:",
     ]
@@ -91,14 +101,31 @@ def _build_scene(headline: str, timed: List[tuple]) -> Optional[Dict[str, Any]]:
     xs = _spread(n)
     blocks = []
     for i, (_, b) in enumerate(fbeats):
-        blocks.append({
-            "id": f"b{i}",
-            "kind": "stat",
-            "x": xs[i],
-            "y": 640,
-            "value": str(b.get("value", "")),
-            "label": b.get("label", ""),
-        })
+        kind = b.get("kind", "stat")
+        blk: Dict[str, Any] = {"id": f"b{i}", "x": xs[i], "y": 640, "kind": kind}
+        if kind == "bars":
+            items = []
+            for it in b.get("items") or []:
+                v = _num(it.get("value"))
+                if v is not None and it.get("label"):
+                    items.append({"label": str(it["label"]), "value": v})
+            if len(items) < 2:
+                blk = {"id": f"b{i}", "x": xs[i], "y": 640, "kind": "stat",
+                       "value": str(b.get("value", "")), "label": b.get("label", "")}
+            else:
+                blk["items"] = items[:3]
+        elif kind == "ratio":
+            fil, tot = _num(b.get("filled")), _num(b.get("total"))
+            if not fil or not tot or tot <= 0:
+                blk = {"id": f"b{i}", "x": xs[i], "y": 640, "kind": "stat",
+                       "value": str(b.get("value", "")), "label": b.get("label", "")}
+            else:
+                blk["filled"], blk["total"], blk["label"] = int(fil), int(tot), b.get("label", "")
+        else:
+            blk["kind"] = "stat"
+            blk["value"] = str(b.get("value", ""))
+            blk["label"] = b.get("label", "")
+        blocks.append(blk)
     cx = sum(xs) / n
     if headline:
         blocks.append({"id": "h", "kind": "headline", "x": cx, "y": 300, "text": headline})
@@ -142,6 +169,27 @@ def _build_scene(headline: str, timed: List[tuple]) -> Optional[Dict[str, Any]]:
     }
 
 
+def _build_globe(sc: dict, words: List[dict]) -> Optional[Dict[str, Any]]:
+    """Гео-сегмент → 3D-глобус с пинами."""
+    places = []
+    for p in sc.get("places") or []:
+        lat, lon = _num(p.get("lat")), _num(p.get("lon"))
+        if p.get("label") and lat is not None and lon is not None \
+                and -90 <= lat <= 90 and -180 <= lon <= 180:
+            places.append({"label": str(p["label"]), "lat": lat, "lon": lon})
+    if len(places) < 2:
+        return None
+    t = _time_of(sc.get("anchor", ""), words)
+    start = max(0.0, (t if t is not None else 0.0) - 0.3)
+    return {
+        "composition": "Globe3D",
+        "start": round(start, 2),
+        "duration_sec": 10.0,
+        "duration_frames": 300,
+        "props": {"places": places[:6], "title": sc.get("title", "")},
+    }
+
+
 def direct_scenes(
     scenes: List[dict],
     alignment: dict,
@@ -164,6 +212,14 @@ def direct_scenes(
 
     out = []
     for sc in raw[:max_scenes]:
+        if sc.get("type") == "globe":
+            spec = _build_globe(sc, words)
+            if spec:
+                spec["id"] = f"cine_{len(out) + 1:02d}"
+                out.append(spec)
+                log.info(f"  глобус {spec['id']} @ {spec['start']}s, {len(spec['props']['places'])} мест")
+            continue
+
         beats = sc.get("beats") or []
         timed = []
         for b in beats:

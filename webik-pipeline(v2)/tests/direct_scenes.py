@@ -16,15 +16,18 @@ PROJECT = Path("projects/2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-
 def main():
     scenes = json.loads((PROJECT / "scenes.json").read_text(encoding="utf-8"))["scenes"]
     alignment = json.loads((PROJECT / "assets" / "alignment.json").read_text(encoding="utf-8"))
-    result = direct_scenes(scenes, alignment, max_scenes=2)
+    result = direct_scenes(scenes, alignment, max_scenes=3)
 
     out = PROJECT / "cine_scenes.json"
     out.write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"\n→ {out} ({len(result['scenes'])} сцен)")
     for sc in result["scenes"]:
-        blocks = [b for b in sc["props"]["blocks"] if b["kind"] == "stat"]
-        print(f"  {sc['id']} @ {sc['start']}s · {sc['duration_sec']}s · "
-              f"биты: {[(b['value'], b['label']) for b in blocks]}")
+        if sc["composition"] == "Globe3D":
+            places = [p["label"] for p in sc["props"]["places"]]
+            print(f"  {sc['id']} @ {sc['start']}s · глобус · {places}")
+        else:
+            kinds = [b["kind"] for b in sc["props"]["blocks"]]
+            print(f"  {sc['id']} @ {sc['start']}s · {sc['duration_sec']}s · блоки: {kinds}")
 
 
 if __name__ == "__main__":

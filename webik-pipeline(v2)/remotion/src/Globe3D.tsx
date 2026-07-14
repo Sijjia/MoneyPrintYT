@@ -1,12 +1,13 @@
 import React from "react";
 import { AbsoluteFill, interpolate, useCurrentFrame, useVideoConfig } from "remotion";
 import { ThreeCanvas } from "@remotion/three";
-import { PALETTE } from "./theme";
+import { PALETTE, fontFamily } from "./theme";
 
 export type GlobePlace = { lat: number; lon: number; label?: string };
 export type Globe3DProps = {
   places?: GlobePlace[];
   accent?: string;
+  title?: string;
 };
 
 const R = 2;
@@ -68,16 +69,26 @@ const Planet: React.FC<{ accent: string; places: GlobePlace[] }> = ({ accent, pl
 };
 
 // 3D-глобус культов — камера смотрит на медленно вращающуюся планету с пинами.
-export const Globe3D: React.FC<Globe3DProps> = ({ places = [], accent = PALETTE.red }) => {
-  const { width, height } = useVideoConfig();
+export const Globe3D: React.FC<Globe3DProps> = ({ places = [], accent = PALETTE.red, title = "" }) => {
+  const { width, height, durationInFrames } = useVideoConfig();
+  const frame = useCurrentFrame();
+  const titleOp = interpolate(frame, [8, 24], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  const exit = interpolate(frame, [durationInFrames - 20, durationInFrames], [1, 0], { extrapolateLeft: "clamp" });
   return (
-    <AbsoluteFill style={{ background: "radial-gradient(circle at 50% 45%, #0a1428 0%, #04060c 72%)" }}>
+    <AbsoluteFill style={{ background: "radial-gradient(circle at 50% 45%, #0a1428 0%, #04060c 72%)", opacity: exit }}>
       <ThreeCanvas width={width} height={height} camera={{ position: [0, 0, 5.2], fov: 42 }}>
         <ambientLight intensity={0.55} />
         <pointLight position={[6, 4, 6]} intensity={1.4} color="#ffffff" />
         <pointLight position={[-6, -2, -4]} intensity={0.5} color={accent} />
         <Planet accent={accent} places={places} />
       </ThreeCanvas>
+      {title && (
+        <AbsoluteFill style={{ pointerEvents: "none", justifyContent: "flex-start", alignItems: "center", paddingTop: 90 }}>
+          <div style={{ opacity: titleOp, fontFamily: fontFamily("oswald"), color: "#f4f1ea", fontSize: 58, fontWeight: 800, letterSpacing: 4, textTransform: "uppercase", textShadow: "0 6px 30px rgba(0,0,0,0.95)" }}>
+            {title}
+          </div>
+        </AbsoluteFill>
+      )}
     </AbsoluteFill>
   );
 };
