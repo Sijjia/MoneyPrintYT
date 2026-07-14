@@ -13,6 +13,7 @@ import { QuoteCard } from "./QuoteCard";
 import { Spotlight } from "./Spotlight";
 import { CinematicStat } from "./CinematicStat";
 import { CinematicScene } from "./CinematicScene";
+import { Scene } from "./Scene";
 
 const W = 1920;
 const H = 1080;
@@ -242,6 +243,30 @@ export const RemotionRoot: React.FC = () => {
           a: { value: "307", label: "погибших", suffix: "" },
           b: { value: "300", label: "освобождено", suffix: "" },
           bgImage: "preview_bg.jpg" as string | null,
+        }}
+      />
+
+      <Composition
+        id="Scene"
+        component={Scene}
+        durationInFrames={600}
+        fps={30}
+        width={W}
+        height={H}
+        defaultProps={{
+          bgImage: "preview_bg2.jpg" as string | null,
+          blocks: [
+            { id: "a", kind: "stat" as const, x: 700, y: 640, value: "918", label: "Джонстаун" },
+            { id: "b", kind: "stat" as const, x: 1500, y: 640, value: "74", label: "Храм Солнца" },
+            { id: "c", kind: "stat" as const, x: 2300, y: 640, value: "39", label: "Хевенс-Гейт" },
+            { id: "h", kind: "headline" as const, x: 1500, y: 300, text: "Массовые трагедии культов" },
+          ],
+          shots: [
+            { focus: "a", zoom: 1.55, move: 0, hold: 80 },
+            { focus: "b", zoom: 1.55, move: 60, hold: 80 },
+            { focus: "c", zoom: 1.55, move: 60, hold: 80 },
+            { focus: "h", zoom: 0.7, move: 95, hold: 110 },
+          ],
         }}
       />
     </>
