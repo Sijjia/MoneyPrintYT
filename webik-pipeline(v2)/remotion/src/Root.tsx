@@ -14,6 +14,7 @@ import { Spotlight } from "./Spotlight";
 import { CinematicStat } from "./CinematicStat";
 import { CinematicScene } from "./CinematicScene";
 import { Scene } from "./Scene";
+import { Globe3D } from "./Globe3D";
 
 const W = 1920;
 const H = 1080;
@@ -271,6 +272,27 @@ export const RemotionRoot: React.FC = () => {
             { focus: "b", zoom: 1.55, move: 60, hold: 80 },
             { focus: "c", zoom: 1.55, move: 60, hold: 80 },
             { focus: "h", zoom: 0.7, move: 95, hold: 110 },
+          ],
+        }}
+      />
+
+      <Composition
+        id="Globe3D"
+        component={Globe3D}
+        durationInFrames={300}
+        fps={30}
+        width={W}
+        height={H}
+        defaultProps={{
+          accent: "#d92828",
+          places: [
+            { lat: 4.9, lon: -58.9, label: "Джонстаун" },
+            { lat: -36.4, lon: -71.9, label: "Колония Дигнидад" },
+            { lat: -3.0, lon: 39.9, label: "Шакахола" },
+            { lat: 10.5, lon: 7.4, label: "Кадуна" },
+            { lat: 25.9, lon: -97.5, label: "Матаморос" },
+            { lat: -37.0, lon: 144.5, label: "Виктория" },
+            { lat: 35.7, lon: 139.7, label: "Токио" },
           ],
         }}
       />
