@@ -19,6 +19,7 @@ import { CrowdPictograph } from "./CrowdPictograph";
 import { KineticType } from "./KineticType";
 import { TimelineJourney } from "./TimelineJourney";
 import { ProportionFill } from "./ProportionFill";
+import { DossierCard } from "./DossierCard";
 
 const W = 1920;
 const H = 1080;
@@ -356,6 +357,27 @@ export const RemotionRoot: React.FC = () => {
         width={W}
         height={H}
         defaultProps={{ percent: 87, label: "не вернулись", sub: "из тех, кто вошёл", accent: "#d92828" }}
+      />
+
+      <Composition
+        id="DossierCard"
+        component={DossierCard}
+        durationInFrames={170}
+        fps={30}
+        width={W}
+        height={H}
+        defaultProps={{
+          name: "Джим Джонс",
+          role: "Основатель «Храма народов»",
+          fields: [
+            { k: "Секта", v: "Храм народов" },
+            { k: "Жертв", v: "918" },
+            { k: "Страна · год", v: "Гайана · 1978" },
+          ],
+          stamp: "погиб",
+          photo: null,
+          accent: "#d92828",
+        }}
       />
     </>
   );
