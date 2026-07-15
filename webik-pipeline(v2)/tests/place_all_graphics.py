@@ -23,7 +23,7 @@ def main():
     for c in cine:
         # приоритет источников: cine3/ (пересобранные стили) → cine2/ (свежие) →
         # cine/ (оригиналы, напр. любимая cine_01). Берём первый существующий.
-        cand = [PROJECT / "assets" / d / f"{c['id']}.mov" for d in ("cine4", "cine3", "cine2", "cine")]
+        cand = [PROJECT / "assets" / d / f"{c['id']}.mov" for d in ("arche", "cine4", "cine3", "cine2", "cine")]
         c["file"] = str(next((p for p in cand if p.exists()), cand[-1]))
         c.setdefault("type", "cine")
 
