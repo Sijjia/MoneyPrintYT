@@ -22,6 +22,12 @@ log = setup_logger("scene_director")
 
 FPS = 30
 
+# --- Плотность/уместность (Айдар: не растягивать 2 бита, не лепить сцены впритык) ---
+SPAN_MAX = 26.0       # весь сегмент не длиннее — иначе это не единая мысль
+GAP_MAX = 9.0         # соседние биты не дальше друг от друга — иначе «дырка»
+PAIR_SPAN_MAX = 13.0  # пара (2 бита) должна быть особенно кучной
+MIN_SCENE_GAP = 45.0  # между концом одной кино-сцены и началом следующей (в т.ч. глобусом)
+
 
 def _norm(s: str) -> List[str]:
     return re.sub(r"[^0-9a-zа-яё ]", " ", (s or "").lower()).split()
@@ -205,46 +211,75 @@ def direct_scenes(
 
     log.info(f"Режиссёр: ищу кино-сегменты по {len(rows)} сценам (model={model})...")
     llm = ClaudeService(model=model)
-    data = llm.call_json(_build_prompt(rows, max_scenes), max_tokens=6000, temperature=0.15, system=SYSTEM)
+    # просим с запасом — разведение по времени отберёт лучшие max_scenes
+    data = llm.call_json(_build_prompt(rows, max_scenes + 2), max_tokens=6000, temperature=0.15, system=SYSTEM)
     raw = data.get("scenes", data) if isinstance(data, dict) else data
     if not isinstance(raw, list):
         return {"scenes": []}
 
-    out = []
-    for sc in raw[:max_scenes]:
+    # 1) сначала собираем ВСЕХ кандидатов (с проверкой кучности битов)
+    cands: List[Dict[str, Any]] = []
+    for sc in raw:
         if sc.get("type") == "globe":
             spec = _build_globe(sc, words)
             if spec:
-                spec["id"] = f"cine_{len(out) + 1:02d}"
-                out.append(spec)
-                log.info(f"  глобус {spec['id']} @ {spec['start']}s, {len(spec['props']['places'])} мест")
+                cands.append(spec)
             continue
 
         beats = sc.get("beats") or []
+        head = sc.get("headline", "")[:30]
         timed = []
         for b in beats:
             t = _time_of(b.get("anchor", ""), words)
             if t is not None:
                 timed.append((t, b))
         if len(timed) < 2:
-            log.warning(f"  сегмент «{sc.get('headline','')[:30]}»: <2 битов привязано — пропуск")
+            log.warning(f"  сегмент «{head}»: <2 битов привязано — пропуск")
             continue
         timed.sort(key=lambda x: x[0])
         span = timed[-1][0] - timed[0][0]
-        if span > 35.0:
-            log.warning(
-                f"  сегмент «{sc.get('headline','')[:30]}»: биты растянуты на {span:.0f}s "
-                f"(не единый сегмент) — пропуск"
-            )
+        max_gap = max(timed[i + 1][0] - timed[i][0] for i in range(len(timed) - 1))
+        # кучность: весь сегмент короткий, соседние биты рядом, пара — особенно кучно
+        if span > SPAN_MAX:
+            log.warning(f"  сегмент «{head}»: биты растянуты на {span:.0f}s (>{SPAN_MAX:.0f}) — пропуск")
+            continue
+        if max_gap > GAP_MAX:
+            log.warning(f"  сегмент «{head}»: дырка {max_gap:.0f}s между битами (>{GAP_MAX:.0f}) — пропуск")
+            continue
+        if len(timed) == 2 and span > PAIR_SPAN_MAX:
+            log.warning(f"  сегмент «{head}»: пара растянута на {span:.0f}s (>{PAIR_SPAN_MAX:.0f}) — пропуск")
             continue
         spec = _build_scene(sc.get("headline", ""), timed)
         if spec:
-            spec["id"] = f"cine_{len(out) + 1:02d}"
-            out.append(spec)
-            log.info(
-                f"  сцена {spec['id']} @ {spec['start']}s, {spec['duration_sec']}s, "
-                f"{len(timed)} битов: {[b.get('value') for _, b in timed]}"
-            )
+            spec["_nbeats"] = len(timed)
+            cands.append(spec)
 
-    log.info(f"Режиссёр: {len(out)} кино-сцен(ы)")
+    # 2) разводим по времени: сортируем по силе (больше битов → важнее),
+    #    берём жадно, отбрасывая тех, кто ближе MIN_SCENE_GAP к уже взятой сцене.
+    cands.sort(key=lambda s: (-(s.get("_nbeats", 2)), s["start"]))
+    kept: List[Dict[str, Any]] = []
+    for spec in cands:
+        s0, s1 = spec["start"], spec["start"] + spec["duration_sec"]
+        clash = any(not (s1 + MIN_SCENE_GAP <= k["start"] or s0 >= k["start"] + k["duration_sec"] + MIN_SCENE_GAP)
+                    for k in kept)
+        if clash:
+            log.warning(f"  сцена @ {spec['start']}s впритык к другой (<{MIN_SCENE_GAP:.0f}s) — пропуск")
+            continue
+        kept.append(spec)
+        if len(kept) >= max_scenes:
+            break
+
+    kept.sort(key=lambda s: s["start"])
+    out = []
+    for spec in kept:
+        spec.pop("_nbeats", None)
+        spec["id"] = f"cine_{len(out) + 1:02d}"
+        out.append(spec)
+        if spec["composition"] == "Globe3D":
+            log.info(f"  глобус {spec['id']} @ {spec['start']}s, {len(spec['props']['places'])} мест")
+        else:
+            log.info(f"  сцена {spec['id']} @ {spec['start']}s, {spec['duration_sec']}s, "
+                     f"{len(spec['props']['blocks'])} блоков")
+
+    log.info(f"Режиссёр: {len(out)} кино-сцен(ы) из {len(cands)} кандидатов")
     return {"scenes": out}

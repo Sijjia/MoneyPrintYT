@@ -11,9 +11,13 @@ export type Globe3DProps = {
 };
 
 const R = 2;
+const CAM_Z = 5.2;
+const FOV = 42;
 
-// широта/долгота → точка на сфере
-const latLon = (lat: number, lon: number, radius: number): [number, number, number] => {
+type Vec3 = [number, number, number];
+
+// широта/долгота → точка на сфере радиуса radius
+const latLon = (lat: number, lon: number, radius: number): Vec3 => {
   const phi = ((90 - lat) * Math.PI) / 180;
   const theta = ((lon + 180) * Math.PI) / 180;
   return [
@@ -23,68 +27,212 @@ const latLon = (lat: number, lon: number, radius: number): [number, number, numb
   ];
 };
 
-const Planet: React.FC<{ accent: string; places: GlobePlace[] }> = ({ accent, places }) => {
-  const frame = useCurrentFrame();
-  const rot = frame * 0.005;
+// поворот точки: сначала вокруг Y (ry), затем вокруг X (rx) — тот же порядок,
+// что и у three Euler [rx, ry, 0]. Считаем в JS, чтобы совпасть с проекцией.
+const rot = (p: Vec3, rx: number, ry: number): Vec3 => {
+  const [x, y, z] = p;
+  const cy = Math.cos(ry), sy = Math.sin(ry);
+  const x1 = x * cy + z * sy;
+  const z1 = -x * sy + z * cy;
+  const cx = Math.cos(rx), sx = Math.sin(rx);
+  const y2 = y * cx - z1 * sx;
+  const z2 = y * sx + z1 * cx;
+  return [x1, y2, z2];
+};
+
+const norm = (v: Vec3): Vec3 => {
+  const m = Math.hypot(v[0], v[1], v[2]) || 1;
+  return [v[0] / m, v[1] / m, v[2] / m];
+};
+
+const dot = (a: Vec3, b: Vec3) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
+
+// разворот, ставящий центр масс пинов лицом к камере (+Z)
+const facingRotation = (places: GlobePlace[]): [number, number] => {
+  let cx = 0, cy = 0, cz = 0;
+  for (const p of places) {
+    const [x, y, z] = norm(latLon(p.lat, p.lon, 1));
+    cx += x; cy += y; cz += z;
+  }
+  const c = norm([cx, cy, cz]);
+  const ry = Math.atan2(-c[0], c[2]);
+  const m = Math.hypot(c[0], c[2]);
+  const rx = Math.atan2(c[1], m || 1e-6);
+  return [rx, ry];
+};
+
+// точки большой дуги между двумя местами (slerp по сфере), приподнятые над поверхностью
+const arcPoints = (a: Vec3, b: Vec3, rx: number, ry: number, steps = 24): Float32Array => {
+  const ua = norm(a), ub = norm(b);
+  const om = Math.acos(Math.max(-1, Math.min(1, dot(ua, ub))));
+  const so = Math.sin(om) || 1e-6;
+  const arr = new Float32Array((steps + 1) * 3);
+  for (let i = 0; i <= steps; i++) {
+    const t = i / steps;
+    const k0 = Math.sin((1 - t) * om) / so;
+    const k1 = Math.sin(t * om) / so;
+    const lift = 1 + 0.18 * Math.sin(Math.PI * t); // дуга выгибается наружу
+    const px = (k0 * ua[0] + k1 * ub[0]) * R * lift;
+    const py = (k0 * ua[1] + k1 * ub[1]) * R * lift;
+    const pz = (k0 * ua[2] + k1 * ub[2]) * R * lift;
+    const [wx, wy, wz] = rot([px, py, pz], rx, ry);
+    arr[i * 3] = wx; arr[i * 3 + 1] = wy; arr[i * 3 + 2] = wz;
+  }
+  return arr;
+};
+
+const Arc: React.FC<{ points: Float32Array; accent: string; op: number }> = ({ points, accent, op }) => (
+  <line>
+    <bufferGeometry>
+      <bufferAttribute attach="attributes-position" args={[points, 3]} />
+    </bufferGeometry>
+    <lineBasicMaterial color={accent} transparent opacity={op} />
+  </line>
+);
+
+const Planet: React.FC<{ accent: string; rx: number; ry: number }> = ({ accent, rx, ry }) => (
+  <group rotation={[rx, ry, 0]}>
+    <mesh>
+      <sphereGeometry args={[R, 64, 64]} />
+      <meshStandardMaterial color="#0e1a30" emissive="#060c18" roughness={0.85} metalness={0.15} />
+    </mesh>
+    <mesh scale={1.004}>
+      <sphereGeometry args={[R, 34, 24]} />
+      <meshBasicMaterial color="#2a4670" wireframe transparent opacity={0.28} />
+    </mesh>
+    <mesh scale={1.08}>
+      <sphereGeometry args={[R, 48, 48]} />
+      <meshBasicMaterial color={accent} transparent opacity={0.09} side={2} />
+    </mesh>
+  </group>
+);
+
+// маркер-«булавка»: столбик от поверхности наружу + светящаяся голова
+const Pin: React.FC<{ pos: Vec3; accent: string; grow: number; pulse: number }> = ({ pos, accent, grow, pulse }) => {
+  const outer = norm(pos);
+  const base: Vec3 = [outer[0] * R * 1.005, outer[1] * R * 1.005, outer[2] * R * 1.005];
+  const head: Vec3 = [outer[0] * R * 1.16, outer[1] * R * 1.16, outer[2] * R * 1.16];
+  const mid: Vec3 = [(base[0] + head[0]) / 2, (base[1] + head[1]) / 2, (base[2] + head[2]) / 2];
+  const stick = new Float32Array([...base, ...head]);
   return (
-    <group rotation={[0.32, rot, 0]}>
-      {/* планета */}
-      <mesh>
-        <sphereGeometry args={[R, 64, 64]} />
-        <meshStandardMaterial color="#0e1a30" emissive="#060c18" roughness={0.85} metalness={0.15} />
-      </mesh>
-      {/* каркас-сетка */}
-      <mesh scale={1.004}>
-        <sphereGeometry args={[R, 34, 24]} />
-        <meshBasicMaterial color="#274169" wireframe transparent opacity={0.32} />
-      </mesh>
-      {/* атмосфера (обод) */}
-      <mesh scale={1.07}>
-        <sphereGeometry args={[R, 48, 48]} />
-        <meshBasicMaterial color={accent} transparent opacity={0.07} side={2} />
-      </mesh>
-      {/* пины */}
-      {places.map((p, i) => {
-        const s = interpolate(frame, [12 + i * 7, 26 + i * 7], [0, 1], {
-          extrapolateLeft: "clamp",
-          extrapolateRight: "clamp",
-        });
-        const pos = latLon(p.lat, p.lon, R * 1.02);
-        const pulse = 1 + 0.35 * Math.max(0, Math.sin(frame / 10 - i));
-        return (
-          <group key={i} position={pos}>
-            <mesh scale={s}>
-              <sphereGeometry args={[0.055, 16, 16]} />
-              <meshBasicMaterial color={accent} />
-            </mesh>
-            <mesh scale={s * pulse}>
-              <sphereGeometry args={[0.085, 16, 16]} />
-              <meshBasicMaterial color={accent} transparent opacity={0.25} />
-            </mesh>
-          </group>
-        );
-      })}
+    <group>
+      <line>
+        <bufferGeometry>
+          <bufferAttribute attach="attributes-position" args={[stick, 3]} />
+        </bufferGeometry>
+        <lineBasicMaterial color={accent} transparent opacity={0.9 * grow} />
+      </line>
+      <group position={head} scale={grow}>
+        <mesh>
+          <sphereGeometry args={[0.07, 20, 20]} />
+          <meshBasicMaterial color={accent} />
+        </mesh>
+        <mesh scale={pulse}>
+          <sphereGeometry args={[0.12, 20, 20]} />
+          <meshBasicMaterial color={accent} transparent opacity={0.22} />
+        </mesh>
+      </group>
+      <mesh position={mid} />
     </group>
   );
 };
 
-// 3D-глобус культов — камера смотрит на медленно вращающуюся планету с пинами.
+// 3D-глобус культов: планета разворачивается к пинам, дуги связывают очаги,
+// экранные подписи городов появляются по мере проявления пинов.
 export const Globe3D: React.FC<Globe3DProps> = ({ places = [], accent = PALETTE.red, title = "" }) => {
   const { width, height, durationInFrames } = useVideoConfig();
   const frame = useCurrentFrame();
+
+  const [rx0, ry0] = places.length ? facingRotation(places) : [0.3, 0];
+  const drift = 0.14 * Math.sin(frame / 110); // лёгкое дыхание, не убегает
+  const ry = ry0 + drift;
+  const rx = rx0;
+
+  // мировые позиции голов пинов (совпадают с three-поворотом [rx, ry, 0])
+  const heads: Vec3[] = places.map((p) => rot(latLon(p.lat, p.lon, R * 1.16), rx, ry));
+
+  // проекция мир → экран (камера в [0,0,CAM_Z], смотрит -Z)
+  const tanHalf = Math.tan((FOV * Math.PI) / 180 / 2);
+  const aspect = width / height;
+  const project = (p: Vec3) => {
+    const d = CAM_Z - p[2];
+    const ndcX = p[0] / (d * tanHalf * aspect);
+    const ndcY = p[1] / (d * tanHalf);
+    return {
+      x: (ndcX * 0.5 + 0.5) * width,
+      y: (1 - (ndcY * 0.5 + 0.5)) * height,
+      front: p[2] > 0.15, // на передней полусфере (не за планетой)
+    };
+  };
+
   const titleOp = interpolate(frame, [8, 24], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
   const exit = interpolate(frame, [durationInFrames - 20, durationInFrames], [1, 0], { extrapolateLeft: "clamp" });
+
+  const arcs = places.length > 1
+    ? places.slice(0, -1).map((_, i) => ({
+        key: i,
+        pts: arcPoints(latLon(places[i].lat, places[i].lon, 1), latLon(places[i + 1].lat, places[i + 1].lon, 1), rx, ry),
+        op: interpolate(frame, [30 + i * 6, 48 + i * 6], [0, 0.55], { extrapolateLeft: "clamp", extrapolateRight: "clamp" }),
+      }))
+    : [];
+
   return (
     <AbsoluteFill style={{ background: "radial-gradient(circle at 50% 45%, #0a1428 0%, #04060c 72%)", opacity: exit }}>
-      <ThreeCanvas width={width} height={height} camera={{ position: [0, 0, 5.2], fov: 42 }}>
+      <ThreeCanvas width={width} height={height} camera={{ position: [0, 0, CAM_Z], fov: FOV }}>
         <ambientLight intensity={0.55} />
         <pointLight position={[6, 4, 6]} intensity={1.4} color="#ffffff" />
         <pointLight position={[-6, -2, -4]} intensity={0.5} color={accent} />
-        <Planet accent={accent} places={places} />
+        <Planet accent={accent} rx={rx} ry={ry} />
+        {arcs.map((a) => (
+          <Arc key={a.key} points={a.pts} accent={accent} op={a.op} />
+        ))}
+        {places.map((p, i) => {
+          const grow = interpolate(frame, [14 + i * 7, 30 + i * 7], [0, 1], {
+            extrapolateLeft: "clamp", extrapolateRight: "clamp",
+          });
+          const pulse = 1 + 0.4 * Math.max(0, Math.sin(frame / 9 - i));
+          // heads[i] — уже повёрнутая позиция (совпадает с проекцией подписи)
+          return <Pin key={i} pos={heads[i]} accent={accent} grow={grow} pulse={pulse} />;
+        })}
       </ThreeCanvas>
+
+      {/* экранные подписи городов */}
+      <AbsoluteFill style={{ pointerEvents: "none" }}>
+        {places.map((p, i) => {
+          if (!p.label) return null;
+          const sp = project(heads[i]);
+          if (!sp.front) return null;
+          const op = interpolate(frame, [26 + i * 7, 42 + i * 7], [0, 1], {
+            extrapolateLeft: "clamp", extrapolateRight: "clamp",
+          }) * exit;
+          const flip = sp.x > width * 0.72;             // у правого края — подпись влево
+          const top = Math.max(40, Math.min(height - 52, sp.y - 30));
+          const tick = <div style={{ width: 22, height: 2, background: accent, boxShadow: `0 0 8px ${accent}` }} />;
+          const name = (
+            <div style={{
+              fontFamily: fontFamily("oswald"), color: "#f4f1ea", fontSize: 30, fontWeight: 700,
+              letterSpacing: 2, textTransform: "uppercase", whiteSpace: "nowrap",
+              textShadow: "0 2px 14px rgba(0,0,0,0.95)",
+            }}>{p.label}</div>
+          );
+          return (
+            <div key={i} style={{
+              position: "absolute",
+              left: flip ? undefined : sp.x + 14,
+              right: flip ? width - sp.x + 14 : undefined,
+              top, opacity: op,
+              display: "flex", alignItems: "center", gap: 8,
+              flexDirection: flip ? "row-reverse" : "row",
+            }}>
+              {tick}{name}
+            </div>
+          );
+        })}
+      </AbsoluteFill>
+
       {title && (
-        <AbsoluteFill style={{ pointerEvents: "none", justifyContent: "flex-start", alignItems: "center", paddingTop: 90 }}>
-          <div style={{ opacity: titleOp, fontFamily: fontFamily("oswald"), color: "#f4f1ea", fontSize: 58, fontWeight: 800, letterSpacing: 4, textTransform: "uppercase", textShadow: "0 6px 30px rgba(0,0,0,0.95)" }}>
+        <AbsoluteFill style={{ pointerEvents: "none", justifyContent: "flex-start", alignItems: "center", paddingTop: 84 }}>
+          <div style={{ opacity: titleOp * exit, fontFamily: fontFamily("oswald"), color: "#f4f1ea", fontSize: 58, fontWeight: 800, letterSpacing: 4, textTransform: "uppercase", textShadow: "0 6px 30px rgba(0,0,0,0.95)" }}>
             {title}
           </div>
         </AbsoluteFill>
