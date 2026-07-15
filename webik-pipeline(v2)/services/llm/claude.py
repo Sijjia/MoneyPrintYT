@@ -251,8 +251,15 @@ class ClaudeService:
         try:
             return json.loads(json_text)
         except json.JSONDecodeError as e:
-            log.error(f"JSON parse error: {e}\n--- Исходный текст ---\n{json_text[:1000]}\n---")
-            raise ValidationError(f"Невалидный JSON от Claude: {e}")
+            # Модель иногда клеит несколько JSON-объектов подряд ({...}{...}) —
+            # берём первый валидный, хвост игнорируем.
+            try:
+                obj, _ = json.JSONDecoder().raw_decode(text, start)
+                log.warning(f"JSON с хвостом — взят первый объект ({e})")
+                return obj
+            except json.JSONDecodeError:
+                log.error(f"JSON parse error: {e}\n--- Исходный текст ---\n{json_text[:1000]}\n---")
+                raise ValidationError(f"Невалидный JSON от Claude: {e}")
 
     def estimate_cost(self) -> float:
         """Стоимость в долларах от запросов в этой сессии."""
