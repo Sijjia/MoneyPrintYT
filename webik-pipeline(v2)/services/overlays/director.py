@@ -133,92 +133,106 @@ def _build_prompt(rows: List[dict], max_scenes: int) -> str:
     return "\n".join(lines)
 
 
-def _spread(n: int) -> List[float]:
-    """X-координаты n блоков в мире, по центру ~1500."""
-    gap = 820
+def _spread(n: int, center: float = 1500.0, gap: float = 820.0) -> List[float]:
     total = gap * (n - 1)
-    x0 = 1500 - total / 2
-    return [x0 + i * gap for i in range(n)]
+    return [center - total / 2 + i * gap for i in range(n)]
 
 
-def _build_scene(headline: str, timed: List[tuple]) -> Optional[Dict[str, Any]]:
-    """timed = [(t_sec, beat), ...] отсортировано. Строит спеку Scene."""
+def _vspread(n: int, center: float = 640.0, gap: float = 300.0) -> List[float]:
+    total = gap * (n - 1)
+    return [center - total / 2 + i * gap for i in range(n)]
+
+
+def _mk_block(bid: str, x: float, y: float, beat: dict) -> Dict[str, Any]:
+    """Бит → блок сцены (bars/ratio/stat с фолбэком на stat)."""
+    kind = beat.get("kind", "stat")
+    blk: Dict[str, Any] = {"id": bid, "x": x, "y": y}
+    if kind == "bars":
+        items = []
+        for it in beat.get("items") or []:
+            v = _num(it.get("value"))
+            if v is not None and it.get("label"):
+                items.append({"label": str(it["label"]), "value": v})
+        if len(items) >= 2:
+            blk.update(kind="bars", items=items[:3], label=beat.get("label", ""))
+            return blk
+    elif kind == "ratio":
+        fil, tot = _num(beat.get("filled")), _num(beat.get("total"))
+        if fil and tot and tot > 0:
+            blk.update(kind="ratio", filled=int(fil), total=int(tot), label=beat.get("label", ""))
+            return blk
+    blk.update(kind="stat", value=str(beat.get("value", "")), label=beat.get("label", ""),
+               suffix=beat.get("suffix", ""))
+    return blk
+
+
+# Рецепты компоновки+камеры. Чередуются по сценам, чтобы не выглядело шаблонно.
+# ВАЖНО: только КАМЕРА/компоновка — НЕ трогаем СМЫСЛ данных. Сравнительный бар-чарт
+# делаем ТОЛЬКО когда сам LLM пометил числа как сравнимые (beat kind=bars); авто-склейка
+# двух статов в бары запрещена — легко получить бред («3 года» vs «74 погибших»).
+RECIPES = ["row", "column", "arc", "diagonal"]
+
+
+def _positions(style: str, n: int):
+    """(позиции блоков, позиция заголовка) под стиль."""
+    if style == "column":
+        ys = _vspread(n, 700, 300)
+        return [(1500.0, y) for y in ys], (1500.0, ys[0] - 250)
+    if style == "arc":
+        xs = _spread(n, 1500, 760)
+        ys = [640.0 + (130 if i % 2 else -70) for i in range(n)]
+        return [(xs[i], ys[i]) for i in range(n)], (1500.0, 250)
+    if style == "diagonal":
+        xs, ys = _spread(n, 1500, 640), _vspread(n, 660, 200)
+        return [(xs[i], ys[i]) for i in range(n)], (1500.0, 230)
+    xs = _spread(n)  # row
+    return [(x, 640.0) for x in xs], (1500.0, 300)
+
+
+def _seq_scene(style: str, headline: str, timed: List[tuple]) -> Dict[str, Any]:
+    """Последовательный проход камеры по битам с компоновкой стиля."""
     n = len(timed)
-    if n < 2:
-        return None
     t0 = timed[0][0]
     scene_start = max(0.0, t0 - 0.6)
     fbeats = [(round((t - scene_start) * FPS), b) for t, b in timed]
+    pos, (hx, hy) = _positions(style, n)
 
-    xs = _spread(n)
-    blocks = []
-    for i, (_, b) in enumerate(fbeats):
-        kind = b.get("kind", "stat")
-        blk: Dict[str, Any] = {"id": f"b{i}", "x": xs[i], "y": 640, "kind": kind}
-        if kind == "bars":
-            items = []
-            for it in b.get("items") or []:
-                v = _num(it.get("value"))
-                if v is not None and it.get("label"):
-                    items.append({"label": str(it["label"]), "value": v})
-            if len(items) < 2:
-                blk = {"id": f"b{i}", "x": xs[i], "y": 640, "kind": "stat",
-                       "value": str(b.get("value", "")), "label": b.get("label", "")}
-            else:
-                blk["items"] = items[:3]
-        elif kind == "ratio":
-            fil, tot = _num(b.get("filled")), _num(b.get("total"))
-            if not fil or not tot or tot <= 0:
-                blk = {"id": f"b{i}", "x": xs[i], "y": 640, "kind": "stat",
-                       "value": str(b.get("value", "")), "label": b.get("label", "")}
-            else:
-                blk["filled"], blk["total"], blk["label"] = int(fil), int(tot), b.get("label", "")
-        else:
-            blk["kind"] = "stat"
-            blk["value"] = str(b.get("value", ""))
-            blk["label"] = b.get("label", "")
-        blocks.append(blk)
-    cx = sum(xs) / n
+    blocks = [_mk_block(f"b{i}", pos[i][0], pos[i][1], b) for i, (_, b) in enumerate(fbeats)]
     if headline:
-        blocks.append({"id": "h", "kind": "headline", "x": cx, "y": 300, "text": headline})
+        blocks.append({"id": "h", "kind": "headline", "x": hx, "y": hy, "text": headline})
 
-    # остановки: камера приезжает к биту i ровно на его кадре (moveEnd = f_i)
-    shots = []
-    prev_end = 0
+    shots, prev_end = [], 0
     for i, (f, _) in enumerate(fbeats):
         move = max(8, f - prev_end)
-        if i < n - 1:
-            gap = fbeats[i + 1][0] - f
-            hold = max(10, int(gap * 0.4))
-        else:
-            hold = 55
-        shots.append({
-            "focus": f"b{i}",
-            "zoom": 1.5,
-            "move": move,
-            "hold": hold,
-            "rotY": 8 if i % 2 == 0 else -8,  # облёт то влево, то вправо
-        })
+        hold = max(10, int((fbeats[i + 1][0] - f) * 0.4)) if i < n - 1 else 55
+        rotY = rotX = 0.0
+        if style == "row":
+            rotY = 8 if i % 2 == 0 else -8
+        elif style == "column":
+            rotX = 9.0
+        elif style == "arc":
+            rotY = -15 + 30 * (i / max(1, n - 1))     # облёт слева направо
+        elif style == "diagonal":
+            rotY, rotX = (11, 6) if i % 2 == 0 else (-11, -6)
+        shots.append({"focus": f"b{i}", "zoom": 1.5, "move": move, "hold": hold,
+                      "rotY": round(rotY, 1), "rotX": round(rotX, 1)})
         prev_end += move + hold
 
-    # финальный отъезд-раскрытие всех битов + шапки
+    pull_zoom = {"column": 0.66, "arc": 0.7, "diagonal": 0.68}.get(style, 0.72)
     pull_move, pull_hold = 75, 95
-    shots.append({
-        "focus": "h" if headline else "b0",
-        "zoom": 0.72,
-        "move": pull_move,
-        "hold": pull_hold,
-        "rotY": 0,
-    })
-    total_frames = prev_end + pull_move + pull_hold + 24
+    shots.append({"focus": "h" if headline else "b0", "zoom": pull_zoom,
+                  "move": pull_move, "hold": pull_hold, "rotY": 0.0, "rotX": 0.0})
+    total = prev_end + pull_move + pull_hold + 24
+    return {"composition": "Scene", "start": round(scene_start, 2),
+            "duration_sec": round(total / FPS, 2), "duration_frames": total,
+            "props": {"blocks": blocks, "shots": shots}}
 
-    return {
-        "composition": "Scene",
-        "start": round(scene_start, 2),
-        "duration_sec": round(total_frames / FPS, 2),
-        "duration_frames": total_frames,
-        "props": {"blocks": blocks, "shots": shots},
-    }
+
+def _build_scene(headline: str, timed: List[tuple], variant: int = 0) -> Optional[Dict[str, Any]]:
+    """timed = [(t_sec, beat), ...] отсортировано. Строит спеку Scene по рецепту variant."""
+    if len(timed) < 2:
+        return None
+    return _seq_scene(RECIPES[variant % len(RECIPES)], headline, timed)
 
 
 def _build_globe(
@@ -331,6 +345,8 @@ def direct_scenes(
         spec = _build_scene(sc.get("headline", ""), timed)
         if spec:
             spec["_nbeats"] = len(timed)
+            spec["_timed"] = timed                      # для пересборки рецепта по порядку
+            spec["_headline"] = sc.get("headline", "")
             cands.append(spec)
 
     # 2) разводим по времени: сортируем по силе (больше битов → важнее),
@@ -360,15 +376,27 @@ def direct_scenes(
 
     kept.sort(key=lambda s: s["start"])
     out = []
+    variant = 0  # чередуем рецепты по ПОРЯДКУ на таймлайне → соседи не похожи
     for spec in kept:
         spec.pop("_nbeats", None)
+        if spec["composition"] == "Scene":
+            # пересобираем сцену под рецепт её позиции (сохраняя старт/тайминг)
+            timed, head = spec.pop("_timed"), spec.pop("_headline")
+            rebuilt = _build_scene(head, timed, variant=variant)
+            if rebuilt:
+                rebuilt["start"] = spec["start"]  # старт уже зафиксирован (мог сдвигаться)
+                spec = rebuilt
+            variant += 1
+        spec.pop("_timed", None)
+        spec.pop("_headline", None)
         spec["id"] = f"cine_{len(out) + 1:02d}"
         out.append(spec)
         if spec["composition"] == "Globe3D":
             log.info(f"  глобус {spec['id']} @ {spec['start']}s, {len(spec['props']['places'])} мест")
         else:
-            log.info(f"  сцена {spec['id']} @ {spec['start']}s, {spec['duration_sec']}s, "
-                     f"{len(spec['props']['blocks'])} блоков")
+            recipe = RECIPES[(variant - 1) % len(RECIPES)]
+            kinds = [b.get("kind") for b in spec["props"]["blocks"]]
+            log.info(f"  сцена {spec['id']} @ {spec['start']}s [{recipe}] {kinds}")
 
     log.info(f"Режиссёр: {len(out)} кино-сцен(ы) из {len(cands)} кандидатов")
     return {"scenes": out}
