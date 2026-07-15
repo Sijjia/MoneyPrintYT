@@ -15,6 +15,10 @@ import { CinematicStat } from "./CinematicStat";
 import { CinematicScene } from "./CinematicScene";
 import { Scene } from "./Scene";
 import { Globe3D } from "./Globe3D";
+import { CrowdPictograph } from "./CrowdPictograph";
+import { KineticType } from "./KineticType";
+import { TimelineJourney } from "./TimelineJourney";
+import { ProportionFill } from "./ProportionFill";
 
 const W = 1920;
 const H = 1080;
@@ -295,6 +299,63 @@ export const RemotionRoot: React.FC = () => {
             { lat: 35.7, lon: 139.7, label: "Токио" },
           ],
         }}
+      />
+
+      <Composition
+        id="CrowdPictograph"
+        component={CrowdPictograph}
+        durationInFrames={160}
+        fps={30}
+        width={W}
+        height={H}
+        defaultProps={{ total: 920, filled: 918, label: "погибли", sub: "Джонстаун · 1978", accent: "#d92828" }}
+      />
+
+      <Composition
+        id="KineticType"
+        component={KineticType}
+        durationInFrames={150}
+        fps={30}
+        width={W}
+        height={H}
+        calculateMetadata={({ props }: any) => {
+          const words = (props?.lines || []).reduce((a: number, l: string) => a + l.split(/\s+/).filter(Boolean).length, 0);
+          return { durationInFrames: Math.max(90, 40 + words * 7 + 60) };
+        }}
+        defaultProps={{ lines: ["Убийство", "во имя веры"], highlight: "Убийство", stat: "", statLabel: "", accent: "#d92828" }}
+      />
+
+      <Composition
+        id="TimelineJourney"
+        component={TimelineJourney}
+        durationInFrames={240}
+        fps={30}
+        width={W}
+        height={H}
+        calculateMetadata={({ props }: any) => {
+          const n = (props?.events || []).length || 1;
+          return { durationInFrames: Math.max(120, 50 + n * 55) };
+        }}
+        defaultProps={{
+          title: "Хроника террора",
+          events: [
+            { year: 1978, label: "Джонстаун" },
+            { year: 1993, label: "Уэйко" },
+            { year: 2000, label: "Канунгу" },
+            { year: 2023, label: "Шакахола" },
+          ],
+          accent: "#d92828",
+        }}
+      />
+
+      <Composition
+        id="ProportionFill"
+        component={ProportionFill}
+        durationInFrames={150}
+        fps={30}
+        width={W}
+        height={H}
+        defaultProps={{ percent: 87, label: "не вернулись", sub: "из тех, кто вошёл", accent: "#d92828" }}
       />
     </>
   );
