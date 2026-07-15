@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import re
 from difflib import SequenceMatcher
+from math import asin, cos, radians, sin, sqrt
 from typing import Any, Dict, List, Optional
 
 from core.logger import setup_logger
@@ -32,16 +33,49 @@ GAP_MAX = 14.0        # соседние биты не дальше — инач
 PAIR_SPAN_MAX = 16.0  # пара (2 бита) должна быть кучнее тройки
 MIN_SCENE_GAP = 45.0  # между концом одной кино-сцены и началом следующей (в т.ч. глобусом)
 
+# Глобус — РЕДКИЙ приём (не на каждое упоминание места). Только реально «глобальный»
+# разброс: ≥3 места, разнесённые по миру. Одна страна/город — это НЕ глобус.
+GLOBE_CAP = 2          # максимум глобусов на весь ролик
+GLOBE_MIN_PLACES = 3
+GLOBE_MIN_SPREAD_KM = 2500.0
+
+
+def _haversine_km(a: dict, b: dict) -> float:
+    la1, lo1, la2, lo2 = map(radians, (a["lat"], a["lon"], b["lat"], b["lon"]))
+    h = sin((la2 - la1) / 2) ** 2 + cos(la1) * cos(la2) * sin((lo2 - lo1) / 2) ** 2
+    return 2 * 6371.0 * asin(sqrt(h))
+
+
+def _max_spread_km(places: List[dict]) -> float:
+    return max((_haversine_km(places[i], places[j])
+                for i in range(len(places)) for j in range(i + 1, len(places))), default=0.0)
+
 
 def _norm(s: str) -> List[str]:
     return re.sub(r"[^0-9a-zа-яё ]", " ", (s or "").lower()).split()
 
 
-def _time_of(anchor: str, words: List[dict]) -> Optional[float]:
-    """Глобальный поиск момента фразы-якоря в пословном alignment. None — слабо."""
+def _time_of(
+    anchor: str,
+    words: List[dict],
+    lo: Optional[float] = None,
+    hi: Optional[float] = None,
+) -> Optional[float]:
+    """Поиск момента фразы-якоря в пословном alignment. None — слабо.
+
+    Если заданы lo/hi — ищем ТОЛЬКО в этом окне (по времени слова). Это критично:
+    иначе обобщённый якорь («погибло», «человек») цепляется где-то далеко по 27-мин
+    ролику и биты одного сегмента разъезжаются на сотни секунд.
+    """
     toks = _norm(anchor)
     if not toks or not words:
         return None
+    if lo is not None or hi is not None:
+        _lo = lo if lo is not None else -1e9
+        _hi = hi if hi is not None else 1e9
+        words = [w for w in words if _lo <= float(w.get("start", 0)) <= _hi]
+        if not words:
+            return None
     k = len(toks)
     target = " ".join(toks)
     best_r, best_t = 0.0, None
@@ -51,7 +85,9 @@ def _time_of(anchor: str, words: List[dict]) -> Optional[float]:
         r = SequenceMatcher(None, target, cand).ratio()
         if r > best_r:
             best_r, best_t = r, float(win[0].get("start", 0))
-    return best_t if best_r >= 0.6 else None
+    # в окне сцены ложных совпадений почти нет → порог мягче
+    thr = 0.5 if (lo is not None or hi is not None) else 0.6
+    return best_t if best_r >= thr else None
 
 
 SYSTEM = (
@@ -67,7 +103,7 @@ def _build_prompt(rows: List[dict], max_scenes: int) -> str:
         f"Найди до {max_scenes} сильных кино-сегментов. Каждый — один из ДВУХ типов:",
         "",
         'A) "scene" — связка из 2–4 ДАННЫХ, что ведут к одной мысли.',
-        '   поля: {"type":"scene","headline":<вывод ≤5 слов>,"beats":[...]}.',
+        '   поля: {"type":"scene","scene_id":<id сцены>,"headline":<вывод ≤5 слов>,"beats":[...]}.',
         "   Каждый бит — ОДИН из:",
         '     • {"kind":"stat","value":<полное число цифрами>,"label":<≤3 слова>,"anchor":...}',
         '     • {"kind":"bars","label":<заголовок ≤3 слова>,"items":[{"label","value"}...] (2-3),"anchor":...}',
@@ -76,15 +112,21 @@ def _build_prompt(rows: List[dict], max_scenes: int) -> str:
         "         — только если в тексте «X из Y».",
         "",
         'B) "globe" — сегмент про ГЕОГРАФИЮ (перечислены страны/города событий).',
-        '   поля: {"type":"globe","title":<≤4 слова>,"places":[{"label","lat","lon"}...] (2-6),"anchor":...}.',
-        "   lat/lon — реальные координаты места.",
+        '   поля: {"type":"globe","scene_id":<id сцены>,"title":<≤4 слова>,"places":[{"label","lat","lon"}...] (2-6),"anchor":...}.',
+        "   lat/lon — реальные координаты. places — ТОЛЬКО страны/города, НАЗВАННЫЕ в",
+        "   тексте этого сегмента. Не добавляй свои — если сказано «Россия, Африка,",
+        "   Латинская Америка» — бери ровно их, не выдумывай Индию/Австралию.",
         "",
-        "anchor — 2–5 слов ДОСЛОВНО из текста, где это звучит (для тайминга камеры).",
+        "ГЛАВНОЕ ПРО ТАЙМИНГ:",
+        "- scene_id — id сцены из списка, ГДЕ этот сегмент реально звучит (обязательно).",
+        "- ВСЕ биты/anchor одного сегмента — из ОДНОЙ мысли, звучащей ПОДРЯД (в пределах",
+        "  ~30 секунд, обычно одна сцена). НЕ собирай биты из разных концов ролика.",
+        "- anchor — 2–5 слов ДОСЛОВНО из текста этой сцены, где звучит факт.",
         "Числа/места/факты — ТОЛЬКО реальные из текста, не выдумывай. Разнообразь типы битов.",
         "",
-        'Ответ СТРОГО JSON: {"scenes":[{"type":"scene"|"globe", ...}]}.',
+        'Ответ СТРОГО JSON: {"scenes":[{"type":"scene"|"globe","scene_id",...}]}.',
         "",
-        "СЦЕНЫ ЗАКАДРА:",
+        "СЦЕНЫ ЗАКАДРА (id + текст):",
     ]
     for r in rows:
         lines.append(f'[{r["id"]}] {r["text"]}')
@@ -179,7 +221,9 @@ def _build_scene(headline: str, timed: List[tuple]) -> Optional[Dict[str, Any]]:
     }
 
 
-def _build_globe(sc: dict, words: List[dict]) -> Optional[Dict[str, Any]]:
+def _build_globe(
+    sc: dict, words: List[dict], lo: Optional[float] = None, hi: Optional[float] = None
+) -> Optional[Dict[str, Any]]:
     """Гео-сегмент → 3D-глобус с пинами."""
     places = []
     for p in sc.get("places") or []:
@@ -187,9 +231,15 @@ def _build_globe(sc: dict, words: List[dict]) -> Optional[Dict[str, Any]]:
         if p.get("label") and lat is not None and lon is not None \
                 and -90 <= lat <= 90 and -180 <= lon <= 180:
             places.append({"label": str(p["label"]), "lat": lat, "lon": lon})
-    if len(places) < 2:
+    if len(places) < GLOBE_MIN_PLACES:
         return None
-    t = _time_of(sc.get("anchor", ""), words)
+    spread = _max_spread_km(places)
+    if spread < GLOBE_MIN_SPREAD_KM:
+        # одна страна/регион — не тянет на «глобус террора»
+        return None
+    t = _time_of(sc.get("anchor", ""), words, lo, hi)
+    if t is None and lo is not None:
+        t = lo + 0.3  # якорь не нашёлся — ставим в начало сцены (а не в 0!)
     start = max(0.0, (t if t is not None else 0.0) - 0.3)
     return {
         "composition": "Globe3D",
@@ -212,11 +262,20 @@ def direct_scenes(
     if not rows:
         return {"scenes": []}
     words = alignment.get("words", []) or []
+    # окно каждой сцены (+запас на соседние сцены — мысль может перетекать)
+    win = {r["id"]: (r["start"], r["end"]) for r in rows}
+
+    def _window(sc: dict):
+        sid = sc.get("scene_id")
+        if sid in win:
+            lo, hi = win[sid]
+            return lo - 6.0, hi + 30.0  # запас назад/вперёд на перетекание мысли
+        return None, None
 
     log.info(f"Режиссёр: ищу кино-сегменты по {len(rows)} сценам (model={model})...")
     llm = ClaudeService(model=model)
     # просим с запасом — разведение по времени отберёт лучшие max_scenes
-    data = llm.call_json(_build_prompt(rows, max_scenes + 2), max_tokens=6000, temperature=0.15, system=SYSTEM)
+    data = llm.call_json(_build_prompt(rows, max_scenes + 3), max_tokens=8000, temperature=0.15, system=SYSTEM)
     raw = data.get("scenes", data) if isinstance(data, dict) else data
     if not isinstance(raw, list):
         return {"scenes": []}
@@ -224,21 +283,37 @@ def direct_scenes(
     # 1) сначала собираем ВСЕХ кандидатов (с проверкой кучности битов)
     cands: List[Dict[str, Any]] = []
     for sc in raw:
+        lo, hi = _window(sc)
         if sc.get("type") == "globe":
-            spec = _build_globe(sc, words)
+            spec = _build_globe(sc, words, lo, hi)
             if spec:
                 cands.append(spec)
             continue
 
         beats = sc.get("beats") or []
         head = sc.get("headline", "")[:30]
-        timed = []
-        for b in beats:
-            t = _time_of(b.get("anchor", ""), words)
+        sid = sc.get("scene_id")
+        # точные якоря по каждому биту (в окне сцены)
+        anchored = {}
+        for i, b in enumerate(beats):
+            t = _time_of(b.get("anchor", ""), words, lo, hi)
             if t is not None:
-                timed.append((t, b))
+                anchored[i] = t
+
+        if len(anchored) == len(beats) and len(beats) >= 2:
+            # идеал: все биты точно на слово (камера едет к цифре в момент речи)
+            timed = sorted(((anchored[i], b) for i, b in enumerate(beats)), key=lambda x: x[0])
+        elif sid in win and len(beats) >= 2:
+            # якоря побились не все → раскидываем биты РОВНО по окну сцены (уместно по смыслу)
+            ws, we = win[sid]
+            dur = max(6.0, min(28.0, we - ws))
+            n = len(beats)
+            timed = [(ws + dur * (i + 0.5) / n, b) for i, b in enumerate(beats)]
+            log.info(f"  «{head}»: якоря частичны ({len(anchored)}/{n}) → раскидал по окну {sid}")
+        else:
+            timed = sorted(((anchored[i], beats[i]) for i in anchored), key=lambda x: x[0])
         if len(timed) < 2:
-            log.warning(f"  сегмент «{head}»: <2 битов привязано — пропуск")
+            log.warning(f"  сегмент «{head}»: <2 битов (scene_id={sid} нет в окнах) — пропуск")
             continue
         timed.sort(key=lambda x: x[0])
         span = timed[-1][0] - timed[0][0]
@@ -260,9 +335,17 @@ def direct_scenes(
 
     # 2) разводим по времени: сортируем по силе (больше битов → важнее),
     #    берём жадно, отбрасывая тех, кто ближе MIN_SCENE_GAP к уже взятой сцене.
+    #    сюжетные сцены (много битов) важнее глобусов; глобус = _nbeats 0 → в хвост.
+    for s in cands:
+        if s["composition"] == "Globe3D":
+            s["_nbeats"] = 0
     cands.sort(key=lambda s: (-(s.get("_nbeats", 2)), s["start"]))
     kept: List[Dict[str, Any]] = []
+    globes = 0
     for spec in cands:
+        is_globe = spec["composition"] == "Globe3D"
+        if is_globe and globes >= GLOBE_CAP:
+            continue  # глобус — редкий приём, лимит исчерпан
         s0, s1 = spec["start"], spec["start"] + spec["duration_sec"]
         clash = any(not (s1 + MIN_SCENE_GAP <= k["start"] or s0 >= k["start"] + k["duration_sec"] + MIN_SCENE_GAP)
                     for k in kept)
@@ -270,6 +353,8 @@ def direct_scenes(
             log.warning(f"  сцена @ {spec['start']}s впритык к другой (<{MIN_SCENE_GAP:.0f}s) — пропуск")
             continue
         kept.append(spec)
+        if is_globe:
+            globes += 1
         if len(kept) >= max_scenes:
             break
 
