@@ -28,8 +28,22 @@ COMPOSITION = {
     "shock": "ShockCounter",
     "fill": "ProportionFill",
     "timeline": "TimelineJourney",
+    "kinetic": "KineticType",
+    "mapspread": "MapSpread",
+    "network": "NetworkGraph",
 }
-DUR_FRAMES = {"crowd": 160, "shock": 150, "fill": 150}  # timeline — по числу событий
+DUR_FRAMES = {"crowd": 160, "shock": 150, "fill": 150, "kinetic": 130, "mapspread": 160, "network": 170}
+
+
+def _tokens(s: str) -> List[str]:
+    return re.sub(r"[^0-9а-яёa-z ]", " ", (s or "").lower()).split()
+
+
+def _words_in(text: str, words: List[dict], a: float, b: float, need: int = 1) -> bool:
+    """>= need значимых токенов (≥5 букв) из text реально звучат в окне."""
+    seg = " ".join(str(w.get("word", "")) for w in words if a <= float(w.get("start", 0)) <= b).lower()
+    hit = sum(1 for t in _tokens(text) if len(t) >= 5 and t in seg)
+    return hit >= need
 
 
 def _digits_in(v, words: List[dict], a: float, b: float) -> bool:
@@ -66,8 +80,17 @@ def _build_prompt(rows: List[dict], max_items: int) -> str:
         "   — процент/доля («87% не вернулись»).",
         'D) {"type":"timeline","scene_id","title":<≤4 слова>,"events":[{"year","label":<≤2 слова>}] (3-5),"anchor":...}',
         "   — хронология: 3–5 событий с ГОДАМИ, реально названными в тексте.",
+        'E) {"type":"kinetic","scene_id","lines":[<строка1>,<строка2>],"highlight":<ключевое слово>,'
+        '"anchor":...} — ХЛЁСТКАЯ фраза-вывод (2 строки, ≤6 слов). Слова — из смысла сцены.',
+        'F) {"type":"mapspread","scene_id","title":<≤4 слова>,"label":<годы/подпись>,'
+        '"places":[{"label","lat","lon"}] (2-5),"anchor":...} — как секта РАСПОЛЗАЛАСЬ/где очаги.',
+        "   lat/lon реальные; места НАЗВАНЫ в тексте.",
+        'G) {"type":"network","scene_id","title":<≤4 слова>,"leader":<кто во главе>,'
+        '"roles":[<роль/звено ≤2 слова>] (3-5),"anchor":...} — СТРУКТУРА секты (лидер+звенья),',
+        "   если в тексте описаны роли/иерархия.",
         "",
-        "anchor — 2–5 слов ДОСЛОВНО из текста. Числа/годы — ТОЛЬКО реальные. Разнообразь типы.",
+        "anchor — 2–5 слов ДОСЛОВНО из текста. Числа/годы/места — ТОЛЬКО реальные. РАЗНООБРАЗЬ типы —",
+        "не давай один и тот же тип много раз, если подходит другой.",
         "",
         "СЦЕНЫ (id + текст):",
     ]
@@ -135,6 +158,35 @@ def detect_archetypes(
                     evs.append({"year": yr, "label": lb})
             if len(evs) >= 3:
                 props = {"title": c.get("title", ""), "events": evs[:5]}
+                ok = True
+        elif typ == "kinetic":
+            lines = [str(x) for x in (c.get("lines") or []) if str(x).strip()][:3]
+            if lines and _words_in(" ".join(lines) + " " + str(c.get("highlight", "")), words, a, b, need=1):
+                props = {"lines": lines, "highlight": c.get("highlight", ""),
+                         "stat": str(c.get("stat", "")), "statLabel": c.get("statLabel", "")}
+                ok = True
+        elif typ == "mapspread":
+            places = []
+            for p in c.get("places") or []:
+                lat, lon = _num(p.get("lat")), _num(p.get("lon"))
+                if p.get("label") and lat is not None and lon is not None and -90 <= lat <= 90 and -180 <= lon <= 180:
+                    if _words_in(str(p["label"]), words, a, b, need=1):
+                        places.append({"x": round((lon + 180) / 360 * 100, 2), "y": round((90 - lat) / 180 * 100, 2),
+                                       "label": str(p["label"]), "grow": 300})
+            if len(places) >= 2:
+                props = {"title": c.get("title", ""), "label": c.get("label", ""), "origins": places[:5]}
+                ok = True
+        elif typ == "network":
+            roles = [str(x) for x in (c.get("roles") or []) if str(x).strip()][:5]
+            leader = str(c.get("leader", "")).strip()
+            if leader and len(roles) >= 3 and _words_in(" ".join(roles) + " " + leader, words, a, b, need=1):
+                from math import cos, pi, sin
+                nodes = [{"label": leader, "x": 50, "y": 42, "hot": True}]
+                for i, rl in enumerate(roles):
+                    ang = 2 * pi * i / len(roles) - pi / 2
+                    nodes.append({"label": rl, "x": round(50 + 30 * cos(ang), 1), "y": round(46 + 26 * sin(ang), 1)})
+                edges = [[0, i + 1] for i in range(len(roles))]
+                props = {"title": c.get("title", ""), "nodes": nodes, "edges": edges}
                 ok = True
 
         if not ok:
