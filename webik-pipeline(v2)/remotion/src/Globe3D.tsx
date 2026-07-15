@@ -168,6 +168,29 @@ export const Globe3D: React.FC<Globe3DProps> = ({ places = [], accent = PALETTE.
   const titleOp = interpolate(frame, [8, 24], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
   const exit = interpolate(frame, [durationInFrames - 20, durationInFrames], [1, 0], { extrapolateLeft: "clamp" });
 
+  // раскладка подписей с анти-коллизией: близкие по вертикали пины (один регион)
+  // разводим по строкам, чтобы названия не наезжали; выноска ведёт к пину.
+  type Lbl = { i: number; label: string; px: number; py: number; flip: boolean; ly: number };
+  const labels: Lbl[] = places
+    .map((p, i): Lbl | null => {
+      if (!p.label) return null;
+      const sp = project(heads[i]);
+      if (!sp.front) return null;
+      return { i, label: p.label, px: sp.x, py: sp.y, flip: sp.x > width * 0.72, ly: sp.y };
+    })
+    .filter((l): l is Lbl => l !== null);
+  const ROW = 40;
+  for (const side of [false, true]) {
+    const grp = labels.filter((l) => l.flip === side).sort((a, b) => a.py - b.py);
+    let lastY = -Infinity;
+    for (const l of grp) {
+      let ly = Math.max(40, Math.min(height - 52, l.py - 4));
+      if (ly < lastY + ROW) ly = lastY + ROW;
+      l.ly = Math.min(height - 52, ly);
+      lastY = l.ly;
+    }
+  }
+
   const arcs = places.length > 1
     ? places.slice(0, -1).map((_, i) => ({
         key: i,
@@ -196,36 +219,38 @@ export const Globe3D: React.FC<Globe3DProps> = ({ places = [], accent = PALETTE.
         })}
       </ThreeCanvas>
 
-      {/* экранные подписи городов */}
+      {/* экранные подписи очагов с выносками */}
       <AbsoluteFill style={{ pointerEvents: "none" }}>
-        {places.map((p, i) => {
-          if (!p.label) return null;
-          const sp = project(heads[i]);
-          if (!sp.front) return null;
-          const op = interpolate(frame, [26 + i * 7, 42 + i * 7], [0, 1], {
+        {labels.map((l) => {
+          const op = interpolate(frame, [26 + l.i * 7, 42 + l.i * 7], [0, 1], {
             extrapolateLeft: "clamp", extrapolateRight: "clamp",
           }) * exit;
-          const flip = sp.x > width * 0.72;             // у правого края — подпись влево
-          const top = Math.max(40, Math.min(height - 52, sp.y - 30));
-          const tick = <div style={{ width: 22, height: 2, background: accent, boxShadow: `0 0 8px ${accent}` }} />;
-          const name = (
-            <div style={{
-              fontFamily: fontFamily("oswald"), color: "#f4f1ea", fontSize: 30, fontWeight: 700,
-              letterSpacing: 2, textTransform: "uppercase", whiteSpace: "nowrap",
-              textShadow: "0 2px 14px rgba(0,0,0,0.95)",
-            }}>{p.label}</div>
-          );
+          const dir = l.flip ? -1 : 1;
+          const stubX = l.px + dir * 16;                 // горизонтальный вынос
+          const dy = l.ly - l.py;
           return (
-            <div key={i} style={{
-              position: "absolute",
-              left: flip ? undefined : sp.x + 14,
-              right: flip ? width - sp.x + 14 : undefined,
-              top, opacity: op,
-              display: "flex", alignItems: "center", gap: 8,
-              flexDirection: flip ? "row-reverse" : "row",
-            }}>
-              {tick}{name}
-            </div>
+            <React.Fragment key={l.i}>
+              {/* L-выноска: вертикаль от пина к строке + горизонтальный вынос */}
+              {Math.abs(dy) > 3 && (
+                <div style={{
+                  position: "absolute", left: l.px - 1, top: Math.min(l.py, l.ly),
+                  width: 2, height: Math.abs(dy), background: accent, opacity: 0.6 * op,
+                }} />
+              )}
+              <div style={{
+                position: "absolute", top: l.ly - 1,
+                left: dir > 0 ? l.px : stubX, width: 16, height: 2,
+                background: accent, opacity: 0.75 * op, boxShadow: `0 0 8px ${accent}`,
+              }} />
+              <div style={{
+                position: "absolute", top: l.ly - 15, opacity: op,
+                left: dir > 0 ? stubX + 8 : undefined,
+                right: dir < 0 ? width - stubX + 8 : undefined,
+                fontFamily: fontFamily("oswald"), color: "#f4f1ea", fontSize: 30, fontWeight: 700,
+                letterSpacing: 2, textTransform: "uppercase", whiteSpace: "nowrap",
+                textShadow: "0 2px 14px rgba(0,0,0,0.95)",
+              }}>{l.label}</div>
+            </React.Fragment>
           );
         })}
       </AbsoluteFill>
