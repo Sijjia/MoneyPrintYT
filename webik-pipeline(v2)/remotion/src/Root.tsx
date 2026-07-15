@@ -20,6 +20,10 @@ import { KineticType } from "./KineticType";
 import { TimelineJourney } from "./TimelineJourney";
 import { ProportionFill } from "./ProportionFill";
 import { DossierCard } from "./DossierCard";
+import { PhotoAnnotate } from "./PhotoAnnotate";
+import { ShockCounter } from "./ShockCounter";
+import { MapSpread } from "./MapSpread";
+import { NetworkGraph } from "./NetworkGraph";
 
 const W = 1920;
 const H = 1080;
@@ -376,6 +380,73 @@ export const RemotionRoot: React.FC = () => {
           ],
           stamp: "погиб",
           photo: null,
+          accent: "#d92828",
+        }}
+      />
+
+      <Composition
+        id="PhotoAnnotate"
+        component={PhotoAnnotate}
+        durationInFrames={170}
+        fps={30}
+        width={W}
+        height={H}
+        defaultProps={{
+          photo: null,
+          title: "Место массового захоронения",
+          annotations: [
+            { x: 38, y: 44, r: 90, label: "следы борьбы" },
+            { x: 64, y: 58, r: 64, label: "личные вещи" },
+          ],
+          accent: "#d92828",
+        }}
+      />
+
+      <Composition
+        id="ShockCounter"
+        component={ShockCounter}
+        durationInFrames={150}
+        fps={30}
+        width={W}
+        height={H}
+        defaultProps={{ from: 0, to: 778, label: "погибших", sub: "Канунгу · 2000", accent: "#d92828" }}
+      />
+
+      <Composition
+        id="MapSpread"
+        component={MapSpread}
+        durationInFrames={160}
+        fps={30}
+        width={W}
+        height={H}
+        defaultProps={{
+          title: "Как расползалась секта",
+          label: "1955 → 1978",
+          origins: [
+            { x: 22, y: 42, grow: 260, label: "Индианаполис" },
+            { x: 17, y: 60, grow: 360, label: "Гайана" },
+          ],
+          accent: "#d92828",
+        }}
+      />
+
+      <Composition
+        id="NetworkGraph"
+        component={NetworkGraph}
+        durationInFrames={170}
+        fps={30}
+        width={W}
+        height={H}
+        defaultProps={{
+          title: "Структура культа",
+          nodes: [
+            { label: "Лидер", x: 50, y: 42, hot: true },
+            { label: "«Стража»", x: 28, y: 30 },
+            { label: "Финансы", x: 72, y: 30 },
+            { label: "Вербовка", x: 30, y: 66 },
+            { label: "Изоляция", x: 70, y: 66 },
+          ],
+          edges: [[0, 1], [0, 2], [0, 3], [0, 4], [1, 3], [2, 4]],
           accent: "#d92828",
         }}
       />
