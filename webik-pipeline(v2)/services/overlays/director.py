@@ -176,8 +176,10 @@ RECIPES = ["row", "column", "arc", "diagonal"]
 def _positions(style: str, n: int):
     """(позиции блоков, позиция заголовка) под стиль."""
     if style == "column":
-        ys = _vspread(n, 700, 300)
-        return [(1500.0, y) for y in ys], (1500.0, ys[0] - 250)
+        # гигантский стат ~330px высотой (число+подпись) → большой вертикальный зазор,
+        # иначе подпись верхнего блока налезает на число нижнего.
+        ys = _vspread(n, 640, 420)
+        return [(1500.0, y) for y in ys], (1500.0, ys[0] - 240)
     if style == "arc":
         xs = _spread(n, 1500, 760)
         ys = [640.0 + (130 if i % 2 else -70) for i in range(n)]
@@ -232,7 +234,10 @@ def _build_scene(headline: str, timed: List[tuple], variant: int = 0) -> Optiona
     """timed = [(t_sec, beat), ...] отсортировано. Строит спеку Scene по рецепту variant."""
     if len(timed) < 2:
         return None
-    return _seq_scene(RECIPES[variant % len(RECIPES)], headline, timed)
+    recipe = RECIPES[variant % len(RECIPES)]
+    if recipe == "column" and len(timed) > 2:
+        recipe = "diagonal"  # 3+ гигантских стата в столбик не влезают по высоте
+    return _seq_scene(recipe, headline, timed)
 
 
 def _build_globe(
