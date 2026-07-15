@@ -21,10 +21,10 @@ def main():
     quick = json.loads((PROJECT / "overlays_rendered.json").read_text(encoding="utf-8"))["overlays"]
     cine = json.loads((PROJECT / "cine_scenes.json").read_text(encoding="utf-8"))["scenes"]
     for c in cine:
-        # cine2/ — свежие перерендеры (cine_02 без 20/20, полированный глобус);
-        # если там нет — берём оригинал из cine/ (напр. любимая cine_01).
-        fresh = PROJECT / "assets" / "cine2" / f"{c['id']}.mov"
-        c["file"] = str(fresh if fresh.exists() else PROJECT / "assets" / "cine" / f"{c['id']}.mov")
+        # приоритет источников: cine3/ (пересобранные стили) → cine2/ (свежие) →
+        # cine/ (оригиналы, напр. любимая cine_01). Берём первый существующий.
+        cand = [PROJECT / "assets" / d / f"{c['id']}.mov" for d in ("cine3", "cine2", "cine")]
+        c["file"] = str(next((p for p in cand if p.exists()), cand[-1]))
         c.setdefault("type", "cine")
 
     spans = [(c["start"], c["start"] + c["duration_sec"]) for c in cine]
