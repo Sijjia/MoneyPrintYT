@@ -455,7 +455,7 @@ export const RemotionRoot: React.FC = () => {
       <Composition
         id="IntroSequence"
         component={IntroSequence}
-        durationInFrames={420}
+        durationInFrames={1620}
         fps={30}
         width={W}
         height={H}

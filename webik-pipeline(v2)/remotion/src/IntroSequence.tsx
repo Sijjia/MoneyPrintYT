@@ -108,14 +108,109 @@ const Dust: React.FC<{ accent: string }> = ({ accent }) => {
   const frame = useCurrentFrame();
   return (
     <>
-      {Array.from({ length: 150 }).map((_, i) => {
+      {Array.from({ length: 320 }).map((_, i) => {
         const x = (i * 137) % 2100 - 50;
-        const y = (i * 331) % 4400 - 100;
+        const y = (i * 331) % 10400 - 100;
         const size = 2 + (i % 4);
         const tw = 0.25 + 0.35 * (0.5 + 0.5 * Math.sin(frame / 18 + i));
         return <div key={i} style={{ position: "absolute", left: x, top: y, width: size, height: size, borderRadius: "50%", background: i % 6 === 0 ? accent : "#dfe4ee", opacity: tw * 0.32, filter: "blur(0.5px)" }} />;
       })}
     </>
+  );
+};
+
+// ── ВРЕМЯ: песочные часы, песок пересыпается (не в прошлом — сейчас) ──
+const Hourglass: React.FC<{ lf: number; accent: string }> = ({ lf, accent }) => {
+  const ap = interpolate(lf, [4, 20], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  const drain = interpolate(lf, [10, 70], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.inOut(Easing.cubic) });
+  const st = "rgba(230,226,214,0.7)";
+  return (
+    <g opacity={ap}>
+      <path d="M-150 -220 L150 -220 L20 0 L150 220 L-150 220 L-20 0 Z" fill="none" stroke={st} strokeWidth="10" />
+      {/* верхний песок убывает */}
+      <path d={`M-130 -200 L130 -200 L${18 + 100 * drain} ${-40 - 60 * (1 - drain)} L${-18 - 100 * drain} ${-40 - 60 * (1 - drain)} Z`} fill={accent} opacity={0.85 * (1 - drain)} />
+      {/* нижний растёт */}
+      <path d={`M-${20 + 120 * drain} 200 L${20 + 120 * drain} 200 L18 ${40 + 60 * (1 - drain)} L-18 ${40 + 60 * (1 - drain)} Z`} fill={accent} opacity={0.85 * drain} />
+      {/* струйка */}
+      {drain > 0.02 && drain < 0.98 && <rect x="-3" y="-40" width="6" height="80" fill={accent} />}
+    </g>
+  );
+};
+
+// ── ГЛОБУС: круг с сеткой, 4 региона загораются красным ──
+const GlobeFlat: React.FC<{ lf: number; accent: string }> = ({ lf, accent }) => {
+  const draw = interpolate(lf, [4, 30], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  const R = 280;
+  const pins = [[-150, -120], [120, -60], [-90, 150], [170, 90]];
+  return (
+    <g>
+      <circle cx="0" cy="0" r={R} fill="none" stroke="rgba(120,150,200,0.35)" strokeWidth="3" opacity={draw} />
+      {[-160, -80, 0, 80, 160].map((yy, i) => <ellipse key={i} cx="0" cy={yy} rx={Math.sqrt(Math.max(0, R * R - yy * yy))} ry={22} fill="none" stroke="rgba(120,150,200,0.25)" strokeWidth="2" opacity={draw} />)}
+      {[-140, 0, 140].map((xx, i) => <ellipse key={i} cx={xx} cy="0" rx={30} ry={R * Math.sqrt(Math.max(0, 1 - (xx / R) ** 2))} fill="none" stroke="rgba(120,150,200,0.22)" strokeWidth="2" opacity={draw} />)}
+      {pins.map(([px, py], i) => {
+        const on = interpolate(lf, [30 + i * 12, 42 + i * 12], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.out(Easing.back(2)) });
+        const pulse = 1 + 0.4 * Math.max(0, Math.sin(lf / 7 - i));
+        return <g key={i}><circle cx={px} cy={py} r={16 * pulse} fill={accent} opacity={0.25 * on} /><circle cx={px} cy={py} r={9 * on} fill={accent} style={{ filter: `drop-shadow(0 0 10px ${accent})` }} /></g>;
+      })}
+    </g>
+  );
+};
+
+// ── АЙСБЕРГ: всплывает из тьмы, малая вершина / огромная масса; 3 иконки-улики ──
+const Iceberg: React.FC<{ lf: number; accent: string }> = ({ lf, accent }) => {
+  const rise = interpolate(lf, [6, 44], [140, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.out(Easing.cubic) });
+  const line = "rgba(150,180,220,0.5)";
+  // иконки-улики появляются позже (приговоры/показания/фото) — как штампы
+  const ic = (i: number) => interpolate(lf, [150 + i * 40, 168 + i * 40], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.out(Easing.back(2)) });
+  return (
+    <g transform={`translate(0 ${rise})`}>
+      <line x1="-420" y1="-60" x2="420" y2="-60" stroke="rgba(120,150,200,0.3)" strokeWidth="2" strokeDasharray="10 10" />
+      <path d="M-70 -60 L-20 -170 L40 -170 L80 -60 Z" fill="rgba(200,220,245,0.9)" />
+      <path d="M-190 -60 L-70 -60 L80 -60 L230 -60 L120 240 L-30 380 L-150 200 Z" fill="rgba(90,120,160,0.55)" stroke={line} strokeWidth="2" />
+      {/* улики: молоток / документ / фото (иконки, без текста) */}
+      <g opacity={ic(0)} transform="translate(-340 40)"><rect x="-30" y="14" width="60" height="16" rx="4" fill={accent} /><rect x="-8" y="-34" width="16" height="52" rx="4" fill={accent} transform="rotate(-35)" /></g>
+      <g opacity={ic(1)} transform="translate(360 -10)"><rect x="-34" y="-42" width="68" height="84" rx="6" fill="none" stroke={accent} strokeWidth="6" /><line x1="-20" y1="-20" x2="20" y2="-20" stroke={accent} strokeWidth="5" /><line x1="-20" y1="0" x2="20" y2="0" stroke={accent} strokeWidth="5" /><line x1="-20" y1="20" x2="8" y2="20" stroke={accent} strokeWidth="5" /></g>
+      <g opacity={ic(2)} transform="translate(300 220)"><rect x="-40" y="-30" width="80" height="60" rx="6" fill="none" stroke={accent} strokeWidth="6" /><circle cx="-16" cy="-8" r="8" fill={accent} /><path d="M-40 30 L-6 -2 L14 18 L26 8 L40 24 L40 30 Z" fill={accent} /></g>
+    </g>
+  );
+};
+
+// ── ВЕРА⟶ТЕРРОР: крест снизу превращается в пламя ──
+const CrossToFire: React.FC<{ lf: number; accent: string }> = ({ lf, accent }) => {
+  const morph = interpolate(lf, [20, 70], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.inOut(Easing.cubic) });
+  const N = 11;
+  return (
+    <g>
+      {/* верх креста остаётся */}
+      <line x1="0" y1="-320" x2="0" y2={-40 - 200 * morph} stroke={lerpCol([244, 241, 234], [217, 40, 40], morph)} strokeWidth="30" strokeLinecap="round" />
+      <line x1="-190" y1="-120" x2="190" y2="-120" stroke={lerpCol([244, 241, 234], [217, 40, 40], morph)} strokeWidth="30" strokeLinecap="round" opacity={1 - 0.4 * morph} />
+      {/* низ превращается в пламя */}
+      <g transform="translate(0 40)">
+        {Array.from({ length: N }).map((_, i) => {
+          const bx = (i - (N - 1) / 2) * 30;
+          const flick = 0.7 + 0.5 * Math.sin(lf / 2.4 + i * 1.7);
+          const h = morph * (2.6 + 1.3 * flick) * (1 - Math.abs(bx) / 220);
+          const col = i % 3 === 0 ? "#ffcc33" : i % 3 === 1 ? "#ff6a1a" : accent;
+          return <path key={i} d={flamePath} transform={`translate(${bx + Math.sin(lf / 4 + i) * 8} ${300}) scale(${2 + 0.6 * flick} ${Math.max(0.1, h)})`} fill={col} opacity={(0.4 + 0.28 * flick) * morph} />;
+        })}
+      </g>
+    </g>
+  );
+};
+
+// ── ГЛАЗ: раскрывается, красная радужка (невозможно развидеть) ──
+const Eye: React.FC<{ lf: number; accent: string }> = ({ lf, accent }) => {
+  const open = interpolate(lf, [6, 40], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.out(Easing.cubic) });
+  const iris = interpolate(lf, [30, 55], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  const h = 150 * open;
+  return (
+    <g>
+      <path d={`M-300 0 Q 0 ${-h} 300 0 Q 0 ${h} -300 0 Z`} fill="#0a0d14" stroke="rgba(230,226,214,0.8)" strokeWidth="6" />
+      <g style={{ clipPath: "ellipse(300px 150px at 50% 50%)" }}>
+        <circle cx="0" cy="0" r={90 * iris} fill={accent} opacity={0.85} style={{ filter: `drop-shadow(0 0 20px ${accent})` }} />
+        <circle cx="0" cy="0" r={42 * iris} fill="#0a0d14" />
+      </g>
+    </g>
   );
 };
 
@@ -125,6 +220,11 @@ const NODES = [
   { key: "blade", x: 1440, y: 1520, at: 76, ry: -7, C: Blade },
   { key: "burn", x: 560, y: 2560, at: 142, ry: 7, C: Burn },
   { key: "cross", x: 1080, y: 3620, at: 250, ry: 0, C: Cross },
+  { key: "hour", x: 700, y: 4760, at: 470, ry: 6, C: Hourglass },
+  { key: "globe", x: 1160, y: 5900, at: 680, ry: -6, C: GlobeFlat },
+  { key: "iceberg", x: 860, y: 7160, at: 900, ry: 4, C: Iceberg },
+  { key: "morph", x: 1180, y: 8560, at: 1380, ry: -5, C: CrossToFire },
+  { key: "eye", x: 960, y: 9640, at: 1540, ry: 0, C: Eye },
 ];
 
 export const IntroSequence: React.FC<{ accent?: string }> = ({ accent = PALETTE.red }) => {
