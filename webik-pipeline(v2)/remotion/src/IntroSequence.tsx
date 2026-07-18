@@ -1,151 +1,165 @@
 import React from "react";
-import { AbsoluteFill, Sequence, Easing, interpolate, useCurrentFrame } from "remotion";
+import { AbsoluteFill, Easing, interpolate, useCurrentFrame } from "remotion";
 import { PALETTE, fontFamily } from "./theme";
 
-// Цельное анимационное ВСТУПЛЕНИЕ: биты рисуют смысл ОБРАЗАМИ (не текстом — его в
-// ролике и так много). Пока proof: зверства как визуальные метафоры + крест.
+// Цельное анимационное ВСТУПЛЕНИЕ на 3D-камере: образы (не текст) расставлены в
+// пространстве по вертикали, камера ПЛАВНО СПУСКАЕТСЯ через них — кино-полёт,
+// а не нарезка слайдов. Ложится на смысл: «чем глубже спускаемся, тем больше террор».
 
-// ── силуэт человека (единый визуальный язык) ──
-const Figure: React.FC<{ x: number; y: number; s?: number; fill: string; op?: number }> = ({ x, y, s = 1, fill, op = 1 }) => (
-  <g transform={`translate(${x} ${y}) scale(${s})`} opacity={op}>
+const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
+const lerpCol = (a: number[], b: number[], t: number) =>
+  `rgb(${a.map((v, i) => Math.round(v + (b[i] - v) * t)).join(",")})`;
+
+// силуэт человека, центр в (0,0)
+const Figure: React.FC<{ s?: number; fill: string }> = ({ s = 1, fill }) => (
+  <g transform={`scale(${s})`}>
     <circle cx="0" cy="-46" r="16" fill={fill} />
     <path d="M-24 34 C-24 2 -12 -14 0 -14 C12 -14 24 2 24 34 Z" fill={fill} />
   </g>
 );
 
-const lerpCol = (a: number[], b: number[], t: number) =>
-  `rgb(${a.map((v, i) => Math.round(v + (b[i] - v) * t)).join(",")})`;
+const NODE = 900; // размер бокса метафоры в мире
+const Box: React.FC<{ x: number; y: number; children: React.ReactNode }> = ({ x, y, children }) => (
+  <div style={{ position: "absolute", left: x, top: y, width: NODE, height: NODE, marginLeft: -NODE / 2, marginTop: -NODE / 2 }}>
+    <svg width={NODE} height={NODE} viewBox={`${-NODE / 2} ${-NODE / 2} ${NODE} ${NODE}`}>{children}</svg>
+  </div>
+);
 
-// ── ГОЛОД: детская фигура вянет (уменьшается+сереет+оседает), пустая миска ──
-const StarveScene: React.FC<{ accent: string }> = ({ accent }) => {
-  const f = useCurrentFrame();
-  const w = interpolate(f, [8, 62], [1, 0.62], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.inOut(Easing.cubic) });
-  const sink = interpolate(f, [8, 62], [0, 70], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
-  const fade = interpolate(f, [8, 62], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
-  const fill = lerpCol([232, 226, 214], [70, 58, 56], fade);
-  const bowlAp = interpolate(f, [12, 28], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
-  return (
-    <svg width="1920" height="1080" viewBox="0 0 1920 1080">
-      {/* детская пропорция: голова крупнее (внутри Figure базовая); тут просто масштаб */}
-      <Figure x={840} y={540 + sink} s={3.4 * w} fill={fill} />
-      {/* пустая миска */}
-      <g opacity={bowlAp} transform="translate(1130 610)">
-        <path d="M-120 0 C-120 92 120 92 120 0 Z" fill="none" stroke="rgba(230,226,214,0.6)" strokeWidth="10" />
-        <ellipse cx="0" cy="0" rx="120" ry="28" fill="none" stroke="rgba(230,226,214,0.6)" strokeWidth="10" />
-      </g>
-    </svg>
-  );
-};
-
-// ── КЛИНОК: фигура, красный разрез проходит по диагонали + вспышка, фигура падает ──
-const BladeScene: React.FC<{ accent: string }> = ({ accent }) => {
-  const f = useCurrentFrame();
-  const swipe = interpolate(f, [10, 22], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.in(Easing.cubic) });
-  const flash = Math.max(0, 1 - Math.abs(f - 22) / 5);
-  const fall = interpolate(f, [26, 60], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.in(Easing.cubic) });
-  const rot = fall * 26, drop = fall * 120;
-  const fill = lerpCol([232, 226, 214], [150, 26, 26], interpolate(f, [26, 52], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" }));
-  const x2 = interpolate(swipe, [0, 1], [520, 1400]);
-  const y2 = interpolate(swipe, [0, 1], [780, 320]);
-  return (
-    <AbsoluteFill>
-      <AbsoluteFill style={{ background: accent, opacity: flash * 0.45 }} />
-      <svg width="1920" height="1080" viewBox="0 0 1920 1080">
-        <g transform={`rotate(${rot} 960 620) translate(0 ${drop})`}>
-          <Figure x={960} y={540} s={3.6} fill={fill} />
-          {/* красный след разреза по телу */}
-          {f >= 22 && <line x1="820" y1="700" x2="1100" y2="480" stroke={accent} strokeWidth="8" strokeLinecap="round" opacity={Math.min(1, (f - 22) / 6)} style={{ filter: `drop-shadow(0 0 8px ${accent})` }} />}
-        </g>
-        {/* сам разрез-клинок */}
-        {swipe < 1 && <line x1="520" y1="780" x2={x2} y2={y2} stroke={accent} strokeWidth="9" strokeLinecap="round" style={{ filter: `drop-shadow(0 0 14px ${accent})` }} />}
-      </svg>
-    </AbsoluteFill>
-  );
-};
-
-// ── ОГОНЬ: фигура (обугливается, но видна) охвачена растущим пламенем ──
 const flamePath = "M0 0 C-16 -34 14 -52 4 -96 C24 -66 30 -40 20 -14 C18 -6 10 0 0 0 Z";
-const BurnScene: React.FC<{ accent: string }> = ({ accent }) => {
-  const f = useCurrentFrame();
-  const rise = interpolate(f, [4, 50], [0.15, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.out(Easing.cubic) });
-  const char = interpolate(f, [14, 60], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
-  const fill = lerpCol([236, 228, 214], [150, 40, 26], char); // светлый → раскалённо-обугленный, ВИДЕН сквозь пламя
+
+// ── ГОЛОД ──
+const Starve: React.FC<{ lf: number; accent: string }> = ({ lf, accent }) => {
+  const w = interpolate(lf, [8, 62], [1, 0.6], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.inOut(Easing.cubic) });
+  const sink = interpolate(lf, [8, 62], [0, 60], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  const fade = interpolate(lf, [8, 62], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  const fill = lerpCol([232, 226, 214], [78, 62, 58], fade);
+  const bowl = interpolate(lf, [12, 28], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  return (
+    <g>
+      <g transform={`translate(-120 ${sink})`}><Figure s={3.2 * w} fill={fill} /></g>
+      <g opacity={bowl} transform="translate(150 70)">
+        <path d="M-110 0 C-110 84 110 84 110 0 Z" fill="none" stroke="rgba(230,226,214,0.55)" strokeWidth="9" />
+        <ellipse cx="0" cy="0" rx="110" ry="26" fill="none" stroke="rgba(230,226,214,0.55)" strokeWidth="9" />
+      </g>
+    </g>
+  );
+};
+
+// ── КЛИНОК ──
+const Blade: React.FC<{ lf: number; accent: string }> = ({ lf, accent }) => {
+  const swipe = interpolate(lf, [8, 20], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.in(Easing.cubic) });
+  const fall = interpolate(lf, [24, 60], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.in(Easing.cubic) });
+  const rot = fall * 26, drop = fall * 130;
+  const fill = lerpCol([232, 226, 214], [150, 26, 26], interpolate(lf, [24, 50], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" }));
+  const x2 = interpolate(swipe, [0, 1], [-360, 360]);
+  const y2 = interpolate(swipe, [0, 1], [300, -300]);
+  return (
+    <g>
+      <g transform={`rotate(${rot}) translate(0 ${drop})`}>
+        <Figure s={3.6} fill={fill} />
+        {lf >= 20 && <line x1={-140} y1={140} x2={140} y2={-100} stroke={accent} strokeWidth="8" strokeLinecap="round" opacity={Math.min(1, (lf - 20) / 6)} />}
+      </g>
+      {swipe < 1 && <line x1={-360} y1={300} x2={x2} y2={y2} stroke={accent} strokeWidth="10" strokeLinecap="round" style={{ filter: `drop-shadow(0 0 14px ${accent})` }} />}
+    </g>
+  );
+};
+
+// ── ОГОНЬ ──
+const Burn: React.FC<{ lf: number; accent: string }> = ({ lf, accent }) => {
+  const rise = interpolate(lf, [4, 50], [0.15, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.out(Easing.cubic) });
+  const char = interpolate(lf, [14, 60], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  const fill = lerpCol([236, 228, 214], [150, 40, 26], char);
   const N = 15;
   return (
-    <svg width="1920" height="1080" viewBox="0 0 1920 1080">
-      {/* тёплое зарево за фигурой */}
-      <ellipse cx="960" cy="500" rx={260 * rise} ry={320 * rise} fill={accent} opacity={0.16 * rise} style={{ filter: "blur(40px)" }} />
-      <Figure x={960} y={500} s={3.7} fill={fill} />
-      <g transform="translate(960 700)">
+    <g>
+      <ellipse cx="0" cy="-40" rx={220 * rise} ry={280 * rise} fill={accent} opacity={0.14 * rise} style={{ filter: "blur(34px)" }} />
+      <Figure s={3.7} fill={fill} />
+      <g transform="translate(0 150)">
         {Array.from({ length: N }).map((_, i) => {
           const bx = (i - (N - 1) / 2) * 34;
-          const flick = 0.7 + 0.5 * Math.sin(f / 2.4 + i * 1.7);
-          const h = rise * (2.8 + 1.4 * flick) * (1 - Math.abs(bx) / 320);
-          const sway = Math.sin(f / 4 + i) * 8;
-          const col = i % 3 === 0 ? "#ffcc33" : (i % 3 === 1 ? "#ff6a1a" : accent);
+          const flick = 0.7 + 0.5 * Math.sin(lf / 2.4 + i * 1.7);
+          const h = rise * (2.8 + 1.4 * flick) * (1 - Math.abs(bx) / 300);
+          const sway = Math.sin(lf / 4 + i) * 8;
+          const col = i % 3 === 0 ? "#ffcc33" : i % 3 === 1 ? "#ff6a1a" : accent;
           return <path key={i} d={flamePath} transform={`translate(${bx + sway} 0) scale(${2.2 + 0.6 * flick} ${Math.max(0.1, h)})`} fill={col} opacity={0.4 + 0.28 * flick} style={{ filter: `drop-shadow(0 0 14px ${accent}aa)` }} />;
         })}
       </g>
-    </svg>
+    </g>
   );
 };
 
-const RedVignette = () => (
-  <AbsoluteFill style={{ background: "radial-gradient(circle at 50% 52%, rgba(0,0,0,0) 38%, rgba(0,0,0,0.88) 100%)" }} />
-);
-
-// ── Бит A: три метафоры зверств по очереди (без текста) ──
-const AtrocitiesBeat: React.FC<{ accent: string }> = ({ accent }) => {
+// ── КРЕСТ ──
+const Cross: React.FC<{ lf: number; accent: string }> = ({ lf, accent }) => {
+  const draw = interpolate(lf, [4, 38], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.out(Easing.cubic) });
+  const crack = interpolate(lf, [44, 66], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  const red = interpolate(lf, [48, 72], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  const col = lerpCol([244, 241, 234], [217, 40, 40], red);
   return (
-    <AbsoluteFill style={{ background: "#04060c" }}>
-      <Sequence from={0} durationInFrames={70}><FadeWrap><StarveScene accent={accent} /></FadeWrap></Sequence>
-      <Sequence from={70} durationInFrames={62}><FadeWrap><BladeScene accent={accent} /></FadeWrap></Sequence>
-      <Sequence from={132} durationInFrames={78}><FadeWrap><BurnScene accent={accent} /></FadeWrap></Sequence>
-      <RedVignette />
-    </AbsoluteFill>
+    <g style={{ filter: `drop-shadow(0 0 ${18 * red}px ${accent})` }}>
+      <line x1="0" y1="-320" x2="0" y2="360" stroke={col} strokeWidth="30" strokeLinecap="round" strokeDasharray={700} strokeDashoffset={700 * (1 - draw)} />
+      <line x1="-190" y1="-120" x2="190" y2="-120" stroke={col} strokeWidth="30" strokeLinecap="round" strokeDasharray={400} strokeDashoffset={400 * (1 - Math.max(0, draw * 1.4 - 0.4))} />
+      <polyline points="-14,-300 30,-90 -30,90 40,260 -10,380" fill="none" stroke={accent} strokeWidth={5} strokeDasharray={1100} strokeDashoffset={1100 * (1 - crack)} opacity={crack} />
+    </g>
   );
 };
 
-const FadeWrap: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const f = useCurrentFrame();
-  const op = Math.min(interpolate(f, [0, 8], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" }), interpolate(f, [999, 1000], [1, 1]));
-  return <AbsoluteFill style={{ opacity: op }}>{children}</AbsoluteFill>;
-};
-
-// ── крест, проявляется штрихом и трескается красным ──
-const Cross: React.FC<{ f0: number; accent: string }> = ({ f0, accent }) => {
+// пыль в 3D-мире — камера пролетает сквозь неё, даёт глубину и «спуск в темноту»
+const Dust: React.FC<{ accent: string }> = ({ accent }) => {
   const frame = useCurrentFrame();
-  const draw = interpolate(frame, [f0, f0 + 34], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.out(Easing.cubic) });
-  const crack = interpolate(frame, [f0 + 40, f0 + 60], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
-  const red = interpolate(frame, [f0 + 44, f0 + 66], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
-  const col = `rgb(${Math.round(244 + (217 - 244) * red)},${Math.round(241 + (40 - 241) * red)},${Math.round(234 + (40 - 234) * red)})`;
-  const V = 260, len = 760;
   return (
-    <svg width={620} height={860} viewBox="0 0 620 860" style={{ overflow: "visible" }}>
-      <line x1="310" y1="40" x2="310" y2="800" stroke={col} strokeWidth="30" strokeLinecap="round" strokeDasharray={len} strokeDashoffset={len * (1 - draw)} style={{ filter: `drop-shadow(0 0 ${20 * red}px ${accent})` }} />
-      <line x1="110" y1={V} x2="510" y2={V} stroke={col} strokeWidth="30" strokeLinecap="round" strokeDasharray={400} strokeDashoffset={400 * (1 - Math.max(0, draw * 1.4 - 0.4))} style={{ filter: `drop-shadow(0 0 ${20 * red}px ${accent})` }} />
-      <polyline points="298,80 340,300 285,470 355,640 300,790" fill="none" stroke={accent} strokeWidth={5} strokeDasharray={1100} strokeDashoffset={1100 * (1 - crack)} opacity={crack} style={{ filter: `drop-shadow(0 0 8px ${accent})` }} />
-    </svg>
+    <>
+      {Array.from({ length: 150 }).map((_, i) => {
+        const x = (i * 137) % 2100 - 50;
+        const y = (i * 331) % 4400 - 100;
+        const size = 2 + (i % 4);
+        const tw = 0.25 + 0.35 * (0.5 + 0.5 * Math.sin(frame / 18 + i));
+        return <div key={i} style={{ position: "absolute", left: x, top: y, width: size, height: size, borderRadius: "50%", background: i % 6 === 0 ? accent : "#dfe4ee", opacity: tw * 0.32, filter: "blur(0.5px)" }} />;
+      })}
+    </>
   );
 };
 
-// ── Бит B: крест трескается (символ, без текста) ──
-const FaithBeat: React.FC<{ accent: string }> = ({ accent }) => {
-  const frame = useCurrentFrame();
-  const exit = interpolate(frame, [190, 210], [1, 0], { extrapolateLeft: "clamp" });
-  return (
-    <AbsoluteFill style={{ background: "#04060c", opacity: exit, justifyContent: "center", alignItems: "center" }}>
-      <Cross f0={16} accent={accent} />
-      <RedVignette />
-    </AbsoluteFill>
-  );
-};
+// позиции образов в мире (спуск вниз) + кадр «прибытия» камеры
+const NODES = [
+  { key: "starve", x: 960, y: 540, at: 14, ry: 5, C: Starve },
+  { key: "blade", x: 1440, y: 1520, at: 76, ry: -7, C: Blade },
+  { key: "burn", x: 560, y: 2560, at: 142, ry: 7, C: Burn },
+  { key: "cross", x: 1080, y: 3620, at: 250, ry: 0, C: Cross },
+];
 
 export const IntroSequence: React.FC<{ accent?: string }> = ({ accent = PALETTE.red }) => {
+  const frame = useCurrentFrame();
+  const ts = NODES.map((n) => n.at);
+  const camX = interpolate(frame, ts, NODES.map((n) => n.x), { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.inOut(Easing.cubic) });
+  const camY = interpolate(frame, ts, NODES.map((n) => n.y), { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.inOut(Easing.cubic) });
+  const rotY = interpolate(frame, ts, NODES.map((n) => n.ry), { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.inOut(Easing.cubic) });
+  // лёгкий зум-пульс на прибытии + постоянный наклон вниз (спуск)
+  const zoom = 1.12 + 0.06 * Math.sin(frame / 30);
+  const rotX = 7;
+  const driftX = Math.cos(frame / 52) * 9;
+  const driftY = Math.sin(frame / 44) * 7;
+  const world =
+    `translate(${960 + driftX}px, ${540 + driftY}px) ` +
+    `rotateX(${rotX}deg) rotateY(${rotY}deg) scale(${zoom}) ` +
+    `translate(${-camX}px, ${-camY}px)`;
+
   return (
-    <AbsoluteFill style={{ background: "#04060c", fontFamily: fontFamily("oswald") }}>
-      <Sequence from={0} durationInFrames={210}><AtrocitiesBeat accent={accent} /></Sequence>
-      <Sequence from={210} durationInFrames={210}><FaithBeat accent={accent} /></Sequence>
+    <AbsoluteFill style={{ background: "#04060c", fontFamily: fontFamily("oswald"), overflow: "hidden" }}>
+      <AbsoluteFill style={{ perspective: 1700, overflow: "hidden" }}>
+        <div style={{ position: "absolute", left: 0, top: 0, transformStyle: "preserve-3d", transform: world, transformOrigin: "0 0" }}>
+          <Dust accent={accent} />
+          {NODES.map((n) => {
+            const lf = frame - (n.at - 20);
+            const N = n.C;
+            return (
+              <Box key={n.key} x={n.x} y={n.y}>
+                <N lf={lf} accent={accent} />
+              </Box>
+            );
+          })}
+        </div>
+      </AbsoluteFill>
+      <AbsoluteFill style={{ background: "radial-gradient(circle at 50% 50%, rgba(0,0,0,0) 42%, rgba(0,0,0,0.8) 100%)", pointerEvents: "none" }} />
     </AbsoluteFill>
   );
 };
