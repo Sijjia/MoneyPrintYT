@@ -25,6 +25,7 @@ import { ShockCounter } from "./ShockCounter";
 import { MapSpread } from "./MapSpread";
 import { NetworkGraph } from "./NetworkGraph";
 import { IntroSequence } from "./IntroSequence";
+import { IntroFootage } from "./IntroFootage";
 
 const W = 1920;
 const H = 1080;
@@ -455,6 +456,16 @@ export const RemotionRoot: React.FC = () => {
       <Composition
         id="IntroSequence"
         component={IntroSequence}
+        durationInFrames={1620}
+        fps={30}
+        width={W}
+        height={H}
+        defaultProps={{ accent: "#d92828" }}
+      />
+
+      <Composition
+        id="IntroFootage"
+        component={IntroFootage}
         durationInFrames={1620}
         fps={30}
         width={W}
