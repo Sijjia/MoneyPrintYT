@@ -19,7 +19,7 @@ const Clip: React.FC<{ src: string; dur: number; z0?: number; z1?: number }> = (
   return (
     <AbsoluteFill style={{ opacity: op }}>
       <AbsoluteFill style={{ transform: `scale(${scale})` }}>
-        <OffthreadVideo src={staticFile(`intro/${src}`)} muted style={{ width: "100%", height: "100%", objectFit: "cover", filter: "grayscale(0.55) contrast(1.22) brightness(0.62) saturate(0.8)" }} />
+        <OffthreadVideo src={staticFile(`intro/${src}`)} muted style={{ width: "100%", height: "100%", objectFit: "cover", filter: "grayscale(0.45) contrast(1.14) brightness(0.78) saturate(0.85)" }} />
       </AbsoluteFill>
       {/* красный тинт */}
       <AbsoluteFill style={{ background: "linear-gradient(180deg, rgba(140,20,20,0.22), rgba(20,4,4,0.5))", mixBlendMode: "multiply" }} />
@@ -82,16 +82,17 @@ const IcebergOverlay: React.FC<{ accent: string }> = ({ accent }) => {
   );
 };
 
-// клипы по битам (кадр начала, длина; лёгкий overlap для диссолва)
+// клипы по битам — ВСЁ реальные кадры (айсберг/Земля тоже настоящие, не вектор).
+// лёгкий overlap соседних для кросс-диссолва.
 const CLIPS = [
-  { src: "figure.mp4", at: 0, dur: 120 },
-  { src: "embers.mp4", at: 105, dur: 130 },
-  { src: "candle.mp4", at: 220, dur: 230 },
-  { src: "clouds.mp4", at: 435, dur: 230 },
-  { src: "smoke.mp4", at: 650, dur: 250 },
-  { src: "water.mp4", at: 885, dur: 470 },
-  { src: "fire.mp4", at: 1340, dur: 190 },
-  { src: "eye.mp4", at: 1515, dur: 120 },
+  { src: "figure.mp4", at: 0, dur: 120 },   // 0:00 зверства — зловещий силуэт
+  { src: "embers.mp4", at: 105, dur: 135 }, // ~0:03 угли/пламя
+  { src: "candle.mp4", at: 225, dur: 220 }, // 0:07 во имя веры — свеча
+  { src: "clouds.mp4", at: 430, dur: 220 }, // 0:14 наше время — тёмное небо
+  { src: "earth.mp4", at: 635, dur: 260 },  // 0:21 в России/Африке/ЛатАм/Европе — реальная Земля
+  { src: "iceberg2.mp4", at: 880, dur: 470 }, // 0:28 айсберг — реальный подводный/аэро
+  { src: "fire.mp4", at: 1335, dur: 190 },  // 0:42 вера→террор — огонь
+  { src: "eye.mp4", at: 1510, dur: 120 },   // 0:49 невозможно развидеть — глаз
 ];
 
 export const IntroFootage: React.FC<{ accent?: string }> = ({ accent = PALETTE.red }) => {
@@ -102,9 +103,6 @@ export const IntroFootage: React.FC<{ accent?: string }> = ({ accent = PALETTE.r
           <Clip src={c.src} dur={c.dur} />
         </Sequence>
       ))}
-      {/* графичные оверлеи */}
-      <Sequence from={650} durationInFrames={250}><GlobeOverlay accent={accent} /></Sequence>
-      <Sequence from={885} durationInFrames={470}><IcebergOverlay accent={accent} /></Sequence>
       <Grade />
     </AbsoluteFill>
   );
