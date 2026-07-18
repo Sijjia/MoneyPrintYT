@@ -24,6 +24,7 @@ import { PhotoAnnotate } from "./PhotoAnnotate";
 import { ShockCounter } from "./ShockCounter";
 import { MapSpread } from "./MapSpread";
 import { NetworkGraph } from "./NetworkGraph";
+import { IntroSequence } from "./IntroSequence";
 
 const W = 1920;
 const H = 1080;
@@ -449,6 +450,16 @@ export const RemotionRoot: React.FC = () => {
           edges: [[0, 1], [0, 2], [0, 3], [0, 4], [1, 3], [2, 4]],
           accent: "#d92828",
         }}
+      />
+
+      <Composition
+        id="IntroSequence"
+        component={IntroSequence}
+        durationInFrames={420}
+        fps={30}
+        width={W}
+        height={H}
+        defaultProps={{ accent: "#d92828" }}
       />
     </>
   );
