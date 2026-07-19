@@ -84,13 +84,56 @@ const FlashCuts: React.FC<{ cuts: number[]; accent: string }> = ({ cuts, accent 
   return <AbsoluteFill style={{ background: accent, opacity: Math.min(0.35, op * 0.35), mixBlendMode: "screen", pointerEvents: "none" }} />;
 };
 
-// ── плёночное дрожание (gate weave) + микро-мерцание экспозиции ──
-const FilmFX: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+// ── ПРЕМИУМ-ГРАФИКА: тонкие светящиеся дуги между регионами (над Землёй) ──
+const EarthArcs: React.FC<{ accent: string }> = ({ accent }) => {
   const f = useCurrentFrame();
-  const wx = Math.sin(f * 1.7) * 1.2 + Math.sin(f * 0.6) * 0.8;
-  const wy = Math.cos(f * 1.3) * 1.0;
-  const flick = 1 + 0.02 * Math.sin(f * 2.1) + 0.015 * Math.sin(f * 0.9);
-  return <AbsoluteFill style={{ transform: `translate(${wx}px, ${wy}px)`, filter: `brightness(${flick})` }}>{children}</AbsoluteFill>;
+  const op = Math.min(interpolate(f, [10, 40], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" }), interpolate(f, [200, 240], [1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" }));
+  // точки-регионы в кадре (по диску Земли)
+  const pts = [[820, 300], [1010, 560], [740, 640], [1120, 400]];
+  const arcs = [[0, 1], [1, 2], [0, 3], [3, 1]];
+  return (
+    <AbsoluteFill style={{ opacity: op, pointerEvents: "none" }}>
+      <svg width="1920" height="1080">
+        {arcs.map(([a, b], i) => {
+          const p = interpolate(f, [30 + i * 14, 58 + i * 14], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.inOut(Easing.cubic) });
+          const [x1, y1] = pts[a], [x2, y2] = pts[b];
+          const mx = (x1 + x2) / 2, my = (y1 + y2) / 2 - 120;
+          const path = `M${x1} ${y1} Q ${mx} ${my} ${x2} ${y2}`;
+          return <path key={i} d={path} fill="none" stroke={accent} strokeWidth={2} strokeDasharray={1400} strokeDashoffset={1400 * (1 - p)} opacity={0.85} style={{ filter: `drop-shadow(0 0 6px ${accent})` }} />;
+        })}
+        {pts.map(([x, y], i) => {
+          const on = interpolate(f, [24 + i * 12, 40 + i * 12], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.out(Easing.back(2)) });
+          const pulse = 1 + 0.5 * Math.max(0, Math.sin(f / 8 - i));
+          return <g key={i}><circle cx={x} cy={y} r={12 * pulse} fill={accent} opacity={0.2 * on} /><circle cx={x} cy={y} r={5 * on} fill="#fff" style={{ filter: `drop-shadow(0 0 8px ${accent})` }} /></g>;
+        })}
+      </svg>
+    </AbsoluteFill>
+  );
+};
+
+// ── ПРЕМИУМ-ГРАФИКА: тонкая шкала глубины поверх реального айсберга ──
+const IcebergHUD: React.FC<{ accent: string }> = ({ accent }) => {
+  const f = useCurrentFrame();
+  const op = Math.min(interpolate(f, [20, 50], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" }), interpolate(f, [400, 440], [1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" }));
+  const line = interpolate(f, [24, 60], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.out(Easing.cubic) });
+  const lineY = 360;
+  const ticks = [0, 1, 2, 3, 4, 5];
+  return (
+    <AbsoluteFill style={{ opacity: op, pointerEvents: "none" }}>
+      <svg width="1920" height="1080">
+        {/* ватерлиния */}
+        <line x1={200} y1={lineY} x2={200 + 1520 * line} y2={lineY} stroke="rgba(230,240,255,0.7)" strokeWidth={1.5} strokeDasharray="2 8" />
+        <circle cx={200} cy={lineY} r={4} fill={accent} opacity={line} />
+        {/* вертикальная шкала глубины справа */}
+        <line x1={1680} y1={lineY} x2={1680} y2={lineY + 560 * line} stroke="rgba(230,240,255,0.5)" strokeWidth={1.5} />
+        {ticks.map((t, i) => {
+          const yy = lineY + t * 112;
+          const tap = interpolate(f, [40 + i * 8, 52 + i * 8], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+          return <g key={t} opacity={tap}><line x1={1668} y1={yy} x2={1680} y2={yy} stroke="rgba(230,240,255,0.6)" strokeWidth={1.5} /><text x={1660} y={yy + 5} textAnchor="end" fill="rgba(230,240,255,0.55)" fontSize={20} fontFamily="Oswald, sans-serif">{t * 200}</text></g>;
+        })}
+      </svg>
+    </AbsoluteFill>
+  );
 };
 
 // ── вектор ГЛОБУС (сетка + 4 пина) поверх тёмного кадра ──
@@ -151,15 +194,16 @@ export const IntroFootage: React.FC<{ accent?: string }> = ({ accent = PALETTE.r
   const cuts = CLIPS.slice(1).map((c) => c.at + 8); // стыки диссолвов
   return (
     <AbsoluteFill style={{ background: "#04060c", fontFamily: fontFamily("oswald") }}>
-      <FilmFX>
-        {CLIPS.map((c, i) => (
-          <Sequence key={i} from={c.at} durationInFrames={c.dur}>
-            <Clip src={c.src} dur={c.dur} />
-          </Sequence>
-        ))}
-        <LightLeaks accent={accent} />
-        <Embers accent={accent} />
-      </FilmFX>
+      {CLIPS.map((c, i) => (
+        <Sequence key={i} from={c.at} durationInFrames={c.dur}>
+          <Clip src={c.src} dur={c.dur} />
+        </Sequence>
+      ))}
+      {/* премиум-графика на уместных битах */}
+      <Sequence from={635} durationInFrames={260}><EarthArcs accent={accent} /></Sequence>
+      <Sequence from={880} durationInFrames={470}><IcebergHUD accent={accent} /></Sequence>
+      <LightLeaks accent={accent} />
+      <Embers accent={accent} />
       <FlashCuts cuts={cuts} accent={accent} />
       <Grade />
     </AbsoluteFill>
