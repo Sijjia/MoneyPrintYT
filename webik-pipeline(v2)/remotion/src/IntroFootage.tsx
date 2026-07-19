@@ -41,6 +41,58 @@ const Grade: React.FC = () => {
   );
 };
 
+// ── световые блики (light leaks): мягкие тёплые пятна дрейфуют, screen ──
+const LightLeaks: React.FC<{ accent: string }> = ({ accent }) => {
+  const f = useCurrentFrame();
+  const leaks = [
+    { c: accent, x: 12 + Math.sin(f / 90) * 6, y: 20, r: 60, o: 0.14 + 0.08 * Math.sin(f / 40) },
+    { c: "#ff8a3a", x: 86 + Math.cos(f / 110) * 5, y: 78, r: 55, o: 0.1 + 0.06 * Math.sin(f / 55 + 2) },
+    { c: accent, x: 50, y: 8 + Math.sin(f / 70) * 4, r: 70, o: 0.06 + 0.05 * Math.sin(f / 33 + 1) },
+  ];
+  return (
+    <AbsoluteFill style={{ mixBlendMode: "screen", pointerEvents: "none" }}>
+      {leaks.map((l, i) => (
+        <div key={i} style={{ position: "absolute", left: `${l.x}%`, top: `${l.y}%`, width: `${l.r}%`, height: `${l.r}%`, transform: "translate(-50%,-50%)", background: `radial-gradient(circle, ${l.c} 0%, rgba(0,0,0,0) 68%)`, opacity: Math.max(0, l.o), filter: "blur(30px)" }} />
+      ))}
+    </AbsoluteFill>
+  );
+};
+
+// ── парящие угольки/пыль (реалистичные, тёплые, поднимаются) ──
+const Embers: React.FC<{ accent: string }> = ({ accent }) => {
+  const f = useCurrentFrame();
+  return (
+    <AbsoluteFill style={{ pointerEvents: "none", mixBlendMode: "screen" }}>
+      {Array.from({ length: 40 }).map((_, i) => {
+        const speed = 0.05 + (i % 7) * 0.02;
+        const x = (i * 173) % 100;
+        const drift = Math.sin(f / 30 + i) * 2.5;
+        const y = ((i * 61) % 120 - f * speed) % 120;
+        const yy = (y + 120) % 120;
+        const size = 1.5 + (i % 4);
+        const tw = 0.3 + 0.5 * (0.5 + 0.5 * Math.sin(f / 12 + i));
+        return <div key={i} style={{ position: "absolute", left: `${(x + drift + 100) % 100}%`, top: `${yy - 10}%`, width: size, height: size, borderRadius: "50%", background: i % 4 === 0 ? "#ffb26b" : accent, opacity: tw * 0.5, filter: "blur(1px)", boxShadow: `0 0 ${size * 2}px ${accent}` }} />;
+      })}
+    </AbsoluteFill>
+  );
+};
+
+// ── акценты-переходы: короткая вспышка на стыках битов ──
+const FlashCuts: React.FC<{ cuts: number[]; accent: string }> = ({ cuts, accent }) => {
+  const f = useCurrentFrame();
+  const op = cuts.reduce((a, c) => a + Math.max(0, 1 - Math.abs(f - c) / 4), 0);
+  return <AbsoluteFill style={{ background: accent, opacity: Math.min(0.35, op * 0.35), mixBlendMode: "screen", pointerEvents: "none" }} />;
+};
+
+// ── плёночное дрожание (gate weave) + микро-мерцание экспозиции ──
+const FilmFX: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const f = useCurrentFrame();
+  const wx = Math.sin(f * 1.7) * 1.2 + Math.sin(f * 0.6) * 0.8;
+  const wy = Math.cos(f * 1.3) * 1.0;
+  const flick = 1 + 0.02 * Math.sin(f * 2.1) + 0.015 * Math.sin(f * 0.9);
+  return <AbsoluteFill style={{ transform: `translate(${wx}px, ${wy}px)`, filter: `brightness(${flick})` }}>{children}</AbsoluteFill>;
+};
+
 // ── вектор ГЛОБУС (сетка + 4 пина) поверх тёмного кадра ──
 const GlobeOverlay: React.FC<{ accent: string }> = ({ accent }) => {
   const f = useCurrentFrame();
@@ -96,13 +148,19 @@ const CLIPS = [
 ];
 
 export const IntroFootage: React.FC<{ accent?: string }> = ({ accent = PALETTE.red }) => {
+  const cuts = CLIPS.slice(1).map((c) => c.at + 8); // стыки диссолвов
   return (
     <AbsoluteFill style={{ background: "#04060c", fontFamily: fontFamily("oswald") }}>
-      {CLIPS.map((c, i) => (
-        <Sequence key={i} from={c.at} durationInFrames={c.dur}>
-          <Clip src={c.src} dur={c.dur} />
-        </Sequence>
-      ))}
+      <FilmFX>
+        {CLIPS.map((c, i) => (
+          <Sequence key={i} from={c.at} durationInFrames={c.dur}>
+            <Clip src={c.src} dur={c.dur} />
+          </Sequence>
+        ))}
+        <LightLeaks accent={accent} />
+        <Embers accent={accent} />
+      </FilmFX>
+      <FlashCuts cuts={cuts} accent={accent} />
       <Grade />
     </AbsoluteFill>
   );
