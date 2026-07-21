@@ -9,7 +9,14 @@ import { PALETTE, fontFamily } from "./theme";
 const FPS = 30;
 
 // один клип: грейд + медленный зум + кросс-диссолв по краям
-const Clip: React.FC<{ src: string; dur: number; z0?: number; z1?: number }> = ({ src, dur, z0 = 1.06, z1 = 1.18 }) => {
+const WARM = "linear-gradient(180deg, rgba(140,20,20,0.22), rgba(20,4,4,0.5))";
+const COLD = "linear-gradient(180deg, rgba(60,90,130,0.20), rgba(6,12,22,0.55))";
+
+const Clip: React.FC<{ src: string; dur: number; z0?: number; z1?: number; grade?: string; tint?: string }> = ({
+  src, dur, z0 = 1.06, z1 = 1.18,
+  grade = "grayscale(0.45) contrast(1.14) brightness(0.78) saturate(0.85)",
+  tint = WARM,
+}) => {
   const f = useCurrentFrame();
   const op = Math.min(
     interpolate(f, [0, 14], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" }),
@@ -19,10 +26,9 @@ const Clip: React.FC<{ src: string; dur: number; z0?: number; z1?: number }> = (
   return (
     <AbsoluteFill style={{ opacity: op }}>
       <AbsoluteFill style={{ transform: `scale(${scale})` }}>
-        <OffthreadVideo src={staticFile(`intro/${src}`)} muted style={{ width: "100%", height: "100%", objectFit: "cover", filter: "grayscale(0.45) contrast(1.14) brightness(0.78) saturate(0.85)" }} />
+        <OffthreadVideo src={staticFile(`intro/${src}`)} muted style={{ width: "100%", height: "100%", objectFit: "cover", filter: grade }} />
       </AbsoluteFill>
-      {/* красный тинт */}
-      <AbsoluteFill style={{ background: "linear-gradient(180deg, rgba(140,20,20,0.22), rgba(20,4,4,0.5))", mixBlendMode: "multiply" }} />
+      <AbsoluteFill style={{ background: tint, mixBlendMode: "multiply" }} />
     </AbsoluteFill>
   );
 };
@@ -131,6 +137,20 @@ const IcebergHUD: React.FC<{ accent: string }> = ({ accent }) => {
           const tap = interpolate(f, [40 + i * 8, 52 + i * 8], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
           return <g key={t} opacity={tap}><line x1={1668} y1={yy} x2={1680} y2={yy} stroke="rgba(230,240,255,0.6)" strokeWidth={1.5} /><text x={1660} y={yy + 5} textAnchor="end" fill="rgba(230,240,255,0.55)" fontSize={20} fontFamily="Oswald, sans-serif">{t * 200}</text></g>;
         })}
+        {/* уровни айсберга: тонкие полосы уходят вглубь — чем ниже, тем страшнее */}
+        {[0, 1, 2, 3].map((i) => {
+          const yy = 480 + i * 145;
+          const g = interpolate(f, [110 + i * 34, 158 + i * 34], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.out(Easing.cubic) });
+          const w = 380 + i * 200; // глубже — шире
+          const pulse = 0.5 + 0.5 * Math.max(0, Math.sin(f / 9 - i * 1.4));
+          return (
+            <g key={i} opacity={g}>
+              <line x1={230} y1={yy} x2={230 + w * g} y2={yy} stroke="rgba(215,232,255,0.42)" strokeWidth={1.5} strokeDasharray="3 10" />
+              <circle cx={230} cy={yy} r={3.5} fill="rgba(230,240,255,0.85)" />
+              <circle cx={230 + w * g} cy={yy} r={4 + 2 * pulse} fill={accent} opacity={0.5 + 0.35 * pulse} style={{ filter: `drop-shadow(0 0 8px ${accent})` }} />
+            </g>
+          );
+        })}
       </svg>
     </AbsoluteFill>
   );
@@ -180,14 +200,16 @@ const IcebergOverlay: React.FC<{ accent: string }> = ({ accent }) => {
 // клипы по битам — ВСЁ реальные кадры (айсберг/Земля тоже настоящие, не вектор).
 // лёгкий overlap соседних для кросс-диссолва.
 const CLIPS = [
-  { src: "figure.mp4", at: 0, dur: 120 },   // 0:00 зверства — зловещий силуэт
+  { src: "figure.mp4", at: 0, dur: 120, grade: "grayscale(0.5) contrast(1.2) brightness(0.9) saturate(0.8)" },   // 0:00 зверства — зловещий силуэт
   { src: "embers.mp4", at: 105, dur: 135 }, // ~0:03 угли/пламя
   { src: "candle.mp4", at: 225, dur: 220 }, // 0:07 во имя веры — свеча
-  { src: "clouds.mp4", at: 430, dur: 220 }, // 0:14 наше время — тёмное небо
-  { src: "earth.mp4", at: 635, dur: 260 },  // 0:21 в России/Африке/ЛатАм/Европе — реальная Земля
-  { src: "iceberg2.mp4", at: 880, dur: 470 }, // 0:28 айсберг — реальный подводный/аэро
+  // 0:14 наше время — тёмное небо (кадр сам по себе тёмный: поднимаем экспозицию, холодный тинт)
+  { src: "clouds.mp4", at: 430, dur: 220, grade: "grayscale(0.55) contrast(1.22) brightness(1.15) saturate(0.7)", tint: COLD },
+  { src: "earth.mp4", at: 635, dur: 260, grade: "grayscale(0.4) contrast(1.16) brightness(0.9) saturate(0.9)" },  // 0:21 реальная Земля
+  // 0:28 айсберг — лёд не должен быть розовым: холодный грейд, глубже тени
+  { src: "iceberg2.mp4", at: 880, dur: 470, grade: "grayscale(0.6) contrast(1.3) brightness(0.72) saturate(0.65)", tint: COLD },
   { src: "fire.mp4", at: 1335, dur: 190 },  // 0:42 вера→террор — огонь
-  { src: "eye.mp4", at: 1510, dur: 120 },   // 0:49 невозможно развидеть — глаз
+  { src: "eye.mp4", at: 1510, dur: 120, grade: "grayscale(0.55) contrast(1.25) brightness(0.7) saturate(0.75)" },   // 0:49 невозможно развидеть — глаз
 ];
 
 export const IntroFootage: React.FC<{ accent?: string }> = ({ accent = PALETTE.red }) => {
@@ -196,7 +218,7 @@ export const IntroFootage: React.FC<{ accent?: string }> = ({ accent = PALETTE.r
     <AbsoluteFill style={{ background: "#04060c", fontFamily: fontFamily("oswald") }}>
       {CLIPS.map((c, i) => (
         <Sequence key={i} from={c.at} durationInFrames={c.dur}>
-          <Clip src={c.src} dur={c.dur} />
+          <Clip src={c.src} dur={c.dur} grade={c.grade} tint={c.tint} />
         </Sequence>
       ))}
       {/* премиум-графика на уместных битах */}
