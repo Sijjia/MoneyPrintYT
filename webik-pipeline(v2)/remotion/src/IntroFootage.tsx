@@ -1,6 +1,7 @@
 import React from "react";
 import { AbsoluteFill, Easing, interpolate, OffthreadVideo, Sequence, staticFile, useCurrentFrame } from "remotion";
 import { PALETTE, fontFamily } from "./theme";
+import { IntroWorldMap } from "./IntroWorldMap";
 
 // Кино-интро на РЕАЛЬНЫХ кадрах + грейд (Айдар: вектор = клипарт, нужно кино).
 // Тёмный сток под каждый бит, единый грейд (зерно/красный тинт/виньетка), плавные
@@ -90,27 +91,116 @@ const FlashCuts: React.FC<{ cuts: number[]; accent: string }> = ({ cuts, accent 
   return <AbsoluteFill style={{ background: accent, opacity: Math.min(0.35, op * 0.35), mixBlendMode: "screen", pointerEvents: "none" }} />;
 };
 
-// ── ПРЕМИУМ-ГРАФИКА: тонкие светящиеся дуги между регионами (над Землёй) ──
-const EarthArcs: React.FC<{ accent: string }> = ({ accent }) => {
+// ── ПРЕМИУМ-ГРАФИКА: символы разных вер загораются на «во имя веры» ──
+const SYMBOLS = [
+  // крест
+  "M0 -30 L0 30 M-17 -11 L17 -11",
+  // полумесяц
+  "M9 -26 A26 26 0 1 0 9 26 A20 20 0 1 1 9 -26 Z",
+  // звезда Давида
+  "M0 -28 L24 14 L-24 14 Z M0 28 L24 -14 L-24 -14 Z",
+  // колесо дхармы
+  "M0 -26 A26 26 0 1 0 0 26 A26 26 0 1 0 0 -26 M0 -26 L0 26 M-26 0 L26 0 M-18 -18 L18 18 M-18 18 L18 -18",
+];
+
+// по два символа слева и справа от свечи — центр занят пламенем
+const SYMBOL_POS = [
+  [300, 400],
+  [560, 610],
+  [1360, 610],
+  [1620, 400],
+];
+
+const FaithSymbols: React.FC<{ accent: string; dur: number }> = ({ accent, dur }) => {
   const f = useCurrentFrame();
-  const op = Math.min(interpolate(f, [10, 40], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" }), interpolate(f, [150, 190], [1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" }));
-  // точки-регионы в кадре (по диску Земли)
-  const pts = [[820, 300], [1010, 560], [740, 640], [1120, 400]];
-  const arcs = [[0, 1], [1, 2], [0, 3], [3, 1]];
+  const out = interpolate(f, [dur - 26, dur - 4], [1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
   return (
-    <AbsoluteFill style={{ opacity: op, pointerEvents: "none" }}>
+    <AbsoluteFill style={{ pointerEvents: "none", opacity: out }}>
       <svg width="1920" height="1080">
-        {arcs.map(([a, b], i) => {
-          const p = interpolate(f, [30 + i * 14, 58 + i * 14], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.inOut(Easing.cubic) });
-          const [x1, y1] = pts[a], [x2, y2] = pts[b];
-          const mx = (x1 + x2) / 2, my = (y1 + y2) / 2 - 120;
-          const path = `M${x1} ${y1} Q ${mx} ${my} ${x2} ${y2}`;
-          return <path key={i} d={path} fill="none" stroke={accent} strokeWidth={2} strokeDasharray={1400} strokeDashoffset={1400 * (1 - p)} opacity={0.85} style={{ filter: `drop-shadow(0 0 6px ${accent})` }} />;
+        {SYMBOLS.map((d, i) => {
+          const t0 = 12 + i * 17;
+          const on = interpolate(f, [t0, t0 + 16], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.out(Easing.cubic) });
+          const rise = interpolate(f, [t0, t0 + 22], [16, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.out(Easing.cubic) });
+          const breathe = 0.82 + 0.18 * Math.sin(f / 16 + i);
+          const [x, y] = SYMBOL_POS[i];
+          const halo = interpolate(f, [t0, t0 + 30], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+          return (
+            <g key={i} transform={`translate(${x} ${y + rise}) scale(1.7)`} opacity={on * (0.6 + 0.4 * breathe)}>
+              <circle r={46} fill="none" stroke={accent} strokeWidth={0.8} opacity={0.3 * halo} />
+              <path d={d} fill="none" stroke="rgba(240,246,255,0.95)" strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round" style={{ filter: `drop-shadow(0 0 11px ${accent})` }} />
+            </g>
+          );
         })}
-        {pts.map(([x, y], i) => {
-          const on = interpolate(f, [24 + i * 12, 40 + i * 12], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.out(Easing.back(2)) });
-          const pulse = 1 + 0.5 * Math.max(0, Math.sin(f / 8 - i));
-          return <g key={i}><circle cx={x} cy={y} r={12 * pulse} fill={accent} opacity={0.2 * on} /><circle cx={x} cy={y} r={5 * on} fill="#fff" style={{ filter: `drop-shadow(0 0 8px ${accent})` }} /></g>;
+      </svg>
+    </AbsoluteFill>
+  );
+};
+
+// ── ПРЕМИУМ-ГРАФИКА: улики — приговоры судов / показания / фотографии с мест ──
+const EvidenceCards: React.FC<{ accent: string; dur: number }> = ({ accent, dur }) => {
+  const f = useCurrentFrame();
+  const out = interpolate(f, [dur - 30, dur - 6], [1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  const CARDS = [24, 66, 101]; // «приговоры судов» / «показания свидетелей» / «фотографии»
+  return (
+    <AbsoluteFill style={{ pointerEvents: "none", opacity: out }}>
+      <svg width="1920" height="1080">
+        {CARDS.map((t0, i) => {
+          const on = interpolate(f, [t0, t0 + 15], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.out(Easing.cubic) });
+          const sc = interpolate(f, [t0, t0 + 22], [0.9, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.out(Easing.cubic) });
+          const drift = Math.sin((f - t0) / 40 + i) * 4;
+          const cx = 480 + i * 480;
+          const cy = 540 + drift;
+          const W = 300, H = 210;
+          return (
+            <g key={i} opacity={on} transform={`translate(${cx} ${cy}) scale(${sc})`}>
+              <rect x={-W / 2} y={-H / 2} width={W} height={H} fill="rgba(8,12,20,0.55)" stroke="rgba(215,232,255,0.35)" strokeWidth={1.2} />
+              {/* уголки-скобки */}
+              {[[-1, -1], [1, -1], [-1, 1], [1, 1]].map(([sx, sy], k) => (
+                <path
+                  key={k}
+                  d={`M${(sx * W) / 2 - sx * 26} ${(sy * H) / 2} L${(sx * W) / 2} ${(sy * H) / 2} L${(sx * W) / 2} ${(sy * H) / 2 - sy * 26}`}
+                  fill="none"
+                  stroke={accent}
+                  strokeWidth={2}
+                  style={{ filter: `drop-shadow(0 0 6px ${accent})` }}
+                />
+              ))}
+              {i === 0 && (
+                // приговор: строки документа + печать
+                <g>
+                  {[0, 1, 2, 3, 4].map((r) => {
+                    const w = [150, 190, 120, 200, 90][r];
+                    const dr = interpolate(f, [t0 + 8 + r * 5, t0 + 20 + r * 5], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+                    return <line key={r} x1={-115} y1={-58 + r * 22} x2={-115 + w * dr} y2={-58 + r * 22} stroke="rgba(215,232,255,0.5)" strokeWidth={2} />;
+                  })}
+                  <circle cx={82} cy={56} r={26} fill="none" stroke={accent} strokeWidth={2} opacity={interpolate(f, [t0 + 30, t0 + 42], [0, 0.9], { extrapolateLeft: "clamp", extrapolateRight: "clamp" })} />
+                  <circle cx={82} cy={56} r={18} fill="none" stroke={accent} strokeWidth={1} opacity={interpolate(f, [t0 + 34, t0 + 46], [0, 0.7], { extrapolateLeft: "clamp", extrapolateRight: "clamp" })} />
+                </g>
+              )}
+              {i === 1 && (
+                // показания: звуковая волна
+                <g>
+                  {Array.from({ length: 21 }).map((_, b) => {
+                    const h = 12 + 52 * Math.abs(Math.sin(b * 1.7 + f / 7));
+                    const dr = interpolate(f, [t0 + 6 + b * 2, t0 + 16 + b * 2], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+                    return <line key={b} x1={-120 + b * 12} y1={-h / 2} x2={-120 + b * 12} y2={h / 2} stroke="rgba(215,232,255,0.6)" strokeWidth={2.5} opacity={dr} strokeLinecap="round" />;
+                  })}
+                </g>
+              )}
+              {i === 2 && (
+                // фотография с места: перекрестье и метки кадра
+                <g opacity={interpolate(f, [t0 + 6, t0 + 20], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" })}>
+                  <line x1={-70} y1={0} x2={70} y2={0} stroke="rgba(215,232,255,0.4)" strokeWidth={1} />
+                  <line x1={0} y1={-58} x2={0} y2={58} stroke="rgba(215,232,255,0.4)" strokeWidth={1} />
+                  <circle cx={0} cy={0} r={40} fill="none" stroke={accent} strokeWidth={1.4} opacity={0.75} />
+                  <circle cx={0} cy={0} r={6 + 30 * (((f - t0) % 40) / 40)} fill="none" stroke={accent} strokeWidth={1} opacity={0.5 * (1 - ((f - t0) % 40) / 40)} />
+                  {[0, 1, 2, 3, 4, 5].map((s) => (
+                    <line key={s} x1={-120 + s * 48} y1={-88} x2={-120 + s * 48} y2={-78} stroke="rgba(215,232,255,0.35)" strokeWidth={1.5} />
+                  ))}
+                </g>
+              )}
+            </g>
+          );
         })}
       </svg>
     </AbsoluteFill>
@@ -120,7 +210,7 @@ const EarthArcs: React.FC<{ accent: string }> = ({ accent }) => {
 // ── ПРЕМИУМ-ГРАФИКА: тонкая шкала глубины поверх реального айсберга ──
 const IcebergHUD: React.FC<{ accent: string }> = ({ accent }) => {
   const f = useCurrentFrame();
-  const op = Math.min(interpolate(f, [20, 50], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" }), interpolate(f, [485, 525], [1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" }));
+  const op = Math.min(interpolate(f, [14, 40], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" }), interpolate(f, [100, 124], [1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" }));
   const line = interpolate(f, [24, 60], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.out(Easing.cubic) });
   const lineY = 360;
   const ticks = [0, 1, 2, 3, 4, 5];
@@ -137,15 +227,27 @@ const IcebergHUD: React.FC<{ accent: string }> = ({ accent }) => {
           const tap = interpolate(f, [40 + i * 8, 52 + i * 8], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
           return <g key={t} opacity={tap}><line x1={1668} y1={yy} x2={1680} y2={yy} stroke="rgba(230,240,255,0.6)" strokeWidth={1.5} /><text x={1660} y={yy + 5} textAnchor="end" fill="rgba(230,240,255,0.55)" fontSize={20} fontFamily="Oswald, sans-serif">{t * 200}</text></g>;
         })}
-        {/* уровни айсберга уходят вглубь ровно на «чем глубже мы будем спускаться» (45.28с) */}
+      </svg>
+    </AbsoluteFill>
+  );
+};
+
+// ── ПРЕМИУМ-ГРАФИКА: уровни уходят вглубь — на «чем глубже мы будем спускаться» ──
+const IcebergLevels: React.FC<{ accent: string; dur: number }> = ({ accent, dur }) => {
+  const f = useCurrentFrame();
+  const out = interpolate(f, [dur - 24, dur - 2], [1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  return (
+    <AbsoluteFill style={{ pointerEvents: "none", opacity: out }}>
+      <svg width="1920" height="1080">
         {[0, 1, 2, 3].map((i) => {
-          const yy = 480 + i * 145;
-          const g = interpolate(f, [380 + i * 30, 424 + i * 30], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.out(Easing.cubic) });
-          const w = 380 + i * 200; // глубже — шире
+          const yy = 470 + i * 150;
+          const t0 = 22 + i * 32;
+          const g = interpolate(f, [t0, t0 + 44], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.out(Easing.cubic) });
+          const w = 380 + i * 220; // глубже — шире
           const pulse = 0.5 + 0.5 * Math.max(0, Math.sin(f / 9 - i * 1.4));
           return (
             <g key={i} opacity={g}>
-              <line x1={230} y1={yy} x2={230 + w * g} y2={yy} stroke="rgba(215,232,255,0.42)" strokeWidth={1.5} strokeDasharray="3 10" />
+              <line x1={230} y1={yy} x2={230 + w * g} y2={yy} stroke="rgba(215,232,255,0.45)" strokeWidth={1.5} strokeDasharray="3 10" />
               <circle cx={230} cy={yy} r={3.5} fill="rgba(230,240,255,0.85)" />
               <circle cx={230 + w * g} cy={yy} r={4 + 2 * pulse} fill={accent} opacity={0.5 + 0.35 * pulse} style={{ filter: `drop-shadow(0 0 8px ${accent})` }} />
             </g>
@@ -210,11 +312,16 @@ const CLIPS = [
   { src: "candle.mp4", at: 331, dur: 140, from: 104 },
   // «остался в средневековье» 15.62 → «в наше время» 26.26
   { src: "clouds.mp4", at: 455, dur: 341, grade: "grayscale(0.55) contrast(1.22) brightness(1.15) saturate(0.7)", tint: COLD },
-  // «в России, Африке, Латинской Америке, в тихих европейских городах» 27.18–30.22
-  { src: "earth.mp4", at: 780, dur: 192, grade: "grayscale(0.4) contrast(1.16) brightness(0.9) saturate(0.9)" },
-  // «в этом айсберге» 32.32 → «чем глубже мы будем спускаться» 45.28
-  { src: "iceberg2.mp4", at: 956, dur: 530, grade: "grayscale(0.6) contrast(1.3) brightness(0.72) saturate(0.65)", tint: COLD },
-  { src: "fire.mp4", at: 1470, dur: 116 },   // «тем больше — на террор» 50.56
+  // 780–972 — карта мира (графика, без стока): «в России, Африке, Латинской Америке, в Европе»
+  // «в этом айсберге» 32.32 — общий план лагуны + ватерлиния и шкала
+  { src: "iceberg.mp4", at: 956, dur: 126, grade: "grayscale(0.62) contrast(1.32) brightness(0.66) saturate(0.6)", tint: COLD },
+  // «о которых почти никто не знает / нет фантастики» 35.6–39.6 — погружение в темноту
+  { src: "water.mp4", at: 1066, dur: 140, grade: "grayscale(0.55) contrast(1.3) brightness(0.8) saturate(0.7)", tint: COLD },
+  // «только приговоры судов, показания свидетелей и фотографии с мест» 40.1–44.2 — улики
+  { src: "smoke.mp4", at: 1190, dur: 163, from: 40, grade: "grayscale(0.7) contrast(1.25) brightness(0.6) saturate(0.6)", tint: COLD },
+  // «чем глубже мы будем спускаться» 45.02 — крупный айсберг + уровни вглубь
+  { src: "iceberg2.mp4", at: 1337, dur: 165, grade: "grayscale(0.6) contrast(1.3) brightness(0.7) saturate(0.62)", tint: COLD },
+  { src: "fire.mp4", at: 1486, dur: 100 },   // «тем больше — на террор» 50.56
   { src: "eye.mp4", at: 1570, dur: 95, grade: "grayscale(0.55) contrast(1.25) brightness(0.7) saturate(0.75)" }, // «невозможно развидеть» 53.94
 ];
 
@@ -228,8 +335,11 @@ export const IntroFootage: React.FC<{ accent?: string }> = ({ accent = PALETTE.r
         </Sequence>
       ))}
       {/* премиум-графика на уместных битах */}
-      <Sequence from={780} durationInFrames={192}><EarthArcs accent={accent} /></Sequence>
-      <Sequence from={956} durationInFrames={530}><IcebergHUD accent={accent} /></Sequence>
+      <Sequence from={780} durationInFrames={192}><IntroWorldMap accent={accent} dur={192} /></Sequence>
+      <Sequence from={331} durationInFrames={140}><FaithSymbols accent={accent} dur={140} /></Sequence>
+      <Sequence from={956} durationInFrames={126}><IcebergHUD accent={accent} /></Sequence>
+      <Sequence from={1190} durationInFrames={163}><EvidenceCards accent={accent} dur={163} /></Sequence>
+      <Sequence from={1337} durationInFrames={165}><IcebergLevels accent={accent} dur={165} /></Sequence>
       <LightLeaks accent={accent} />
       <Embers accent={accent} />
       <FlashCuts cuts={cuts} accent={accent} />

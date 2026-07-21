@@ -18,7 +18,11 @@ from services.premiere_template.timeline_ops import clear_zone_es, import_media
 PROJECT_DIR = (Path(__file__).resolve().parent.parent / "projects"
                / "2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-i-maloizvestnye-")
 PRPROJ = PROJECT_DIR / "project_template.prproj"
-INTRO = PROJECT_DIR / "assets" / "intro" / "intro_main.mov"
+INTRO_DIR = PROJECT_DIR / "assets" / "intro"
+# Premiere держит уже импортированный файл — каждый новый рендер кладём под новым именем,
+# берём самый свежий
+_variants = sorted(INTRO_DIR.glob("intro_*.mov"), key=lambda p: p.stat().st_mtime)
+INTRO = _variants[-1] if _variants else INTRO_DIR / "intro_main.mov"
 
 BODY_TRACK = 2      # V3 — основной видеослой
 OVERLAY_TRACK = 7   # V8 — кино-оверлеи
