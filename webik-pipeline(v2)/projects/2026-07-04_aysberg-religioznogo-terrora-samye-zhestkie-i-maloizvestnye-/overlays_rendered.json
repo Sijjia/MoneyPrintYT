@@ -222,6 +222,24 @@
       "file": "C:\\Users\\aidar\\OneDrive\\Рабочий стол\\automotization-youtube\\webik-pipeline(v2)\\projects\\2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-i-maloizvestnye-\\assets\\arche3\\arch_v2.mov"
     },
     {
+      "id": "arch_g2",
+      "type": "kinetic",
+      "composition": "KineticType",
+      "scene_id": "scene_036",
+      "start": 314.9,
+      "duration_sec": 4.73,
+      "anchor": "десятки, а иногда и сотни тысяч рублей за сеанс воскрешения",
+      "props": {
+        "lines": [
+          "СОТНИ ТЫСЯЧ РУБЛЕЙ",
+          "ЗА «СЕАНС ВОСКРЕШЕНИЯ»"
+        ],
+        "highlight": "тысяч",
+        "accent": "#d92828"
+      },
+      "file": "C:\\Users\\aidar\\OneDrive\\Рабочий стол\\automotization-youtube\\webik-pipeline(v2)\\projects\\2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-i-maloizvestnye-\\assets\\arche3\\arch_g2.mov"
+    },
+    {
       "id": "ov_004",
       "type": "compare",
       "composition": "BarCompare",
@@ -245,27 +263,37 @@
       "file": "projects\\2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-i-maloizvestnye-\\assets\\overlays3\\ov_004.mov"
     },
     {
-      "id": "ov_005",
+      "id": "arch_g1",
       "type": "timeline",
-      "composition": "Timeline",
+      "composition": "TimelineJourney",
       "scene_id": "scene_045",
-      "anchor": "к одиннадцати годам колонии",
-      "start": 360.89,
-      "duration_sec": 5.0,
+      "start": 359.5,
+      "duration_sec": 13.0,
+      "anchor": "Таганский суд Москвы приговорил его к 11 годам",
       "props": {
-        "title": "Приговор Грабовому",
+        "title": "Дело Грабового",
+        "accent": "#d92828",
+        "durationInFrames": 390,
         "events": [
           {
-            "year": "2008",
-            "label": "Приговор 11 лет"
+            "year": 2008,
+            "label": "Приговор · 11 лет"
           },
           {
-            "year": "2010",
-            "label": "УДО"
+            "year": "8 лет",
+            "label": "Мосгорсуд снизил"
+          },
+          {
+            "year": 2010,
+            "label": "Вышел по УДО"
+          },
+          {
+            "year": "Сейчас",
+            "label": "Семинары за рубежом"
           }
         ]
       },
-      "file": "projects\\2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-i-maloizvestnye-\\assets\\overlays3\\ov_005.mov"
+      "file": "C:\\Users\\aidar\\OneDrive\\Рабочий стол\\automotization-youtube\\webik-pipeline(v2)\\projects\\2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-i-maloizvestnye-\\assets\\arche3\\arch_g1.mov"
     },
     {
       "id": "ov_006",

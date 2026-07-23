@@ -340,6 +340,7 @@ export const RemotionRoot: React.FC = () => {
         width={W}
         height={H}
         calculateMetadata={({ props }: any) => {
+          if (props?.durationInFrames) return { durationInFrames: props.durationInFrames };
           const n = (props?.events || []).length || 1;
           return { durationInFrames: Math.max(120, 50 + n * 55) };
         }}
