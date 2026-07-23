@@ -1,0 +1,455 @@
+{
+  "scenes": [
+    {
+      "composition": "Globe3D",
+      "start": 26.66,
+      "duration_sec": 10.0,
+      "duration_frames": 300,
+      "props": {
+        "places": [
+          {
+            "label": "Россия",
+            "lat": 61.52401,
+            "lon": 105.318756
+          },
+          {
+            "label": "Африка",
+            "lat": 1.0,
+            "lon": 20.0
+          },
+          {
+            "label": "Латинская Америка",
+            "lat": -14.0,
+            "lon": -60.0
+          },
+          {
+            "label": "Европа",
+            "lat": 48.69096,
+            "lon": 9.140625
+          }
+        ],
+        "title": "География террора",
+        "accent": "#d92828"
+      },
+      "id": "cine_04"
+    },
+    {
+      "id": "cine_01",
+      "composition": "Scene",
+      "start": 94.06,
+      "duration_sec": 33.87,
+      "duration_frames": 1016,
+      "props": {
+        "blocks": [
+          {
+            "id": "b0",
+            "x": 680.0,
+            "y": 640,
+            "kind": "stat",
+            "value": "7000000",
+            "label": "Доказанный ущерб"
+          },
+          {
+            "id": "b1",
+            "x": 1500.0,
+            "y": 640,
+            "kind": "stat",
+            "value": "5",
+            "label": "Лет колонии"
+          },
+          {
+            "id": "b2",
+            "x": 2320.0,
+            "y": 640,
+            "kind": "bars",
+            "items": [
+              {
+                "label": "Приговор",
+                "value": 5.0
+              },
+              {
+                "label": "Вышел через",
+                "value": 1.0
+              }
+            ]
+          },
+          {
+            "id": "h",
+            "kind": "headline",
+            "x": 1500.0,
+            "y": 300,
+            "text": "Цена «божественного» мошенничества"
+          }
+        ],
+        "shots": [
+          {
+            "focus": "b0",
+            "zoom": 1.5,
+            "move": 18,
+            "hold": 218,
+            "rotY": 8
+          },
+          {
+            "focus": "b1",
+            "zoom": 1.5,
+            "move": 327,
+            "hold": 81,
+            "rotY": -8
+          },
+          {
+            "focus": "b2",
+            "zoom": 1.5,
+            "move": 123,
+            "hold": 55,
+            "rotY": 8
+          },
+          {
+            "focus": "h",
+            "zoom": 0.72,
+            "move": 75,
+            "hold": 95,
+            "rotY": 0
+          }
+        ],
+        "accent": "#d92828"
+      }
+    },
+    {
+      "id": "dos_01",
+      "composition": "DossierCard",
+      "start": 301.25,
+      "duration_sec": 5.67,
+      "duration_frames": 170,
+      "props": {
+        "name": "Григорий Грабовой",
+        "role": "«Воскреситель» · секта",
+        "fields": [
+          {
+            "k": "Обещал",
+            "v": "воскрешение"
+          },
+          {
+            "k": "Цена",
+            "v": "40–50 тыс ₽"
+          },
+          {
+            "k": "Страна · год",
+            "v": "Россия · 2008"
+          }
+        ],
+        "stamp": "осуждён",
+        "photo": "grabovoi.jpg",
+        "accent": "#d92828"
+      }
+    },
+    {
+      "composition": "Scene",
+      "start": 335.64,
+      "duration_sec": 14.67,
+      "duration_frames": 440,
+      "props": {
+        "blocks": [
+          {
+            "id": "b0",
+            "x": 1500.0,
+            "y": 430.0,
+            "kind": "stat",
+            "value": "40000",
+            "label": "Просил от"
+          },
+          {
+            "id": "b1",
+            "x": 1500.0,
+            "y": 850.0,
+            "kind": "stat",
+            "value": "50000",
+            "label": "До, ₽"
+          },
+          {
+            "id": "h",
+            "kind": "headline",
+            "x": 1500.0,
+            "y": 190.0,
+            "text": "Воскрешение за деньги"
+          }
+        ],
+        "shots": [
+          {
+            "focus": "b0",
+            "zoom": 1.5,
+            "move": 18,
+            "hold": 10,
+            "rotY": 0.0,
+            "rotX": 9.0
+          },
+          {
+            "focus": "b1",
+            "zoom": 1.5,
+            "move": 8,
+            "hold": 55,
+            "rotY": 0.0,
+            "rotX": 9.0
+          },
+          {
+            "focus": "h",
+            "zoom": 0.66,
+            "move": 75,
+            "hold": 40,
+            "rotY": 0.0,
+            "rotX": 0.0
+          },
+          {
+            "focus": "h",
+            "zoom": 0.62,
+            "move": 60,
+            "hold": 150,
+            "rotY": 8.0,
+            "rotX": 0.0
+          }
+        ],
+        "accent": "#d92828"
+      },
+      "id": "cine_05"
+    },
+    {
+      "composition": "Scene",
+      "start": 700.5,
+      "duration_sec": 16.93,
+      "duration_frames": 508,
+      "props": {
+        "blocks": [
+          {
+            "id": "b0",
+            "x": 1090.0,
+            "y": 640.0,
+            "kind": "stat",
+            "value": "14",
+            "label": "Официально детей"
+          },
+          {
+            "id": "b1",
+            "x": 1910.0,
+            "y": 640.0,
+            "kind": "stat",
+            "value": "28",
+            "label": "По данным журналистов"
+          },
+          {
+            "id": "h",
+            "kind": "headline",
+            "x": 1500.0,
+            "y": 300,
+            "text": "Семья Хэмилтон-Бирн"
+          }
+        ],
+        "shots": [
+          {
+            "focus": "b0",
+            "zoom": 1.5,
+            "move": 18,
+            "hold": 34,
+            "rotY": 8,
+            "rotX": 0.0
+          },
+          {
+            "focus": "b1",
+            "zoom": 1.5,
+            "move": 52,
+            "hold": 55,
+            "rotY": -8,
+            "rotX": 0.0
+          },
+          {
+            "focus": "h",
+            "zoom": 0.72,
+            "move": 75,
+            "hold": 40,
+            "rotY": 0.0,
+            "rotX": 0.0
+          },
+          {
+            "focus": "h",
+            "zoom": 0.68,
+            "move": 60,
+            "hold": 150,
+            "rotY": 8.0,
+            "rotX": 0.0
+          }
+        ],
+        "accent": "#d92828"
+      },
+      "id": "cine_06"
+    },
+    {
+      "id": "dos_02",
+      "composition": "DossierCard",
+      "start": 876.63,
+      "duration_sec": 5.67,
+      "duration_frames": 170,
+      "props": {
+        "name": "Адольфо Констанцо",
+        "role": "«Наркосатанист» · Матаморос",
+        "fields": [
+          {
+            "k": "Культ",
+            "v": "Наркосатанисты"
+          },
+          {
+            "k": "Жертв",
+            "v": "15+"
+          },
+          {
+            "k": "Страна · год",
+            "v": "Мексика · 1989"
+          }
+        ],
+        "stamp": "погиб",
+        "photo": "constanzo.jpg",
+        "accent": "#d92828"
+      }
+    },
+    {
+      "id": "arch_04",
+      "composition": "CrowdPictograph",
+      "start": 947.37,
+      "duration_sec": 5.33,
+      "duration_frames": 160,
+      "props": {
+        "total": 15,
+        "filled": 15,
+        "label": "погибли",
+        "sub": "массовое захоронение",
+        "accent": "#d92828"
+      }
+    },
+    {
+      "composition": "Scene",
+      "start": 980.78,
+      "duration_sec": 15.27,
+      "duration_frames": 458,
+      "props": {
+        "blocks": [
+          {
+            "id": "b0",
+            "x": 1180.0,
+            "y": 560.0,
+            "kind": "stat",
+            "value": "12",
+            "label": "Взрослых"
+          },
+          {
+            "id": "b1",
+            "x": 1820.0,
+            "y": 760.0,
+            "kind": "stat",
+            "value": "22",
+            "label": "Детей"
+          },
+          {
+            "id": "h",
+            "kind": "headline",
+            "x": 1500.0,
+            "y": 230,
+            "text": "Дети муравейника"
+          }
+        ],
+        "shots": [
+          {
+            "focus": "b0",
+            "zoom": 1.5,
+            "move": 18,
+            "hold": 14,
+            "rotY": 11,
+            "rotX": 6
+          },
+          {
+            "focus": "b1",
+            "zoom": 1.5,
+            "move": 22,
+            "hold": 55,
+            "rotY": -11,
+            "rotX": -6
+          },
+          {
+            "focus": "h",
+            "zoom": 0.68,
+            "move": 75,
+            "hold": 40,
+            "rotY": 0.0,
+            "rotX": 0.0
+          },
+          {
+            "focus": "h",
+            "zoom": 0.64,
+            "move": 60,
+            "hold": 150,
+            "rotY": 8.0,
+            "rotX": 0.0
+          }
+        ],
+        "accent": "#d92828"
+      },
+      "id": "cine_07"
+    },
+    {
+      "id": "arch_05",
+      "composition": "KineticType",
+      "start": 1065.03,
+      "duration_sec": 4.33,
+      "duration_frames": 130,
+      "props": {
+        "lines": [
+          "Побег казался",
+          "страшнее, чем остаться"
+        ],
+        "highlight": "страшнее",
+        "stat": "",
+        "statLabel": "",
+        "accent": "#d92828"
+      }
+    },
+    {
+      "id": "arch_01",
+      "composition": "ShockCounter",
+      "start": 1126.54,
+      "duration_sec": 5.0,
+      "duration_frames": 150,
+      "props": {
+        "from": 330,
+        "to": 778,
+        "label": "Погибшие",
+        "sub": "Уганда·2000",
+        "accent": "#d92828",
+        "energy": 1.0
+      }
+    },
+    {
+      "id": "dos_03",
+      "composition": "DossierCard",
+      "start": 1258.61,
+      "duration_sec": 5.67,
+      "duration_frames": 170,
+      "props": {
+        "name": "Пауль Шефер",
+        "role": "Колония Дигнидад",
+        "fields": [
+          {
+            "k": "Секта",
+            "v": "Колония Дигнидад"
+          },
+          {
+            "k": "Срок",
+            "v": "20 лет"
+          },
+          {
+            "k": "Страна · год",
+            "v": "Чили · 2010"
+          }
+        ],
+        "stamp": "осуждён",
+        "photo": "schafer.jpg",
+        "accent": "#d92828"
+      }
+    }
+  ]
+}

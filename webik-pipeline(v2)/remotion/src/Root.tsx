@@ -420,6 +420,7 @@ export const RemotionRoot: React.FC = () => {
         component={MapSpread}
         durationInFrames={160}
         fps={30}
+        calculateMetadata={({ props }: any) => (props?.durationInFrames ? { durationInFrames: props.durationInFrames } : {})}
         width={W}
         height={H}
         defaultProps={{
