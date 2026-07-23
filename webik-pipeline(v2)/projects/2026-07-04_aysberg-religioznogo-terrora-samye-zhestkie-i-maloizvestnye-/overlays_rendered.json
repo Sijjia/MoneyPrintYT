@@ -356,19 +356,137 @@
       "file": "projects\\2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-i-maloizvestnye-\\assets\\overlays3\\ov_006.mov"
     },
     {
-      "id": "ov_007",
-      "type": "stat",
-      "composition": "CountUpBar",
+      "id": "arch_n1",
+      "type": "crowd",
+      "composition": "CrowdPictograph",
       "scene_id": "scene_083",
-      "anchor": "более трёхсот мальчиков",
-      "start": 497.13,
-      "duration_sec": 3.7,
+      "start": 472.5,
+      "duration_sec": 5.3,
+      "anchor": "освободила более трёхсот мальчиков в цепях",
       "props": {
-        "value": "300",
-        "label": "Освобождённых",
-        "suffix": "+"
+        "total": 300,
+        "filled": 300,
+        "label": "в цепях",
+        "sub": "Кадуна · 2019 · освобождены",
+        "accent": "#d92828"
       },
-      "file": "projects\\2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-i-maloizvestnye-\\assets\\overlays3\\ov_007.mov"
+      "file": "C:\\Users\\aidar\\OneDrive\\Рабочий стол\\automotization-youtube\\webik-pipeline(v2)\\projects\\2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-i-maloizvestnye-\\assets\\arche3b\\arch_n1.mov"
+    },
+    {
+      "id": "arch_n2",
+      "type": "network",
+      "composition": "NetworkGraph",
+      "scene_id": "scene_087",
+      "start": 524.0,
+      "duration_sec": 9.5,
+      "anchor": "похожие рейды в Катсине и Ибадане, проблема массовая",
+      "props": {
+        "title": "«Школы» по всей Нигерии · 2019",
+        "titleStart": 8,
+        "durationInFrames": 285,
+        "accent": "#d92828",
+        "nodes": [
+          {
+            "label": "«Школы»",
+            "x": 50,
+            "y": 49,
+            "hot": true
+          },
+          {
+            "label": "Кадуна",
+            "x": 72,
+            "y": 27
+          },
+          {
+            "label": "Катсина",
+            "x": 72,
+            "y": 71
+          },
+          {
+            "label": "Ибадан",
+            "x": 28,
+            "y": 71
+          },
+          {
+            "label": "Одобрение властей",
+            "x": 28,
+            "y": 27
+          }
+        ],
+        "edges": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            0,
+            3
+          ],
+          [
+            0,
+            4
+          ]
+        ],
+        "nodeStart": [
+          4,
+          40,
+          78,
+          108,
+          150
+        ]
+      },
+      "file": "C:\\Users\\aidar\\OneDrive\\Рабочий стол\\automotization-youtube\\webik-pipeline(v2)\\projects\\2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-i-maloizvestnye-\\assets\\arche3b\\arch_n2.mov"
+    },
+    {
+      "id": "arch_j1",
+      "type": "kinetic",
+      "composition": "KineticType",
+      "scene_id": "scene_091",
+      "start": 572.0,
+      "duration_sec": 4.5,
+      "anchor": "у религии милосердия есть тёмная сторона",
+      "file": "C:\\Users\\aidar\\OneDrive\\Рабочий стол\\automotization-youtube\\webik-pipeline(v2)\\projects\\2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-i-maloizvestnye-\\assets\\arche3c\\arch_j1.mov",
+      "props": {
+        "lines": [
+          "РЕЛИГИЯ МИЛОСЕРДИЯ",
+          "И ГОЛОД ДО КОНЦА"
+        ],
+        "highlight": "голод",
+        "accent": "#d92828"
+      }
+    },
+    {
+      "id": "arch_j2",
+      "type": "timeline",
+      "composition": "TimelineJourney",
+      "scene_id": "scene_094",
+      "start": 610.0,
+      "duration_sec": 13.0,
+      "anchor": "в 2015 году суд Раджастхана приравнял саллекхану к самоубийству",
+      "props": {
+        "title": "Саллекхана: закон",
+        "accent": "#d92828",
+        "durationInFrames": 390,
+        "events": [
+          {
+            "year": 2015,
+            "label": "Раджастхан: запрет"
+          },
+          {
+            "year": "ВС Индии",
+            "label": "решение отменил"
+          },
+          {
+            "year": "Сейчас",
+            "label": "спор продолжается"
+          }
+        ]
+      },
+      "file": "C:\\Users\\aidar\\OneDrive\\Рабочий стол\\automotization-youtube\\webik-pipeline(v2)\\projects\\2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-i-maloizvestnye-\\assets\\arche3b\\arch_j2.mov"
     },
     {
       "id": "ov_008",
