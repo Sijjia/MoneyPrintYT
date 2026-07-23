@@ -439,6 +439,10 @@ export const RemotionRoot: React.FC = () => {
         fps={30}
         width={W}
         height={H}
+        calculateMetadata={({ props }: any) => {
+          if (props?.durationInFrames) return { durationInFrames: props.durationInFrames };
+          return {};
+        }}
         defaultProps={{
           title: "Структура культа",
           nodes: [

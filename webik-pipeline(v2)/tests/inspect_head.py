@@ -21,14 +21,16 @@ def main() -> int:
         for idx in range(tracks.numTracks):
             tr = tracks[idx]
             rows = []
+            lo = float(__import__("os").environ.get("LO", "0"))
+            hi = float(__import__("os").environ.get("HI", "70"))
             for i in range(tr.clips.numItems):
                 c = tr.clips[i]
                 s = c.start.seconds
-                if s < 70:
+                if lo <= s < hi:
                     rows.append(f"{s:6.2f}-{c.end.seconds:6.2f} {c.name[:46]}")
             if rows:
                 label = "V" if kind == "videoTracks" else "A"
-                print(f"\n{label}{idx + 1} ({len(rows)} клипов до 70с):")
+                print(f"\n{label}{idx + 1} ({len(rows)} клипов в окне):")
                 for r in rows:
                     print("   ", r)
     return 0

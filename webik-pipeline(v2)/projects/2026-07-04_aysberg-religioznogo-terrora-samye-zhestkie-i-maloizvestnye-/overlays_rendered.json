@@ -1,0 +1,602 @@
+{
+  "overlays": [
+    {
+      "id": "ove_01",
+      "type": "evidence",
+      "composition": "EvidenceFrame",
+      "scene_id": "scene_003",
+      "start": 40.23,
+      "duration_sec": 3.5,
+      "anchor": "приговоры судов",
+      "props": {
+        "label": "ДОКУМЕНТ",
+        "sub": "приговоры судов",
+        "accent": "#d92828",
+        "energy": 1.0
+      },
+      "file": "projects\\2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-i-maloizvestnye-\\assets\\overlays4\\ove_01.mov"
+    },
+    {
+      "id": "ovn_01",
+      "type": "name",
+      "composition": "NameLabel",
+      "scene_id": "scene_007",
+      "start": 61.91,
+      "duration_sec": 3.7,
+      "anchor": "Андрей Попов начинал как",
+      "props": {
+        "name": "Андрей Попов",
+        "sub": "Лидер секты · Россия",
+        "accent": "#d92828",
+        "energy": 1.0,
+        "align": "left"
+      },
+      "file": "projects\\2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-i-maloizvestnye-\\assets\\overlays4\\ovn_01.mov"
+    },
+    {
+      "id": "ov_001",
+      "type": "stat",
+      "composition": "CountUpBar",
+      "scene_id": "scene_012",
+      "anchor": "семь миллионов рублей",
+      "start": 96.03,
+      "duration_sec": 3.7,
+      "props": {
+        "value": "7000000",
+        "label": "Доказанный ущерб",
+        "suffix": "₽"
+      },
+      "file": "projects\\2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-i-maloizvestnye-\\assets\\overlays3\\ov_001.mov"
+    },
+    {
+      "id": "ov_002",
+      "type": "timeline",
+      "composition": "Timeline",
+      "scene_id": "scene_014",
+      "anchor": "к пяти годам колонии",
+      "start": 113.21,
+      "duration_sec": 5.0,
+      "props": {
+        "title": "Приговор Попову",
+        "events": [
+          {
+            "year": "2018",
+            "label": "Приговор 5 лет"
+          },
+          {
+            "year": "2019",
+            "label": "Вышел на свободу"
+          }
+        ]
+      },
+      "file": "projects\\2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-i-maloizvestnye-\\assets\\overlays3\\ov_002.mov"
+    },
+    {
+      "id": "ovn_02",
+      "type": "name",
+      "composition": "NameLabel",
+      "scene_id": "scene_018",
+      "start": 142.05,
+      "duration_sec": 3.7,
+      "anchor": "Пётр Кузнецов, бывший инженер",
+      "props": {
+        "name": "Пётр Кузнецов",
+        "sub": "Лидер секты · Россия",
+        "accent": "#d92828",
+        "energy": 1.0,
+        "align": "left"
+      },
+      "file": "projects\\2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-i-maloizvestnye-\\assets\\overlays4\\ovn_02.mov"
+    },
+    {
+      "id": "ov_003",
+      "type": "stat",
+      "composition": "CountUpBar",
+      "scene_id": "scene_020",
+      "anchor": "тридцати пяти человек",
+      "start": 158.14,
+      "duration_sec": 3.7,
+      "props": {
+        "value": "35",
+        "label": "Последователей",
+        "suffix": ""
+      },
+      "file": "projects\\2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-i-maloizvestnye-\\assets\\overlays3\\ov_003.mov"
+    },
+    {
+      "id": "ov_018",
+      "type": "ratio",
+      "composition": "Pictograph",
+      "scene_id": "scene_024",
+      "anchor": "Двое из них погибли под землёй",
+      "start": 192.15,
+      "duration_sec": 3.7,
+      "props": {
+        "filled": 2,
+        "total": 35,
+        "label": "Погибли под землёй"
+      },
+      "file": "projects\\2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-i-maloizvestnye-\\assets\\overlays3\\ov_018.mov"
+    },
+    {
+      "id": "ovn_03",
+      "type": "name",
+      "composition": "NameLabel",
+      "scene_id": "scene_027",
+      "start": 223.93,
+      "duration_sec": 3.7,
+      "anchor": "Леонид Власов был обычным",
+      "props": {
+        "name": "Леонид Власов",
+        "sub": "Лидер секты · Казахстан",
+        "accent": "#d92828",
+        "energy": 1.0,
+        "align": "left"
+      },
+      "file": "projects\\2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-i-maloizvestnye-\\assets\\overlays4\\ovn_03.mov"
+    },
+    {
+      "id": "arch_v1",
+      "type": "kinetic",
+      "composition": "KineticType",
+      "scene_id": "scene_028",
+      "start": 238.5,
+      "duration_sec": 4.03,
+      "anchor": "объявил себя царём-патриархом-искупителем",
+      "props": {
+        "lines": [
+          "ЦАРЬ ПАТРИАРХ ИСКУПИТЕЛЬ"
+        ],
+        "highlight": "искупитель",
+        "accent": "#d92828"
+      },
+      "file": "C:\\Users\\aidar\\OneDrive\\Рабочий стол\\automotization-youtube\\webik-pipeline(v2)\\projects\\2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-i-maloizvestnye-\\assets\\arche3\\arch_v1.mov"
+    },
+    {
+      "id": "arch_v2",
+      "type": "network",
+      "composition": "NetworkGraph",
+      "scene_id": "scene_030",
+      "start": 250.0,
+      "duration_sec": 12.4,
+      "anchor": "Власов построил классическую тоталитарную секту",
+      "props": {
+        "title": "Жёсткий контроль",
+        "titleStart": 60,
+        "durationInFrames": 372,
+        "accent": "#d92828",
+        "nodes": [
+          {
+            "label": "Власов",
+            "x": 50,
+            "y": 49,
+            "hot": true
+          },
+          {
+            "label": "Все деньги",
+            "x": 71,
+            "y": 26
+          },
+          {
+            "label": "Разрыв с роднёй",
+            "x": 71,
+            "y": 72
+          },
+          {
+            "label": "Жизнь по приказу",
+            "x": 29,
+            "y": 72
+          },
+          {
+            "label": "Полное подчинение",
+            "x": 29,
+            "y": 26
+          }
+        ],
+        "edges": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            0,
+            3
+          ],
+          [
+            0,
+            4
+          ]
+        ],
+        "nodeStart": [
+          4,
+          176,
+          202,
+          253,
+          312
+        ]
+      },
+      "file": "C:\\Users\\aidar\\OneDrive\\Рабочий стол\\automotization-youtube\\webik-pipeline(v2)\\projects\\2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-i-maloizvestnye-\\assets\\arche3\\arch_v2.mov"
+    },
+    {
+      "id": "ov_004",
+      "type": "compare",
+      "composition": "BarCompare",
+      "scene_id": "scene_040",
+      "anchor": "от сорока до пятидесяти тысяч рублей",
+      "start": 335.99,
+      "duration_sec": 4.5,
+      "props": {
+        "title": "Цена «воскрешения»",
+        "items": [
+          {
+            "label": "Минимум",
+            "value": 40000.0
+          },
+          {
+            "label": "Максимум",
+            "value": 50000.0
+          }
+        ]
+      },
+      "file": "projects\\2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-i-maloizvestnye-\\assets\\overlays3\\ov_004.mov"
+    },
+    {
+      "id": "ov_005",
+      "type": "timeline",
+      "composition": "Timeline",
+      "scene_id": "scene_045",
+      "anchor": "к одиннадцати годам колонии",
+      "start": 360.89,
+      "duration_sec": 5.0,
+      "props": {
+        "title": "Приговор Грабовому",
+        "events": [
+          {
+            "year": "2008",
+            "label": "Приговор 11 лет"
+          },
+          {
+            "year": "2010",
+            "label": "УДО"
+          }
+        ]
+      },
+      "file": "projects\\2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-i-maloizvestnye-\\assets\\overlays3\\ov_005.mov"
+    },
+    {
+      "id": "ov_006",
+      "type": "stat",
+      "composition": "CountUpBar",
+      "scene_id": "scene_079",
+      "anchor": "трёхсот семи человек",
+      "start": 453.6,
+      "duration_sec": 3.7,
+      "props": {
+        "value": "307",
+        "label": "Погибших",
+        "suffix": ""
+      },
+      "file": "projects\\2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-i-maloizvestnye-\\assets\\overlays3\\ov_006.mov"
+    },
+    {
+      "id": "ov_007",
+      "type": "stat",
+      "composition": "CountUpBar",
+      "scene_id": "scene_083",
+      "anchor": "более трёхсот мальчиков",
+      "start": 497.13,
+      "duration_sec": 3.7,
+      "props": {
+        "value": "300",
+        "label": "Освобождённых",
+        "suffix": "+"
+      },
+      "file": "projects\\2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-i-maloizvestnye-\\assets\\overlays3\\ov_007.mov"
+    },
+    {
+      "id": "ov_008",
+      "type": "phrase",
+      "composition": "KineticPhrase",
+      "scene_id": "scene_093",
+      "anchor": "сотни людей в год",
+      "start": 624.43,
+      "duration_sec": 4.0,
+      "props": {
+        "phrase": "Сотни людей в год",
+        "highlight": [
+          0,
+          1
+        ]
+      },
+      "file": "projects\\2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-i-maloizvestnye-\\assets\\overlays3\\ov_008.mov"
+    },
+    {
+      "id": "ovn_05",
+      "type": "name",
+      "composition": "NameLabel",
+      "scene_id": "scene_097",
+      "start": 667.87,
+      "duration_sec": 3.7,
+      "anchor": "Анна Хэмилтон-Бирн создала одну",
+      "props": {
+        "name": "Анна Хэмилтон-Бирн",
+        "sub": "Лидер секты · Австралия",
+        "accent": "#d92828",
+        "energy": 1.0,
+        "align": "left"
+      },
+      "file": "projects\\2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-i-maloizvestnye-\\assets\\overlays4\\ovn_05.mov"
+    },
+    {
+      "id": "ov_019",
+      "type": "quote",
+      "composition": "QuoteCard",
+      "scene_id": "scene_097",
+      "start": 680.53,
+      "duration_sec": 4.5,
+      "props": {
+        "text": "Я — реинкарнация Иисуса Христа",
+        "author": "Анна Хэмилтон-Бирн",
+        "accent": "#d92828"
+      },
+      "file": "projects\\2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-i-maloizvestnye-\\assets\\overlays3\\ov_019.mov"
+    },
+    {
+      "id": "ov_009",
+      "type": "compare",
+      "composition": "BarCompare",
+      "scene_id": "scene_099",
+      "anchor": "от четырнадцати детей, хотя журналисты называют цифру до двадцати восьми",
+      "start": 701.35,
+      "duration_sec": 4.5,
+      "props": {
+        "title": "Дети под контролем",
+        "items": [
+          {
+            "label": "Официально",
+            "value": 14.0
+          },
+          {
+            "label": "Журналисты",
+            "value": 28.0
+          }
+        ]
+      },
+      "file": "projects\\2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-i-maloizvestnye-\\assets\\overlays3\\ov_009.mov"
+    },
+    {
+      "id": "ove_02",
+      "type": "evidence",
+      "composition": "EvidenceFrame",
+      "scene_id": "scene_106",
+      "start": 775.05,
+      "duration_sec": 3.5,
+      "anchor": "документы есть",
+      "props": {
+        "label": "ДОКУМЕНТ",
+        "sub": "судебные документы",
+        "accent": "#d92828",
+        "energy": 1.0
+      },
+      "file": "projects\\2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-i-maloizvestnye-\\assets\\overlays4\\ove_02.mov"
+    },
+    {
+      "id": "ov_010",
+      "type": "stat",
+      "composition": "CountUpBar",
+      "scene_id": "scene_109",
+      "anchor": "четыреста двадцать девять трупов",
+      "start": 791.16,
+      "duration_sec": 3.7,
+      "props": {
+        "value": "429",
+        "label": "Эксгумированных тел",
+        "suffix": ""
+      },
+      "file": "projects\\2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-i-maloizvestnye-\\assets\\overlays3\\ov_010.mov"
+    },
+    {
+      "id": "ovn_06",
+      "type": "name",
+      "composition": "NameLabel",
+      "scene_id": "scene_110",
+      "start": 806.65,
+      "duration_sec": 3.7,
+      "anchor": "пастора Пола Маккензи и",
+      "props": {
+        "name": "Пол Маккензи",
+        "sub": "Лидер секты · Кения",
+        "accent": "#d92828",
+        "energy": 1.0,
+        "align": "left"
+      },
+      "file": "projects\\2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-i-maloizvestnye-\\assets\\overlays4\\ovn_06.mov"
+    },
+    {
+      "id": "ov_011",
+      "type": "stat",
+      "composition": "CountUpBar",
+      "scene_id": "scene_122",
+      "anchor": "пятнадцати изувеченных тел",
+      "start": 948.25,
+      "duration_sec": 3.7,
+      "props": {
+        "value": "15",
+        "label": "Массовое захоронение",
+        "suffix": ""
+      },
+      "file": "projects\\2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-i-maloizvestnye-\\assets\\overlays3\\ov_011.mov"
+    },
+    {
+      "id": "ov_012",
+      "type": "compare",
+      "composition": "BarCompare",
+      "scene_id": "scene_125",
+      "anchor": "около двенадцати взрослых и двадцати двух детей",
+      "start": 981.13,
+      "duration_sec": 4.5,
+      "props": {
+        "title": "Дети муравейника",
+        "items": [
+          {
+            "label": "Взрослых",
+            "value": 12.0
+          },
+          {
+            "label": "Детей",
+            "value": 22.0
+          }
+        ]
+      },
+      "file": "projects\\2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-i-maloizvestnye-\\assets\\overlays3\\ov_012.mov"
+    },
+    {
+      "id": "ov_013",
+      "type": "timeline",
+      "composition": "Timeline",
+      "scene_id": "scene_130",
+      "anchor": "в две тысячи одиннадцатом его убил",
+      "start": 1044.08,
+      "duration_sec": 5.0,
+      "props": {
+        "title": "Рош Терио",
+        "events": [
+          {
+            "year": "1993",
+            "label": "Пожизненное"
+          },
+          {
+            "year": "2011",
+            "label": "Убит в тюрьме"
+          }
+        ]
+      },
+      "file": "projects\\2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-i-maloizvestnye-\\assets\\overlays3\\ov_013.mov"
+    },
+    {
+      "id": "ov_014",
+      "type": "stat",
+      "composition": "CountUpBar",
+      "scene_id": "scene_137",
+      "anchor": "семисот семидесяти восьми погибших",
+      "start": 1127.0,
+      "duration_sec": 3.7,
+      "props": {
+        "value": "778",
+        "label": "Погибших",
+        "suffix": ""
+      },
+      "file": "projects\\2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-i-maloizvestnye-\\assets\\overlays3\\ov_014.mov"
+    },
+    {
+      "id": "ove_03",
+      "type": "evidence",
+      "composition": "EvidenceFrame",
+      "scene_id": "scene_168",
+      "start": 1240.59,
+      "duration_sec": 3.5,
+      "anchor": "показания десятков выживших",
+      "props": {
+        "label": "ЗАПИСЬ",
+        "sub": "показания выживших",
+        "accent": "#d92828",
+        "energy": 1.0
+      },
+      "file": "projects\\2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-i-maloizvestnye-\\assets\\overlays4\\ove_03.mov"
+    },
+    {
+      "id": "ov_015",
+      "type": "timeline",
+      "composition": "Timeline",
+      "scene_id": "scene_175",
+      "anchor": "умер в чилийской тюрьме в две тысячи десятом",
+      "start": 1334.67,
+      "duration_sec": 5.0,
+      "props": {
+        "title": "Пауль Шефер",
+        "events": [
+          {
+            "year": "2005",
+            "label": "Арест"
+          },
+          {
+            "year": "2006",
+            "label": "Приговор 20 лет"
+          },
+          {
+            "year": "2010",
+            "label": "Умер в тюрьме"
+          }
+        ]
+      },
+      "file": "projects\\2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-i-maloizvestnye-\\assets\\overlays3\\ov_015.mov"
+    },
+    {
+      "id": "ov_016",
+      "type": "stat",
+      "composition": "CountUpBar",
+      "scene_id": "scene_179",
+      "anchor": "семидесяти пяти тысяч долларов",
+      "start": 1395.73,
+      "duration_sec": 3.7,
+      "props": {
+        "value": "75000",
+        "label": "Цена за части тела",
+        "suffix": "$"
+      },
+      "file": "projects\\2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-i-maloizvestnye-\\assets\\overlays3\\ov_016.mov"
+    },
+    {
+      "id": "ove_04",
+      "type": "evidence",
+      "composition": "EvidenceFrame",
+      "scene_id": "scene_180",
+      "start": 1398.75,
+      "duration_sec": 3.5,
+      "anchor": "Задокументировано несколько сотен",
+      "props": {
+        "label": "ДОКУМЕНТ",
+        "sub": "задокументировано",
+        "accent": "#d92828",
+        "energy": 1.0
+      },
+      "file": "projects\\2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-i-maloizvestnye-\\assets\\overlays4\\ove_04.mov"
+    },
+    {
+      "id": "ovn_09",
+      "type": "name",
+      "composition": "NameLabel",
+      "scene_id": "scene_184",
+      "start": 1440.15,
+      "duration_sec": 3.7,
+      "anchor": "Жозеф Ди Мамбро и",
+      "props": {
+        "name": "Жозеф Ди Мамбро",
+        "sub": "Лидер секты · Швейцария",
+        "accent": "#d92828",
+        "energy": 1.0,
+        "align": "left"
+      },
+      "file": "projects\\2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-i-maloizvestnye-\\assets\\overlays4\\ovn_09.mov"
+    },
+    {
+      "id": "ov_017",
+      "type": "stat",
+      "composition": "CountUpBar",
+      "scene_id": "scene_188",
+      "anchor": "семидесяти четырёх человек",
+      "start": 1486.24,
+      "duration_sec": 3.7,
+      "props": {
+        "value": "74",
+        "label": "Погибших",
+        "suffix": ""
+      },
+      "file": "projects\\2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-i-maloizvestnye-\\assets\\overlays3\\ov_017.mov"
+    }
+  ]
+}

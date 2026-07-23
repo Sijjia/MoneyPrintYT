@@ -10,14 +10,18 @@ export type NetworkProps = {
   edges?: number[][];
   title?: string;
   accent?: string;
+  // опц. кадр появления узла i (для синхрона с закадром); иначе 8+i*7
+  nodeStart?: number[];
+  titleStart?: number; // кадр появления заголовка
 };
 
-export const NetworkGraph: React.FC<NetworkProps> = ({ nodes = [], edges = [], title = "", accent = PALETTE.red }) => {
+export const NetworkGraph: React.FC<NetworkProps> = ({ nodes = [], edges = [], title = "", accent = PALETTE.red, nodeStart, titleStart = 0 }) => {
   const frame = useCurrentFrame();
   const { durationInFrames, width, height } = useVideoConfig();
   const exit = interpolate(frame, [durationInFrames - 20, durationInFrames], [1, 0], { extrapolateLeft: "clamp" });
   const drift = Math.sin(frame / 70) * 8;
   const pos = (n: GNode) => ({ x: (n.x / 100) * width + drift, y: (n.y / 100) * height });
+  const startOf = (i: number) => (nodeStart && nodeStart[i] != null ? nodeStart[i] : 8 + i * 7);
 
   return (
     <AbsoluteFill style={{ background: "#05070c", opacity: exit, overflow: "hidden", fontFamily: fontFamily("oswald") }}>
@@ -28,17 +32,18 @@ export const NetworkGraph: React.FC<NetworkProps> = ({ nodes = [], edges = [], t
           if (!nodes[a] || !nodes[b]) return null;
           const pa = pos(nodes[a]);
           const pb = pos(nodes[b]);
-          const d = 30 + i * 6;
+          // ребро тянется, как только появился дальний узел
+          const d = Math.max(startOf(a), startOf(b)) + 4;
           const p = interpolate(frame, [d, d + 18], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.out(Easing.cubic) });
           const x2 = pa.x + (pb.x - pa.x) * p;
           const y2 = pa.y + (pb.y - pa.y) * p;
-          return <line key={i} x1={pa.x} y1={pa.y} x2={x2} y2={y2} stroke={accent} strokeWidth={2} opacity={0.5} style={{ filter: `drop-shadow(0 0 4px ${accent}88)` }} />;
+          return <line key={i} x1={pa.x} y1={pa.y} x2={x2} y2={y2} stroke={accent} strokeWidth={2} opacity={0.5 * p} style={{ filter: `drop-shadow(0 0 4px ${accent}88)` }} />;
         })}
       </svg>
 
       {nodes.map((n, i) => {
         const p = pos(n);
-        const d = 8 + i * 7;
+        const d = startOf(i);
         const ap = interpolate(frame, [d, d + 12], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.out(Easing.back(1.5)) });
         const r = n.hot ? 32 : 18;
         const pulse = n.hot ? 1 + 0.14 * Math.sin(frame / 8) : 1;
@@ -52,7 +57,9 @@ export const NetworkGraph: React.FC<NetworkProps> = ({ nodes = [], edges = [], t
         );
       })}
 
-      {title && <div style={{ position: "absolute", top: 78, width: "100%", textAlign: "center", color: PALETTE.cream, fontSize: 48, fontWeight: 800, letterSpacing: 5, textTransform: "uppercase", textShadow: "0 4px 20px #000" }}>{title}</div>}
+      {title && (
+        <div style={{ position: "absolute", top: 78, width: "100%", textAlign: "center", color: PALETTE.cream, fontSize: 48, fontWeight: 800, letterSpacing: 5, textTransform: "uppercase", textShadow: "0 4px 20px #000", opacity: interpolate(frame, [titleStart, titleStart + 16], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" }) }}>{title}</div>
+      )}
     </AbsoluteFill>
   );
 };
