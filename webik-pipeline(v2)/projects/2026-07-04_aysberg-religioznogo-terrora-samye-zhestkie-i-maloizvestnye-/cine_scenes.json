@@ -2,7 +2,7 @@
   "scenes": [
     {
       "composition": "Globe3D",
-      "start": 26.66,
+      "start": 28.32,
       "duration_sec": 10.0,
       "duration_frames": 300,
       "props": {
@@ -36,7 +36,7 @@
     {
       "id": "cine_01",
       "composition": "Scene",
-      "start": 94.06,
+      "start": 99.84,
       "duration_sec": 33.87,
       "duration_frames": 1016,
       "props": {
@@ -117,7 +117,7 @@
     {
       "id": "dos_01",
       "composition": "DossierCard",
-      "start": 301.25,
+      "start": 304.37,
       "duration_sec": 5.67,
       "duration_frames": 170,
       "props": {
@@ -144,7 +144,7 @@
     },
     {
       "composition": "Scene",
-      "start": 335.64,
+      "start": 337.83,
       "duration_sec": 14.67,
       "duration_frames": 440,
       "props": {
@@ -213,7 +213,7 @@
     },
     {
       "composition": "Scene",
-      "start": 700.5,
+      "start": 690.74,
       "duration_sec": 16.93,
       "duration_frames": 508,
       "props": {
@@ -283,7 +283,7 @@
     {
       "id": "dos_02",
       "composition": "DossierCard",
-      "start": 876.63,
+      "start": 849.17,
       "duration_sec": 5.67,
       "duration_frames": 170,
       "props": {
@@ -311,7 +311,7 @@
     {
       "id": "arch_04",
       "composition": "CrowdPictograph",
-      "start": 947.37,
+      "start": 917.5,
       "duration_sec": 5.33,
       "duration_frames": 160,
       "props": {
@@ -324,7 +324,7 @@
     },
     {
       "composition": "Scene",
-      "start": 980.78,
+      "start": 949.11,
       "duration_sec": 15.27,
       "duration_frames": 458,
       "props": {
@@ -394,7 +394,7 @@
     {
       "id": "arch_05",
       "composition": "KineticType",
-      "start": 1065.03,
+      "start": 1027.68,
       "duration_sec": 4.33,
       "duration_frames": 130,
       "props": {
@@ -411,7 +411,7 @@
     {
       "id": "arch_01",
       "composition": "ShockCounter",
-      "start": 1126.54,
+      "start": 1089.94,
       "duration_sec": 5.0,
       "duration_frames": 150,
       "props": {
@@ -426,7 +426,7 @@
     {
       "id": "dos_03",
       "composition": "DossierCard",
-      "start": 1258.61,
+      "start": 1212.06,
       "duration_sec": 5.67,
       "duration_frames": 170,
       "props": {

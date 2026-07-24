@@ -5,7 +5,7 @@
       "type": "evidence",
       "composition": "EvidenceFrame",
       "scene_id": "scene_003",
-      "start": 40.23,
+      "start": 43.13,
       "duration_sec": 3.5,
       "anchor": "приговоры судов",
       "props": {
@@ -21,7 +21,7 @@
       "type": "name",
       "composition": "NameLabel",
       "scene_id": "scene_007",
-      "start": 61.91,
+      "start": 68.04,
       "duration_sec": 3.7,
       "anchor": "Андрей Попов начинал как",
       "props": {
@@ -39,7 +39,7 @@
       "composition": "CountUpBar",
       "scene_id": "scene_012",
       "anchor": "семь миллионов рублей",
-      "start": 96.03,
+      "start": 100.38,
       "duration_sec": 3.7,
       "props": {
         "value": "7000000",
@@ -54,7 +54,7 @@
       "composition": "Timeline",
       "scene_id": "scene_014",
       "anchor": "к пяти годам колонии",
-      "start": 113.21,
+      "start": 119.66,
       "duration_sec": 5.0,
       "props": {
         "title": "Приговор Попову",
@@ -76,7 +76,7 @@
       "type": "name",
       "composition": "NameLabel",
       "scene_id": "scene_018",
-      "start": 142.05,
+      "start": 147.87,
       "duration_sec": 3.7,
       "anchor": "Пётр Кузнецов, бывший инженер",
       "props": {
@@ -94,7 +94,7 @@
       "composition": "CountUpBar",
       "scene_id": "scene_020",
       "anchor": "тридцати пяти человек",
-      "start": 158.14,
+      "start": 165.84,
       "duration_sec": 3.7,
       "props": {
         "value": "35",
@@ -109,7 +109,7 @@
       "composition": "Pictograph",
       "scene_id": "scene_024",
       "anchor": "Двое из них погибли под землёй",
-      "start": 192.15,
+      "start": 197.03,
       "duration_sec": 3.7,
       "props": {
         "filled": 2,
@@ -123,7 +123,7 @@
       "type": "name",
       "composition": "NameLabel",
       "scene_id": "scene_027",
-      "start": 223.93,
+      "start": 229.96,
       "duration_sec": 3.7,
       "anchor": "Леонид Власов был обычным",
       "props": {
@@ -140,7 +140,7 @@
       "type": "kinetic",
       "composition": "KineticType",
       "scene_id": "scene_028",
-      "start": 238.5,
+      "start": 243.16,
       "duration_sec": 4.03,
       "anchor": "объявил себя царём-патриархом-искупителем",
       "props": {
@@ -157,7 +157,7 @@
       "type": "network",
       "composition": "NetworkGraph",
       "scene_id": "scene_030",
-      "start": 250.0,
+      "start": 252.56,
       "duration_sec": 12.4,
       "anchor": "Власов построил классическую тоталитарную секту",
       "props": {
@@ -226,7 +226,7 @@
       "type": "kinetic",
       "composition": "KineticType",
       "scene_id": "scene_036",
-      "start": 314.9,
+      "start": 316.76,
       "duration_sec": 4.73,
       "anchor": "десятки, а иногда и сотни тысяч рублей за сеанс воскрешения",
       "props": {
@@ -245,7 +245,7 @@
       "composition": "BarCompare",
       "scene_id": "scene_040",
       "anchor": "от сорока до пятидесяти тысяч рублей",
-      "start": 335.99,
+      "start": 338.18,
       "duration_sec": 4.5,
       "props": {
         "title": "Цена «воскрешения»",
@@ -267,7 +267,7 @@
       "type": "timeline",
       "composition": "TimelineJourney",
       "scene_id": "scene_045",
-      "start": 359.5,
+      "start": 361.69,
       "duration_sec": 13.0,
       "anchor": "Таганский суд Москвы приговорил его к 11 годам",
       "props": {
@@ -300,7 +300,7 @@
       "type": "mapspread",
       "composition": "MapSpread",
       "scene_id": "scene_076",
-      "start": 390.0,
+      "start": 396.91,
       "duration_sec": 8.0,
       "anchor": "волна массовых линчеваний по Баньюванги и Джембер",
       "props": {
@@ -328,7 +328,7 @@
       "type": "shock",
       "composition": "ShockCounter",
       "scene_id": "scene_079",
-      "start": 432.7,
+      "start": 442.05,
       "duration_sec": 5.0,
       "anchor": "погибло около 307 человек",
       "props": {
@@ -346,7 +346,7 @@
       "composition": "CountUpBar",
       "scene_id": "scene_079",
       "anchor": "трёхсот семи человек",
-      "start": 453.6,
+      "start": 443.12,
       "duration_sec": 3.7,
       "props": {
         "value": "307",
@@ -360,7 +360,7 @@
       "type": "crowd",
       "composition": "CrowdPictograph",
       "scene_id": "scene_083",
-      "start": 472.5,
+      "start": 484.86,
       "duration_sec": 5.3,
       "anchor": "освободила более трёхсот мальчиков в цепях",
       "props": {
@@ -377,7 +377,7 @@
       "type": "network",
       "composition": "NetworkGraph",
       "scene_id": "scene_087",
-      "start": 524.0,
+      "start": 533.54,
       "duration_sec": 9.5,
       "anchor": "похожие рейды в Катсине и Ибадане, проблема массовая",
       "props": {
@@ -446,7 +446,7 @@
       "type": "kinetic",
       "composition": "KineticType",
       "scene_id": "scene_091",
-      "start": 572.0,
+      "start": 583.07,
       "duration_sec": 4.5,
       "anchor": "у религии милосердия есть тёмная сторона",
       "file": "C:\\Users\\aidar\\OneDrive\\Рабочий стол\\automotization-youtube\\webik-pipeline(v2)\\projects\\2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-i-maloizvestnye-\\assets\\arche3c\\arch_j1.mov",
@@ -460,11 +460,28 @@
       }
     },
     {
+      "id": "ov_008",
+      "type": "phrase",
+      "composition": "KineticPhrase",
+      "scene_id": "scene_093",
+      "anchor": "сотни людей в год",
+      "start": 616.61,
+      "duration_sec": 4.0,
+      "props": {
+        "phrase": "Сотни людей в год",
+        "highlight": [
+          0,
+          1
+        ]
+      },
+      "file": "projects\\2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-i-maloizvestnye-\\assets\\overlays3\\ov_008.mov"
+    },
+    {
       "id": "arch_j2",
       "type": "timeline",
       "composition": "TimelineJourney",
       "scene_id": "scene_094",
-      "start": 610.0,
+      "start": 620.79,
       "duration_sec": 13.0,
       "anchor": "в 2015 году суд Раджастхана приравнял саллекхану к самоубийству",
       "props": {
@@ -489,28 +506,11 @@
       "file": "C:\\Users\\aidar\\OneDrive\\Рабочий стол\\automotization-youtube\\webik-pipeline(v2)\\projects\\2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-i-maloizvestnye-\\assets\\arche3b\\arch_j2.mov"
     },
     {
-      "id": "ov_008",
-      "type": "phrase",
-      "composition": "KineticPhrase",
-      "scene_id": "scene_093",
-      "anchor": "сотни людей в год",
-      "start": 624.43,
-      "duration_sec": 4.0,
-      "props": {
-        "phrase": "Сотни людей в год",
-        "highlight": [
-          0,
-          1
-        ]
-      },
-      "file": "projects\\2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-i-maloizvestnye-\\assets\\overlays3\\ov_008.mov"
-    },
-    {
       "id": "ovn_05",
       "type": "name",
       "composition": "NameLabel",
       "scene_id": "scene_097",
-      "start": 667.87,
+      "start": 661.12,
       "duration_sec": 3.7,
       "anchor": "Анна Хэмилтон-Бирн создала одну",
       "props": {
@@ -527,7 +527,7 @@
       "type": "quote",
       "composition": "QuoteCard",
       "scene_id": "scene_097",
-      "start": 680.53,
+      "start": 661.12,
       "duration_sec": 4.5,
       "props": {
         "text": "Я — реинкарнация Иисуса Христа",
@@ -542,7 +542,7 @@
       "composition": "BarCompare",
       "scene_id": "scene_099",
       "anchor": "от четырнадцати детей, хотя журналисты называют цифру до двадцати восьми",
-      "start": 701.35,
+      "start": 689.11,
       "duration_sec": 4.5,
       "props": {
         "title": "Дети под контролем",
@@ -560,28 +560,12 @@
       "file": "projects\\2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-i-maloizvestnye-\\assets\\overlays3\\ov_009.mov"
     },
     {
-      "id": "ove_02",
-      "type": "evidence",
-      "composition": "EvidenceFrame",
-      "scene_id": "scene_106",
-      "start": 775.05,
-      "duration_sec": 3.5,
-      "anchor": "документы есть",
-      "props": {
-        "label": "ДОКУМЕНТ",
-        "sub": "судебные документы",
-        "accent": "#d92828",
-        "energy": 1.0
-      },
-      "file": "projects\\2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-i-maloizvestnye-\\assets\\overlays4\\ove_02.mov"
-    },
-    {
       "id": "ov_010",
       "type": "stat",
       "composition": "CountUpBar",
       "scene_id": "scene_109",
       "anchor": "четыреста двадцать девять трупов",
-      "start": 791.16,
+      "start": 773.69,
       "duration_sec": 3.7,
       "props": {
         "value": "429",
@@ -595,7 +579,7 @@
       "type": "name",
       "composition": "NameLabel",
       "scene_id": "scene_110",
-      "start": 806.65,
+      "start": 780.1,
       "duration_sec": 3.7,
       "anchor": "пастора Пола Маккензи и",
       "props": {
@@ -613,7 +597,7 @@
       "composition": "CountUpBar",
       "scene_id": "scene_122",
       "anchor": "пятнадцати изувеченных тел",
-      "start": 948.25,
+      "start": 918.28,
       "duration_sec": 3.7,
       "props": {
         "value": "15",
@@ -628,7 +612,7 @@
       "composition": "BarCompare",
       "scene_id": "scene_125",
       "anchor": "около двенадцати взрослых и двадцати двух детей",
-      "start": 981.13,
+      "start": 949.08,
       "duration_sec": 4.5,
       "props": {
         "title": "Дети муравейника",
@@ -651,7 +635,7 @@
       "composition": "Timeline",
       "scene_id": "scene_130",
       "anchor": "в две тысячи одиннадцатом его убил",
-      "start": 1044.08,
+      "start": 1011.56,
       "duration_sec": 5.0,
       "props": {
         "title": "Рош Терио",
@@ -674,7 +658,7 @@
       "composition": "CountUpBar",
       "scene_id": "scene_137",
       "anchor": "семисот семидесяти восьми погибших",
-      "start": 1127.0,
+      "start": 1098.9,
       "duration_sec": 3.7,
       "props": {
         "value": "778",
@@ -688,7 +672,7 @@
       "type": "evidence",
       "composition": "EvidenceFrame",
       "scene_id": "scene_168",
-      "start": 1240.59,
+      "start": 1192.15,
       "duration_sec": 3.5,
       "anchor": "показания десятков выживших",
       "props": {
@@ -705,7 +689,7 @@
       "composition": "Timeline",
       "scene_id": "scene_175",
       "anchor": "умер в чилийской тюрьме в две тысячи десятом",
-      "start": 1334.67,
+      "start": 1286.19,
       "duration_sec": 5.0,
       "props": {
         "title": "Пауль Шефер",
@@ -732,7 +716,7 @@
       "composition": "CountUpBar",
       "scene_id": "scene_179",
       "anchor": "семидесяти пяти тысяч долларов",
-      "start": 1395.73,
+      "start": 1347.54,
       "duration_sec": 3.7,
       "props": {
         "value": "75000",
@@ -746,7 +730,7 @@
       "type": "evidence",
       "composition": "EvidenceFrame",
       "scene_id": "scene_180",
-      "start": 1398.75,
+      "start": 1350.08,
       "duration_sec": 3.5,
       "anchor": "Задокументировано несколько сотен",
       "props": {
@@ -762,7 +746,7 @@
       "type": "name",
       "composition": "NameLabel",
       "scene_id": "scene_184",
-      "start": 1440.15,
+      "start": 1392.29,
       "duration_sec": 3.7,
       "anchor": "Жозеф Ди Мамбро и",
       "props": {
@@ -780,7 +764,7 @@
       "composition": "CountUpBar",
       "scene_id": "scene_188",
       "anchor": "семидесяти четырёх человек",
-      "start": 1486.24,
+      "start": 1451.8,
       "duration_sec": 3.7,
       "props": {
         "value": "74",
