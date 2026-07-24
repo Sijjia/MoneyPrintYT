@@ -305,24 +305,20 @@ const IcebergOverlay: React.FC<{ accent: string }> = ({ accent }) => {
 // чтобы клип успел проявиться ровно к произнесению якоря).
 const CLIPS = [
   // «морят голодом собственных детей / режут соседей» (4.82 / 6.96)
+  // тайминги пересчитаны под НОВЫЙ голос (Lumean): сжигают 8.61 · веры 11.99 ·
+  // средневековье 16.06 · Россия 28.65 · айсберг 34.66 · улики 43.4 · глубже 48.98 ·
+  // террор 54.26 · развидеть 57.92
   { src: "figure.mp4", at: 0, dur: 264, grade: "grayscale(0.5) contrast(1.2) brightness(0.9) saturate(0.8)" },
-  { src: "embers.mp4", at: 248, dur: 99 },   // «сжигают друг друга заживо» 8.74
-  // «во имя веры» 11.92 — свеча в исходнике зажигается на ~130 кадре: смещаем, чтобы
-  // вспышка зажигания пришлась ровно на слово
-  { src: "candle.mp4", at: 331, dur: 140, from: 104 },
-  // «остался в средневековье» 15.62 → «в наше время» 26.26
-  { src: "clouds.mp4", at: 455, dur: 341, grade: "grayscale(0.55) contrast(1.22) brightness(1.15) saturate(0.7)", tint: COLD },
-  // 780–972 — карта мира (графика, без стока): «в России, Африке, Латинской Америке, в Европе»
-  // «в этом айсберге» 32.32 — общий план лагуны + ватерлиния и шкала
-  { src: "iceberg.mp4", at: 956, dur: 126, grade: "grayscale(0.62) contrast(1.32) brightness(0.66) saturate(0.6)", tint: COLD },
-  // «о которых почти никто не знает / нет фантастики» 35.6–39.6 — погружение в темноту
-  { src: "water.mp4", at: 1066, dur: 140, grade: "grayscale(0.55) contrast(1.3) brightness(0.8) saturate(0.7)", tint: COLD },
-  // «только приговоры судов, показания свидетелей и фотографии с мест» 40.1–44.2 — улики
-  { src: "smoke.mp4", at: 1190, dur: 163, from: 40, grade: "grayscale(0.7) contrast(1.25) brightness(0.6) saturate(0.6)", tint: COLD },
-  // «чем глубже мы будем спускаться» 45.02 — крупный айсберг + уровни вглубь
-  { src: "iceberg2.mp4", at: 1337, dur: 165, grade: "grayscale(0.6) contrast(1.3) brightness(0.7) saturate(0.62)", tint: COLD },
-  { src: "fire.mp4", at: 1486, dur: 100 },   // «тем больше — на террор» 50.56
-  { src: "eye.mp4", at: 1570, dur: 95, grade: "grayscale(0.55) contrast(1.25) brightness(0.7) saturate(0.75)" }, // «невозможно развидеть» 53.94
+  { src: "embers.mp4", at: 248, dur: 99 },   // «сжигают» 8.61
+  { src: "candle.mp4", at: 331, dur: 140, from: 104 },  // «во имя веры» 11.99
+  { src: "clouds.mp4", at: 468, dur: 372, grade: "grayscale(0.55) contrast(1.22) brightness(1.15) saturate(0.7)", tint: COLD },
+  // карта мира @824 (Россия/Африка/ЛатАм/Европа); «в этом айсберге» 34.66
+  { src: "iceberg.mp4", at: 1026, dur: 130, grade: "grayscale(0.62) contrast(1.32) brightness(0.66) saturate(0.6)", tint: COLD },
+  { src: "water.mp4", at: 1136, dur: 158, grade: "grayscale(0.55) contrast(1.3) brightness(0.8) saturate(0.7)", tint: COLD },  // «почти никто не знает»
+  { src: "smoke.mp4", at: 1290, dur: 168, from: 40, grade: "grayscale(0.7) contrast(1.25) brightness(0.6) saturate(0.6)", tint: COLD },  // улики 43.4
+  { src: "iceberg2.mp4", at: 1448, dur: 165, grade: "grayscale(0.6) contrast(1.3) brightness(0.7) saturate(0.62)", tint: COLD },  // «глубже» 48.98
+  { src: "fire.mp4", at: 1597, dur: 100 },   // «террор» 54.26
+  { src: "eye.mp4", at: 1689, dur: 100, grade: "grayscale(0.55) contrast(1.25) brightness(0.7) saturate(0.75)" }, // «развидеть» 57.92
 ];
 
 export const IntroFootage: React.FC<{ accent?: string }> = ({ accent = PALETTE.red }) => {
@@ -335,11 +331,11 @@ export const IntroFootage: React.FC<{ accent?: string }> = ({ accent = PALETTE.r
         </Sequence>
       ))}
       {/* премиум-графика на уместных битах */}
-      <Sequence from={780} durationInFrames={192}><IntroWorldMap accent={accent} dur={192} /></Sequence>
+      <Sequence from={824} durationInFrames={200}><IntroWorldMap accent={accent} beats={[35, 56, 82, 145]} dur={200} /></Sequence>
       <Sequence from={331} durationInFrames={140}><FaithSymbols accent={accent} dur={140} /></Sequence>
-      <Sequence from={956} durationInFrames={126}><IcebergHUD accent={accent} /></Sequence>
-      <Sequence from={1190} durationInFrames={163}><EvidenceCards accent={accent} dur={163} /></Sequence>
-      <Sequence from={1337} durationInFrames={165}><IcebergLevels accent={accent} dur={165} /></Sequence>
+      <Sequence from={1026} durationInFrames={130}><IcebergHUD accent={accent} /></Sequence>
+      <Sequence from={1290} durationInFrames={168}><EvidenceCards accent={accent} dur={168} /></Sequence>
+      <Sequence from={1448} durationInFrames={165}><IcebergLevels accent={accent} dur={165} /></Sequence>
       <LightLeaks accent={accent} />
       <Embers accent={accent} />
       <FlashCuts cuts={cuts} accent={accent} />
