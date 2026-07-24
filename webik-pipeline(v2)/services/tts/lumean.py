@@ -75,25 +75,78 @@ class LumeanTTS:
         template_id = self._ensure_template()
         order_id = self._create_order(template_id, prepared)
         log.info(f"Lumean заказ {order_id} создан, жду завершения…")
-        result = self._wait(order_id)
+        status, result, items = self._wait(order_id)
+        flagged = [it for it in items if it.get("status") in ("policy_flagged", "failed")]
+        if flagged:
+            log.warning(f"⚠ {len(flagged)} чанк(ов) заблокированы/упали "
+                        f"(ElevenLabs модерация?): {[it.get('status') for it in flagged]}")
+        self.assemble(result, out_path, save_alignment=save_alignment)
+        return out_path
 
-        files = (result or {}).get("files") or []
-        mp3 = next((f for f in files if str(f).lower().endswith((".mp3", ".wav", ".m4a"))), None)
-        if not mp3:
-            raise APIError("Lumean", f"в результате нет аудио: {files}")
-        self._download(mp3, out_path)
+    def assemble(self, result: dict, out_path: Path, save_alignment: bool = True) -> Path:
+        """Собирает финальный mp3 из результата заказа.
+        Lumean отдаёт per-chunk файлы (output/chunks/N/result.mp3) ИЛИ единый
+        output/final/result.mp3 при полном успехе. Склеиваем все чанки по порядку.
+        """
+        out_path = Path(out_path)
+        out_path.parent.mkdir(parents=True, exist_ok=True)
+        files = [f for f in ((result or {}).get("files") or [])
+                 if str(f).lower().endswith((".mp3", ".wav", ".m4a"))]
+        if not files:
+            raise APIError("Lumean", f"в результате нет аудио: {result}")
+
+        final = [f for f in files if "/final/" in str(f)]
+        if final:
+            self._download(final[0], out_path)
+        else:
+            chunks = sorted(files, key=self._chunk_idx)
+            log.info(f"склеиваю {len(chunks)} чанков…")
+            from pydub import AudioSegment
+            import tempfile
+            combined = None
+            for i, f in enumerate(chunks):
+                tmp = Path(tempfile.gettempdir()) / f"_lm_{self._chunk_idx(f)}.mp3"
+                self._download(f, tmp)
+                seg = AudioSegment.from_file(tmp)
+                combined = seg if combined is None else combined.append(seg, crossfade=0)
+                tmp.unlink(missing_ok=True)
+            combined.export(out_path, format="mp3", bitrate="192k")
         log.info(f"Готово: {out_path.name} ({out_path.stat().st_size // 1024} KB)")
 
         if save_alignment:
-            svc = (result or {}).get("service_files") or []
-            algn = next((f for f in svc if str(f).lower().endswith(".json")), None)
-            if algn:
+            svc = [f for f in ((result or {}).get("service_files") or [])
+                   if str(f).lower().endswith(".json")]
+            svc = sorted(svc, key=self._chunk_idx)
+            if svc:
                 try:
-                    self._download(algn, out_path.with_suffix(".align.json"))
-                    log.info("alignment JSON сохранён рядом")
+                    self._assemble_alignment(svc, out_path.with_suffix(".align.json"))
                 except Exception as e:
-                    log.warning(f"alignment не скачался: {e}")
+                    log.warning(f"alignment не собрался: {e}")
         return out_path
+
+    @staticmethod
+    def _chunk_idx(path: str) -> int:
+        m = re.search(r"/chunks/(\d+)/", str(path))
+        return int(m.group(1)) if m else 0
+
+    def _assemble_alignment(self, json_paths: list[str], out: Path) -> None:
+        """Склеивает пословный alignment из per-chunk result.json со сдвигом времени."""
+        import tempfile
+        words = []
+        offset = 0.0
+        for f in json_paths:
+            tmp = Path(tempfile.gettempdir()) / "_lm_algn.json"
+            self._download(f, tmp)
+            d = json.loads(tmp.read_text(encoding="utf-8"))
+            dur = float(d.get("duration_seconds") or 0.0)
+            for w in d.get("words", []):
+                words.append({"word": w.get("word"),
+                              "start": round(float(w.get("start", 0)) + offset, 3),
+                              "end": round(float(w.get("end", 0)) + offset, 3)})
+            offset += dur
+        out.write_text(json.dumps({"duration_seconds": round(offset, 3), "words": words},
+                                  ensure_ascii=False), encoding="utf-8")
+        log.info(f"alignment собран: {len(words)} слов, {offset:.1f}с")
 
     def list_voices(self, search: str = "", page: int = 0, page_size: int = 20) -> list[dict]:
         r = self._get(f"/voices/elevenlabs/library?page={page}&page_size={page_size}"
@@ -142,18 +195,25 @@ class LumeanTTS:
             raise APIError("Lumean", f"нет order id: {r}")
         return oid
 
-    def _wait(self, order_id: str) -> dict:
+    def _wait(self, order_id: str):
+        """→ (status, result_dict, items_list)."""
         t0 = time.monotonic()
         while time.monotonic() - t0 < POLL_TIMEOUT_SEC:
             r = self._get(f"/orders/{order_id}")
             d = r.get("data", r)
             st = (d or {}).get("status", "")
             if st in DONE_STATUSES:
-                return (d or {}).get("result") or {}
+                return st, (d or {}).get("result") or {}, (d or {}).get("items") or []
             if st in FAIL_STATUSES:
                 raise APIError("Lumean", f"заказ {order_id} упал: status={st} {d}")
             time.sleep(POLL_INTERVAL_SEC)
         raise APIError("Lumean", f"заказ {order_id} не завершился за {POLL_TIMEOUT_SEC:.0f}с")
+
+    def fetch_order(self, order_id: str):
+        """Достаёт готовый заказ (status, result, items) без создания нового."""
+        r = self._get(f"/orders/{order_id}")
+        d = r.get("data", r)
+        return (d or {}).get("status", ""), (d or {}).get("result") or {}, (d or {}).get("items") or []
 
     def _download(self, storage_path: str, out_path: Path) -> None:
         r = self._post("/storage/url", {"path": storage_path})
