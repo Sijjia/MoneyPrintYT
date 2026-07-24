@@ -57,6 +57,15 @@ class Settings(BaseSettings):
     # Бьём сами по границам предложений на куски ≤ этого лимита, швы прячем в паузы.
     voicer_max_chunk_chars: int = 2500
 
+    # === TTS (Lumean — api.lumean.app, обёртка над ElevenLabs; заказ→поллинг→скачать) ===
+    tts_provider: str = "voicer"  # "voicer" | "lumean"
+    lumean_api_key: Optional[str] = None
+    lumean_base_url: str = "https://api.lumean.app/api/public"
+    lumean_template_uuid: Optional[str] = None  # UUID TTS-шаблона (создаём один раз)
+    # Модель ElevenLabs через Lumean: eleven_v3 (стабильнее) / eleven_multilingual_v2
+    lumean_model_id: str = "eleven_multilingual_v2"
+    lumean_voice_id: Optional[str] = None  # voice_id из библиотеки (если создаём шаблон в коде)
+
     # === fal.ai ===
     fal_key: Optional[str] = None
 

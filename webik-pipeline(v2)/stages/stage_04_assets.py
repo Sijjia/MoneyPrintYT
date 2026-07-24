@@ -64,10 +64,14 @@ def run(project_dir: Path, feedback: Optional[str] = None) -> dict:
         voice_dir.mkdir(parents=True, exist_ok=True)
         images_dir.mkdir(parents=True, exist_ok=True)
 
-        # 1. Собираем единый voiceover (паузы между уровнями добавим уже в mp3,
-        #    SSML break Voicer часто игнорирует). Между уровнями вставляем SEAM_MARKER:
-        #    voicer порежет TTS-куски именно по этим швам, и микро-дрейф тембра между
-        #    запросами ElevenLabs ляжет на вставляемую паузу уровня (не слышен).
+        # 1. Собираем единый voiceover. Провайдер выбирается TTS_PROVIDER.
+        #    Lumean (eleven_v3) сам чанкует+сшивает на сервере и уважает [long pause] —
+        #    ручные швы НЕ нужны (иначе «[[SEAM]]» будет озвучено буквально).
+        #    Voicer (легаси) требует SEAM_MARKER на границах уровней.
+        from core.config import get_settings as _gs
+        provider = (_gs().tts_provider or "voicer").lower()
+        use_lumean = provider == "lumean"
+
         from services.tts.voicer import SEAM_MARKER
         full_text_parts = []
         prev_level = None
@@ -77,7 +81,7 @@ def run(project_dir: Path, feedback: Optional[str] = None) -> dict:
             if not vo:
                 continue
             lvl = s.get("level", 0)
-            if prev_level is not None and lvl != prev_level:
+            if prev_level is not None and lvl != prev_level and not use_lumean:
                 full_text_parts.append(SEAM_MARKER)
                 n_seams += 1
             full_text_parts.append(vo)
@@ -85,15 +89,18 @@ def run(project_dir: Path, feedback: Optional[str] = None) -> dict:
         full_text = " ".join(full_text_parts)
         if not full_text.replace(SEAM_MARKER, "").strip():
             raise StageError(4, "В scenes.json нет ни одного voiceover")
-        log.info(f"TTS: собран voiceover с {n_seams} структурными швами (границы уровней)")
+        log.info(f"TTS: провайдер={provider}, швов={n_seams}")
 
         voice_path = voice_dir / "full.mp3"
         if voice_path.exists() and voice_path.stat().st_size > 1000:
             log.info(f"TTS: переиспользую {voice_path.name} ({voice_path.stat().st_size // 1024} KB)")
         else:
-            log.info(f"TTS: генерирую {len(full_text_parts)} сегментов = {len(full_text)} символов")
-            tts = VoicerTTS()
-            tts.synthesize(full_text, voice_path)
+            log.info(f"TTS: генерирую {len(full_text)} символов через {provider}")
+            if use_lumean:
+                from services.tts.lumean import LumeanTTS
+                LumeanTTS().synthesize(full_text, voice_path)
+            else:
+                VoicerTTS().synthesize(full_text, voice_path)
 
         # 2. Alignment текста к аудио — пробуем whisper, fallback на proportional
         log.info("Alignment: запускаю whisper для точных word-timestamps...")
