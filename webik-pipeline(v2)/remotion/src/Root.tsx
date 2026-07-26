@@ -26,6 +26,7 @@ import { MapSpread } from "./MapSpread";
 import { NetworkGraph } from "./NetworkGraph";
 import { IntroSequence } from "./IntroSequence";
 import { IntroFootage } from "./IntroFootage";
+import { PhotoZoom } from "./PhotoZoom";
 
 const W = 1920;
 const H = 1080;
@@ -477,6 +478,17 @@ export const RemotionRoot: React.FC = () => {
         width={W}
         height={H}
         defaultProps={{ accent: "#d92828" }}
+      />
+
+      <Composition
+        id="PhotoZoom"
+        component={PhotoZoom}
+        durationInFrames={300}
+        fps={30}
+        width={W}
+        height={H}
+        calculateMetadata={({ props }: any) => (props?.durationInFrames ? { durationInFrames: props.durationInFrames } : {})}
+        defaultProps={{ img: "", dir: "in" }}
       />
     </>
   );
