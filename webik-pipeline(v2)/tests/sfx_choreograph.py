@@ -75,7 +75,7 @@ def main() -> int:
 
     items = {}
     for k in ("appear", "riser", "impact", "tick", "reveal", "swoosh", "notify"):
-        items[k] = import_media(SFX / f"n_{k}.wav")
+        items[k] = import_media(SFX / f"sfx2_{k}.wav")
 
     placed = 0
     for g in graphics:
