@@ -1,18 +1,23 @@
-"""SFX-хореография: под КАЖДУЮ анимацию — фиттинговые звуки по её битам,
-сопровождая до конца. Громкость выровнена (loudnorm). Кладёт на A5 (длинные:
-разгон/ревилер) и A6 (точечные: тик/удар/вуш), чтобы не затирать друг друга.
+"""SFX-хореография с ВАРИАТИВНОСТЬЮ: пул вариантов на категорию + ротация, чтобы
+звуки не повторялись. БЕЗ восходящего swoosh/riser (Айдар не любит).
 
-Типы→звуки:
-  shock   : разгон весь климб (0) + удар на приземлении (3.07с)
-  crowd   : разгон на заливку (0.4) + удар когда заполнилось (2.47с)
-  timeline: вуш на старт + тик на КАЖДОЕ событие (камера доезжает)
-  network : тик на КАЖДЫЙ узел (nodeStart)
-  kinetic : вуш (слова влетают)
-  mapspread: ревилер (пятно растекается)
-  cine/dossier: вуш на появление
-  name/stat/evidence/…: тик
+Пулы (assets/sfx/): w*.wav (вуши), t*.wav (тики), i*.wav (удары), r*.wav (ревилеры).
+Все loudnorm -30 LUFS.
+
+Типы→звуки (по битам, до конца анимации):
+  shock/crowd : ТИКИ по ходу подъёма (счёт) + УДАР на приземлении — без риса
+  timeline    : тик на КАЖДОЕ событие
+  network     : тик на КАЖДЫЙ узел
+  kinetic     : вуш (слова влетают)
+  mapspread   : ревилер (растекание)
+  cine/dossier: вуш
+  name/stat/… : тик
+Ротация: каждый следующий звук категории — другой вариант (round-robin), плюс
+сдвиг стартового индекса по хешу id, чтобы соседние графики отличались.
 """
+import glob
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -23,9 +28,21 @@ from services.premiere_template.timeline_ops import import_media
 
 PROJECT = Path(__file__).resolve().parent.parent / "projects" / "2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-i-maloizvestnye-"
 SFX = (PROJECT / "assets" / "sfx").resolve()
-LONG_TRACK = 4   # A5 — длинные (разгон/ревилер)
-PT_TRACK = 5     # A6 — точечные (тик/удар/вуш)
-LONG = {"riser", "reveal"}
+LONG_TRACK = 4   # A5 — длинные (ревилеры)
+PT_TRACK = 5     # A6 — точечные (тики/удары/вуши)
+
+
+def pool(prefix):
+    return sorted(Path(p) for p in glob.glob(str(SFX / f"{prefix}*.wav")))
+
+
+def crowd_ticks(s, climb_end):
+    # 3-4 тика по ходу подъёма (ускоряются к концу) + удар в конце
+    ts = []
+    for frac in (0.15, 0.45, 0.72, 0.9):
+        ts.append((s + climb_end * frac, "tick"))
+    ts.append((s + climb_end, "impact"))
+    return ts
 
 
 def beats(o):
@@ -33,64 +50,76 @@ def beats(o):
     p = o.get("props", {}) or {}
     s = float(o["start"])
     cid = o.get("id", "")
-    out = []
     if t == "shock":
-        out = [(s, "riser"), (s + 3.07, "impact")]
-    elif t == "crowd":
-        out = [(s + 0.4, "riser"), (s + 2.47, "impact")]
-    elif t == "timeline":
+        return crowd_ticks(s, 3.07)
+    if t == "crowd":
+        return crowd_ticks(s, 2.47)
+    if t == "timeline":
         ev = p.get("events", []); n = max(1, len(ev))
         dur = p.get("durationInFrames") or max(120, 50 + n * 55)
         span = max(1.0, dur - 64)
-        out = [(s, "appear")]
-        for i in range(n):
-            out.append((s + (26 + span * (i / max(1, n - 1))) / 30.0, "tick"))
-    elif t == "network":
+        return [(s + (26 + span * (i / max(1, n - 1))) / 30.0, "tick") for i in range(n)]
+    if t == "network":
         ns = p.get("nodeStart") or [8 + i * 7 for i in range(len(p.get("nodes", [])))]
-        out = [(s + f / 30.0, "tick") for f in ns]
-    elif t == "kinetic":
-        out = [(s, "swoosh")]
-    elif t == "mapspread":
-        out = [(s, "reveal")]
-    elif t == "cine" or cid.startswith("cine") or cid.startswith("dos") or cid.startswith("arch_0") or t == "dossier":
-        out = [(s, "appear")]
-    else:  # name/stat/evidence/compare/percent/ratio/phrase/spotlight/map/quote
-        out = [(s, "tick")]
-    return out
+        return [(s + f / 30.0, "tick") for f in ns]
+    if t == "kinetic":
+        return [(s, "whoosh")]
+    if t == "mapspread":
+        return [(s, "reveal")]
+    if t == "cine" or cid.startswith("cine") or cid.startswith("dos") or cid.startswith("arch_0") or t == "dossier":
+        return [(s, "whoosh")]
+    return [(s, "tick")]
 
 
 def main() -> int:
+    pools = {"whoosh": pool("w"), "tick": pool("t"), "impact": pool("i"), "reveal": pool("r")}
+    for k, v in pools.items():
+        print(f"  пул {k}: {len(v)} вариантов")
+        if not v:
+            print("  ПУСТО — скачай звуки"); return 1
+
     ov = json.loads((PROJECT / "overlays_rendered.json").read_text(encoding="utf-8"))["overlays"]
     cine = json.loads((PROJECT / "cine_scenes.json").read_text(encoding="utf-8"))["scenes"]
     for c in cine:
         c.setdefault("type", "cine")
-    graphics = ov + cine
+    graphics = sorted(ov + cine, key=lambda g: g["start"])
 
     seq = pymiere.objects.app.project.activeSequence
-    a5 = seq.audioTracks[LONG_TRACK]
-    a6 = seq.audioTracks[PT_TRACK]
+    a5, a6 = seq.audioTracks[LONG_TRACK], seq.audioTracks[PT_TRACK]
     for tr in (a5, a6):
         for cl in reversed(list(tr.clips)):
             cl.remove(False, False)
 
-    items = {}
-    for k in ("appear", "riser", "impact", "tick", "reveal", "swoosh", "notify"):
-        items[k] = import_media(SFX / f"sfx2_{k}.wav")
+    items = {}  # path -> projectItem
+    def get_item(pth):
+        if pth not in items:
+            items[pth] = import_media(pth)
+        return items[pth]
+
+    counters = {k: (sum(ord(c) for c in "seed") % max(1, len(v))) for k, v in pools.items()}
+
+    def pick(cat):
+        v = pools[cat]
+        i = counters[cat] % len(v)
+        counters[cat] += 1
+        return v[i]
 
     placed = 0
     for g in graphics:
-        for (t, sfx) in beats(g):
-            item = items.get(sfx)
-            if item is None or t < 0:
+        for (t, cat) in beats(g):
+            if t < 0:
                 continue
-            tr = a5 if sfx in LONG else a6
+            item = get_item(pick(cat))
+            if item is None:
+                continue
+            tr = a5 if cat == "reveal" else a6
             try:
                 tr.overwriteClip(item, time_from_seconds(round(t, 2)))
                 placed += 1
             except Exception:
                 pass
     pymiere.objects.app.project.save()
-    print(f"SFX-битов расставлено: {placed} (графиков {len(graphics)}) на A5/A6")
+    print(f"SFX-битов расставлено: {placed} (графиков {len(graphics)}), варианты ротируются")
     return 0
 
 
