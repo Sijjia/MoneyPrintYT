@@ -33,7 +33,8 @@ PT_TRACK = 5     # A6 — точечные (тики/удары/вуши)
 
 
 def pool(prefix):
-    return sorted(Path(p) for p in glob.glob(str(SFX / f"{prefix}*.wav")))
+    # ВАЖНО: {prefix}[0-9]* — иначе "t*" зацепит typing_*.wav (звук машинки на A4)!
+    return sorted(Path(p) for p in glob.glob(str(SFX / f"{prefix}[0-9]*.wav")))
 
 
 def crowd_ticks(s, climb_end):
