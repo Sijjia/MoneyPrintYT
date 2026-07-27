@@ -149,7 +149,7 @@ class LumeanTTS:
         log.info(f"Lumean music заказ {oid}: «{prompt[:50]}» ({length_ms/1000:.0f}с ×{n_variants})")
         status, result, items = self._wait(oid)
         files = sorted([f for f in ((result or {}).get("files") or [])
-                        if str(f).lower().endswith((".mp3", ".wav", ".m4a", ".opus"))],
+                        if str(f).lower().endswith((".mp3", ".wav", ".m4a", ".opus", ".mp4"))],
                        key=self._chunk_idx)
         if not files:
             raise APIError("Lumean", f"music без аудио: status={status} {result}")
