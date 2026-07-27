@@ -17,10 +17,17 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 import pymiere
 from pymiere.wrappers import time_from_seconds
-from services.stocks.youtube_search import search_candidates, select_clip
+from services.stocks.youtube_search import search_candidates
 from services.stocks.youtube_clipper import download_full_video, trim_clip
 from services.premiere_template.timeline_ops import import_media
+from services.llm.claude import ClaudeService
 from tests.assemble_iceberg_test import apply_dip_to_black_fade
+
+# титулы-стоп-слова: зелёный экран/шаблоны/туториалы/нарезки — НЕ сама сценка
+BAD_TITLE = ("green screen", "greenscreen", "green-screen", "chroma", "template",
+             "tutorial", "how to make", "download", "no copyright", "copyright free",
+             "free to use", "overlay", "footage pack", "10 hour", "1 hour")
+_svc = None
 
 PROJECT = Path(__file__).resolve().parent.parent / "projects" / "2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-i-maloizvestnye-"
 OUT = (PROJECT / "assets" / "cutaways").resolve()
@@ -30,30 +37,79 @@ FADE = 0.45    # сек fade-in/out — плавный кроссфейд с н�
 FFMPEG = "ffmpeg"
 
 
-def fetch_robust(query: str, dur: float, tag: str):
-    """search → select → полное скачивание → trim. Возвращает Path сырого клипа."""
-    cands = search_candidates(query, n=6)
+def llm_choose(fact: str, idea: str, query: str, cands: list):
+    """LLM выбирает клип, который РЕАЛЬНО является этой сценкой/мемом (не гринскрин/
+    не обзор/не нарезка). Возвращает index или 0 при сбое."""
+    global _svc
+    if _svc is None:
+        _svc = ClaudeService()
+    lines = []
+    for i, c in enumerate(cands):
+        d = c.get("duration")
+        lines.append(f"[{i}] {c.get('title','')} | канал {c.get('channel','')} | "
+                     f"{int(d) if d else '?'}с | {c.get('view_count') or '?'} просм.")
+    prompt = (
+        f"Выбираешь КОРОТКИЙ клип-вставку (мем / сценка из фильма / кадр из мультика) "
+        f"для ироничного cutaway в ролике.\n\n"
+        f"Момент закадра: {fact}\nИдея вставки: {idea}\nЗапрос: {query}\n\n"
+        f"КАНДИДАТЫ:\n" + "\n".join(lines) + "\n\n"
+        f"Выбери ОДИН, который РЕАЛЬНО является этой сценкой/мемом и хорош как вставка:\n"
+        f"- это сама сценка/мем (НЕ обзор, НЕ реакция на реакцию, НЕ нарезка «10 мемов», НЕ туториал);\n"
+        f"- НЕ зелёный экран и НЕ шаблон для монтажа;\n- короткий, по делу.\n"
+        f'Ответь СТРОГО JSON: {{"index": <0..{len(cands)-1}>, "reason": "<кратко>"}}'
+    )
+    try:
+        data = _svc.call_json(prompt, max_tokens=300, temperature=0.0)
+        idx = int(data.get("index", 0))
+        if 0 <= idx < len(cands):
+            print(f"    LLM: [{idx}] {data.get('reason','')[:60]}")
+            return idx
+    except Exception as e:
+        print(f"    LLM-пик сбой ({str(e)[:80]}) — беру самый короткий")
+    return 0
+
+
+def window_for(dur_total: float, want: float):
+    """Окно внутри клипа: короткий клип = вся сценка почти с начала."""
+    if dur_total and dur_total <= want + 6:
+        cs = min(0.4, max(0.0, dur_total - want) / 2)
+        ce = min(dur_total - 0.05, cs + want)
+        if ce - cs < 2.0:
+            cs, ce = 0.0, min(dur_total, want)
+        return cs, ce
+    return 1.0, 1.0 + want
+
+
+def fetch_robust(query: str, dur: float, tag: str, fact: str = "", idea: str = ""):
+    """search → фильтр junk → LLM-выбор по смыслу → полное скачивание → trim."""
+    cands = [c for c in search_candidates(query, n=8) if c.get("url")]
     if not cands:
         print("    ytsearch пусто"); return None
-    sel = select_clip(query, cands, want_sec=dur + 1.0, fetch_details=False)
-    if not sel:
-        print("    select пусто"); return None
-    print(f"    выбран: {sel['title'][:50]} [{sel['clip_start']:.1f}-{sel['clip_end']:.1f}]")
-    full = download_full_video(sel["url"], CACHE)
+    good = [c for c in cands if not any(b in (c.get("title", "").lower()) for b in BAD_TITLE)]
+    pool = good or cands
+    # приоритет коротким релевантным (дедиц. клип сценки, а не часовой ролик)
+    pool.sort(key=lambda c: (abs((c.get("duration") or 999) - (dur + 3))))
+    pool = pool[:6]
+    idx = llm_choose(fact, idea, query, pool)
+    c = pool[idx]
+    cs, ce = window_for(c.get("duration") or 0, dur)
+    print(f"    выбран: {c['title'][:52]} [{cs:.1f}-{ce:.1f}]")
+    full = download_full_video(c["url"], CACHE)
     if full is None:
         print("    полное скачивание не вышло"); return None
     raw = CACHE / f"{tag}_trim.mp4"
     if raw.exists():
         raw.unlink()
-    return trim_clip(full, sel["clip_start"], sel["clip_end"], raw)
+    return trim_clip(full, cs, ce, raw)
 
 
 def normalize(src: Path, dst: Path, dur: float) -> bool:
     """Full-frame 1920x1080: размытый фон + вписанный фронт по центру, без звука."""
     if dst.exists() and dst.stat().st_size > 5000:
         return True
+    # fps=30 в начале → CFR (лечит дёрганье от VFR/60fps исходников)
     vf = (
-        "[0:v]split=2[bg][fg];"
+        "[0:v]fps=30,split=2[bg][fg];"
         "[bg]scale=1920:1080:force_original_aspect_ratio=increase,"
         "crop=1920:1080,boxblur=24:2,eq=brightness=-0.06[bgb];"
         "[fg]scale=1920:1080:force_original_aspect_ratio=decrease[fgs];"
@@ -62,7 +118,8 @@ def normalize(src: Path, dst: Path, dur: float) -> bool:
     cmd = [
         FFMPEG, "-y", "-loglevel", "error", "-t", f"{dur:.2f}", "-i", str(src),
         "-filter_complex", vf, "-map", "[v]", "-an",
-        "-r", "30", "-c:v", "libx264", "-crf", "20", "-preset", "fast",
+        "-r", "30", "-vsync", "cfr", "-c:v", "libx264", "-crf", "20", "-preset", "medium",
+        "-profile:v", "high", "-pix_fmt", "yuv420p", "-g", "60", "-movflags", "+faststart",
         "-t", f"{dur:.2f}", str(dst),
     ]
     try:
@@ -97,7 +154,8 @@ def main() -> int:
         dst = OUT / f"cutaway_{sid}.mp4"
         print(f"\n[{i}/{len(cuts)}] {sid} @ {c['abs_start']}s · {c['type']} · '{q}'")
         if not dst.exists():
-            raw = fetch_robust(q, dur, f"cutaway_{sid}")
+            raw = fetch_robust(q, dur, f"cutaway_{sid}",
+                               fact=c.get("narration_snippet", ""), idea=c.get("idea", ""))
             if raw is None or not Path(raw).exists():
                 print("    не скачалось — пропуск"); continue
             if not normalize(Path(raw), dst, dur):
