@@ -20,11 +20,13 @@ from pymiere.wrappers import time_from_seconds
 from services.stocks.youtube_search import search_candidates, select_clip
 from services.stocks.youtube_clipper import download_full_video, trim_clip
 from services.premiere_template.timeline_ops import import_media
+from tests.assemble_iceberg_test import apply_dip_to_black_fade
 
 PROJECT = Path(__file__).resolve().parent.parent / "projects" / "2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-i-maloizvestnye-"
 OUT = (PROJECT / "assets" / "cutaways").resolve()
 CACHE = (PROJECT / "assets" / "_cutaway_cache").resolve()
 CUT_TRACK = 6  # V7 (свободна, над телом; режиссёр обходил графику V8)
+FADE = 0.45    # сек fade-in/out — плавный кроссфейд с нижним слоем (не резкий щелчок)
 FFMPEG = "ffmpeg"
 
 
@@ -82,9 +84,16 @@ def main() -> int:
     v8 = seq.videoTracks[7]
     gfx = [(c.start.seconds, c.end.seconds) for c in v8.clips]
 
+    # чистим старую V7 (короткие вставки прошлого прогона) + старые нормализации
+    for cl in reversed(list(v7.clips)):
+        cl.remove(False, False)
+    for f in OUT.glob("cutaway_*.mp4"):
+        f.unlink()
+    print("старые V7-вставки и нормализации очищены")
+
     ready = []
     for i, c in enumerate(cuts, 1):
-        sid = c["scene_id"]; q = c.get("yt_query", ""); dur = float(c.get("duration_sec", 2.0))
+        sid = c["scene_id"]; q = c.get("yt_query", ""); dur = float(c.get("duration_sec", 7.0))
         dst = OUT / f"cutaway_{sid}.mp4"
         print(f"\n[{i}/{len(cuts)}] {sid} @ {c['abs_start']}s · {c['type']} · '{q}'")
         if not dst.exists():
@@ -113,8 +122,16 @@ def main() -> int:
             print(f"    ✓ {c['scene_id']} @ {at}s")
         except Exception as e:
             print(f"    overwrite упал: {str(e)[:120]}")
+
+    # плавный fade-in/out на КАЖДОЙ вставке V7 (кроссфейд с нижним слоем — не щелчок)
+    faded = 0
+    for cl in v7.clips:
+        if apply_dip_to_black_fade(cl, FADE, FADE):
+            faded += 1
+    print(f"фейды применены: {faded}/{v7.clips.numItems}")
+
     pymiere.objects.app.project.save()
-    print(f"\nПОСТАВЛЕНО {placed}/{len(cuts)} cutaway на V7, проект сохранён")
+    print(f"\nПОСТАВЛЕНО {placed}/{len(cuts)} cutaway на V7 (+fade {FADE}s), проект сохранён")
     return 0
 
 
