@@ -21,7 +21,7 @@ import pymiere
 from services.llm.claude import ClaudeService
 
 PROJECT = Path(__file__).resolve().parent.parent / "projects" / "2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-i-maloizvestnye-"
-N_MIN, N_MAX = 6, 8
+N_MIN, N_MAX = 16, 24
 
 
 def mmss(s: float) -> str:

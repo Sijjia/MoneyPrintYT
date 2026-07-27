@@ -104,22 +104,22 @@ def fetch_robust(query: str, dur: float, tag: str, fact: str = "", idea: str = "
 
 
 def normalize(src: Path, dst: Path, dur: float) -> bool:
-    """Full-frame 1920x1080: размытый фон + вписанный фронт по центру, без звука."""
+    """Full-frame 1920x1080: размытый фон + вписанный фронт по центру, без звука.
+    Выход СРАЗУ в DNxHR SQ .mov (монтажный интра-кодек) — Premiere играет плавно
+    даже с наложением/фейдом (H.264 long-GOP дёргался). fps=30 → CFR."""
     if dst.exists() and dst.stat().st_size > 5000:
         return True
-    # fps=30 в начале → CFR (лечит дёрганье от VFR/60fps исходников)
     vf = (
         "[0:v]fps=30,split=2[bg][fg];"
         "[bg]scale=1920:1080:force_original_aspect_ratio=increase,"
         "crop=1920:1080,boxblur=24:2,eq=brightness=-0.06[bgb];"
         "[fg]scale=1920:1080:force_original_aspect_ratio=decrease[fgs];"
-        "[bgb][fgs]overlay=(W-w)/2:(H-h)/2,format=yuv420p[v]"
+        "[bgb][fgs]overlay=(W-w)/2:(H-h)/2,format=yuv422p[v]"
     )
     cmd = [
         FFMPEG, "-y", "-loglevel", "error", "-t", f"{dur:.2f}", "-i", str(src),
         "-filter_complex", vf, "-map", "[v]", "-an",
-        "-r", "30", "-vsync", "cfr", "-c:v", "libx264", "-crf", "20", "-preset", "medium",
-        "-profile:v", "high", "-pix_fmt", "yuv420p", "-g", "60", "-movflags", "+faststart",
+        "-r", "30", "-vsync", "cfr", "-c:v", "dnxhd", "-profile:v", "dnxhr_sq",
         "-t", f"{dur:.2f}", str(dst),
     ]
     try:
@@ -141,17 +141,17 @@ def main() -> int:
     v8 = seq.videoTracks[7]
     gfx = [(c.start.seconds, c.end.seconds) for c in v8.clips]
 
-    # чистим старую V7 (короткие вставки прошлого прогона) + старые нормализации
+    # чистим старую V7 (вставки прошлого прогона) + старые нормализации
     for cl in reversed(list(v7.clips)):
         cl.remove(False, False)
-    for f in OUT.glob("cutaway_*.mp4"):
+    for f in list(OUT.glob("cutaway_*.mp4")) + list(OUT.glob("cutaway_*.mov")):
         f.unlink()
     print("старые V7-вставки и нормализации очищены")
 
     ready = []
     for i, c in enumerate(cuts, 1):
         sid = c["scene_id"]; q = c.get("yt_query", ""); dur = float(c.get("duration_sec", 7.0))
-        dst = OUT / f"cutaway_{sid}.mp4"
+        dst = OUT / f"cutaway_{sid}.mov"
         print(f"\n[{i}/{len(cuts)}] {sid} @ {c['abs_start']}s · {c['type']} · '{q}'")
         if not dst.exists():
             raw = fetch_robust(q, dur, f"cutaway_{sid}",

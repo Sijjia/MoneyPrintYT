@@ -120,6 +120,47 @@ class LumeanTTS:
         log.info(f"SFX готов: {out_path.name} ({out_path.stat().st_size // 1024} KB)")
         return out_path
 
+    def generate_music(
+        self,
+        prompt: str,
+        out_path: Path,
+        length_ms: int = 180000,
+        force_instrumental: bool = True,
+        n_variants: int = 1,
+        model_id: str = "music_v2",
+    ) -> list[Path]:
+        """Генерит музыку по описанию (Lumean music_v2). task_type:music, template-less.
+        length_ms 10000-300000 (до 5 мин). Возвращает список путей (по варианту).
+        Один вариант → out_path; несколько → out_path с суффиксом _v1/_v2/…
+        """
+        out_path = Path(out_path)
+        out_path.parent.mkdir(parents=True, exist_ok=True)
+        task_data = {
+            "prompt": prompt,
+            "music_length_ms": int(max(10000, min(300000, length_ms))),
+            "force_instrumental": force_instrumental,
+            "n_variants": max(1, min(4, n_variants)),
+            "model_id": model_id,
+        }
+        r = self._post("/orders", {"task_type": "music", "task_data": task_data})
+        oid = (r.get("data") or {}).get("id") or r.get("id")
+        if not oid:
+            raise APIError("Lumean", f"нет order id для music: {r}")
+        log.info(f"Lumean music заказ {oid}: «{prompt[:50]}» ({length_ms/1000:.0f}с ×{n_variants})")
+        status, result, items = self._wait(oid)
+        files = sorted([f for f in ((result or {}).get("files") or [])
+                        if str(f).lower().endswith((".mp3", ".wav", ".m4a", ".opus"))],
+                       key=self._chunk_idx)
+        if not files:
+            raise APIError("Lumean", f"music без аудио: status={status} {result}")
+        outs = []
+        for i, f in enumerate(files):
+            dst = out_path if len(files) == 1 else out_path.with_name(f"{out_path.stem}_v{i+1}{out_path.suffix}")
+            self._download(f, dst)
+            log.info(f"music готов: {dst.name} ({dst.stat().st_size // 1024} KB)")
+            outs.append(dst)
+        return outs
+
     def assemble(self, result: dict, out_path: Path, save_alignment: bool = True) -> Path:
         """Собирает финальный mp3 из результата заказа.
         Lumean отдаёт per-chunk файлы (output/chunks/N/result.mp3) ИЛИ единый
