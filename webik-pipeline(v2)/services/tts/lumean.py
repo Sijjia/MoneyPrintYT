@@ -83,6 +83,43 @@ class LumeanTTS:
         self.assemble(result, out_path, save_alignment=save_alignment)
         return out_path
 
+    def generate_sfx(
+        self,
+        text: str,
+        out_path: Path,
+        duration_seconds: Optional[float] = None,
+        prompt_influence: float = 0.5,
+        loop: bool = False,
+        output_format: str = "mp3_44100_192",
+    ) -> Path:
+        """Генерит звуковой эффект по текстовому описанию (ElevenLabs SFX через Lumean).
+        Template-less: POST /orders {task_type:sfx, task_data:{...}} → 1 файл.
+        text — англ. описание звука; duration 0.5-30с; prompt_influence 0-1.
+        """
+        out_path = Path(out_path)
+        out_path.parent.mkdir(parents=True, exist_ok=True)
+        task_data = {
+            "text": text,
+            "prompt_influence": max(0.0, min(1.0, prompt_influence)),
+            "loop": loop,
+            "output_format": output_format,
+        }
+        if duration_seconds:
+            task_data["duration_seconds"] = max(0.5, min(30.0, float(duration_seconds)))
+        r = self._post("/orders", {"task_type": "sfx", "task_data": task_data})
+        oid = (r.get("data") or {}).get("id") or r.get("id")
+        if not oid:
+            raise APIError("Lumean", f"нет order id для SFX: {r}")
+        log.info(f"Lumean SFX заказ {oid}: «{text[:50]}» ({duration_seconds}с)")
+        status, result, items = self._wait(oid)
+        files = [f for f in ((result or {}).get("files") or [])
+                 if str(f).lower().endswith((".mp3", ".wav", ".m4a", ".opus"))]
+        if not files:
+            raise APIError("Lumean", f"SFX без аудио: status={status} {result}")
+        self._download(files[0], out_path)
+        log.info(f"SFX готов: {out_path.name} ({out_path.stat().st_size // 1024} KB)")
+        return out_path
+
     def assemble(self, result: dict, out_path: Path, save_alignment: bool = True) -> Path:
         """Собирает финальный mp3 из результата заказа.
         Lumean отдаёт per-chunk файлы (output/chunks/N/result.mp3) ИЛИ единый
