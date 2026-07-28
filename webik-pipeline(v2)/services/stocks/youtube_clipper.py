@@ -70,6 +70,9 @@ def download_full_video(url: str, cache_dir: Path) -> Optional[Path]:
             "outtmpl": str(cache_dir / f"{vid_id}.%(ext)s"),
             "quiet": True,
             "no_warnings": True,
+            "socket_timeout": 30,
+            "retries": 3,
+            "fragment_retries": 3,
         }
         # Cookies для обхода bot-detection (YouTube часто требует с 2024+).
         # Источники в порядке приоритета: env (ad-hoc override) → .env через Settings.
@@ -148,6 +151,9 @@ def download_section(
             "outtmpl": str(cache_dir / f"{tag}.%(ext)s"),
             "quiet": True,
             "no_warnings": True,
+            "socket_timeout": 30,
+            "retries": 3,
+            "fragment_retries": 3,
             "download_ranges": download_range_func(None, [(clip_start, clip_end)]),
             "force_keyframes_at_cuts": True,
         }
