@@ -141,12 +141,13 @@ def main() -> int:
     v8 = seq.videoTracks[7]
     gfx = [(c.start.seconds, c.end.seconds) for c in v8.clips]
 
-    # чистим старую V7 (вставки прошлого прогона) + старые нормализации
+    # чистим старую V7 (вставки прошлого прогона). НЕ трогаем .mov — это кэш
+    # уже скачанных клипов (иначе полезет качать заново). Сносим только старый h264.
     for cl in reversed(list(v7.clips)):
         cl.remove(False, False)
-    for f in list(OUT.glob("cutaway_*.mp4")) + list(OUT.glob("cutaway_*.mov")):
+    for f in OUT.glob("cutaway_*.mp4"):
         f.unlink()
-    print("старые V7-вставки и нормализации очищены")
+    print("старые V7-вставки очищены (кэш .mov сохранён)")
 
     ready = []
     for i, c in enumerate(cuts, 1):
