@@ -22,7 +22,8 @@ def main() -> int:
         if dst.exists() and dst.stat().st_size > 5000:
             print("    готов (кэш)"); ok += 1; continue
         raw = fetch_robust(q, dur, f"cutaway_{sid}",
-                           fact=c.get("narration_snippet", ""), idea=c.get("idea", ""))
+                           fact=c.get("narration_snippet", ""),
+                           idea=f"{c.get('visual_element','')} — {c.get('idea','')}".strip(" —"))
         if raw is None or not Path(raw).exists():
             print("    не скачалось"); continue
         if normalize(Path(raw), dst, dur):

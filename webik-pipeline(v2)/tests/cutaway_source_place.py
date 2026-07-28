@@ -49,12 +49,12 @@ def llm_choose(fact: str, idea: str, query: str, cands: list):
         lines.append(f"[{i}] {c.get('title','')} | канал {c.get('channel','')} | "
                      f"{int(d) if d else '?'}с | {c.get('view_count') or '?'} просм.")
     prompt = (
-        f"Выбираешь КОРОТКИЙ клип-вставку (мем / сценка из фильма / кадр из мультика) "
-        f"для ироничного cutaway в ролике.\n\n"
-        f"Момент закадра: {fact}\nИдея вставки: {idea}\nЗапрос: {query}\n\n"
+        f"Выбираешь КОРОТКИЙ отрывок из фильма/мультика как ИЛЛЮСТРАТИВНУЮ вставку — "
+        f"он должен ВИЗУАЛЬНО ПОКАЗЫВАТЬ нужный образ.\n\n"
+        f"Момент закадра: {fact}\nЧто нужно показать (образ/сцена): {idea}\nЗапрос: {query}\n\n"
         f"КАНДИДАТЫ:\n" + "\n".join(lines) + "\n\n"
-        f"Выбери ОДИН, который РЕАЛЬНО является этой сценкой/мемом и хорош как вставка:\n"
-        f"- это сама сценка/мем (НЕ обзор, НЕ реакция на реакцию, НЕ нарезка «10 мемов», НЕ туториал);\n"
+        f"Выбери ОДИН, который РЕАЛЬНО показывает нужную сцену/образ и хорош как вставка:\n"
+        f"- это сам отрывок из фильма/мультика с нужной картинкой (НЕ обзор, НЕ реакция, НЕ нарезка «топ-10», НЕ туториал);\n"
         f"- НЕ зелёный экран и НЕ шаблон для монтажа;\n- короткий, по делу.\n"
         f'Ответь СТРОГО JSON: {{"index": <0..{len(cands)-1}>, "reason": "<кратко>"}}'
     )
@@ -156,7 +156,8 @@ def main() -> int:
         print(f"\n[{i}/{len(cuts)}] {sid} @ {c['abs_start']}s · {c['type']} · '{q}'")
         if not dst.exists():
             raw = fetch_robust(q, dur, f"cutaway_{sid}",
-                               fact=c.get("narration_snippet", ""), idea=c.get("idea", ""))
+                               fact=c.get("narration_snippet", ""),
+                               idea=f"{c.get('visual_element','')} — {c.get('idea','')}".strip(" —"))
             if raw is None or not Path(raw).exists():
                 print("    не скачалось — пропуск"); continue
             if not normalize(Path(raw), dst, dur):
