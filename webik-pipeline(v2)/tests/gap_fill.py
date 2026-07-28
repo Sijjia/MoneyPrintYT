@@ -13,9 +13,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from services.llm.claude import ClaudeService
-from services.stocks.youtube_search import auto_archive_clip
-from services.stocks.clip_llm_pick import make_llm_pick
-from tests.cutaway_source_place import normalize, OUT, PROJECT
+from tests.cutaway_source_place import normalize, fetch_robust, OUT, PROJECT
 
 
 def gen_queries(gaps):
@@ -50,7 +48,6 @@ def main() -> int:
     gaps = json.loads((PROJECT / "gaps.json").read_text(encoding="utf-8"))
     print(f"дыр к заполнению: {len(gaps)}")
     queries = gen_queries(gaps)
-    llm_pick = make_llm_pick()
     ok = 0
     for i, (g, q) in enumerate(zip(gaps, queries), 1):
         sid = g["scene_id"]; dur = float(g["dur"])
@@ -59,11 +56,13 @@ def main() -> int:
         print(f"\n[{i}/{len(gaps)}] {sid} ({dur:.1f}с) '{q}'", flush=True)
         if dst.exists() and dst.stat().st_size > 5000:
             print("    готов (кэш)"); ok += 1; continue
-        res = auto_archive_clip(q, PROJECT, scene_id=tag, fact=g["voiceover"][:200],
-                                want_sec=dur + 1.0, n=8, llm_pick=llm_pick)
-        if not res or not res.get("path"):
-            print("    не нашлось архива — пропуск"); continue
-        if normalize(Path(res["path"]), dst, dur):
+        # быстрый путь: fetch_robust (search+download, БЕЗ per-candidate деталей,
+        # с socket_timeout) — не виснет как auto_archive_clip
+        raw = fetch_robust(q, dur, tag, fact=g["voiceover"][:160],
+                           idea="реальная хроника/съёмка по теме (не киносцена)")
+        if raw is None or not Path(raw).exists():
+            print("    не нашлось — пропуск"); continue
+        if normalize(Path(raw), dst, dur):
             ok += 1; print(f"    ✓ {dst.name}")
     print(f"\nготово {ok}/{len(gaps)} gapfill .mov")
     return 0
