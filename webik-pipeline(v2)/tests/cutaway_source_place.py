@@ -152,10 +152,11 @@ def main() -> int:
     ready = []
     for i, c in enumerate(cuts, 1):
         sid = c["scene_id"]; q = c.get("yt_query", ""); dur = float(c.get("duration_sec", 7.0))
-        dst = OUT / f"cutaway_{sid}.mov"
+        tag = f"cutaway_{sid}_{int(float(c['abs_start']))}"  # уникально на вставку
+        dst = OUT / f"{tag}.mov"
         print(f"\n[{i}/{len(cuts)}] {sid} @ {c['abs_start']}s · {c['type']} · '{q}'")
         if not dst.exists():
-            raw = fetch_robust(q, dur, f"cutaway_{sid}",
+            raw = fetch_robust(q, dur, tag,
                                fact=c.get("narration_snippet", ""),
                                idea=f"{c.get('visual_element','')} — {c.get('idea','')}".strip(" —"))
             if raw is None or not Path(raw).exists():

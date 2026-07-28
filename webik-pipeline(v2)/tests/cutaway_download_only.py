@@ -17,11 +17,12 @@ def main() -> int:
     ok = 0
     for i, c in enumerate(cuts, 1):
         sid = c["scene_id"]; q = c.get("yt_query", ""); dur = float(c.get("duration_sec", 7.0))
-        dst = OUT / f"cutaway_{sid}.mov"
+        tag = f"cutaway_{sid}_{int(float(c['abs_start']))}"  # уникально: 2 вставки на сцену не столкнутся
+        dst = OUT / f"{tag}.mov"
         print(f"\n[{i}/{len(cuts)}] {sid} · {dur}с · '{q}'", flush=True)
         if dst.exists() and dst.stat().st_size > 5000:
             print("    готов (кэш)"); ok += 1; continue
-        raw = fetch_robust(q, dur, f"cutaway_{sid}",
+        raw = fetch_robust(q, dur, tag,
                            fact=c.get("narration_snippet", ""),
                            idea=f"{c.get('visual_element','')} — {c.get('idea','')}".strip(" —"))
         if raw is None or not Path(raw).exists():

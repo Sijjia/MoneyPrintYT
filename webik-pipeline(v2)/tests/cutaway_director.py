@@ -21,7 +21,7 @@ import pymiere
 from services.llm.claude import ClaudeService
 
 PROJECT = Path(__file__).resolve().parent.parent / "projects" / "2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-i-maloizvestnye-"
-N_MIN, N_MAX = 16, 24
+N_MIN, N_MAX = 30, 42
 
 
 def mmss(s: float) -> str:
@@ -108,7 +108,8 @@ def main() -> int:
   НЕЛЬЗЯ "template", "green screen", "greenscreen", "chroma".
   Примеры: "Hitman Agent 47 barcode tattoo scene", "cartoon carrying huge sack of money scene",
   "movie cult followers walking into forest scene", "apocalypse end of the world movie scene"
-- duration_sec: 5-10
+- duration_sec: 6-18 (бери ДЛИННЕЕ, если сцена и клип позволяют — 10с часто слишком коротко;
+  хороший отрывок сцены = 8-15с). НЕ короче 6с.
 - why: 1 фраза — как визуально попадает в образ
 
 Верни ТОЛЬКО JSON-массив, без пояснений.
@@ -119,7 +120,7 @@ def main() -> int:
     print(f"сцен в закадре: {len(placed)} | графика-диапазонов: {len(gfx)}")
     print("зову sonnet-режиссёра...")
     llm = ClaudeService()  # LLM_MODEL = sonnet 4.5
-    cuts = llm.call_json(prompt, max_tokens=6000, temperature=0.9, system=system)
+    cuts = llm.call_json(prompt, max_tokens=20000, temperature=0.9, system=system)
     if isinstance(cuts, dict):
         cuts = cuts.get("cutaways") or cuts.get("items") or []
 
@@ -135,7 +136,7 @@ def main() -> int:
         at = tstart[sid] + off
         at = min(at, max(tstart[sid], tend[sid] - 0.5))  # не вылезти за сцену
         c["abs_start"] = round(at, 2)
-        c["duration_sec"] = max(5.0, min(12.0, float(c.get("duration_sec", 7.0))))
+        c["duration_sec"] = max(6.0, min(20.0, float(c.get("duration_sec", 9.0))))
         clean.append(c)
 
     out = PROJECT / "cutaways.json"
