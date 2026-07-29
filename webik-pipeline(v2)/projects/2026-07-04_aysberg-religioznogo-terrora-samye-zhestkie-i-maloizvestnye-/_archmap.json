@@ -1,0 +1,352 @@
+{
+  "map": [
+    {
+      "id": "scene_007",
+      "subject": "Андрей Попов",
+      "query_en": "Andrey Popov cult leader",
+      "specific": true
+    },
+    {
+      "id": "scene_008",
+      "subject": "Андрей Попов",
+      "query_en": "Andrey Popov cult leader",
+      "specific": true
+    },
+    {
+      "id": "scene_013",
+      "subject": "Андрей Попов",
+      "query_en": "Andrey Popov cult leader",
+      "specific": true
+    },
+    {
+      "id": "scene_016",
+      "subject": "Мошенничество",
+      "query_en": "fraud crime Russia",
+      "specific": false
+    },
+    {
+      "id": "scene_018",
+      "subject": "Пётр Кузнецов",
+      "query_en": "Pyotr Kuznetsov cult leader Penza",
+      "specific": true
+    },
+    {
+      "id": "scene_022",
+      "subject": "Пётр Кузнецов",
+      "query_en": "Pyotr Kuznetsov cult leader Penza",
+      "specific": true
+    },
+    {
+      "id": "scene_025",
+      "subject": "Пётр Кузнецов",
+      "query_en": "Pyotr Kuznetsov cult leader Penza",
+      "specific": true
+    },
+    {
+      "id": "scene_028",
+      "subject": "Вячеслав Власов",
+      "query_en": "Vyacheslav Vlasov cult leader",
+      "specific": true
+    },
+    {
+      "id": "scene_030",
+      "subject": "Вячеслав Власов",
+      "query_en": "Vyacheslav Vlasov cult leader",
+      "specific": true
+    },
+    {
+      "id": "scene_033",
+      "subject": "Вячеслав Власов",
+      "query_en": "Vyacheslav Vlasov cult leader",
+      "specific": true
+    },
+    {
+      "id": "scene_035",
+      "subject": "Григорий Грабовой",
+      "query_en": "Grigori Grabovoi cult leader",
+      "specific": true
+    },
+    {
+      "id": "scene_038",
+      "subject": "Бесланская трагедия",
+      "query_en": "Beslan school siege aftermath",
+      "specific": true
+    },
+    {
+      "id": "scene_039",
+      "subject": "Григорий Грабовой",
+      "query_en": "Grigori Grabovoi cult leader",
+      "specific": true
+    },
+    {
+      "id": "scene_047",
+      "subject": "Григорий Грабовой",
+      "query_en": "Grigori Grabovoi cult leader",
+      "specific": true
+    },
+    {
+      "id": "scene_076",
+      "subject": "Убийства ниндзя в Индонезии",
+      "query_en": "Indonesian ninja killings Banyuwangi 1998",
+      "specific": true
+    },
+    {
+      "id": "scene_077",
+      "subject": "Убийцы ниндзя",
+      "query_en": "Indonesian ninja killers masked",
+      "specific": true
+    },
+    {
+      "id": "scene_088",
+      "subject": "Нигерийские церкви-тюрьмы",
+      "query_en": "Nigerian prayer camps child abuse",
+      "specific": false
+    },
+    {
+      "id": "scene_090",
+      "subject": "Джайнизм",
+      "query_en": "Jainism ancient India",
+      "specific": false
+    },
+    {
+      "id": "scene_097",
+      "subject": "Анна Хэмилтон-Бирн",
+      "query_en": "Anne Hamilton-Byrne The Family cult leader",
+      "specific": true
+    },
+    {
+      "id": "scene_099",
+      "subject": "Дети секты Семья",
+      "query_en": "The Family cult children Australia",
+      "specific": true
+    },
+    {
+      "id": "scene_103",
+      "subject": "Анна Хэмилтон-Бирн",
+      "query_en": "Anne Hamilton-Byrne The Family cult leader",
+      "specific": true
+    },
+    {
+      "id": "scene_106",
+      "subject": "Жертвы сект",
+      "query_en": "cult victims suffering",
+      "specific": false
+    },
+    {
+      "id": "scene_110",
+      "subject": "Пол Маккензи",
+      "query_en": "Paul Mackenzie Good News International Ministries",
+      "specific": true
+    },
+    {
+      "id": "scene_111",
+      "subject": "Пол Маккензи",
+      "query_en": "Paul Mackenzie Good News International Ministries",
+      "specific": true
+    },
+    {
+      "id": "scene_112",
+      "subject": "Жертвы голода в секте Маккензи",
+      "query_en": "Paul Mackenzie cult victims starvation",
+      "specific": true
+    },
+    {
+      "id": "scene_117",
+      "subject": "Адольфо Констанцо",
+      "query_en": "Adolfo Constanzo cult leader",
+      "specific": true
+    },
+    {
+      "id": "scene_120",
+      "subject": "Адольфо Констанцо",
+      "query_en": "Adolfo Constanzo cult leader",
+      "specific": true
+    },
+    {
+      "id": "scene_125",
+      "subject": "Рош Терио",
+      "query_en": "Roch Thériault Ant Hill Kids cult leader",
+      "specific": true
+    },
+    {
+      "id": "scene_127",
+      "subject": "Рош Терио",
+      "query_en": "Roch Thériault Ant Hill Kids cult leader",
+      "specific": true
+    },
+    {
+      "id": "scene_133",
+      "subject": "Пожар в Канунгу",
+      "query_en": "Kanungu church fire Uganda 2000",
+      "specific": true
+    },
+    {
+      "id": "scene_135",
+      "subject": "Пожар в Канунгу",
+      "query_en": "Kanungu church fire Uganda 2000",
+      "specific": true
+    },
+    {
+      "id": "scene_138",
+      "subject": "Пожар в Канунгу",
+      "query_en": "Kanungu church fire Uganda 2000",
+      "specific": true
+    },
+    {
+      "id": "scene_139",
+      "subject": "Пустое место",
+      "query_en": "empty space",
+      "specific": false
+    },
+    {
+      "id": "scene_142",
+      "subject": "Теории заговора",
+      "query_en": "conspiracy theory dark",
+      "specific": false
+    },
+    {
+      "id": "scene_164",
+      "subject": "Центры перевоспитания в Китае",
+      "query_en": "China re-education camps religious minorities",
+      "specific": false
+    },
+    {
+      "id": "scene_166",
+      "subject": "Пытки в центрах перевоспитания",
+      "query_en": "torture re-education camps China",
+      "specific": false
+    },
+    {
+      "id": "scene_167",
+      "subject": "Пытки в центрах перевоспитания",
+      "query_en": "torture re-education camps China",
+      "specific": false
+    },
+    {
+      "id": "scene_168",
+      "subject": "Центры перевоспитания в Китае",
+      "query_en": "China re-education camps religious minorities",
+      "specific": false
+    },
+    {
+      "id": "scene_170",
+      "subject": "Пауль Шефер",
+      "query_en": "Paul Schäfer Colonia Dignidad leader",
+      "specific": true
+    },
+    {
+      "id": "scene_172",
+      "subject": "Колония Дигнидад",
+      "query_en": "Colonia Dignidad Chile",
+      "specific": true
+    },
+    {
+      "id": "scene_173",
+      "subject": "Пауль Шефер",
+      "query_en": "Paul Schäfer Colonia Dignidad leader",
+      "specific": true
+    },
+    {
+      "id": "scene_181",
+      "subject": "Дети-альбиносы в Африке",
+      "query_en": "albino children Africa protection",
+      "specific": false
+    },
+    {
+      "id": "scene_182",
+      "subject": "Охота на альбиносов",
+      "query_en": "witchcraft albino hunting Africa",
+      "specific": false
+    },
+    {
+      "id": "scene_184",
+      "subject": "Орден Солнечного Храма",
+      "query_en": "Order of the Solar Temple cult",
+      "specific": true
+    },
+    {
+      "id": "scene_187",
+      "subject": "Места массовых убийств Ордена Солнечного Храма",
+      "query_en": "Order of the Solar Temple mass deaths Switzerland",
+      "specific": true
+    },
+    {
+      "id": "scene_188",
+      "subject": "Места массовых убийств Ордена Солнечного Храма",
+      "query_en": "Order of the Solar Temple mass deaths Switzerland",
+      "specific": true
+    },
+    {
+      "id": "scene_189",
+      "subject": "Места массовых убийств Ордена Солнечного Храма",
+      "query_en": "Order of the Solar Temple mass deaths French Alps",
+      "specific": true
+    },
+    {
+      "id": "scene_190",
+      "subject": "Пустое место",
+      "query_en": "empty space",
+      "specific": false
+    },
+    {
+      "id": "scene_191",
+      "subject": "Айсберг",
+      "query_en": "iceberg dark depths",
+      "specific": false
+    },
+    {
+      "id": "scene_192",
+      "subject": "Человек в поиске смысла",
+      "query_en": "person searching for meaning",
+      "specific": false
+    },
+    {
+      "id": "scene_193",
+      "subject": "Манипуляция верой",
+      "query_en": "manipulation of faith",
+      "specific": false
+    },
+    {
+      "id": "scene_194",
+      "subject": "Жертвы сект",
+      "query_en": "cult victims suffering",
+      "specific": false
+    },
+    {
+      "id": "scene_195",
+      "subject": "Обычные люди",
+      "query_en": "ordinary people",
+      "specific": false
+    },
+    {
+      "id": "scene_196",
+      "subject": "Жертвы сект",
+      "query_en": "cult victims suffering",
+      "specific": false
+    },
+    {
+      "id": "scene_197",
+      "subject": "Человек в поиске смысла",
+      "query_en": "person searching for meaning",
+      "specific": false
+    },
+    {
+      "id": "scene_198",
+      "subject": "Telegram",
+      "query_en": "Telegram app logo",
+      "specific": false
+    },
+    {
+      "id": "scene_199",
+      "subject": "Капибара",
+      "query_en": "capybara cute",
+      "specific": false
+    },
+    {
+      "id": "scene_200",
+      "subject": "Айсберг",
+      "query_en": "iceberg dark depths",
+      "specific": false
+    }
+  ]
+}

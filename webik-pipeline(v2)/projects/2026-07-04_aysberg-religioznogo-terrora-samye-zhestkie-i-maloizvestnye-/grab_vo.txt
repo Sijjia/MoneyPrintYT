@@ -1,0 +1,34 @@
+scene_034 [296.56-299.36] type=topic_card q=
+   Грабовой: «воскрешение мёртвых» за деньги.
+scene_035 [301.5-314.56] type=archive q=
+   Григорий Грабовой называл себя академиком и ясновидящим, способным воскрешать мёртвых, исцелять неизлечимые болезни и предотвращать катастрофы силой мысли, и за эти услуги он брал деньги — и немалые:
+scene_036 [314.6-320.24] type=stock_video q=money cash rubles counting
+   десятки, а иногда и сотни тысяч рублей за «сеанс воскрешения» или за «программу исцеления».
+scene_037 [320.6-323.88] type=stock_video q=grieving woman hands praying
+   Люди платили, потому что отчаяние не знает цены.
+scene_038 [324.38-328.3] type=archive q=
+   Осенью две тысячи четвёртого года, сразу после трагедии в Беслане,
+scene_039 [328.54-332.5] type=archive q=
+   Грабовой приехал к матерям погибших детей и пообещал вернуть их к жизни,
+scene_040 [332.72-338.48] type=stock_video q=money transaction hands dark
+   называя конкретные суммы — за воскрешение ребёнка просил от сорока до пятидесяти тысяч рублей.
+scene_041 [338.92-343.38] type=stock_video q=desperate woman hands empty wallet
+   Некоторые матери, обезумевшие от горя, были готовы заплатить всё, что у них есть.
+scene_042 [343.66-347.38] type=archive_video q=court documents legal papers
+   Важно понимать: эпизоды с Бесланом формально не вошли в приговор,
+scene_043 [347.54-350.8] type=archive_video q=Grabovoi trial court moscow 2008 footage
+   Грабового судили по другим конкретным случаям мошенничества,
+scene_044 [350.94-356.62] type=stock_video q=silhouette predator darkness approaching
+   но сам факт того, что он пришёл к этим женщинам в их самый страшный час, говорит о нём всё.
+scene_045 [357.14-365.02] type=archive_video q=Tagansky court Moscow Grabovoi sentence 2008 news
+   Седьмого июля две тысячи восьмого года Таганский суд Москвы приговорил его к одиннадцати годам колонии за мошенничество в особо крупном размере,
+scene_046 [365.1-367.92] type=archive_video q=gavel judge hammer court
+   при этом Мосгорсуд позже снизил срок до восьми лет.
+scene_047 [368.08-372.34] type=archive q=
+   Но уже в две тысячи десятом Грабовой вышел по условно-досрочному освобождению
+scene_048 [372.34-375.48] type=stock_video q=airport departure international flight
+   и продолжил свою деятельность, теперь уже за границей.
+scene_049 [375.56-381.22] type=stock_video q=spiritual seminar audience lecture
+   Он до сих пор проводит платные семинары, издаёт книги и обещает бессмертие всем желающим,
+scene_050 [381.42-383.16] type=stock_video q=crowd believers hands raised worship
+   и люди до сих пор ему верят.

@@ -1,0 +1,14 @@
+scene_083 align[490.7-508.2] timeline_start=470.17 off=20.5
+scene_087 align[543.3-553.5] timeline_start=523.57 off=19.7
+scene_091 align[591.0-599.3] timeline_start=571.33 off=19.6
+scene_093 align[613.1-629.1] timeline_start=593.53 off=19.6
+scene_094 align[629.6-643.8] timeline_start=609.8 off=19.8
+  scene_083 "трёхсот" НЕ НАЙДЕНО
+  scene_083 "цепях" align=500.10 => timeline=479.61
+  scene_087 "катсине" align=545.92 => timeline=526.19
+  scene_087 "ибадане" align=546.72 => timeline=526.99
+  scene_091 "саллекхана" НЕ НАЙДЕНО
+  scene_093 "сотни" align=624.68 => timeline=605.13
+  scene_094 "2015" align=629.70 => timeline=609.94
+  scene_094 "раджастхан" НЕ НАЙДЕНО
+  scene_094 "самоубийству" align=633.88 => timeline=614.12

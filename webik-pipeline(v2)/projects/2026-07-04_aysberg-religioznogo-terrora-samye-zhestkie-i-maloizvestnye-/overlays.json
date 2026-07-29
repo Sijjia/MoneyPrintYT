@@ -1,0 +1,236 @@
+{
+  "overlays": [
+    {
+      "id": "ov_001",
+      "type": "stat",
+      "composition": "CountUpBar",
+      "scene_id": "scene_012",
+      "anchor": "больше семи миллионов рублей",
+      "start": 95.67,
+      "duration_sec": 3.7,
+      "props": {
+        "value": "7000000",
+        "label": "Доказанный ущерб",
+        "suffix": "₽"
+      }
+    },
+    {
+      "id": "ov_002",
+      "type": "timeline",
+      "composition": "Timeline",
+      "scene_id": "scene_014",
+      "anchor": "Шестнадцатого июля две тысячи восемнадцатого года",
+      "start": 109.34,
+      "duration_sec": 5.0,
+      "props": {
+        "title": "Дело Попова",
+        "events": [
+          {
+            "year": "2018",
+            "label": "Приговор"
+          },
+          {
+            "year": "2019",
+            "label": "Освобождение"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ov_003",
+      "type": "stat",
+      "composition": "CountUpBar",
+      "scene_id": "scene_020",
+      "anchor": "около тридцати пяти человек",
+      "start": 158.65,
+      "duration_sec": 3.7,
+      "props": {
+        "value": "35",
+        "label": "Последователей",
+        "suffix": "+"
+      }
+    },
+    {
+      "id": "ov_004",
+      "type": "compare",
+      "composition": "BarCompare",
+      "scene_id": "scene_040",
+      "anchor": "от сорока до пятидесяти тысяч рублей",
+      "start": 335.99,
+      "duration_sec": 4.5,
+      "props": {
+        "title": "Цена «воскрешения»",
+        "items": [
+          {
+            "label": "Минимум",
+            "value": 40000.0
+          },
+          {
+            "label": "Максимум",
+            "value": 50000.0
+          }
+        ]
+      }
+    },
+    {
+      "id": "ov_005",
+      "type": "stat",
+      "composition": "CountUpBar",
+      "scene_id": "scene_079",
+      "anchor": "около трёхсот семи человек",
+      "start": 454.79,
+      "duration_sec": 3.7,
+      "props": {
+        "value": "307",
+        "label": "Погибших",
+        "suffix": "+"
+      }
+    },
+    {
+      "id": "ov_006",
+      "type": "stat",
+      "composition": "CountUpBar",
+      "scene_id": "scene_083",
+      "anchor": "более трёхсот мальчиков и мужчин",
+      "start": 497.13,
+      "duration_sec": 3.7,
+      "props": {
+        "value": "300",
+        "label": "Освобождено",
+        "suffix": "+"
+      }
+    },
+    {
+      "id": "ov_007",
+      "type": "phrase",
+      "composition": "KineticPhrase",
+      "scene_id": "scene_093",
+      "anchor": "сотни людей в год",
+      "start": 624.43,
+      "duration_sec": 4.0,
+      "props": {
+        "phrase": "Сотни людей в год",
+        "highlight": [
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "id": "ov_008",
+      "type": "compare",
+      "composition": "BarCompare",
+      "scene_id": "scene_099",
+      "anchor": "не менее четырнадцати детей, хотя журналисты называют цифру до двадцати восьми",
+      "start": 700.85,
+      "duration_sec": 4.5,
+      "props": {
+        "title": "Дети в секте",
+        "items": [
+          {
+            "label": "Официально",
+            "value": 14.0
+          },
+          {
+            "label": "По данным СМИ",
+            "value": 28.0
+          }
+        ]
+      }
+    },
+    {
+      "id": "ov_009",
+      "type": "stat",
+      "composition": "CountUpBar",
+      "scene_id": "scene_109",
+      "anchor": "четыреста двадцать девять трупов",
+      "start": 791.16,
+      "duration_sec": 3.7,
+      "props": {
+        "value": "429",
+        "label": "Эксгумировано тел",
+        "suffix": ""
+      }
+    },
+    {
+      "id": "ov_010",
+      "type": "stat",
+      "composition": "CountUpBar",
+      "scene_id": "scene_122",
+      "anchor": "около пятнадцати изувеченных тел",
+      "start": 947.37,
+      "duration_sec": 3.7,
+      "props": {
+        "value": "15",
+        "label": "Массовое захоронение",
+        "suffix": "+"
+      }
+    },
+    {
+      "id": "ov_011",
+      "type": "compare",
+      "composition": "BarCompare",
+      "scene_id": "scene_125",
+      "anchor": "около двенадцати взрослых и двадцати двух детей",
+      "start": 981.13,
+      "duration_sec": 4.5,
+      "props": {
+        "title": "Ant Hill Kids",
+        "items": [
+          {
+            "label": "Взрослые",
+            "value": 12.0
+          },
+          {
+            "label": "Дети",
+            "value": 22.0
+          }
+        ]
+      }
+    },
+    {
+      "id": "ov_012",
+      "type": "stat",
+      "composition": "CountUpBar",
+      "scene_id": "scene_137",
+      "anchor": "около семисот семидесяти восьми погибших",
+      "start": 1127.0,
+      "duration_sec": 3.7,
+      "props": {
+        "value": "778",
+        "label": "Погибших",
+        "suffix": "+"
+      }
+    },
+    {
+      "id": "ov_013",
+      "type": "stat",
+      "composition": "CountUpBar",
+      "scene_id": "scene_179",
+      "anchor": "семьдесяти пяти тысяч долларов",
+      "start": 1395.73,
+      "duration_sec": 3.7,
+      "props": {
+        "value": "75000",
+        "label": "Цена за части тела",
+        "suffix": "$"
+      }
+    },
+    {
+      "id": "ov_014",
+      "type": "stat",
+      "composition": "CountUpBar",
+      "scene_id": "scene_188",
+      "anchor": "около семидесяти четырёх человек",
+      "start": 1486.24,
+      "duration_sec": 3.7,
+      "props": {
+        "value": "74",
+        "label": "Погибших",
+        "suffix": "+"
+      }
+    }
+  ],
+  "model": "google/gemini-2.5-flash",
+  "n_scenes": 135
+}

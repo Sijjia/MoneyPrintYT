@@ -560,6 +560,23 @@
       "file": "projects\\2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-i-maloizvestnye-\\assets\\overlays3\\ov_009.mov"
     },
     {
+      "id": "arch_sh",
+      "type": "crowd",
+      "composition": "CrowdPictograph",
+      "scene_id": "scene_109",
+      "start": 772.0,
+      "duration_sec": 5.3,
+      "anchor": "четыреста двадцать девять трупов",
+      "props": {
+        "total": 429,
+        "filled": 429,
+        "label": "погибли",
+        "sub": "Шакахола · 2023",
+        "accent": "#d92828"
+      },
+      "file": "C:\\Users\\aidar\\OneDrive\\Рабочий стол\\automotization-youtube\\webik-pipeline(v2)\\projects\\2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-i-maloizvestnye-\\assets\\arche3b\\arch_sh.mov"
+    },
+    {
       "id": "ov_010",
       "type": "stat",
       "composition": "CountUpBar",
@@ -653,6 +670,23 @@
       "file": "projects\\2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-i-maloizvestnye-\\assets\\overlays3\\ov_013.mov"
     },
     {
+      "id": "arch_k1",
+      "type": "crowd",
+      "composition": "CrowdPictograph",
+      "scene_id": "scene_137",
+      "start": 1090.0,
+      "duration_sec": 5.3,
+      "anchor": "около семисот семидесяти восьми погибших",
+      "props": {
+        "total": 778,
+        "filled": 778,
+        "label": "сожжены",
+        "sub": "Канунгу · 2000",
+        "accent": "#d92828"
+      },
+      "file": "C:\\Users\\aidar\\OneDrive\\Рабочий стол\\automotization-youtube\\webik-pipeline(v2)\\projects\\2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-i-maloizvestnye-\\assets\\arche3b\\arch_k1.mov"
+    },
+    {
       "id": "ov_014",
       "type": "stat",
       "composition": "CountUpBar",
@@ -666,6 +700,93 @@
         "suffix": ""
       },
       "file": "projects\\2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-i-maloizvestnye-\\assets\\overlays3\\ov_014.mov"
+    },
+    {
+      "id": "arch_c2",
+      "type": "kinetic",
+      "composition": "KineticType",
+      "scene_id": "scene_164",
+      "start": 1131.0,
+      "duration_sec": 4.5,
+      "anchor": "по провинциям Хэнань Аньхой Шаньдун",
+      "props": {
+        "lines": [
+          "ХЭНАНЬ · АНЬХОЙ · ШАНЬДУН",
+          "ПОДПОЛЬНЫЕ «ЦЕНТРЫ»"
+        ],
+        "highlight": "центры",
+        "accent": "#d92828"
+      },
+      "file": "C:\\Users\\aidar\\OneDrive\\Рабочий стол\\automotization-youtube\\webik-pipeline(v2)\\projects\\2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-i-maloizvestnye-\\assets\\arche3b\\arch_c2.mov"
+    },
+    {
+      "id": "arch_c1",
+      "type": "network",
+      "composition": "NetworkGraph",
+      "scene_id": "scene_165",
+      "start": 1151.0,
+      "duration_sec": 11.0,
+      "anchor": "тайные тюрьмы для членов запрещённых религиозных групп",
+      "props": {
+        "title": "Тайные «центры» · 2010–2023",
+        "titleStart": 8,
+        "durationInFrames": 330,
+        "accent": "#d92828",
+        "nodes": [
+          {
+            "label": "«Центры»",
+            "x": 50,
+            "y": 49,
+            "hot": true
+          },
+          {
+            "label": "Фалуньгун",
+            "x": 72,
+            "y": 27
+          },
+          {
+            "label": "Христиане",
+            "x": 72,
+            "y": 71
+          },
+          {
+            "label": "Мусульмане",
+            "x": 28,
+            "y": 71
+          },
+          {
+            "label": "«Слишком верующие»",
+            "x": 28,
+            "y": 27
+          }
+        ],
+        "edges": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            0,
+            3
+          ],
+          [
+            0,
+            4
+          ]
+        ],
+        "nodeStart": [
+          4,
+          40,
+          78,
+          116,
+          154
+        ]
+      },
+      "file": "C:\\Users\\aidar\\OneDrive\\Рабочий стол\\automotization-youtube\\webik-pipeline(v2)\\projects\\2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-i-maloizvestnye-\\assets\\arche3b\\arch_c1.mov"
     },
     {
       "id": "ove_03",
@@ -682,6 +803,39 @@
         "energy": 1.0
       },
       "file": "projects\\2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-i-maloizvestnye-\\assets\\overlays4\\ove_03.mov"
+    },
+    {
+      "id": "arch_cd",
+      "type": "timeline",
+      "composition": "TimelineJourney",
+      "scene_id": "scene_175",
+      "start": 1277.0,
+      "duration_sec": 16.0,
+      "anchor": "арестовали только в две тысячи пятом году",
+      "props": {
+        "title": "Colonia Dignidad",
+        "accent": "#d92828",
+        "durationInFrames": 480,
+        "events": [
+          {
+            "year": 1961,
+            "label": "Шефер основал"
+          },
+          {
+            "year": "Пиночет",
+            "label": "DINA: центр пыток"
+          },
+          {
+            "year": 2005,
+            "label": "арест"
+          },
+          {
+            "year": 2006,
+            "label": "20 лет тюрьмы"
+          }
+        ]
+      },
+      "file": "C:\\Users\\aidar\\OneDrive\\Рабочий стол\\automotization-youtube\\webik-pipeline(v2)\\projects\\2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-i-maloizvestnye-\\assets\\arche3b\\arch_cd.mov"
     },
     {
       "id": "ov_015",
@@ -709,6 +863,36 @@
         ]
       },
       "file": "projects\\2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-i-maloizvestnye-\\assets\\overlays3\\ov_015.mov"
+    },
+    {
+      "id": "arch_a1",
+      "type": "mapspread",
+      "composition": "MapSpread",
+      "scene_id": "scene_177",
+      "start": 1304.0,
+      "duration_sec": 9.0,
+      "anchor": "В Танзании Малави Бурунди",
+      "props": {
+        "title": "Танзания · Малави · Бурунди",
+        "label": "Охота на альбиносов",
+        "durationInFrames": 270,
+        "accent": "#d92828",
+        "origins": [
+          {
+            "x": 59.7,
+            "y": 53.3
+          },
+          {
+            "x": 59.4,
+            "y": 57.2
+          },
+          {
+            "x": 58.3,
+            "y": 51.7
+          }
+        ]
+      },
+      "file": "C:\\Users\\aidar\\OneDrive\\Рабочий стол\\automotization-youtube\\webik-pipeline(v2)\\projects\\2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-i-maloizvestnye-\\assets\\arche3b\\arch_a1.mov"
     },
     {
       "id": "ov_016",
@@ -757,6 +941,65 @@
         "align": "left"
       },
       "file": "projects\\2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-i-maloizvestnye-\\assets\\overlays4\\ovn_09.mov"
+    },
+    {
+      "id": "arch_s1",
+      "type": "timeline",
+      "composition": "TimelineJourney",
+      "scene_id": "scene_186",
+      "start": 1409.0,
+      "duration_sec": 15.0,
+      "anchor": "октября тысяча девятьсот девяносто четвёртого года всё началось в Канаде",
+      "props": {
+        "title": "Орден Солнечного Храма",
+        "accent": "#d92828",
+        "durationInFrames": 450,
+        "events": [
+          {
+            "year": "окт 1994",
+            "label": "Канада: семья"
+          },
+          {
+            "year": 1994,
+            "label": "Швейцария: десятки"
+          },
+          {
+            "year": "март 1997",
+            "label": "Франция: последние 5"
+          }
+        ]
+      },
+      "file": "C:\\Users\\aidar\\OneDrive\\Рабочий стол\\automotization-youtube\\webik-pipeline(v2)\\projects\\2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-i-maloizvestnye-\\assets\\arche3b\\arch_s1.mov"
+    },
+    {
+      "id": "arch_s2",
+      "type": "mapspread",
+      "composition": "MapSpread",
+      "scene_id": "scene_188",
+      "start": 1425.0,
+      "duration_sec": 9.0,
+      "anchor": "Швейцарии Франции и Канаде",
+      "props": {
+        "title": "Швейцария · Франция · Канада",
+        "label": "≈74 погибших · 1994–1997",
+        "durationInFrames": 270,
+        "accent": "#d92828",
+        "origins": [
+          {
+            "x": 52.2,
+            "y": 24.0
+          },
+          {
+            "x": 50.6,
+            "y": 24.4
+          },
+          {
+            "x": 30.0,
+            "y": 24.4
+          }
+        ]
+      },
+      "file": "C:\\Users\\aidar\\OneDrive\\Рабочий стол\\automotization-youtube\\webik-pipeline(v2)\\projects\\2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-i-maloizvestnye-\\assets\\arche3b\\arch_s2.mov"
     },
     {
       "id": "ov_017",
