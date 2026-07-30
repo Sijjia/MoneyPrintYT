@@ -1,5 +1,6 @@
 import { Composition } from "remotion";
 import { StatPop } from "./StatPop";
+import { IcebergRecap } from "./IcebergRecap";
 import { NameLabel } from "./NameLabel";
 import { KineticPhrase } from "./KineticPhrase";
 import { EvidenceFrame } from "./EvidenceFrame";
@@ -352,6 +353,29 @@ export const RemotionRoot: React.FC = () => {
             { year: 1993, label: "Уэйко" },
             { year: 2000, label: "Канунгу" },
             { year: 2023, label: "Шакахола" },
+          ],
+          accent: "#d92828",
+        }}
+      />
+
+      <Composition
+        id="IcebergRecap"
+        component={IcebergRecap}
+        durationInFrames={534}
+        fps={30}
+        width={W}
+        height={H}
+        calculateMetadata={({ props }: any) => {
+          if (props?.durationInFrames) return { durationInFrames: props.durationInFrames };
+          return { durationInFrames: 534 };
+        }}
+        defaultProps={{
+          title: "Мы прошли весь айсберг",
+          levels: [
+            { n: "1", label: "Мошенники в рясах" },
+            { n: "2", label: "Секты и затворники" },
+            { n: "3", label: "Культы-убийцы" },
+            { n: "4", label: "Массовые убийства" },
           ],
           accent: "#d92828",
         }}
