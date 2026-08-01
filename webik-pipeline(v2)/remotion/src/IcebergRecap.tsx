@@ -1,5 +1,5 @@
 import React from "react";
-import { AbsoluteFill, useCurrentFrame, useVideoConfig, interpolate, spring, Easing } from "remotion";
+import { AbsoluteFill, useCurrentFrame, useVideoConfig, interpolate, Easing } from "remotion";
 import { PALETTE, fontFamily } from "./theme";
 
 type Lvl = { n: string; label: string };
@@ -16,7 +16,7 @@ const rnd = (i: number, s: number) => {
 // лучи, туман, глубинное свечение. Уровни — линии глубины с элегантными подписями.
 export const IcebergRecap: React.FC<IcebergRecapProps> = ({ title = "", levels = [], accent = PALETTE.red }) => {
   const frame = useCurrentFrame();
-  const { fps, durationInFrames: D, width: W, height: H } = useVideoConfig();
+  const { durationInFrames: D, width: W, height: H } = useVideoConfig();
   const n = Math.max(1, levels.length);
 
   const appear = interpolate(frame, [0, 24], [0, 1], CLAMP);
@@ -181,9 +181,10 @@ export const IcebergRecap: React.FC<IcebergRecapProps> = ({ title = "", levels =
       {levels.map((lv, i) => {
         const t = 0.185 + (i + 0.62) * ((1 - 0.185) / n);
         const y = yAt(t) + bob;
-        const on = descend >= (t - 0.06);
-        const s = spring({ frame: frame - (26 + i * ((D - 64) / n)), fps, config: { damping: 15, stiffness: 95 } });
-        const sp = on ? s : 0;
+        // появление привязано к проходу маркера глубины (одинаково для всех уровней),
+        // плавный интерполятор с лёгким пружинным отскоком — без рывка
+        const tp = Math.max(0.02, t - 0.05);
+        const sp = interpolate(descend, [tp, Math.min(0.999, tp + 0.14)], [0, 1], { ...CLAMP, easing: Easing.out(Easing.back(1.5)) });
         const left = i % 2 === 0;
         const tR = n > 1 ? i / (n - 1) : 0;
         const zc = `rgb(${Math.round(96 + (176 - 96) * tR)},${Math.round(160 - 120 * tR)},${Math.round(190 - 150 * tR)})`;
