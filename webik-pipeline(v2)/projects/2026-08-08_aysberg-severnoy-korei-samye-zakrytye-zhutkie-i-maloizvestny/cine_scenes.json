@@ -1,0 +1,199 @@
+{
+  "scenes": [
+    {
+      "composition": "PropagandaHall",
+      "start": 23.38,
+      "duration_sec": 15.0,
+      "duration_frames": 368,
+      "props": {
+        "title": "КУЛЬТ ЛИЧНОСТИ",
+        "accent": "#d92828"
+      },
+      "id": "cine_01",
+      "type": "cine"
+    },
+    {
+      "composition": "SurveillanceGrid",
+      "start": 612.02,
+      "duration_sec": 15.0,
+      "duration_frames": 367,
+      "props": {
+        "title": "ТОТАЛЬНАЯ СЛЕЖКА",
+        "accent": "#d92828"
+      },
+      "id": "cine_02",
+      "type": "cine"
+    },
+    {
+      "composition": "ForcedMourning",
+      "start": 770.2,
+      "duration_sec": 15.0,
+      "duration_frames": 357,
+      "props": {
+        "title": "СЛЁЗЫ ПОД НАДЗОРОМ",
+        "accent": "#d92828"
+      },
+      "id": "cine_03",
+      "type": "cine"
+    },
+    {
+      "composition": "Scene",
+      "start": 965.36,
+      "duration_sec": 19.43,
+      "duration_frames": 583,
+      "props": {
+        "blocks": [
+          {
+            "id": "b0",
+            "x": 860.0,
+            "y": 460.0,
+            "kind": "stat",
+            "value": "220000",
+            "label": "официально",
+            "suffix": ""
+          },
+          {
+            "id": "b1",
+            "x": 1500.0,
+            "y": 660.0,
+            "kind": "stat",
+            "value": "3000000",
+            "label": "реально",
+            "suffix": ""
+          },
+          {
+            "id": "b2",
+            "x": 2140.0,
+            "y": 860.0,
+            "kind": "ratio",
+            "filled": 1,
+            "total": 10,
+            "label": "каждый десятый"
+          },
+          {
+            "id": "h",
+            "kind": "headline",
+            "x": 1500.0,
+            "y": 230,
+            "text": "Масштаб голодомора"
+          }
+        ],
+        "shots": [
+          {
+            "focus": "b0",
+            "zoom": 1.5,
+            "move": 18,
+            "hold": 92,
+            "rotY": 11,
+            "rotX": 6
+          },
+          {
+            "focus": "b1",
+            "zoom": 1.5,
+            "move": 140,
+            "hold": 33,
+            "rotY": -11,
+            "rotX": -6
+          },
+          {
+            "focus": "b2",
+            "zoom": 1.5,
+            "move": 51,
+            "hold": 55,
+            "rotY": 11,
+            "rotX": 6
+          },
+          {
+            "focus": "h",
+            "zoom": 0.68,
+            "move": 75,
+            "hold": 95,
+            "rotY": 0.0,
+            "rotX": 0.0
+          }
+        ]
+      },
+      "id": "cine_04"
+    },
+    {
+      "composition": "Abduction",
+      "start": 1217.62,
+      "duration_sec": 15.0,
+      "duration_frames": 395,
+      "props": {
+        "title": "ПОХИЩЕНИЯ",
+        "accent": "#d92828"
+      },
+      "id": "cine_05",
+      "type": "cine"
+    },
+    {
+      "composition": "CyberIntrusion",
+      "start": 1278.36,
+      "duration_sec": 15.0,
+      "duration_frames": 416,
+      "props": {
+        "title": "КИБЕР-АРМИЯ",
+        "accent": "#d92828"
+      },
+      "id": "cine_06",
+      "type": "cine"
+    },
+    {
+      "id": "cine_07",
+      "start": 300.0,
+      "duration_sec": 15.0,
+      "composition": "CastePyramid",
+      "type": "cine",
+      "props": {
+        "title": "СОНБУН",
+        "accent": "#d92828"
+      }
+    },
+    {
+      "id": "cine_08",
+      "start": 1050.0,
+      "duration_sec": 15.0,
+      "composition": "BureauVault",
+      "type": "cine",
+      "props": {
+        "title": "БЮРО 39",
+        "accent": "#d92828"
+      }
+    },
+    {
+      "id": "cine_09",
+      "start": 1395.0,
+      "duration_sec": 15.0,
+      "composition": "IronCells",
+      "type": "cine",
+      "props": {
+        "title": "ЛАГЕРЬ 22",
+        "accent": "#d92828"
+      }
+    },
+    {
+      "id": "cine_10",
+      "start": 405.0,
+      "duration_sec": 15.0,
+      "composition": "RationHunger",
+      "type": "cine",
+      "props": {
+        "title": "ИЕРАРХИЯ ГОЛОДА",
+        "accent": "#d92828"
+      }
+    },
+    {
+      "id": "cine_11",
+      "start": 67.0,
+      "duration_sec": 15.0,
+      "composition": "IcebergIntro",
+      "type": "cine",
+      "props": {
+        "title": "АЙСБЕРГ",
+        "sub": "СЕВЕРНОЙ КОРЕИ",
+        "accent": "#d92828"
+      }
+    }
+  ]
+}

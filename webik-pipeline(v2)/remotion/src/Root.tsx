@@ -1,11 +1,42 @@
 import { Composition } from "remotion";
 import { StatPop } from "./StatPop";
 import { IcebergRecap } from "./IcebergRecap";
+import { DNAHelix3D } from "./DNAHelix3D";
+import { HomininTree } from "./HomininTree";
+import { PopulationCollapse } from "./PopulationCollapse";
+import { ParasitePuppet } from "./ParasitePuppet";
+import { VirusGenome } from "./VirusGenome";
+import { CRISPRCut } from "./CRISPRCut";
+import { CordycepsTakeover3D } from "./CordycepsTakeover3D";
+import { PhotoMontage } from "./PhotoMontage";
+import { EugenicsRegistry } from "./EugenicsRegistry";
+import { TuskErosion } from "./TuskErosion";
+import { RatioViz17 } from "./RatioViz17";
+import { PrionBrain } from "./PrionBrain";
+import { LastHuman } from "./LastHuman";
 import { NameLabel } from "./NameLabel";
 import { KineticPhrase } from "./KineticPhrase";
 import { EvidenceFrame } from "./EvidenceFrame";
 import { CountUpBar } from "./CountUpBar";
 import { BarCompare } from "./BarCompare";
+import { PropagandaPoster } from "./PropagandaPoster";
+import { SurveillanceTerminal } from "./SurveillanceTerminal";
+import { RedactedDossier } from "./RedactedDossier";
+import { PropagandaHall } from "./PropagandaHall";
+import { SurveillanceGrid } from "./SurveillanceGrid";
+import { PrisonCamp } from "./PrisonCamp";
+import { NightSatellite } from "./NightSatellite";
+import { CastePyramid } from "./CastePyramid";
+import { BureauVault } from "./BureauVault";
+import { AbyssDescent } from "./AbyssDescent";
+import { CyberIntrusion } from "./CyberIntrusion";
+import { ForcedMourning } from "./ForcedMourning";
+import { IronCells } from "./IronCells";
+import { RationHunger } from "./RationHunger";
+import { Abduction } from "./Abduction";
+import { TheftRoutes } from "./TheftRoutes";
+import { CollapseBurst } from "./CollapseBurst";
+import { IcebergIntro } from "./IcebergIntro";
 import { Pictograph } from "./Pictograph";
 import { DonutProportion } from "./DonutProportion";
 import { Timeline } from "./Timeline";
@@ -111,6 +142,168 @@ export const RemotionRoot: React.FC = () => {
           max: null as number | null,
           bgImage: "preview_bg.jpg" as string | null,
         }}
+      />
+      <Composition
+        id="PropagandaPoster"
+        component={PropagandaPoster}
+        durationInFrames={110}
+        fps={30}
+        width={W}
+        height={H}
+        defaultProps={{ value: "51", label: "каста", suffix: "" }}
+      />
+      <Composition
+        id="SurveillanceTerminal"
+        component={SurveillanceTerminal}
+        durationInFrames={110}
+        fps={30}
+        width={W}
+        height={H}
+        defaultProps={{ value: "81000000", label: "украдено", suffix: " $" }}
+      />
+      <Composition
+        id="RedactedDossier"
+        component={RedactedDossier}
+        durationInFrames={110}
+        fps={30}
+        width={W}
+        height={H}
+        defaultProps={{ value: "200000", label: "исчезли", suffix: "" }}
+      />
+      <Composition
+        id="PropagandaHall"
+        component={PropagandaHall}
+        durationInFrames={450}
+        fps={30}
+        width={W}
+        height={H}
+        defaultProps={{ title: "КУЛЬТ ЛИЧНОСТИ" }}
+      />
+      <Composition
+        id="SurveillanceGrid"
+        component={SurveillanceGrid}
+        durationInFrames={450}
+        fps={30}
+        width={W}
+        height={H}
+        defaultProps={{ title: "ТОТАЛЬНАЯ СЛЕЖКА" }}
+      />
+      <Composition
+        id="PrisonCamp"
+        component={PrisonCamp}
+        durationInFrames={450}
+        fps={30}
+        width={W}
+        height={H}
+        defaultProps={{ title: "ЛАГЕРЯ" }}
+      />
+      <Composition
+        id="NightSatellite"
+        component={NightSatellite}
+        durationInFrames={450}
+        fps={30}
+        width={W}
+        height={H}
+        defaultProps={{ title: "СТРАНА-ПРИЗРАК" }}
+      />
+      <Composition
+        id="CastePyramid"
+        component={CastePyramid}
+        durationInFrames={450}
+        fps={30}
+        width={W}
+        height={H}
+        defaultProps={{ title: "СОНБУН" }}
+      />
+      <Composition
+        id="BureauVault"
+        component={BureauVault}
+        durationInFrames={450}
+        fps={30}
+        width={W}
+        height={H}
+        defaultProps={{ title: "БЮРО 39" }}
+      />
+      <Composition
+        id="AbyssDescent"
+        component={AbyssDescent}
+        durationInFrames={450}
+        fps={30}
+        width={W}
+        height={H}
+        defaultProps={{ title: "БЕЗДНА" }}
+      />
+      <Composition
+        id="CyberIntrusion"
+        component={CyberIntrusion}
+        durationInFrames={450}
+        fps={30}
+        width={W}
+        height={H}
+        defaultProps={{ title: "КИБЕР-АРМИЯ" }}
+      />
+      <Composition
+        id="ForcedMourning"
+        component={ForcedMourning}
+        durationInFrames={450}
+        fps={30}
+        width={W}
+        height={H}
+        defaultProps={{ title: "СЛЁЗЫ ПОД НАДЗОРОМ" }}
+      />
+      <Composition
+        id="IronCells"
+        component={IronCells}
+        durationInFrames={450}
+        fps={30}
+        width={W}
+        height={H}
+        defaultProps={{ title: "ЛАГЕРЬ 22" }}
+      />
+      <Composition
+        id="RationHunger"
+        component={RationHunger}
+        durationInFrames={450}
+        fps={30}
+        width={W}
+        height={H}
+        defaultProps={{ title: "ИЕРАРХИЯ ГОЛОДА" }}
+      />
+      <Composition
+        id="Abduction"
+        component={Abduction}
+        durationInFrames={450}
+        fps={30}
+        width={W}
+        height={H}
+        defaultProps={{ title: "ПОХИЩЕНИЯ" }}
+      />
+      <Composition
+        id="TheftRoutes"
+        component={TheftRoutes}
+        durationInFrames={180}
+        fps={30}
+        width={W}
+        height={H}
+        defaultProps={{ title: "МАРШРУТЫ КРАЖ" }}
+      />
+      <Composition
+        id="CollapseBurst"
+        component={CollapseBurst}
+        durationInFrames={108}
+        fps={30}
+        width={W}
+        height={H}
+        defaultProps={{ title: "" }}
+      />
+      <Composition
+        id="IcebergIntro"
+        component={IcebergIntro}
+        durationInFrames={450}
+        fps={30}
+        width={W}
+        height={H}
+        defaultProps={{ title: "АЙСБЕРГ", sub: "СЕВЕРНОЙ КОРЕИ" }}
       />
 
       <Composition
@@ -514,6 +707,52 @@ export const RemotionRoot: React.FC = () => {
         calculateMetadata={({ props }: any) => (props?.durationInFrames ? { durationInFrames: props.durationInFrames } : {})}
         defaultProps={{ img: "", dir: "in" }}
       />
+      <Composition
+        id="DNAHelix3D"
+        component={DNAHelix3D}
+        durationInFrames={300}
+        fps={30}
+        width={W}
+        height={H}
+        calculateMetadata={({ props }: any) => (props?.durationInFrames ? { durationInFrames: props.durationInFrames } : {})}
+        defaultProps={{ title: "ДНК", sub: "код жизни", accent: "#1fa48a" }}
+      />
+      <Composition id="HomininTree" component={HomininTree} durationInFrames={300} fps={30} width={W} height={H}
+        calculateMetadata={({ props }: any) => (props?.durationInFrames ? { durationInFrames: props.durationInFrames } : {})}
+        defaultProps={{ title: "ДЕРЕВО ЛЮДЕЙ", accent: "#1fa48a" }} />
+      <Composition id="PopulationCollapse" component={PopulationCollapse} durationInFrames={300} fps={30} width={W} height={H}
+        calculateMetadata={({ props }: any) => (props?.durationInFrames ? { durationInFrames: props.durationInFrames } : {})}
+        defaultProps={{ title: "КРАХ ЧЕЛОВЕЧЕСТВА", bigNumber: "1 280", sub: "99% предков исчезло", accent: "#1fa48a" }} />
+      <Composition id="ParasitePuppet" component={ParasitePuppet} durationInFrames={300} fps={30} width={W} height={H}
+        calculateMetadata={({ props }: any) => (props?.durationInFrames ? { durationInFrames: props.durationInFrames } : {})}
+        defaultProps={{ title: "КУКЛОВОД", sub: "гриб управляет телом", accent: "#8fd14f" }} />
+      <Composition id="VirusGenome" component={VirusGenome} durationInFrames={300} fps={30} width={W} height={H}
+        calculateMetadata={({ props }: any) => (props?.durationInFrames ? { durationInFrames: props.durationInFrames } : {})}
+        defaultProps={{ title: "8% ТЫ — ВИРУС", sub: "древние ретровирусы в ДНК", accent: "#1fa48a" }} />
+      <Composition id="CRISPRCut" component={CRISPRCut} durationInFrames={300} fps={30} width={W} height={H}
+        calculateMetadata={({ props }: any) => (props?.durationInFrames ? { durationInFrames: props.durationInFrames } : {})}
+        defaultProps={{ title: "CRISPR", sub: "редактирование гена", accent: "#1fa48a" }} />
+      <Composition id="CordycepsTakeover3D" component={CordycepsTakeover3D} durationInFrames={540} fps={30} width={W} height={H}
+        calculateMetadata={({ props }: any) => (props?.durationInFrames ? { durationInFrames: props.durationInFrames } : {})}
+        defaultProps={{ title: "ЗАХВАТ ТЕЛА", sub: "гриб-кордицепс превращает муравья в зомби", accent: "#8fd14f" }} />
+      <Composition id="PhotoMontage" component={PhotoMontage} durationInFrames={180} fps={30} width={W} height={H}
+        calculateMetadata={({ props }: any) => (props?.durationInFrames ? { durationInFrames: props.durationInFrames } : {})}
+        defaultProps={{ images: [], caption: "", accent: "#1fa48a" }} />
+      <Composition id="EugenicsRegistry" component={EugenicsRegistry} durationInFrames={300} fps={30} width={W} height={H}
+        calculateMetadata={({ props }: any) => (props?.durationInFrames ? { durationInFrames: props.durationInFrames } : {})}
+        defaultProps={{ title: "ПРИНУДИТЕЛЬНАЯ СТЕРИЛИЗАЦИЯ", counter: "63 000", stamp: "СТЕРИЛИЗОВАН", accent: "#d92828" }} />
+      <Composition id="TuskErosion" component={TuskErosion} durationInFrames={300} fps={30} width={W} height={H}
+        calculateMetadata={({ props }: any) => (props?.durationInFrames ? { durationInFrames: props.durationInFrames } : {})}
+        defaultProps={{ title: "БИВНИ ИСЧЕЗАЮТ", sub: "трофейная охота → обратная эволюция", accent: "#1fa48a" }} />
+      <Composition id="RatioViz17" component={RatioViz17} durationInFrames={270} fps={30} width={W} height={H}
+        calculateMetadata={({ props }: any) => (props?.durationInFrames ? { durationInFrames: props.durationInFrames } : {})}
+        defaultProps={{ title: "17 ЖЕНЩИН НА 1 МУЖЧИНУ", ratio: "17 : 1", women: 17, accent: "#1fa48a" }} />
+      <Composition id="PrionBrain" component={PrionBrain} durationInFrames={270} fps={30} width={W} height={H}
+        calculateMetadata={({ props }: any) => (props?.durationInFrames ? { durationInFrames: props.durationInFrames } : {})}
+        defaultProps={{ title: "КУРУ", sub: "прионы превращают мозг в губку", accent: "#1fa48a" }} />
+      <Composition id="LastHuman" component={LastHuman} durationInFrames={270} fps={30} width={W} height={H}
+        calculateMetadata={({ props }: any) => (props?.durationInFrames ? { durationInFrames: props.durationInFrames } : {})}
+        defaultProps={{ title: "МЫ ОСТАЛИСЬ ОДНИ", sub: "потому что были опаснее", accent: "#1fa48a" }} />
     </>
   );
 };

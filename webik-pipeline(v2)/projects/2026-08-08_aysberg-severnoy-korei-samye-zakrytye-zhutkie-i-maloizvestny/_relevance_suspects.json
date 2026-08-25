@@ -1,0 +1,857 @@
+[
+  {
+    "id": "scene_104",
+    "tc": "00:00",
+    "start": 0.0,
+    "vo": "Он называется кипхумджо — «отряды удовольствий».",
+    "current": "North Korea propaganda poster women",
+    "reason": "Закадровый текст говорит о 'кипхумджо — «отряды удовольствий»', что подразумевает сексуальное рабство или принуждение. Медиа показывает пропагандистский плакат с женщинами, который не отражает мрачную суть 'отрядов удовольствий', а скорее идеализированный образ северокорейских женщин.",
+    "better_query": "North Korea 'pleasure squads' testimony / North Korea forced entertainment"
+  },
+  {
+    "id": "scene_106",
+    "tc": "00:00",
+    "start": 0.0,
+    "vo": "Отбирают их не по желанию — их забирают из семей, проверяют девственность, обучают и распр",
+    "current": "North Korea military parade women",
+    "reason": "Закадровый текст описывает принудительный отбор и распределение девушек в 'отряды удовольствий' по категориям, включая наложниц. Медиа показывает женщин на военном параде, что не соответствует контексту сексуального рабства или принуждения, а скорее демонстрирует военную мощь или лояльность режиму.",
+    "better_query": "North Korea 'pleasure squads' victims / North Korea forced prostitution testimony"
+  },
+  {
+    "id": "scene_109",
+    "tc": "00:00",
+    "start": 0.0,
+    "vo": "После «службы», которая длится несколько лет, девушек не отпускают домой просто так.",
+    "current": "North Korea women marching uniform",
+    "reason": "Закадровый текст говорит о том, что девушек из 'отрядов удовольствий' не отпускают домой просто так после 'службы'. Медиа показывает женщин, марширующих в униформе, что не передает идею их дальнейшей судьбы после принудительной 'службы' и не соответствует контексту 'отрядов удовольствий'.",
+    "better_query": "North Korea 'pleasure squads' aftermath / North Korea former 'pleasure squad' members"
+  },
+  {
+    "id": "scene_003",
+    "tc": "00:09",
+    "start": 8.56,
+    "vo": "На целый день.",
+    "current": "empty streets Pyongyang night",
+    "reason": "Закадровый текст говорит о норме риса на целый день, а медиа показывает пустые улицы Пхеньяна ночью, что не имеет прямого отношения к теме еды.",
+    "better_query": "empty plate rice starvation"
+  },
+  {
+    "id": "scene_013",
+    "tc": "01:12",
+    "start": 72.24,
+    "vo": "От советского мальчика Юры, ставшего диктатором, до газовых камер, в которых наблюдают, ка",
+    "current": "Kim Jong Il childhood USSR archival",
+    "reason": "Закадровый текст упоминает газовые камеры, а медиа показывает детство Ким Чен Ира в СССР, что является резким диссонансом и не соответствует смыслу о жестокости режима.",
+    "better_query": "North Korea concentration camp gas chambers"
+  },
+  {
+    "id": "scene_045",
+    "tc": "04:55",
+    "start": 294.74,
+    "vo": "Отныне точкой отсчёта стал не год рождения Христа и не образование республики, а пятнадцат",
+    "current": "Kim Il Sung young portrait 1912",
+    "reason": "Ким Ир Сен родился в 1912 году, но запрос 'Kim Il Sung young portrait 1912' может привести к изображениям, которые не являются его портретом 1912 года, а просто молодым портретом. В 1912 году он был младенцем.",
+    "better_query": "Kim Il Sung baby photo 1912"
+  },
+  {
+    "id": "scene_078",
+    "tc": "08:36",
+    "start": 516.3,
+    "vo": "Если твой дед был помещиком до раздела Кореи, если кто-то из твоих предков сотрудничал с я",
+    "current": "North Korea propaganda posters historical",
+    "reason": "Закадровый текст описывает критерии попадания в низшую касту, связанные с историей семьи и политической нелояльностью. Медиа 'North Korea propaganda posters historical' может быть иллюстративным, но не напрямую отражает концепцию 'дед был помещиком' или 'родственник бежал на Юг'.",
+    "better_query": "North Korea historical records family background"
+  },
+  {
+    "id": "scene_082",
+    "tc": "09:08",
+    "start": 547.76,
+    "vo": "Режим называет это справедливостью — наказанием врагов революции и их потомков.",
+    "current": "North Korea propaganda military parade",
+    "reason": "Закадровый текст говорит о 'справедливости' режима в наказании врагов революции, а медиа 'North Korea propaganda military parade' показывает военный парад, что является общей пропагандой, но не конкретно иллюстрирует 'наказание врагов' или 'справедливость режима'.",
+    "better_query": "North Korea re-education camps footage"
+  },
+  {
+    "id": "scene_111",
+    "tc": "11:34",
+    "start": 694.32,
+    "vo": "Потому что эти девушки видели слишком многое: как живут вожди, что они говорят, какие у ни",
+    "current": "North Korea secret documents",
+    "reason": "Закадровый текст говорит о том, что девушки видели 'как живут вожди, что они говорят, какие у них слабости и пороки', что подразумевает личные наблюдения. Медиа 'North Korea secret documents' не отражает этот смысл, а скорее показывает какие-то документы, которые не обязательно связаны с личной жизнью вождей или наблюдениями этих девушек.",
+    "better_query": "North Korea leaders private life archival"
+  },
+  {
+    "id": "scene_113",
+    "tc": "11:45",
+    "start": 705.08,
+    "vo": "Но если посмотреть на это глазами человека извне — это институционализированное сексуально",
+    "current": "North Korea border fence",
+    "reason": "Закадровый текст описывает 'институционализированное сексуальное рабство', а медиа 'North Korea border fence' показывает границу, что не соответствует теме.",
+    "better_query": "North Korea comfort women historical footage"
+  },
+  {
+    "id": "scene_114",
+    "tc": "11:54",
+    "start": 713.82,
+    "vo": "Это дети, которых забирают из семей и превращают в собственность власти.",
+    "current": "North Korea children sad",
+    "reason": "Закадровый текст говорит о детях, которых 'забирают из семей и превращают в собственность власти'. Медиа 'North Korea children sad' показывает просто грустных детей, что не передает смысл 'забирают из семей' или 'собственность власти'.",
+    "better_query": "North Korea children forced labor archival"
+  },
+  {
+    "id": "scene_121",
+    "tc": "12:43",
+    "start": 763.2,
+    "vo": "Но внутри страны это не было притворством.",
+    "current": "North Korea flag dark",
+    "reason": "Закадровый текст говорит о том, что 'внутри страны это не было притворством', имея в виду искренность или вынужденность скорби. Медиа 'North Korea flag dark' показывает просто флаг в темных тонах, что не передает этот смысл.",
+    "better_query": "North Korea people genuine sorrow archival"
+  },
+  {
+    "id": "scene_122",
+    "tc": "12:46",
+    "start": 766.26,
+    "vo": "Это был страх, облечённый в форму скорби.",
+    "current": "North Korea propaganda poster fear",
+    "reason": "Закадровый текст утверждает, что скорбь была 'страхом, облечённым в форму скорби'. Медиа 'North Korea propaganda poster fear' показывает плакат с изображением страха, но не передает идею 'облечённого в форму скорби'.",
+    "better_query": "North Korea fear disguised as mourning archival"
+  },
+  {
+    "id": "scene_123",
+    "tc": "12:49",
+    "start": 769.3,
+    "vo": "Режим объявил обязательный траур, и за его соблюдением следили специальные инспекторы.",
+    "current": "North Korea surveillance cameras",
+    "reason": "Закадровый текст говорит о 'специальных инспекторах', которые следили за соблюдением траура. Медиа 'North Korea surveillance cameras' показывает камеры наблюдения, что не совсем соответствует 'инспекторам', которые, вероятно, были людьми.",
+    "better_query": "North Korea public mourning inspectors archival"
+  },
+  {
+    "id": "scene_127",
+    "tc": "13:20",
+    "start": 800.44,
+    "vo": "Это не было массовым психозом.",
+    "current": "North Korea propaganda crowd",
+    "reason": "Закадровый текст отрицает 'массовый психоз'. Медиа 'North Korea propaganda crowd' показывает толпу, но не передает идею отсутствия психоза или его отрицания.",
+    "better_query": "North Korea controlled mourning crowd archival"
+  },
+  {
+    "id": "scene_128",
+    "tc": "13:22",
+    "start": 802.48,
+    "vo": "Это был террор, замаскированный под всенародную скорбь.",
+    "current": "North Korea dark propaganda",
+    "reason": "Закадровый текст описывает 'террор, замаскированный под всенародную скорбь'. Медиа 'North Korea dark propaganda' показывает темную пропаганду, но не передает идею 'замаскированного террора'.",
+    "better_query": "North Korea terror disguised as mourning archival"
+  },
+  {
+    "id": "scene_130",
+    "tc": "13:34",
+    "start": 813.5,
+    "vo": "Они плакали, потому что знали: если не заплачут, их семьи заплатят за это.",
+    "current": "North Korea family fear",
+    "reason": "Закадровый текст говорит о том, что 'их семьи заплатят за это', если они не заплачут. Медиа 'North Korea family fear' показывает страх семьи, но не конкретно последствия 'не заплачут'.",
+    "better_query": "North Korea punishment for insufficient mourning archival"
+  },
+  {
+    "id": "scene_131",
+    "tc": "13:38",
+    "start": 818.26,
+    "vo": "Режим превратил смерть вождя в проверку на лояльность, в тест, который нельзя провалить.",
+    "current": "North Korea loyalty test",
+    "reason": "Закадровый текст говорит о 'проверке на лояльность, в тест, который нельзя провалить'. Медиа 'North Korea loyalty test' слишком общее и не передает специфику 'нельзя провалить'.",
+    "better_query": "North Korea mandatory mourning loyalty test archival"
+  },
+  {
+    "id": "scene_133",
+    "tc": "13:50",
+    "start": 829.9,
+    "vo": "Ты видишь страх, настолько глубокий, что он научился притворяться горем.",
+    "current": "North Korea fear disguised as grief",
+    "reason": "Закадровый текст говорит о 'страхе, настолько глубоком, что он научился притворяться горем'. Медиа 'North Korea fear disguised as grief' слишком абстрактно и не показывает конкретных проявлений этого.",
+    "better_query": "North Korea people feigning grief from fear archival"
+  },
+  {
+    "id": "scene_142",
+    "tc": "14:42",
+    "start": 882.28,
+    "vo": "Власти запрещали фотографировать здание — это был стыд режима, архитектурное признание про",
+    "current": "North Korea propaganda censorship",
+    "reason": "Закадровый текст говорит о запрете фотографировать здание и о стыде режима, а медиа показывает общую пропаганду и цензуру, что не совсем точно отражает конкретный стыд за недостроенное здание.",
+    "better_query": "Ryugyong Hotel censorship North Korea 1990s"
+  },
+  {
+    "id": "scene_145",
+    "tc": "15:09",
+    "start": 908.76,
+    "vo": "Это идеальная метафора Северной Кореи — грандиозный фасад, за которым ничего нет.",
+    "current": "North Korea propaganda facade empty",
+    "reason": "Закадровый текст говорит о 'градиозном фасаде, за которым ничего нет', а медиа показывает общую пропаганду Северной Кореи, что не так конкретно, как хотелось бы.",
+    "better_query": "Ryugyong Hotel facade empty interior"
+  },
+  {
+    "id": "scene_146",
+    "tc": "15:14",
+    "start": 914.1,
+    "vo": "Режим строил символы вместо того, чтобы кормить людей, возводил памятники вместо больниц, ",
+    "current": "North Korea propaganda monuments empty streets",
+    "reason": "Закадровый текст говорит о строительстве символов вместо больниц и о стране-призраке, а медиа показывает общую пропаганду и пустые улицы, что не совсем точно отражает контраст между монументами и отсутствием больниц.",
+    "better_query": "North Korea monuments vs hospitals empty streets"
+  },
+  {
+    "id": "scene_152",
+    "tc": "15:53",
+    "start": 952.76,
+    "vo": "Режим назвал то, что последовало, «Тяжёлым походом» — эвфемизм, призванный скрыть правду.",
+    "current": "North Korea propaganda poster 1990s",
+    "reason": "Закадровый текст говорит о 'Тяжёлом походе' как эвфемизме, а медиа показывает пропагандистский плакат 1990-х, который может не иметь прямого отношения к этому эвфемизму или голоду.",
+    "better_query": "North Korea 'Arduous March' propaganda poster 1990s"
+  },
+  {
+    "id": "scene_153",
+    "tc": "15:58",
+    "start": 957.96,
+    "vo": "А правда была проста: страна вошла в один из самых страшных голодоморов двадцатого века, и",
+    "current": "barren land dry cracked earth",
+    "reason": "Закадровый текст говорит о голодоморе и миллионах умирающих, а медиа показывает 'бесплодную землю, сухую потрескавшуюся землю', что является лишь одной из причин голода, но не его прямым визуальным проявлением.",
+    "better_query": "North Korea famine victims 1990s archival"
+  },
+  {
+    "id": "scene_154",
+    "tc": "16:07",
+    "start": 967.14,
+    "vo": "Официальная статистика КНДР признала двести двадцать тысяч жертв.",
+    "current": "North Korea government building 1990s",
+    "reason": "Закадровый текст говорит об официальной статистике жертв, а медиа показывает 'здание правительства Северной Кореи 1990-х', что не имеет прямого отношения к статистике или жертвам.",
+    "better_query": "North Korea famine statistics report 1990s"
+  },
+  {
+    "id": "scene_156",
+    "tc": "16:18",
+    "start": 978.32,
+    "vo": "Люди ели траву, кору деревьев, варили «суп» из опилок, пытаясь обмануть желудок хоть чем-т",
+    "current": "dry grass bark wood shavings",
+    "reason": "Закадровый текст говорит о том, что люди ели траву, кору деревьев, опилки, а медиа показывает 'сухую траву, кору, древесную стружку', что является просто иллюстрацией этих предметов, а не людей, которые их едят или последствий этого.",
+    "better_query": "North Korea famine eating grass bark wood shavings archival"
+  },
+  {
+    "id": "scene_157",
+    "tc": "16:26",
+    "start": 985.56,
+    "vo": "В провинциях по утрам на улицах находили трупы — те, кто не дожил до рассвета, просто пада",
+    "current": "empty desolate street dawn",
+    "reason": "Закадровый текст говорит о трупах на улицах, а медиа показывает 'пустую безлюдную улицу на рассвете', что не передает ужаса ситуации с мертвыми телами.",
+    "better_query": "North Korea famine dead bodies street archival"
+  },
+  {
+    "id": "scene_158",
+    "tc": "16:32",
+    "start": 992.4,
+    "vo": "К вечеру появлялись новые.",
+    "current": "empty dark street dusk",
+    "reason": "Закадровый текст говорит о новых трупах, а медиа показывает 'пустую темную улицу в сумерках', что не передает ужаса ситуации с мертвыми телами.",
+    "better_query": "North Korea famine dead bodies street archival"
+  },
+  {
+    "id": "scene_159",
+    "tc": "16:34",
+    "start": 994.26,
+    "vo": "Власти отправляли грузовики собирать тела, но не для того, чтобы помочь живым, а чтобы убр",
+    "current": "old truck driving dusty road",
+    "reason": "Закадровый текст говорит о грузовиках, собирающих тела, а медиа показывает 'старый грузовик, едущий по пыльной дороге', что является слишком общим и не передает конкретного действия.",
+    "better_query": "North Korea famine trucks collecting bodies archival"
+  },
+  {
+    "id": "scene_160",
+    "tc": "16:40",
+    "start": 1000.44,
+    "vo": "Мир узнал о масштабах катастрофы не из официальных заявлений Пхеньяна, а через спутниковые",
+    "current": "satellite view earth night",
+    "reason": "Закадровый текст говорит о том, что мир узнал о катастрофе через спутниковые снимки, а медиа показывает 'вид Земли со спутника ночью', что является слишком общим и не конкретизирует Северную Корею.",
+    "better_query": "North Korea famine satellite images night 1990s"
+  },
+  {
+    "id": "scene_162",
+    "tc": "16:55",
+    "start": 1015.42,
+    "vo": "Это был не просто энергетический кризис.",
+    "current": "darkness power outage",
+    "reason": "Закадровый текст говорит, что это был не просто энергетический кризис, а медиа показывает 'темноту, отключение электричества', что может быть воспринято как иллюстрация именно энергетического кризиса, а не чего-то большего.",
+    "better_query": "North Korea famine darkness lack of light 1990s"
+  },
+  {
+    "id": "scene_169",
+    "tc": "17:36",
+    "start": 1056.4,
+    "vo": "Она называется «Бюро тридцать девять», и это — теневая экономическая империя, построенная ",
+    "current": "North Korea Bureau 39 building",
+    "reason": "Запрос 'North Korea Bureau 39 building' скорее всего не даст реальных изображений здания 'Бюро 39', так как это секретная организация. Вероятно, будут показаны общие виды Пхеньяна или здания, не имеющие отношения к бюро.",
+    "better_query": "North Korea secret facility concept art, North Korea clandestine operations, shadowy organization building"
+  },
+  {
+    "id": "scene_170",
+    "tc": "17:45",
+    "start": 1064.96,
+    "vo": "Доходы этого бюро не попадают в государственный бюджет.",
+    "current": "North Korea propaganda money",
+    "reason": "Запрос 'North Korea propaganda money' скорее всего покажет пропагандистские плакаты с изображением денег или экономические лозунги, а не реальные финансовые потоки или наличные деньги, связанные с бюро.",
+    "better_query": "North Korea illicit money flow, North Korea black market currency, hidden cash North Korea"
+  },
+  {
+    "id": "scene_172",
+    "tc": "17:55",
+    "start": 1075.0,
+    "vo": "С девяностых годов КНДР начала производить метамфетамин в промышленных масштабах.",
+    "current": "North Korea 1990s industrial production",
+    "reason": "Запрос 'North Korea 1990s industrial production' слишком общий и может показать любую промышленность, а не конкретно производство метамфетамина. Это может ввести в заблуждение, показывая легальные производства.",
+    "better_query": "North Korea clandestine drug lab 1990s, North Korea meth production archival, North Korea chemical manufacturing 1990s"
+  },
+  {
+    "id": "scene_173",
+    "tc": "18:00",
+    "start": 1080.42,
+    "vo": "Это был не подпольный бизнес отдельных преступников — это были государственные лаборатории",
+    "current": "North Korea chemical lab 1990s documentary",
+    "reason": "Запрос 'North Korea chemical lab 1990s documentary' вряд ли даст реальные кадры секретных лабораторий по производству наркотиков. Скорее всего, будут показаны общие кадры химических лабораторий или пропагандистские материалы.",
+    "better_query": "North Korea illicit drug lab concept, North Korea secret chemical facility, clandestine meth lab 1990s"
+  },
+  {
+    "id": "scene_174",
+    "tc": "18:13",
+    "start": 1092.86,
+    "vo": "Дипломаты КНДР провозили мет в дипломатических чемоданах, которые не подлежали досмотру.",
+    "current": "diplomatic pouch security check",
+    "reason": "Запрос 'diplomatic pouch security check' покажет процесс досмотра дипломатических сумок, что противоречит закадровому тексту о том, что они 'не подлежали досмотру'.",
+    "better_query": "diplomatic pouch no inspection, diplomatic immunity cargo, sealed diplomatic bag"
+  },
+  {
+    "id": "scene_176",
+    "tc": "18:27",
+    "start": 1107.36,
+    "vo": "Но это была не единственная схема.",
+    "current": "shadowy figure secret plan",
+    "reason": "Запрос 'shadowy figure secret plan' слишком абстрактный и может показать что угодно, от художественных образов до совершенно нерелевантных кадров, не имеющих отношения к Северной Корее или конкретным схемам.",
+    "better_query": "North Korea illicit schemes, North Korea secret operations, hidden agenda North Korea"
+  },
+  {
+    "id": "scene_179",
+    "tc": "18:53",
+    "start": 1132.86,
+    "vo": "Это была экономическая война, которую вела нищая, голодающая страна против сверхдержавы — ",
+    "current": "North Korea military parade vs US dollar",
+    "reason": "Запрос 'North Korea military parade vs US dollar' не соответствует смыслу 'экономической войны' и 'паразитирования на долларе'. Военный парад не является прямым визуальным представлением экономической войны против валюты.",
+    "better_query": "North Korea counterfeit dollar impact, North Korea economic warfare against US, global financial disruption fake money"
+  },
+  {
+    "id": "scene_180",
+    "tc": "19:05",
+    "start": 1144.62,
+    "vo": "Бюро тридцать девять — это лицо Северной Кореи без маски.",
+    "current": "North Korea Kim Jong Un without mask",
+    "reason": "Запрос 'North Korea Kim Jong Un without mask' может быть воспринят буквально и показать Ким Чен Ына без медицинской маски, что не имеет отношения к метафоре 'без маски' в контексте разоблачения истинного лица государства.",
+    "better_query": "North Korea true face, North Korea hidden truth, North Korea exposed reality"
+  },
+  {
+    "id": "scene_181",
+    "tc": "19:08",
+    "start": 1148.38,
+    "vo": "Государство-мафия, для которого нет ни законов, ни морали, есть только выживание династии ",
+    "current": "mafia state dark money",
+    "reason": "Запрос 'mafia state dark money' слишком общий и может показать кадры, не имеющие прямого отношения к Северной Корее, или быть слишком абстрактным.",
+    "better_query": "North Korea state crime, North Korea illicit finance, North Korea regime corruption"
+  },
+  {
+    "id": "scene_187",
+    "tc": "19:37",
+    "start": 1177.24,
+    "vo": "И только спустя десятилетия выяснилась чудовищная правда: их детей похитили агенты Северно",
+    "current": "North Korean agents archival footage, 1970s 1980s",
+    "reason": "Запрос 'North Korean agents archival footage, 1970s 1980s' вряд ли даст реальные кадры похищений или агентов, участвующих в них, так как это были секретные операции. Скорее всего, будут показаны общие кадры северокорейских военных или пропаганды.",
+    "better_query": "North Korea abduction victims Japan, North Korea spy operations 1970s 1980s, Japanese abductees North Korea"
+  },
+  {
+    "id": "scene_189",
+    "tc": "19:51",
+    "start": 1191.22,
+    "vo": "Её выследили, усыпили, затащили в лодку и вывезли на подводной лодке в КНДР.",
+    "current": "submarine surfacing night, abduction concept",
+    "reason": "Запрос 'submarine surfacing night, abduction concept' слишком абстрактный и может показать художественные или постановочные кадры, не имеющие отношения к реальным событиям или Северной Корее.",
+    "better_query": "North Korea abduction submarine, Japanese abductee transport North Korea, clandestine boat abduction"
+  },
+  {
+    "id": "scene_190",
+    "tc": "19:57",
+    "start": 1196.72,
+    "vo": "Там её заставили учить корейский язык, изучать культуру режима, а потом использовали как п",
+    "current": "North Korean propaganda film 1970s, education",
+    "reason": "Запрос 'North Korean propaganda film 1970s, education' покажет пропагандистские фильмы об образовании, а не реальные кадры обучения шпионов или принуждения к изучению языка.",
+    "better_query": "North Korea spy training 1970s, North Korea defector testimony education, forced language learning North Korea"
+  },
+  {
+    "id": "scene_192",
+    "tc": "20:15",
+    "start": 1215.18,
+    "vo": "И для этого режим крал людей с улиц чужой страны.",
+    "current": "North Korean border fence, surveillance camera",
+    "reason": "Закадровый текст говорит о похищении людей с улиц чужой страны, а медиа показывает забор на границе Северной Кореи, что не соответствует акценту на 'чужой стране' и 'улицах'.",
+    "better_query": "Japanese street 1970s 1980s, people walking"
+  },
+  {
+    "id": "scene_194",
+    "tc": "20:31",
+    "start": 1230.76,
+    "vo": "Некоторых заставляли вступать в браки с другими похищенными, рожать детей, которые росли в",
+    "current": "North Korean family old photo, propaganda",
+    "reason": "Закадровый текст описывает принудительные браки и рождение детей, а медиа показывает старое пропагандистское фото северокорейской семьи, что не отражает трагедию похищенных.",
+    "better_query": "North Korean family with Japanese parents, hidden identity"
+  },
+  {
+    "id": "scene_198",
+    "tc": "20:59",
+    "start": 1259.0,
+    "vo": "Потому что эти люди знают слишком много.",
+    "current": "North Korean defector silhouette, secret",
+    "reason": "Закадровый текст говорит о людях, которые 'знают слишком много' и 'видели изнанку режима', а медиа показывает силуэт северокорейского перебежчика, что слишком абстрактно и не передает идею 'знания'.",
+    "better_query": "North Korean defector interview, revealing secrets"
+  },
+  {
+    "id": "scene_199",
+    "tc": "21:02",
+    "start": 1261.76,
+    "vo": "Они видели изнанку режима, и выпустить их — значит выпустить правду, которая разрушит леге",
+    "current": "North Korea propaganda posters, crumbling",
+    "reason": "Закадровый текст говорит о 'правде, которая разрушит легенду о «великой стране»', а медиа показывает северокорейские пропагандистские плакаты, которые 'рушатся', что слишком буквальное и не передает идею 'правды'.",
+    "better_query": "North Korea propaganda crumbling, truth revealed"
+  },
+  {
+    "id": "scene_203",
+    "tc": "21:25",
+    "start": 1285.36,
+    "vo": "Им удалось вывести восемьдесят один миллион, прежде чем атаку заметили.",
+    "current": "digital money transfer fast",
+    "reason": "Закадровый текст говорит о выводе 81 миллиона долларов, а медиа показывает 'быстрый цифровой перевод денег', что слишком общее и не передает масштаб и специфику киберкражи.",
+    "better_query": "digital money transfer large sum, cyber heist animation"
+  },
+  {
+    "id": "scene_205",
+    "tc": "21:38",
+    "start": 1298.02,
+    "vo": "больницы, аэропорты, банки, заводы встали.",
+    "current": "scene_205",
+    "reason": "Медиа указано как 'scene_205', что является ошибкой и не является поисковым запросом.",
+    "better_query": "WannaCry affected hospitals airports banks factories, chaos"
+  },
+  {
+    "id": "scene_207",
+    "tc": "21:49",
+    "start": 1308.72,
+    "vo": "Это не анонимные хактивисты-одиночки из подвалов.",
+    "current": "hacker typing dark room",
+    "reason": "Закадровый текст опровергает образ 'анонимных хактивистов-одиночек из подвалов', а медиа показывает именно такой образ, что противоречит смыслу.",
+    "better_query": "professional cyber warfare unit, organized hackers"
+  },
+  {
+    "id": "scene_211",
+    "tc": "22:09",
+    "start": 1329.12,
+    "vo": "Они атакуют банки, выводя средства через подставные счета в Азии и Африке.",
+    "current": "scene_211",
+    "reason": "Медиа указано как 'scene_211', что является ошибкой и не является поисковым запросом.",
+    "better_query": "cyber attack on banks, money laundering Asia Africa"
+  },
+  {
+    "id": "scene_214",
+    "tc": "22:29",
+    "start": 1348.58,
+    "vo": "Режим, отрезанный от мировой финансовой системы санкциями, нашёл способ обходить блокаду ч",
+    "current": "global financial network dark",
+    "reason": "Закадровый текст говорит о режиме, отрезанном от мировой финансовой системы, который нашел способ обходить блокаду через интернет, а медиа показывает 'темную глобальную финансовую сеть', что слишком абстрактно и не передает идею 'обхода блокады'.",
+    "better_query": "North Korea sanctions evasion, cryptocurrency dark web"
+  },
+  {
+    "id": "scene_217",
+    "tc": "22:50",
+    "start": 1370.02,
+    "vo": "Северная Корея превратилась в государство-хакера, и пока у мира нет инструментов, чтобы эт",
+    "current": "North Korea border fence watchtower archival footage",
+    "reason": "Медиа показывает старые кадры границы, что не соответствует теме 'государства-хакера' и современных киберугроз.",
+    "better_query": "North Korea cyber warfare hacking archival footage"
+  },
+  {
+    "id": "scene_220",
+    "tc": "23:14",
+    "start": 1393.78,
+    "vo": "Оказалось, что КНДР, официальный союзник Советского Союза, активно шпионила на территории ",
+    "current": "North Korea Soviet Union alliance archival footage",
+    "reason": "Медиа 'North Korea Soviet Union alliance archival footage' слишком общее и не иллюстрирует конкретно шпионаж КНДР против СССР.",
+    "better_query": "North Korea espionage Soviet Union archival footage"
+  },
+  {
+    "id": "scene_229",
+    "tc": "23:54",
+    "start": 1433.92,
+    "vo": "подозревал, что Москва в любой момент может предать его, как предала других союзников.",
+    "current": "Soviet betrayal allies",
+    "reason": "Медиа 'Soviet betrayal allies' слишком абстрактное и не показывает конкретных примеров или опасений Ким Ир Сена.",
+    "better_query": "Kim Il Sung distrust Soviet Union archival footage"
+  },
+  {
+    "id": "scene_231",
+    "tc": "24:02",
+    "start": 1442.28,
+    "vo": "готовился к тому дню, когда придётся выживать в одиночку.",
+    "current": "lonely path dark forest",
+    "reason": "Медиа 'lonely path dark forest' слишком метафорично и не соответствует конкретной подготовке к выживанию в одиночку в контексте страны.",
+    "better_query": "North Korea self-reliance Juche ideology archival"
+  },
+  {
+    "id": "scene_234",
+    "tc": "24:14",
+    "start": 1453.6,
+    "vo": "потому что никогда по-настоящему не полагалась на Москву.",
+    "current": "North Korean propaganda posters anti-Soviet",
+    "reason": "Медиа 'North Korean propaganda posters anti-Soviet' не соответствует закадру о том, что КНДР не полагалась на Москву, а скорее показывает открытую враждебность, что не совсем то же самое.",
+    "better_query": "North Korea self-reliance Juche ideology archival"
+  },
+  {
+    "id": "scene_236",
+    "tc": "24:26",
+    "start": 1465.6,
+    "vo": "Это урок, который Пхеньян усвоил навсегда: доверять нельзя никому, союзники — временны,",
+    "current": "North Korea propaganda poster trust no one",
+    "reason": "Медиа 'North Korea propaganda poster trust no one' слишком буквальное и, вероятно, не существует в таком виде, как пропагандистский плакат КНДР. Лучше показать общую атмосферу недоверия.",
+    "better_query": "North Korea isolation propaganda archival"
+  },
+  {
+    "id": "scene_238",
+    "tc": "24:37",
+    "start": 1476.98,
+    "vo": "Даже у друзей.",
+    "current": "shadowy figure behind friend",
+    "reason": "Медиа 'shadowy figure behind friend' слишком абстрактное и не конкретизирует 'друзей' в контексте стран.",
+    "better_query": "North Korea espionage Soviet Union archival"
+  },
+  {
+    "id": "scene_239",
+    "tc": "24:38",
+    "start": 1478.4,
+    "vo": "Особенно у друзей.",
+    "current": "dark silhouette spy",
+    "reason": "Медиа 'dark silhouette spy' слишком абстрактное и не конкретизирует 'друзей' в контексте стран.",
+    "better_query": "North Korea espionage Soviet Union archival"
+  },
+  {
+    "id": "scene_242",
+    "tc": "24:47",
+    "start": 1487.46,
+    "vo": "Есть показания, которые невозможно прочитать без содрогания, даже если ты готов ко всему.",
+    "current": "dark eerie empty room",
+    "reason": "Медиа 'dark eerie empty room' слишком общее и не передает ужас 'показаний', о которых идет речь.",
+    "better_query": "North Korea prison camp testimony illustration"
+  },
+  {
+    "id": "scene_243",
+    "tc": "24:53",
+    "start": 1492.52,
+    "vo": "Квон Хёк, бывший офицер службы безопасности КНДР, который бежал из страны в две тысячи вто",
+    "current": "Kwon Hyok interview North Korea defector",
+    "reason": "Медиа 'Kwon Hyok interview North Korea defector' может быть слишком конкретным и не всегда доступным. Лучше использовать иллюстративные кадры или общие изображения, связанные с его историей.",
+    "better_query": "North Korea defector testimony illustration"
+  },
+  {
+    "id": "scene_245",
+    "tc": "25:06",
+    "start": 1506.26,
+    "vo": "Это было место, где режим испытывал химическое оружие на живых людях — на заключённых, кот",
+    "current": "North Korea chemical weapons testing archival footage",
+    "reason": "Запрос 'North Korea chemical weapons testing archival footage' скорее всего не даст реальных архивных кадров, так как это крайне секретная информация. Вероятно, будут показаны общие кадры Северной Кореи или реконструкции, что не соответствует прямому смыслу 'archival footage'.",
+    "better_query": "North Korea chemical weapons program illustration"
+  },
+  {
+    "id": "scene_246",
+    "tc": "25:14",
+    "start": 1514.06,
+    "vo": "Квон описал сцену, которую он наблюдал через стекло герметичной камеры.",
+    "current": "dark observation room window",
+    "reason": "Запрос 'dark observation room window' слишком общий и может показать что угодно, не связанное с наблюдением за экспериментом с газом. Нужен более конкретный образ.",
+    "better_query": "observation window gas chamber experiment"
+  },
+  {
+    "id": "scene_247",
+    "tc": "25:18",
+    "start": 1518.16,
+    "vo": "Внутри находилась семья из четырёх человек — мать, отец и двое детей.",
+    "current": "family silhouette behind glass",
+    "reason": "Запрос 'family silhouette behind glass' может показать семью в обычной ситуации, например, за окном дома, что не передает контекст газовой камеры.",
+    "better_query": "family silhouette gas chamber"
+  },
+  {
+    "id": "scene_248",
+    "tc": "25:23",
+    "start": 1522.6,
+    "vo": "Их поместили туда, не объяснив причины, и закрыли дверь.",
+    "current": "heavy metal door closing",
+    "reason": "Запрос 'heavy metal door closing' слишком общий. Дверь может быть любой, не обязательно тюремной или камерной.",
+    "better_query": "prison cell door closing"
+  },
+  {
+    "id": "scene_249",
+    "tc": "25:26",
+    "start": 1525.92,
+    "vo": "Через несколько минут в камеру начал поступать газ.",
+    "current": "gas filling room slow",
+    "reason": "Запрос 'gas filling room slow' может показать дым или пар, не обязательно ядовитый газ, и не в контексте камеры.",
+    "better_query": "poison gas filling chamber"
+  },
+  {
+    "id": "scene_251",
+    "tc": "25:35",
+    "start": 1534.64,
+    "vo": "Родители пытались закрыть детям рты, прижимали их к себе, кричали, но звука не было слышно",
+    "current": "family suffering gas chamber silhouette",
+    "reason": "Запрос 'family suffering gas chamber silhouette' может быть слишком буквальным и не найти подходящих изображений, так как это очень специфический и жестокий образ. Скорее всего, будут общие силуэты страдающих людей.",
+    "better_query": "people suffering gas attack silhouette"
+  },
+  {
+    "id": "scene_252",
+    "tc": "25:40",
+    "start": 1540.24,
+    "vo": "Через двадцать минут всё закончилось.",
+    "current": "empty gas chamber smoke clearing",
+    "reason": "Запрос 'empty gas chamber smoke clearing' может быть слишком буквальным и не найти подходящих изображений. Скорее всего, будут общие кадры дыма или пустых помещений.",
+    "better_query": "empty room after gas attack"
+  },
+  {
+    "id": "scene_253",
+    "tc": "25:43",
+    "start": 1542.74,
+    "vo": "Тела оставили там ещё на несколько часов для наблюдения, а потом вынесли и сожгли.",
+    "current": "crematorium smoke dark",
+    "reason": "Запрос 'crematorium smoke dark' может показать обычный крематорий, что не передает контекст сожжения тел после экспериментов.",
+    "better_query": "cremation of victims dark"
+  },
+  {
+    "id": "scene_254",
+    "tc": "25:48",
+    "start": 1548.32,
+    "vo": "Власти КНДР отрицают существование лагеря двадцать два, называют Квона лжецом, утверждают,",
+    "current": "North Korea propaganda news",
+    "reason": "Запрос 'North Korea propaganda news' может показать северокорейские новости, но не обязательно связанные с отрицанием существования лагеря 22 или обвинениями Квона во лжи. Это слишком общий запрос.",
+    "better_query": "North Korea denying human rights abuses news"
+  },
+  {
+    "id": "scene_258",
+    "tc": "26:20",
+    "start": 1579.9,
+    "vo": "Режим, который проводит эксперименты на своих гражданах, который убивает детей за преступл",
+    "current": "dark eerie mountains North Korea",
+    "reason": "Запрос 'dark eerie mountains North Korea' показывает горы, что не передает смысл 'режим, который проводит эксперименты на своих гражданах'. Это слишком атмосферный кадр, который не соответствует конкретике закадра.",
+    "better_query": "North Korea prison camp torture illustration"
+  },
+  {
+    "id": "scene_262",
+    "tc": "26:47",
+    "start": 1607.1,
+    "vo": "В Северной Корее существует закон, который называется «ён чжвачже» — наказание трёх поколе",
+    "current": "North Korea law three generations punishment footage",
+    "reason": "Запрос 'North Korea law three generations punishment footage' слишком специфичен и, вероятно, не найдет реальных кадров, так как это секретная информация. Скорее всего, будут общие кадры Северной Кореи или иллюстрации.",
+    "better_query": "North Korea collective punishment law illustration"
+  },
+  {
+    "id": "scene_263",
+    "tc": "26:54",
+    "start": 1613.8,
+    "vo": "Если ты совершаешь преступление против режима — бежишь из страны, критикуешь вождя, отказы",
+    "current": "North Korea prison camp footage defector",
+    "reason": "Запрос 'North Korea prison camp footage defector' может быть слишком буквальным. Кадры из лагерей крайне редки, а кадры с перебежчиками не обязательно будут связаны с лагерями.",
+    "better_query": "North Korea political prison camp footage"
+  },
+  {
+    "id": "scene_264",
+    "tc": "27:03",
+    "start": 1622.76,
+    "vo": "но и твои родители, и твои дети, и твои внуки.",
+    "current": "North Korea family separation footage",
+    "reason": "Запрос 'North Korea family separation footage' может показать общие кадры разлуки семей, не обязательно в контексте наказания трех поколений или лагерей.",
+    "better_query": "North Korea family imprisonment punishment"
+  },
+  {
+    "id": "scene_266",
+    "tc": "27:14",
+    "start": 1633.82,
+    "vo": "Это не месть одному человеку.",
+    "current": "silhouette lonely person",
+    "reason": "Запрос 'silhouette lonely person' слишком общий и не передает смысл 'мести одному человеку' в контексте наказания трех поколений.",
+    "better_query": "silhouette of person in prison"
+  },
+  {
+    "id": "scene_267",
+    "tc": "27:16",
+    "start": 1635.82,
+    "vo": "Это уничтожение генетической линии, биологическое наказание, растянутое во времени.",
+    "current": "DNA double helix dark ominous",
+    "reason": "Запрос 'DNA double helix dark ominous' слишком абстрактен и не передает смысл 'уничтожения генетической линии' в контексте наказания. Это скорее научная иллюстрация, чем метафора наказания.",
+    "better_query": "genetic punishment concept art"
+  },
+  {
+    "id": "scene_269",
+    "tc": "27:24",
+    "start": 1644.32,
+    "vo": "Он растёт за колючей проволокой, работает с того момента, как только может держать инструм",
+    "current": "North Korea labor camp children footage",
+    "reason": "Запрос 'North Korea labor camp children footage' слишком специфичен и, вероятно, не найдет реальных кадров, так как это секретная информация. Скорее всего, будут общие кадры детей в Северной Корее или иллюстрации.",
+    "better_query": "North Korea prison camp child labor illustration"
+  },
+  {
+    "id": "scene_270",
+    "tc": "27:34",
+    "start": 1654.4,
+    "vo": "Этот ребёнок отбывает срок за преступление, которое совершил его дед до его рождения.",
+    "current": "old man young child silhouette",
+    "reason": "Запрос 'old man young child silhouette' слишком общий и не передает смысл 'отбывает срок за преступление, которое совершил его дед'. Это может быть любая сцена с пожилым человеком и ребенком.",
+    "better_query": "child suffering for ancestors crimes silhouette"
+  },
+  {
+    "id": "scene_271",
+    "tc": "27:40",
+    "start": 1659.54,
+    "vo": "Он не виноват ни в чём, но режим считает, что предательство течёт в крови, что «плохие ген",
+    "current": "blood cells flowing dark",
+    "reason": "Медиа показывает клетки крови, что является буквальной, но не метафорической иллюстрацией закадра. Закадр говорит о 'плохих генах' и 'предательстве, текущем в крови' в переносном смысле.",
+    "better_query": "North Korea collective punishment bloodline"
+  },
+  {
+    "id": "scene_276",
+    "tc": "28:17",
+    "start": 1696.94,
+    "vo": "Режим держит тебя не цепями, а любовью, превращённой в заложника.",
+    "current": "hands tied with red ribbon",
+    "reason": "Медиа показывает руки, связанные красной лентой, что является слишком буквальной и общей иллюстрацией 'любви, превращенной в заложника'. Не передает специфику Северной Кореи.",
+    "better_query": "North Korea family hostage regime control"
+  },
+  {
+    "id": "scene_277",
+    "tc": "28:21",
+    "start": 1700.9,
+    "vo": "И это работает безотказно, потому что для большинства людей предать семью страшнее, чем ос",
+    "current": "hell fire dark ominous",
+    "reason": "Медиа показывает адское пламя, что является слишком буквальной и общей иллюстрацией 'ада'. Не передает специфику Северной Кореи и ее 'адских' условий.",
+    "better_query": "North Korea suffering conditions despair"
+  },
+  {
+    "id": "scene_278",
+    "tc": "28:27",
+    "start": 1707.22,
+    "vo": "Три поколения наказания — это не закон.",
+    "current": "broken law scroll",
+    "reason": "Медиа показывает сломанный свиток закона, что является слишком буквальной и общей иллюстрацией 'не закона'. Не передает специфику Северной Кореи и ее системы наказаний.",
+    "better_query": "North Korea three generations punishment injustice"
+  },
+  {
+    "id": "scene_279",
+    "tc": "28:30",
+    "start": 1709.78,
+    "vo": "Это проклятие, наложенное на целые династии, и оно будет действовать, пока существует режи",
+    "current": "ancient curse symbol dark",
+    "reason": "Медиа показывает древний символ проклятия, что является слишком буквальной и общей иллюстрацией 'проклятия'. Не передает специфику Северной Кореи и ее династического правления.",
+    "better_query": "North Korea dynastic curse regime control"
+  },
+  {
+    "id": "scene_308",
+    "tc": "31:01",
+    "start": 1860.54,
+    "vo": "Методы казни выбираются не ради быстрой смерти, а ради устрашения.",
+    "current": "dark ominous shadow moving",
+    "reason": "Закадровый текст говорит о методах казни, а медиа показывает абстрактное изображение, не связанное с Северной Кореей или казнями.",
+    "better_query": "North Korea execution methods brutality"
+  },
+  {
+    "id": "scene_309",
+    "tc": "31:05",
+    "start": 1865.1,
+    "vo": "Расстрел из зенитной установки, которая буквально разрывает тело на куски.",
+    "current": "North Korea anti-aircraft gun archival footage",
+    "reason": "Закадровый текст описывает казнь из зенитной установки, а медиа показывает архивные кадры зенитной установки, но не ее применение для казни.",
+    "better_query": "North Korea anti-aircraft gun execution reports"
+  },
+  {
+    "id": "scene_310",
+    "tc": "31:09",
+    "start": 1869.38,
+    "vo": "Сожжение огнемётом — медленное, мучительное, публичное.",
+    "current": "flamethrower fire slow motion",
+    "reason": "Закадровый текст говорит о казни огнемётом в Северной Корее, а медиа показывает общее замедленное видео огнемёта, не имеющее отношения к КНДР или казням.",
+    "better_query": "North Korea flamethrower execution reports"
+  },
+  {
+    "id": "scene_315",
+    "tc": "31:52",
+    "start": 1911.98,
+    "vo": "Цель этих казней — не правосудие.",
+    "current": "dark abstract justice scale",
+    "reason": "Закадровый текст говорит о том, что цель казней — не правосудие, а медиа показывает абстрактные весы правосудия, что может ввести в заблуждение.",
+    "better_query": "North Korea executions lack of justice"
+  },
+  {
+    "id": "scene_325",
+    "tc": "32:49",
+    "start": 1968.52,
+    "vo": "Режим держится на одном — на страхе настолько абсолютном, что даже мысль о побеге кажется ",
+    "current": "fear paranoia dark shadows",
+    "reason": "Медиа слишком общее и не передает специфику страха в Северной Корее, который связан с режимом и доносами.",
+    "better_query": "North Korea fear surveillance regime"
+  },
+  {
+    "id": "scene_330",
+    "tc": "33:11",
+    "start": 1990.56,
+    "vo": "Потому что любят своих близких больше, чем ненавидят режим.",
+    "current": "family holding hands silhouette sunset",
+    "reason": "Медиа слишком общее и романтизированное, не отражает контекст Северной Кореи и вынужденного выбора.",
+    "better_query": "North Korea family bond sacrifice"
+  },
+  {
+    "id": "scene_335",
+    "tc": "33:32",
+    "start": 2011.64,
+    "vo": "Это эксперимент над тем, как далеко можно зайти в подавлении человека, как долго можно дер",
+    "current": "human suppression experiment dark",
+    "reason": "Медиа слишком абстрактное и не привязано к Северной Корее, хотя закадр говорит именно о ней.",
+    "better_query": "North Korea human rights suppression dark"
+  },
+  {
+    "id": "scene_336",
+    "tc": "33:44",
+    "start": 2023.6,
+    "vo": "И пока этот эксперимент продолжается, мир отворачивается.",
+    "current": "world map turning away dark",
+    "reason": "Медиа слишком абстрактное и не передает идею отворачивания мира от конкретной проблемы Северной Кореи.",
+    "better_query": "world ignoring North Korea crisis"
+  },
+  {
+    "id": "scene_338",
+    "tc": "33:51",
+    "start": 2030.76,
+    "vo": "Признать масштаб того, что там происходит, — значит признать, что мы бессильны это останов",
+    "current": "helplessness despair shadow",
+    "reason": "Медиа слишком общее и не отражает конкретную проблему Северной Кореи и бессилия мира.",
+    "better_query": "North Korea human rights crisis helplessness"
+  },
+  {
+    "id": "scene_339",
+    "tc": "34:00",
+    "start": 2039.62,
+    "vo": "Потому что это далеко, потому что это не касается нас напрямую, потому что проще поверить,",
+    "current": "ignoring problems turning away",
+    "reason": "Медиа слишком общее и не привязано к контексту Северной Кореи.",
+    "better_query": "world ignoring North Korea suffering"
+  },
+  {
+    "id": "scene_340",
+    "tc": "34:07",
+    "start": 2046.64,
+    "vo": "Но это не так. Это именно так плохо.",
+    "current": "dark warning sign danger",
+    "reason": "Медиа слишком общее и не передает специфику 'плохо' в контексте Северной Кореи.",
+    "better_query": "North Korea harsh reality warning"
+  }
+]

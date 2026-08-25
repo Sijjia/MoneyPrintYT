@@ -1,0 +1,154 @@
+{
+  "scenes": [
+    {
+      "id": "cine_dna",
+      "composition": "DNAHelix3D",
+      "type": "cine",
+      "start": 24.0,
+      "dur": 7.0,
+      "props": {
+        "title": "ДНК",
+        "sub": "код жизни и смерти",
+        "accent": "#1fa48a"
+      },
+      "duration_sec": 7.0
+    },
+    {
+      "id": "cine_tree",
+      "composition": "HomininTree",
+      "type": "cine",
+      "start": 96.0,
+      "dur": 8.0,
+      "props": {
+        "title": "ДЕРЕВО ЛЮДЕЙ",
+        "accent": "#1fa48a"
+      },
+      "duration_sec": 8.0
+    },
+    {
+      "id": "cine_cordyceps3d",
+      "composition": "CordycepsTakeover3D",
+      "type": "cine",
+      "start": 574.0,
+      "dur": 18.0,
+      "props": {
+        "title": "ЗАХВАТ ТЕЛА",
+        "sub": "гриб-кордицепс превращает муравья в зомби",
+        "accent": "#8fd14f"
+      },
+      "duration_sec": 18.0
+    },
+    {
+      "id": "cine_collapse",
+      "composition": "PopulationCollapse",
+      "type": "cine",
+      "start": 974.0,
+      "dur": 8.0,
+      "props": {
+        "title": "КРАХ ЧЕЛОВЕЧЕСТВА",
+        "bigNumber": "1 280",
+        "sub": "99% предков исчезло",
+        "accent": "#1fa48a"
+      },
+      "duration_sec": 8.0
+    },
+    {
+      "id": "cine_virus",
+      "composition": "VirusGenome",
+      "type": "cine",
+      "start": 1998.0,
+      "dur": 8.0,
+      "props": {
+        "title": "8% ТЫ — ВИРУС",
+        "sub": "древние ретровирусы в ДНК",
+        "accent": "#1fa48a"
+      },
+      "duration_sec": 8.0
+    },
+    {
+      "id": "cine_crispr",
+      "composition": "CRISPRCut",
+      "type": "cine",
+      "start": 2141.0,
+      "dur": 7.0,
+      "props": {
+        "title": "ГЕННАЯ ИНЖЕНЕРИЯ",
+        "sub": "мы смешиваем виды",
+        "accent": "#1fa48a"
+      },
+      "duration_sec": 7.0
+    },
+    {
+      "id": "cine_eugenics",
+      "composition": "EugenicsRegistry",
+      "type": "cine",
+      "start": 1127.0,
+      "dur": 9.0,
+      "duration_sec": 9.0,
+      "props": {
+        "title": "ПРИНУДИТЕЛЬНАЯ СТЕРИЛИЗАЦИЯ",
+        "counter": "64 000",
+        "stamp": "СТЕРИЛИЗОВАН",
+        "accent": "#d92828",
+        "durationInFrames": 270
+      }
+    },
+    {
+      "id": "cine_tusk",
+      "composition": "TuskErosion",
+      "type": "cine",
+      "start": 1717.0,
+      "dur": 8.0,
+      "duration_sec": 8.0,
+      "props": {
+        "title": "БИВНИ ИСЧЕЗАЮТ",
+        "sub": "трофейная охота → обратная эволюция",
+        "accent": "#1fa48a",
+        "durationInFrames": 240
+      }
+    },
+    {
+      "id": "cine_prion",
+      "composition": "PrionBrain",
+      "type": "cine",
+      "start": 700.0,
+      "dur": 8.0,
+      "duration_sec": 8.0,
+      "props": {
+        "title": "КУРУ",
+        "sub": "прионы превращают мозг в губку",
+        "accent": "#1fa48a",
+        "durationInFrames": 240
+      }
+    },
+    {
+      "id": "cine_ratio",
+      "composition": "RatioViz17",
+      "type": "cine",
+      "start": 1569.0,
+      "dur": 9.0,
+      "duration_sec": 9.0,
+      "props": {
+        "title": "17 ЖЕНЩИН НА 1 МУЖЧИНУ",
+        "ratio": "17 : 1",
+        "women": 17,
+        "accent": "#1fa48a",
+        "durationInFrames": 270
+      }
+    },
+    {
+      "id": "cine_lasthuman",
+      "composition": "LastHuman",
+      "type": "cine",
+      "start": 271.5,
+      "dur": 8.5,
+      "duration_sec": 8.5,
+      "props": {
+        "title": "МЫ ОСТАЛИСЬ ОДНИ",
+        "sub": "потому что были опаснее",
+        "accent": "#1fa48a",
+        "durationInFrames": 255
+      }
+    }
+  ]
+}

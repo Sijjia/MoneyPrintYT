@@ -11,7 +11,7 @@ import pymiere
 from pymiere.wrappers import time_from_seconds
 from services.premiere_template.timeline_ops import import_media
 
-PROJECT = Path(__file__).resolve().parent.parent / "projects" / "2026-08-08_aysberg-severnoy-korei-samye-zakrytye-zhutkie-i-maloizvestny"
+PROJECT = Path(__file__).resolve().parent.parent / "projects" / "2026-08-18_aysberg-evolyutsii-temnaya-i-zapretnaya-storona-evolyutsii-o"
 OUT = (PROJECT / "assets" / "v7_inserts").resolve()
 V7 = 6
 

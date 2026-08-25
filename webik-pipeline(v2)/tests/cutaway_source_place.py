@@ -29,7 +29,7 @@ BAD_TITLE = ("green screen", "greenscreen", "green-screen", "chroma", "template"
              "free to use", "overlay", "footage pack", "10 hour", "1 hour")
 _svc = None
 
-PROJECT = Path(__file__).resolve().parent.parent / "projects" / "2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-i-maloizvestnye-"
+PROJECT = Path(__file__).resolve().parent.parent / "projects" / "2026-08-08_aysberg-severnoy-korei-samye-zakrytye-zhutkie-i-maloizvestny"
 OUT = (PROJECT / "assets" / "cutaways").resolve()
 CACHE = (PROJECT / "assets" / "_cutaway_cache").resolve()
 CUT_TRACK = 6  # V7 (свободна, над телом; режиссёр обходил графику V8)

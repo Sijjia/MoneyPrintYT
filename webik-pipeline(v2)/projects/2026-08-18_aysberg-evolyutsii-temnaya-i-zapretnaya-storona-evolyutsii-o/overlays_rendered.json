@@ -1,0 +1,1056 @@
+{
+  "overlays": [
+    {
+      "id": "ov_001",
+      "type": "stat",
+      "composition": "CountUpBar",
+      "scene_id": "scene_006",
+      "anchor": "пятьдесят тысяч лет назад",
+      "start": 25.32,
+      "duration_sec": 3.7,
+      "props": {
+        "value": "50000",
+        "label": "лет назад",
+        "suffix": "",
+        "accent": "#1fa48a",
+        "energy": 0.9,
+        "align": "left"
+      },
+      "file": "projects\\2026-08-18_aysberg-evolyutsii-temnaya-i-zapretnaya-storona-evolyutsii-o\\assets\\overlays\\ov_001.mov"
+    },
+    {
+      "id": "ov_002",
+      "type": "stat",
+      "composition": "CountUpBar",
+      "scene_id": "scene_011",
+      "anchor": "тысяча двести восемьдесят человек",
+      "start": 61.3,
+      "duration_sec": 3.7,
+      "props": {
+        "value": "1280",
+        "label": "человек",
+        "suffix": "",
+        "accent": "#1fa48a",
+        "energy": 0.9,
+        "align": "left"
+      },
+      "file": "projects\\2026-08-18_aysberg-evolyutsii-temnaya-i-zapretnaya-storona-evolyutsii-o\\assets\\overlays\\ov_002.mov"
+    },
+    {
+      "id": "ov_003",
+      "type": "timeline",
+      "composition": "Timeline",
+      "scene_id": "scene_017",
+      "anchor": "В две тысячи восьмом году",
+      "start": 90.05,
+      "duration_sec": 5.0,
+      "props": {
+        "title": "Денисовская пещера",
+        "events": [
+          {
+            "year": "2008",
+            "label": "Раскопки"
+          },
+          {
+            "year": "2010",
+            "label": "Расшифровка ДНК"
+          },
+          {
+            "year": "2022",
+            "label": "Нобелевская премия"
+          }
+        ],
+        "accent": "#1fa48a",
+        "energy": 0.9
+      },
+      "file": "projects\\2026-08-18_aysberg-evolyutsii-temnaya-i-zapretnaya-storona-evolyutsii-o\\assets\\overlays\\ov_003.mov"
+    },
+    {
+      "id": "ov_004",
+      "type": "stat",
+      "composition": "CountUpBar",
+      "scene_id": "scene_018",
+      "anchor": "пятидесяти тысяч лет",
+      "start": 103.81,
+      "duration_sec": 3.7,
+      "props": {
+        "value": "50000",
+        "label": "лет назад",
+        "suffix": "",
+        "accent": "#1fa48a",
+        "energy": 0.9,
+        "align": "left"
+      },
+      "file": "projects\\2026-08-18_aysberg-evolyutsii-temnaya-i-zapretnaya-storona-evolyutsii-o\\assets\\overlays\\ov_004.mov"
+    },
+    {
+      "id": "ov_005",
+      "type": "name",
+      "composition": "NameLabel",
+      "scene_id": "scene_020",
+      "anchor": "денисовцев",
+      "start": 125.03,
+      "duration_sec": 3.7,
+      "props": {
+        "name": "Денисовцы",
+        "sub": "Homo altaiensis",
+        "accent": "#1fa48a",
+        "energy": 0.9,
+        "align": "left"
+      },
+      "file": "projects\\2026-08-18_aysberg-evolyutsii-temnaya-i-zapretnaya-storona-evolyutsii-o\\assets\\overlays\\ov_005.mov"
+    },
+    {
+      "id": "ov_006",
+      "type": "stat",
+      "composition": "CountUpBar",
+      "scene_id": "scene_022",
+      "anchor": "сорок лет раскопок",
+      "start": 133.04,
+      "duration_sec": 3.7,
+      "props": {
+        "value": "40",
+        "label": "лет раскопок",
+        "suffix": "",
+        "accent": "#1fa48a",
+        "energy": 0.9,
+        "align": "left"
+      },
+      "file": "projects\\2026-08-18_aysberg-evolyutsii-temnaya-i-zapretnaya-storona-evolyutsii-o\\assets\\overlays\\ov_006.mov"
+    },
+    {
+      "id": "ov_007",
+      "type": "percent",
+      "composition": "DonutProportion",
+      "scene_id": "scene_026",
+      "anchor": "до пяти процентов генома",
+      "start": 176.78,
+      "duration_sec": 3.7,
+      "props": {
+        "percent": 5.0,
+        "label": "денисовское наследие",
+        "accent": "#1fa48a",
+        "energy": 0.9
+      },
+      "file": "projects\\2026-08-18_aysberg-evolyutsii-temnaya-i-zapretnaya-storona-evolyutsii-o\\assets\\overlays\\ov_007.mov"
+    },
+    {
+      "id": "ov_008",
+      "type": "timeline",
+      "composition": "Timeline",
+      "scene_id": "scene_031",
+      "anchor": "В две тысячи третьем году",
+      "start": 195.82,
+      "duration_sec": 5.0,
+      "props": {
+        "title": "Homo floresiensis",
+        "events": [
+          {
+            "year": "2003",
+            "label": "Находка скелетов"
+          },
+          {
+            "year": "100000",
+            "label": "Жили на острове"
+          },
+          {
+            "year": "60000",
+            "label": "Вымерли"
+          }
+        ],
+        "accent": "#1fa48a",
+        "energy": 0.9
+      },
+      "file": "projects\\2026-08-18_aysberg-evolyutsii-temnaya-i-zapretnaya-storona-evolyutsii-o\\assets\\overlays\\ov_008.mov"
+    },
+    {
+      "id": "ov_009",
+      "type": "stat",
+      "composition": "CountUpBar",
+      "scene_id": "scene_032",
+      "anchor": "около метра",
+      "start": 209.13,
+      "duration_sec": 3.7,
+      "props": {
+        "value": "1",
+        "label": "метр",
+        "suffix": "",
+        "accent": "#1fa48a",
+        "energy": 0.9,
+        "align": "left"
+      },
+      "file": "projects\\2026-08-18_aysberg-evolyutsii-temnaya-i-zapretnaya-storona-evolyutsii-o\\assets\\overlays\\ov_009.mov"
+    },
+    {
+      "id": "ov_010",
+      "type": "name",
+      "composition": "NameLabel",
+      "scene_id": "scene_033",
+      "anchor": "Homo floresiensis",
+      "start": 214.82,
+      "duration_sec": 3.7,
+      "props": {
+        "name": "Homo floresiensis",
+        "sub": "Индонезия · Вымерший вид",
+        "accent": "#1fa48a",
+        "energy": 0.9,
+        "align": "left"
+      },
+      "file": "projects\\2026-08-18_aysberg-evolyutsii-temnaya-i-zapretnaya-storona-evolyutsii-o\\assets\\overlays\\ov_010.mov"
+    },
+    {
+      "id": "ov_011",
+      "type": "stat",
+      "composition": "CountUpBar",
+      "scene_id": "scene_035",
+      "anchor": "два миллиона лет назад",
+      "start": 232.22,
+      "duration_sec": 3.7,
+      "props": {
+        "value": "2000000",
+        "label": "лет назад",
+        "suffix": "",
+        "accent": "#1fa48a",
+        "energy": 0.9,
+        "align": "left"
+      },
+      "file": "projects\\2026-08-18_aysberg-evolyutsii-temnaya-i-zapretnaya-storona-evolyutsii-o\\assets\\overlays\\ov_011.mov"
+    },
+    {
+      "id": "ov_012",
+      "type": "stat",
+      "composition": "CountUpBar",
+      "scene_id": "scene_038",
+      "anchor": "пятьдесят-шестьдесят тысяч лет назад",
+      "start": 253.0,
+      "duration_sec": 3.7,
+      "props": {
+        "value": "50000",
+        "label": "лет назад",
+        "suffix": "+",
+        "accent": "#1fa48a",
+        "energy": 0.9,
+        "align": "left"
+      },
+      "file": "projects\\2026-08-18_aysberg-evolyutsii-temnaya-i-zapretnaya-storona-evolyutsii-o\\assets\\overlays\\ov_012.mov"
+    },
+    {
+      "id": "ov_013",
+      "type": "phrase",
+      "composition": "KineticPhrase",
+      "scene_id": "scene_046",
+      "anchor": "пенис в двенадцать",
+      "start": 308.73,
+      "duration_sec": 4.0,
+      "props": {
+        "phrase": "пенис в двенадцать",
+        "highlight": [
+          0,
+          1
+        ],
+        "accent": "#1fa48a",
+        "energy": 0.9
+      },
+      "file": "projects\\2026-08-18_aysberg-evolyutsii-temnaya-i-zapretnaya-storona-evolyutsii-o\\assets\\overlays\\ov_013.mov"
+    },
+    {
+      "id": "ov_014",
+      "type": "name",
+      "composition": "NameLabel",
+      "scene_id": "scene_061",
+      "anchor": "оса-изумрудная тараканья",
+      "start": 416.71,
+      "duration_sec": 3.7,
+      "props": {
+        "name": "Ampulex compressa",
+        "sub": "Оса-изумрудная тараканья",
+        "accent": "#1fa48a",
+        "energy": 0.9,
+        "align": "left"
+      },
+      "file": "projects\\2026-08-18_aysberg-evolyutsii-temnaya-i-zapretnaya-storona-evolyutsii-o\\assets\\overlays\\ov_014.mov"
+    },
+    {
+      "id": "ov_015",
+      "type": "ratio",
+      "composition": "Pictograph",
+      "scene_id": "scene_078",
+      "anchor": "каждой третьей кошке",
+      "start": 537.39,
+      "duration_sec": 3.7,
+      "props": {
+        "filled": 1,
+        "total": 3,
+        "label": "Токсоплазма",
+        "accent": "#1fa48a",
+        "energy": 0.9
+      },
+      "file": "projects\\2026-08-18_aysberg-evolyutsii-temnaya-i-zapretnaya-storona-evolyutsii-o\\assets\\overlays\\ov_015.mov"
+    },
+    {
+      "id": "ov_016",
+      "type": "map",
+      "composition": "MapPins",
+      "scene_id": "scene_083",
+      "anchor": "Таиланда и Бразилии",
+      "start": 560.76,
+      "duration_sec": 5.0,
+      "props": {
+        "title": "Кордицепс",
+        "places": [
+          {
+            "label": "Таиланд",
+            "lat": 13.7563,
+            "lon": 100.5018
+          },
+          {
+            "label": "Бразилия",
+            "lat": -14.235,
+            "lon": -51.9253
+          }
+        ],
+        "accent": "#1fa48a",
+        "energy": 0.9
+      },
+      "file": "projects\\2026-08-18_aysberg-evolyutsii-temnaya-i-zapretnaya-storona-evolyutsii-o\\assets\\overlays\\ov_016.mov"
+    },
+    {
+      "id": "ov_017",
+      "type": "name",
+      "composition": "NameLabel",
+      "scene_id": "scene_084",
+      "anchor": "кордицепса однобокого",
+      "start": 576.69,
+      "duration_sec": 3.7,
+      "props": {
+        "name": "Ophiocordyceps unilateralis",
+        "sub": "Гриб-паразит",
+        "accent": "#1fa48a",
+        "energy": 0.9,
+        "align": "left"
+      },
+      "file": "projects\\2026-08-18_aysberg-evolyutsii-temnaya-i-zapretnaya-storona-evolyutsii-o\\assets\\overlays\\ov_017.mov"
+    },
+    {
+      "id": "ov_018",
+      "type": "stat",
+      "composition": "CountUpBar",
+      "scene_id": "scene_088",
+      "anchor": "двадцати пяти сантиметров",
+      "start": 621.46,
+      "duration_sec": 3.7,
+      "props": {
+        "value": "25",
+        "label": "см",
+        "suffix": "",
+        "accent": "#1fa48a",
+        "energy": 0.9,
+        "align": "left"
+      },
+      "file": "projects\\2026-08-18_aysberg-evolyutsii-temnaya-i-zapretnaya-storona-evolyutsii-o\\assets\\overlays\\ov_018.mov"
+    },
+    {
+      "id": "ov_019",
+      "type": "name",
+      "composition": "NameLabel",
+      "scene_id": "scene_101",
+      "anchor": "куру",
+      "start": 728.47,
+      "duration_sec": 3.7,
+      "props": {
+        "name": "Куру",
+        "sub": "Болезнь",
+        "accent": "#1fa48a",
+        "energy": 0.9,
+        "align": "left"
+      },
+      "file": "projects\\2026-08-18_aysberg-evolyutsii-temnaya-i-zapretnaya-storona-evolyutsii-o\\assets\\overlays\\ov_019.mov"
+    },
+    {
+      "id": "ov_020",
+      "type": "percent",
+      "composition": "DonutProportion",
+      "scene_id": "scene_103",
+      "anchor": "Летальность была стопроцентной",
+      "start": 743.43,
+      "duration_sec": 3.7,
+      "props": {
+        "percent": 100.0,
+        "label": "летальность",
+        "accent": "#1fa48a",
+        "energy": 0.9
+      },
+      "file": "projects\\2026-08-18_aysberg-evolyutsii-temnaya-i-zapretnaya-storona-evolyutsii-o\\assets\\overlays\\ov_020.mov"
+    },
+    {
+      "id": "ov_021",
+      "type": "name",
+      "composition": "NameLabel",
+      "scene_id": "scene_104",
+      "anchor": "Карлтон Гайдушек",
+      "start": 757.59,
+      "duration_sec": 3.7,
+      "props": {
+        "name": "Карлтон Гайдушек",
+        "sub": "Вирусолог",
+        "accent": "#1fa48a",
+        "energy": 0.9,
+        "align": "left"
+      },
+      "file": "projects\\2026-08-18_aysberg-evolyutsii-temnaya-i-zapretnaya-storona-evolyutsii-o\\assets\\overlays\\ov_021.mov"
+    },
+    {
+      "id": "ov_022",
+      "type": "stat",
+      "composition": "CountUpBar",
+      "scene_id": "scene_108",
+      "anchor": "нескольких тысяч человек",
+      "start": 793.17,
+      "duration_sec": 3.7,
+      "props": {
+        "value": "1000",
+        "label": "человек",
+        "suffix": "+",
+        "accent": "#1fa48a",
+        "energy": 0.9,
+        "align": "left"
+      },
+      "file": "projects\\2026-08-18_aysberg-evolyutsii-temnaya-i-zapretnaya-storona-evolyutsii-o\\assets\\overlays\\ov_022.mov"
+    },
+    {
+      "id": "ov_023",
+      "type": "stat",
+      "composition": "CountUpBar",
+      "scene_id": "scene_117",
+      "anchor": "сорок девять тысяч лет",
+      "start": 868.14,
+      "duration_sec": 3.7,
+      "props": {
+        "value": "49000",
+        "label": "лет",
+        "suffix": "",
+        "accent": "#1fa48a",
+        "energy": 0.9,
+        "align": "left"
+      },
+      "file": "projects\\2026-08-18_aysberg-evolyutsii-temnaya-i-zapretnaya-storona-evolyutsii-o\\assets\\overlays\\ov_023.mov"
+    },
+    {
+      "id": "ov_024",
+      "type": "stat",
+      "composition": "CountUpBar",
+      "scene_id": "scene_117",
+      "anchor": "двенадцать особей",
+      "start": 872.91,
+      "duration_sec": 3.7,
+      "props": {
+        "value": "12",
+        "label": "неандертальцев",
+        "suffix": "",
+        "accent": "#1fa48a",
+        "energy": 0.9,
+        "align": "left"
+      },
+      "file": "projects\\2026-08-18_aysberg-evolyutsii-temnaya-i-zapretnaya-storona-evolyutsii-o\\assets\\overlays\\ov_024.mov"
+    },
+    {
+      "id": "ov_025",
+      "type": "timeline",
+      "composition": "Timeline",
+      "scene_id": "scene_131",
+      "anchor": "В две тысячи двадцать третьем году",
+      "start": 967.8,
+      "duration_sec": 5.0,
+      "props": {
+        "title": "Бутылочное горлышко",
+        "events": [
+          {
+            "year": "2023",
+            "label": "Исследование"
+          },
+          {
+            "year": "900000",
+            "label": "Коллапс популяции"
+          },
+          {
+            "year": "117000",
+            "label": "На грани вымирания"
+          }
+        ],
+        "accent": "#1fa48a",
+        "energy": 0.9
+      },
+      "file": "projects\\2026-08-18_aysberg-evolyutsii-temnaya-i-zapretnaya-storona-evolyutsii-o\\assets\\overlays\\ov_025.mov"
+    },
+    {
+      "id": "ov_026",
+      "type": "stat",
+      "composition": "CountUpBar",
+      "scene_id": "scene_134",
+      "anchor": "девятьсот тысяч лет назад",
+      "start": 998.65,
+      "duration_sec": 3.7,
+      "props": {
+        "value": "900000",
+        "label": "лет назад",
+        "suffix": "",
+        "accent": "#1fa48a",
+        "energy": 0.9,
+        "align": "left"
+      },
+      "file": "projects\\2026-08-18_aysberg-evolyutsii-temnaya-i-zapretnaya-storona-evolyutsii-o\\assets\\overlays\\ov_026.mov"
+    },
+    {
+      "id": "ov_027",
+      "type": "percent",
+      "composition": "DonutProportion",
+      "scene_id": "scene_136",
+      "anchor": "девяносто девять процентов",
+      "start": 1021.99,
+      "duration_sec": 3.7,
+      "props": {
+        "percent": 99.0,
+        "label": "линии исчезло",
+        "accent": "#1fa48a",
+        "energy": 0.9
+      },
+      "file": "projects\\2026-08-18_aysberg-evolyutsii-temnaya-i-zapretnaya-storona-evolyutsii-o\\assets\\overlays\\ov_027.mov"
+    },
+    {
+      "id": "ov_028",
+      "type": "timeline",
+      "composition": "Timeline",
+      "scene_id": "scene_153",
+      "anchor": "В тысяча девятьсот седьмом году",
+      "start": 1140.95,
+      "duration_sec": 5.0,
+      "props": {
+        "title": "Евгеника в США",
+        "events": [
+          {
+            "year": "1907",
+            "label": "Первый закон"
+          },
+          {
+            "year": "1920",
+            "label": "30+ штатов"
+          },
+          {
+            "year": "1927",
+            "label": "Верховный суд"
+          },
+          {
+            "year": "1970",
+            "label": "60 000+ стерилизаций"
+          },
+          {
+            "year": "1980",
+            "label": "Последняя стерилизация"
+          }
+        ],
+        "accent": "#1fa48a",
+        "energy": 0.9
+      },
+      "file": "projects\\2026-08-18_aysberg-evolyutsii-temnaya-i-zapretnaya-storona-evolyutsii-o\\assets\\overlays\\ov_028.mov"
+    },
+    {
+      "id": "ov_029",
+      "type": "stat",
+      "composition": "CountUpBar",
+      "scene_id": "scene_155",
+      "anchor": "более тридцати американских штатов",
+      "start": 1160.44,
+      "duration_sec": 3.7,
+      "props": {
+        "value": "30",
+        "label": "штатов",
+        "suffix": "+",
+        "accent": "#1fa48a",
+        "energy": 0.9,
+        "align": "left"
+      },
+      "file": "projects\\2026-08-18_aysberg-evolyutsii-temnaya-i-zapretnaya-storona-evolyutsii-o\\assets\\overlays\\ov_029.mov"
+    },
+    {
+      "id": "ov_030",
+      "type": "name",
+      "composition": "NameLabel",
+      "scene_id": "scene_159",
+      "anchor": "Керри Бак",
+      "start": 1182.83,
+      "duration_sec": 3.7,
+      "props": {
+        "name": "Керри Бак",
+        "sub": "США · Жертва евгеники",
+        "accent": "#1fa48a",
+        "energy": 0.9,
+        "align": "left"
+      },
+      "file": "projects\\2026-08-18_aysberg-evolyutsii-temnaya-i-zapretnaya-storona-evolyutsii-o\\assets\\overlays\\ov_030.mov"
+    },
+    {
+      "id": "ov_031",
+      "type": "name",
+      "composition": "NameLabel",
+      "scene_id": "scene_161",
+      "anchor": "Оливер Уэнделл Холмс-младший",
+      "start": 1199.09,
+      "duration_sec": 3.7,
+      "props": {
+        "name": "Оливер Уэнделл Холмс-младший",
+        "sub": "Судья Верховного суда",
+        "accent": "#1fa48a",
+        "energy": 0.9,
+        "align": "left"
+      },
+      "file": "projects\\2026-08-18_aysberg-evolyutsii-temnaya-i-zapretnaya-storona-evolyutsii-o\\assets\\overlays\\ov_031.mov"
+    },
+    {
+      "id": "ov_032",
+      "type": "quote",
+      "composition": "QuoteCard",
+      "scene_id": "scene_162",
+      "anchor": "Трёх поколений идиотов достаточно",
+      "start": 1207.93,
+      "duration_sec": 4.5,
+      "props": {
+        "text": "Трёх поколений идиотов достаточно",
+        "author": "Оливер Уэнделл Холмс-младший",
+        "accent": "#1fa48a",
+        "energy": 0.9
+      },
+      "file": "projects\\2026-08-18_aysberg-evolyutsii-temnaya-i-zapretnaya-storona-evolyutsii-o\\assets\\overlays\\ov_032.mov"
+    },
+    {
+      "id": "ov_033",
+      "type": "stat",
+      "composition": "CountUpBar",
+      "scene_id": "scene_164",
+      "anchor": "более шестидесяти тысяч человек",
+      "start": 1219.07,
+      "duration_sec": 3.7,
+      "props": {
+        "value": "60000",
+        "label": "человек",
+        "suffix": "+",
+        "accent": "#1fa48a",
+        "energy": 0.9,
+        "align": "left"
+      },
+      "file": "projects\\2026-08-18_aysberg-evolyutsii-temnaya-i-zapretnaya-storona-evolyutsii-o\\assets\\overlays\\ov_033.mov"
+    },
+    {
+      "id": "ov_034",
+      "type": "timeline",
+      "composition": "Timeline",
+      "scene_id": "scene_170",
+      "anchor": "тысяча девятьсот восьмидесятых годах",
+      "start": 1266.84,
+      "duration_sec": 5.0,
+      "props": {
+        "title": "Евгеника в США",
+        "events": [
+          {
+            "year": "1907",
+            "label": "Первый закон"
+          },
+          {
+            "year": "1927",
+            "label": "Решение суда"
+          },
+          {
+            "year": "1980",
+            "label": "Последняя стерилизация"
+          }
+        ],
+        "accent": "#1fa48a",
+        "energy": 0.9
+      },
+      "file": "projects\\2026-08-18_aysberg-evolyutsii-temnaya-i-zapretnaya-storona-evolyutsii-o\\assets\\overlays\\ov_034.mov"
+    },
+    {
+      "id": "ov_035",
+      "type": "timeline",
+      "composition": "Timeline",
+      "scene_id": "scene_173",
+      "anchor": "В тысяча девятьсот тридцать девятом году",
+      "start": 1274.5,
+      "duration_sec": 5.0,
+      "props": {
+        "title": "Aktion T4",
+        "events": [
+          {
+            "year": "1939",
+            "label": "Начало программы"
+          },
+          {
+            "year": "1941",
+            "label": "Остановка программы"
+          }
+        ],
+        "accent": "#1fa48a",
+        "energy": 0.9
+      },
+      "file": "projects\\2026-08-18_aysberg-evolyutsii-temnaya-i-zapretnaya-storona-evolyutsii-o\\assets\\overlays\\ov_035.mov"
+    },
+    {
+      "id": "ov_036",
+      "type": "name",
+      "composition": "NameLabel",
+      "scene_id": "scene_174",
+      "anchor": "Aktion T4",
+      "start": 1285.42,
+      "duration_sec": 3.7,
+      "props": {
+        "name": "Aktion T4",
+        "sub": "Нацистская программа",
+        "accent": "#1fa48a",
+        "energy": 0.9,
+        "align": "left"
+      },
+      "file": "projects\\2026-08-18_aysberg-evolyutsii-temnaya-i-zapretnaya-storona-evolyutsii-o\\assets\\overlays\\ov_036.mov"
+    },
+    {
+      "id": "ov_037",
+      "type": "stat",
+      "composition": "CountUpBar",
+      "scene_id": "scene_180",
+      "anchor": "более семидесяти тысяч человек",
+      "start": 1328.81,
+      "duration_sec": 3.7,
+      "props": {
+        "value": "70000",
+        "label": "человек",
+        "suffix": "+",
+        "accent": "#1fa48a",
+        "energy": 0.9,
+        "align": "left"
+      },
+      "file": "projects\\2026-08-18_aysberg-evolyutsii-temnaya-i-zapretnaya-storona-evolyutsii-o\\assets\\overlays\\ov_037.mov"
+    },
+    {
+      "id": "ov_038",
+      "type": "stat",
+      "composition": "CountUpBar",
+      "scene_id": "scene_198",
+      "anchor": "около шестидесяти трёх тысяч человек",
+      "start": 1471.96,
+      "duration_sec": 3.7,
+      "props": {
+        "value": "63000",
+        "label": "человек",
+        "suffix": "+",
+        "accent": "#1fa48a",
+        "energy": 0.9,
+        "align": "left"
+      },
+      "file": "projects\\2026-08-18_aysberg-evolyutsii-temnaya-i-zapretnaya-storona-evolyutsii-o\\assets\\overlays\\ov_038.mov"
+    },
+    {
+      "id": "ov_039",
+      "type": "stat",
+      "composition": "CountUpBar",
+      "scene_id": "scene_210",
+      "anchor": "семь тысяч лет назад",
+      "start": 1564.12,
+      "duration_sec": 3.7,
+      "props": {
+        "value": "7000",
+        "label": "лет назад",
+        "suffix": "",
+        "accent": "#1fa48a",
+        "energy": 0.9,
+        "align": "left"
+      },
+      "file": "projects\\2026-08-18_aysberg-evolyutsii-temnaya-i-zapretnaya-storona-evolyutsii-o\\assets\\overlays\\ov_039.mov"
+    },
+    {
+      "id": "ov_040",
+      "type": "ratio",
+      "composition": "Pictograph",
+      "scene_id": "scene_212",
+      "anchor": "семнадцати женщин",
+      "start": 1586.4,
+      "duration_sec": 3.7,
+      "props": {
+        "filled": 1,
+        "total": 17,
+        "label": "мужчина : женщина",
+        "accent": "#1fa48a",
+        "energy": 0.9
+      },
+      "file": "projects\\2026-08-18_aysberg-evolyutsii-temnaya-i-zapretnaya-storona-evolyutsii-o\\assets\\overlays\\ov_040.mov"
+    },
+    {
+      "id": "ov_041",
+      "type": "stat",
+      "composition": "CountUpBar",
+      "scene_id": "scene_235",
+      "anchor": "пятьдесят лет",
+      "start": 1730.4,
+      "duration_sec": 3.7,
+      "props": {
+        "value": "50",
+        "label": "лет",
+        "suffix": "",
+        "accent": "#1fa48a",
+        "energy": 0.9,
+        "align": "left"
+      },
+      "file": "projects\\2026-08-18_aysberg-evolyutsii-temnaya-i-zapretnaya-storona-evolyutsii-o\\assets\\overlays\\ov_041.mov"
+    },
+    {
+      "id": "ov_042",
+      "type": "percent",
+      "composition": "DonutProportion",
+      "scene_id": "scene_239",
+      "anchor": "почти на четверть",
+      "start": 1764.0,
+      "duration_sec": 3.7,
+      "props": {
+        "percent": 25.0,
+        "label": "размер рогов",
+        "accent": "#1fa48a",
+        "energy": 0.9
+      },
+      "file": "projects\\2026-08-18_aysberg-evolyutsii-temnaya-i-zapretnaya-storona-evolyutsii-o\\assets\\overlays\\ov_042.mov"
+    },
+    {
+      "id": "ov_043",
+      "type": "percent",
+      "composition": "DonutProportion",
+      "scene_id": "scene_243",
+      "anchor": "на девяносто процентов",
+      "start": 1791.25,
+      "duration_sec": 3.7,
+      "props": {
+        "percent": 90.0,
+        "label": "популяция слонов",
+        "accent": "#1fa48a",
+        "energy": 0.9
+      },
+      "file": "projects\\2026-08-18_aysberg-evolyutsii-temnaya-i-zapretnaya-storona-evolyutsii-o\\assets\\overlays\\ov_043.mov"
+    },
+    {
+      "id": "ov_044",
+      "type": "compare",
+      "composition": "BarCompare",
+      "scene_id": "scene_244",
+      "anchor": "с двух процентов до тридцати трёх",
+      "start": 1800.66,
+      "duration_sec": 4.5,
+      "props": {
+        "title": "Бесбивневые слоны",
+        "items": [
+          {
+            "label": "До войны",
+            "value": 2.0
+          },
+          {
+            "label": "После войны",
+            "value": 33.0
+          }
+        ],
+        "accent": "#1fa48a",
+        "energy": 0.9
+      },
+      "file": "projects\\2026-08-18_aysberg-evolyutsii-temnaya-i-zapretnaya-storona-evolyutsii-o\\assets\\overlays\\ov_044.mov"
+    },
+    {
+      "id": "ov_045",
+      "type": "stat",
+      "composition": "CountUpBar",
+      "scene_id": "scene_262",
+      "anchor": "десять поколений",
+      "start": 1902.64,
+      "duration_sec": 3.7,
+      "props": {
+        "value": "10",
+        "label": "поколений",
+        "suffix": "",
+        "accent": "#1fa48a",
+        "energy": 0.9,
+        "align": "left"
+      },
+      "file": "projects\\2026-08-18_aysberg-evolyutsii-temnaya-i-zapretnaya-storona-evolyutsii-o\\assets\\overlays\\ov_045.mov"
+    },
+    {
+      "id": "ov_046",
+      "type": "stat",
+      "composition": "CountUpBar",
+      "scene_id": "scene_272",
+      "anchor": "шестидесяти лет",
+      "start": 1947.79,
+      "duration_sec": 3.7,
+      "props": {
+        "value": "60",
+        "label": "лет",
+        "suffix": "+",
+        "accent": "#1fa48a",
+        "energy": 0.9,
+        "align": "left"
+      },
+      "file": "projects\\2026-08-18_aysberg-evolyutsii-temnaya-i-zapretnaya-storona-evolyutsii-o\\assets\\overlays\\ov_046.mov"
+    },
+    {
+      "id": "ov_047",
+      "type": "percent",
+      "composition": "DonutProportion",
+      "scene_id": "scene_280",
+      "anchor": "восемь процентов человеческого генома",
+      "start": 2013.56,
+      "duration_sec": 3.7,
+      "props": {
+        "percent": 8.0,
+        "label": "ДНК вирусов",
+        "accent": "#1fa48a",
+        "energy": 0.9
+      },
+      "file": "projects\\2026-08-18_aysberg-evolyutsii-temnaya-i-zapretnaya-storona-evolyutsii-o\\assets\\overlays\\ov_047.mov"
+    },
+    {
+      "id": "ov_048",
+      "type": "percent",
+      "composition": "DonutProportion",
+      "scene_id": "scene_281",
+      "anchor": "полтора процента",
+      "start": 2024.56,
+      "duration_sec": 3.7,
+      "props": {
+        "percent": 1.5,
+        "label": "человеческих генов",
+        "accent": "#1fa48a",
+        "energy": 0.9
+      },
+      "file": "projects\\2026-08-18_aysberg-evolyutsii-temnaya-i-zapretnaya-storona-evolyutsii-o\\assets\\overlays\\ov_048.mov"
+    },
+    {
+      "id": "ov_049",
+      "type": "name",
+      "composition": "NameLabel",
+      "scene_id": "scene_284",
+      "anchor": "синцитин",
+      "start": 2038.58,
+      "duration_sec": 3.7,
+      "props": {
+        "name": "Синцитин",
+        "sub": "Ген",
+        "accent": "#1fa48a",
+        "energy": 0.9,
+        "align": "left"
+      },
+      "file": "projects\\2026-08-18_aysberg-evolyutsii-temnaya-i-zapretnaya-storona-evolyutsii-o\\assets\\overlays\\ov_049.mov"
+    },
+    {
+      "id": "ov_050",
+      "type": "timeline",
+      "composition": "Timeline",
+      "scene_id": "scene_300",
+      "anchor": "В две тысячи двадцать первом году",
+      "start": 2135.09,
+      "duration_sec": 5.0,
+      "props": {
+        "title": "Химеры",
+        "events": [
+          {
+            "year": "2021",
+            "label": "Публикация работы"
+          },
+          {
+            "year": "20",
+            "label": "Дней развития"
+          }
+        ],
+        "accent": "#1fa48a",
+        "energy": 0.9
+      },
+      "file": "projects\\2026-08-18_aysberg-evolyutsii-temnaya-i-zapretnaya-storona-evolyutsii-o\\assets\\overlays\\ov_050.mov"
+    },
+    {
+      "id": "ov_051",
+      "type": "name",
+      "composition": "NameLabel",
+      "scene_id": "scene_301",
+      "anchor": "обезьян-макак",
+      "start": 2147.28,
+      "duration_sec": 3.7,
+      "props": {
+        "name": "Макаки",
+        "sub": "Вид обезьян",
+        "accent": "#1fa48a",
+        "energy": 0.9,
+        "align": "left"
+      },
+      "file": "projects\\2026-08-18_aysberg-evolyutsii-temnaya-i-zapretnaya-storona-evolyutsii-o\\assets\\overlays\\ov_051.mov"
+    },
+    {
+      "id": "ov_052",
+      "type": "stat",
+      "composition": "CountUpBar",
+      "scene_id": "scene_303",
+      "anchor": "двадцать дней",
+      "start": 2162.58,
+      "duration_sec": 3.7,
+      "props": {
+        "value": "20",
+        "label": "дней",
+        "suffix": "",
+        "accent": "#1fa48a",
+        "energy": 0.9,
+        "align": "left"
+      },
+      "file": "projects\\2026-08-18_aysberg-evolyutsii-temnaya-i-zapretnaya-storona-evolyutsii-o\\assets\\overlays\\ov_052.mov"
+    },
+    {
+      "id": "ov_053",
+      "type": "timeline",
+      "composition": "Timeline",
+      "scene_id": "scene_325",
+      "anchor": "тысяча девятьсот семидесятых",
+      "start": 2316.92,
+      "duration_sec": 5.0,
+      "props": {
+        "title": "Евгеника",
+        "events": [
+          {
+            "year": "1907",
+            "label": "США"
+          },
+          {
+            "year": "1934",
+            "label": "Швеция"
+          },
+          {
+            "year": "1939",
+            "label": "Германия"
+          },
+          {
+            "year": "1970",
+            "label": "Последние операции"
+          }
+        ],
+        "accent": "#1fa48a",
+        "energy": 0.9
+      },
+      "file": "projects\\2026-08-18_aysberg-evolyutsii-temnaya-i-zapretnaya-storona-evolyutsii-o\\assets\\overlays\\ov_053.mov"
+    },
+    {
+      "id": "ov_054",
+      "type": "stat",
+      "composition": "CountUpBar",
+      "scene_id": "scene_330",
+      "anchor": "одной тысячи двухсот восьмидесяти человек",
+      "start": 2344.2,
+      "duration_sec": 3.7,
+      "props": {
+        "value": "1280",
+        "label": "человек",
+        "suffix": "",
+        "accent": "#1fa48a",
+        "energy": 0.9,
+        "align": "left"
+      },
+      "file": "projects\\2026-08-18_aysberg-evolyutsii-temnaya-i-zapretnaya-storona-evolyutsii-o\\assets\\overlays\\ov_054.mov"
+    }
+  ]
+}

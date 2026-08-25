@@ -102,14 +102,40 @@ def run(project_dir: Path, feedback: Optional[str] = None) -> dict:
             else:
                 VoicerTTS().synthesize(full_text, voice_path)
 
-        # 2. Alignment текста к аудио — пробуем whisper, fallback на proportional
-        log.info("Alignment: запускаю whisper для точных word-timestamps...")
-        try:
-            alignment = align_with_whisper(scenes, voice_path)
-        except Exception as e:
-            log.warning(f"Whisper alignment упал ({e}), fallback на proportional")
-            alignment = align_proportional(full_text.replace(SEAM_MARKER, " "), voice_path)
-            alignment["scenes"] = proportional_scene_timings(scenes, alignment["duration"])
+        # 2. Alignment. ПРИОРИТЕТ — нативный word-level alignment от Lumean (full.align.json):
+        #    он точный и мгновенный. Whisper на CPU для 30-40-мин аудио фактически виснет
+        #    (жрёт ядра часами без вывода) — используем его только если нативного нет.
+        alignment = None
+        native_align = voice_dir / "full.align.json"
+        if native_align.exists():
+            try:
+                _nat = json.loads(native_align.read_text(encoding="utf-8"))
+                _words = _nat.get("words") or []
+                if _words:
+                    from services.stt.aligner import _map_scenes_to_whisper_words
+                    _dur = _nat.get("duration_seconds") or _nat.get("duration") or _words[-1]["end"]
+                    alignment = {
+                        "duration": round(float(_dur), 3),
+                        "method": "lumean_native",
+                        "words": _words,
+                        "sentences": _nat.get("sentences", []),
+                        "scenes": _map_scenes_to_whisper_words(scenes, _words),
+                        # аудио уже содержит [long pause] от Lumean → тайминги верны, паузы не трогаем
+                        "paused_at_levels": True,
+                    }
+                    log.info(f"Alignment: нативный Lumean ({len(_words)} слов, {float(_dur):.1f}с) — whisper пропущен")
+            except Exception as e:
+                log.warning(f"Нативный alignment не разобрался ({e}) — падаю на whisper")
+                alignment = None
+
+        if alignment is None:
+            log.info("Alignment: запускаю whisper для точных word-timestamps...")
+            try:
+                alignment = align_with_whisper(scenes, voice_path)
+            except Exception as e:
+                log.warning(f"Whisper alignment упал ({e}), fallback на proportional")
+                alignment = align_proportional(full_text.replace(SEAM_MARKER, " "), voice_path)
+                alignment["scenes"] = proportional_scene_timings(scenes, alignment["duration"])
 
         # 2b. Нормализация пауз перед level↑: если TTS оставил гигантский gap
         # (типично 5-9s после точки) — урезаем до target. Если коротко — добавляем.

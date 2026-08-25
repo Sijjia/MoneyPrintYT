@@ -1,0 +1,941 @@
+{
+  "overlays": [
+    {
+      "id": "ov_001",
+      "type": "stat",
+      "composition": "CountUpBar",
+      "scene_id": "scene_006",
+      "anchor": "пятьдесят тысяч лет назад",
+      "start": 25.32,
+      "duration_sec": 3.7,
+      "props": {
+        "value": "50000",
+        "label": "лет назад",
+        "suffix": "None"
+      }
+    },
+    {
+      "id": "ov_002",
+      "type": "stat",
+      "composition": "CountUpBar",
+      "scene_id": "scene_011",
+      "anchor": "тысяча двести восемьдесят человек",
+      "start": 61.3,
+      "duration_sec": 3.7,
+      "props": {
+        "value": "1280",
+        "label": "человек",
+        "suffix": "None"
+      }
+    },
+    {
+      "id": "ov_003",
+      "type": "timeline",
+      "composition": "Timeline",
+      "scene_id": "scene_017",
+      "anchor": "В две тысячи восьмом году",
+      "start": 90.05,
+      "duration_sec": 5.0,
+      "props": {
+        "title": "Денисова пещера",
+        "events": [
+          {
+            "year": "2008",
+            "label": "Находка фаланги"
+          },
+          {
+            "year": "2010",
+            "label": "Расшифровка ДНК"
+          },
+          {
+            "year": "2022",
+            "label": "Нобелевская премия"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ov_004",
+      "type": "stat",
+      "composition": "CountUpBar",
+      "scene_id": "scene_018",
+      "anchor": "около пятидесяти тысяч лет",
+      "start": 103.47,
+      "duration_sec": 3.7,
+      "props": {
+        "value": "50000",
+        "label": "лет",
+        "suffix": "None"
+      }
+    },
+    {
+      "id": "ov_005",
+      "type": "name",
+      "composition": "NameLabel",
+      "scene_id": "scene_019",
+      "anchor": "Сванте Паабо",
+      "start": 107.73,
+      "duration_sec": 3.7,
+      "props": {
+        "name": "Сванте Паабо",
+        "sub": "Шведский генетик"
+      }
+    },
+    {
+      "id": "ov_006",
+      "type": "name",
+      "composition": "NameLabel",
+      "scene_id": "scene_020",
+      "anchor": "денисовцев",
+      "start": 125.03,
+      "duration_sec": 3.7,
+      "props": {
+        "name": "Денисовцы",
+        "sub": "Неизвестный вид людей"
+      }
+    },
+    {
+      "id": "ov_007",
+      "type": "percent",
+      "composition": "DonutProportion",
+      "scene_id": "scene_026",
+      "anchor": "до пяти процентов генома",
+      "start": 176.78,
+      "duration_sec": 3.7,
+      "props": {
+        "percent": 5.0,
+        "label": "денисовское наследие"
+      }
+    },
+    {
+      "id": "ov_008",
+      "type": "timeline",
+      "composition": "Timeline",
+      "scene_id": "scene_031",
+      "anchor": "В две тысячи третьем году",
+      "start": 195.82,
+      "duration_sec": 5.0,
+      "props": {
+        "title": "Homo floresiensis",
+        "events": [
+          {
+            "year": "2003",
+            "label": "Находка скелетов"
+          },
+          {
+            "year": "100000",
+            "label": "Жили на острове"
+          },
+          {
+            "year": "60000",
+            "label": "Вымерли"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ov_009",
+      "type": "stat",
+      "composition": "CountUpBar",
+      "scene_id": "scene_032",
+      "anchor": "около метра",
+      "start": 209.13,
+      "duration_sec": 3.7,
+      "props": {
+        "value": "1",
+        "label": "рост",
+        "suffix": "м"
+      }
+    },
+    {
+      "id": "ov_010",
+      "type": "name",
+      "composition": "NameLabel",
+      "scene_id": "scene_033",
+      "anchor": "Homo floresiensis",
+      "start": 214.82,
+      "duration_sec": 3.7,
+      "props": {
+        "name": "Homo floresiensis",
+        "sub": "Человек флоресский"
+      }
+    },
+    {
+      "id": "ov_011",
+      "type": "stat",
+      "composition": "CountUpBar",
+      "scene_id": "scene_035",
+      "anchor": "два миллиона лет назад",
+      "start": 232.22,
+      "duration_sec": 3.7,
+      "props": {
+        "value": "2000000",
+        "label": "лет назад",
+        "suffix": "None"
+      }
+    },
+    {
+      "id": "ov_012",
+      "type": "stat",
+      "composition": "CountUpBar",
+      "scene_id": "scene_038",
+      "anchor": "пятьдесят-шестьдесят тысяч лет назад",
+      "start": 253.0,
+      "duration_sec": 3.7,
+      "props": {
+        "value": "50000",
+        "label": "лет назад",
+        "suffix": "None"
+      }
+    },
+    {
+      "id": "ov_013",
+      "type": "phrase",
+      "composition": "KineticPhrase",
+      "scene_id": "scene_046",
+      "anchor": "«пенис в двенадцать»",
+      "start": 308.73,
+      "duration_sec": 4.0,
+      "props": {
+        "phrase": "Пенис в двенадцать",
+        "highlight": [
+          0,
+          2
+        ]
+      }
+    },
+    {
+      "id": "ov_014",
+      "type": "stat",
+      "composition": "CountUpBar",
+      "scene_id": "scene_050",
+      "anchor": "каждый девяностый ребёнок",
+      "start": 354.49,
+      "duration_sec": 3.7,
+      "props": {
+        "value": "90",
+        "label": "ребёнок",
+        "suffix": "None"
+      }
+    },
+    {
+      "id": "ov_015",
+      "type": "name",
+      "composition": "NameLabel",
+      "scene_id": "scene_065",
+      "anchor": "Ampulex compressa",
+      "start": 441.76,
+      "duration_sec": 3.7,
+      "props": {
+        "name": "Ampulex compressa",
+        "sub": "Оса-изумрудная тараканья"
+      }
+    },
+    {
+      "id": "ov_016",
+      "type": "quote",
+      "composition": "QuoteCard",
+      "scene_id": "scene_067",
+      "anchor": "«поведенческой кастрацией»",
+      "start": 460.46,
+      "duration_sec": 4.5,
+      "props": {
+        "text": "Поведенческая кастрация",
+        "author": "Учёные"
+      }
+    },
+    {
+      "id": "ov_017",
+      "type": "ratio",
+      "composition": "Pictograph",
+      "scene_id": "scene_078",
+      "anchor": "каждой третьей кошке",
+      "start": 537.39,
+      "duration_sec": 3.7,
+      "props": {
+        "filled": 1,
+        "total": 3,
+        "label": "Токсоплазма в кошках"
+      }
+    },
+    {
+      "id": "ov_018",
+      "type": "name",
+      "composition": "NameLabel",
+      "scene_id": "scene_084",
+      "anchor": "кордицепса однобокого",
+      "start": 576.69,
+      "duration_sec": 3.7,
+      "props": {
+        "name": "Ophiocordyceps unilateralis",
+        "sub": "Гриб-паразит"
+      }
+    },
+    {
+      "id": "ov_019",
+      "type": "stat",
+      "composition": "CountUpBar",
+      "scene_id": "scene_088",
+      "anchor": "двадцати пяти сантиметров",
+      "start": 621.46,
+      "duration_sec": 3.7,
+      "props": {
+        "value": "25",
+        "label": "высота",
+        "suffix": "см"
+      }
+    },
+    {
+      "id": "ov_020",
+      "type": "quote",
+      "composition": "QuoteCard",
+      "scene_id": "scene_091",
+      "anchor": "«расширенным фенотипом»",
+      "start": 643.82,
+      "duration_sec": 4.5,
+      "props": {
+        "text": "Расширенный фенотип",
+        "author": "Учёные"
+      }
+    },
+    {
+      "id": "ov_021",
+      "type": "name",
+      "composition": "NameLabel",
+      "scene_id": "scene_093",
+      "anchor": "The Last of Us",
+      "start": 660.4,
+      "duration_sec": 3.7,
+      "props": {
+        "name": "The Last of Us",
+        "sub": "Игра"
+      }
+    },
+    {
+      "id": "ov_022",
+      "type": "name",
+      "composition": "NameLabel",
+      "scene_id": "scene_098",
+      "anchor": "племя форе",
+      "start": 696.08,
+      "duration_sec": 3.7,
+      "props": {
+        "name": "Племя форе",
+        "sub": "Папуа — Новая Гвинея"
+      }
+    },
+    {
+      "id": "ov_023",
+      "type": "timeline",
+      "composition": "Timeline",
+      "scene_id": "scene_101",
+      "anchor": "В тысяча девятьсот пятидесятых годах",
+      "start": 722.59,
+      "duration_sec": 5.0,
+      "props": {
+        "title": "Эпидемия куру",
+        "events": [
+          {
+            "year": "1950-е",
+            "label": "Начало эпидемии"
+          },
+          {
+            "year": "1957",
+            "label": "Открытие прионов"
+          },
+          {
+            "year": "1960-е",
+            "label": "Запрет каннибализма"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ov_024",
+      "type": "quote",
+      "composition": "QuoteCard",
+      "scene_id": "scene_101",
+      "anchor": "«куру» — «дрожь»",
+      "start": 729.09,
+      "duration_sec": 4.5,
+      "props": {
+        "text": "Куру — дрожь",
+        "author": "Местные жители"
+      }
+    },
+    {
+      "id": "ov_025",
+      "type": "percent",
+      "composition": "DonutProportion",
+      "scene_id": "scene_103",
+      "anchor": "Летальность была стопроцентной",
+      "start": 743.43,
+      "duration_sec": 3.7,
+      "props": {
+        "percent": 100.0,
+        "label": "летальность"
+      }
+    },
+    {
+      "id": "ov_026",
+      "type": "name",
+      "composition": "NameLabel",
+      "scene_id": "scene_104",
+      "anchor": "Карлтон Гайдушек",
+      "start": 757.59,
+      "duration_sec": 3.7,
+      "props": {
+        "name": "Карлтон Гайдушек",
+        "sub": "Американский вирусолог"
+      }
+    },
+    {
+      "id": "ov_027",
+      "type": "stat",
+      "composition": "CountUpBar",
+      "scene_id": "scene_108",
+      "anchor": "нескольких тысяч человек",
+      "start": 793.17,
+      "duration_sec": 3.7,
+      "props": {
+        "value": "1000",
+        "label": "погибших",
+        "suffix": "+"
+      }
+    },
+    {
+      "id": "ov_028",
+      "type": "stat",
+      "composition": "CountUpBar",
+      "scene_id": "scene_117",
+      "anchor": "сорок девять тысяч лет",
+      "start": 868.14,
+      "duration_sec": 3.7,
+      "props": {
+        "value": "49000",
+        "label": "лет назад",
+        "suffix": "None"
+      }
+    },
+    {
+      "id": "ov_029",
+      "type": "stat",
+      "composition": "CountUpBar",
+      "scene_id": "scene_117",
+      "anchor": "двенадцать особей",
+      "start": 872.91,
+      "duration_sec": 3.7,
+      "props": {
+        "value": "12",
+        "label": "неандертальцев",
+        "suffix": "None"
+      }
+    },
+    {
+      "id": "ov_030",
+      "type": "name",
+      "composition": "NameLabel",
+      "scene_id": "scene_131",
+      "anchor": "журнале Science",
+      "start": 973.12,
+      "duration_sec": 3.7,
+      "props": {
+        "name": "Science",
+        "sub": "Научный журнал"
+      }
+    },
+    {
+      "id": "ov_031",
+      "type": "stat",
+      "composition": "CountUpBar",
+      "scene_id": "scene_132",
+      "anchor": "более трёх тысяч современных людей",
+      "start": 979.35,
+      "duration_sec": 3.7,
+      "props": {
+        "value": "3000",
+        "label": "геномов",
+        "suffix": "+"
+      }
+    },
+    {
+      "id": "ov_032",
+      "type": "stat",
+      "composition": "CountUpBar",
+      "scene_id": "scene_134",
+      "anchor": "девятьсот тысяч лет назад",
+      "start": 998.65,
+      "duration_sec": 3.7,
+      "props": {
+        "value": "900000",
+        "label": "лет назад",
+        "suffix": "None"
+      }
+    },
+    {
+      "id": "ov_033",
+      "type": "percent",
+      "composition": "DonutProportion",
+      "scene_id": "scene_136",
+      "anchor": "девяносто девять процентов",
+      "start": 1021.99,
+      "duration_sec": 3.7,
+      "props": {
+        "percent": 99.0,
+        "label": "предков исчезло"
+      }
+    },
+    {
+      "id": "ov_034",
+      "type": "stat",
+      "composition": "CountUpBar",
+      "scene_id": "scene_152",
+      "anchor": "за тридцать лет до прихода Гитлера",
+      "start": 1138.39,
+      "duration_sec": 3.7,
+      "props": {
+        "value": "30",
+        "label": "лет",
+        "suffix": "None"
+      }
+    },
+    {
+      "id": "ov_035",
+      "type": "map",
+      "composition": "MapPins",
+      "scene_id": "scene_153",
+      "anchor": "штат Индиана",
+      "start": 1142.71,
+      "duration_sec": 5.0,
+      "props": {
+        "title": "Евгеника в США",
+        "places": [
+          {
+            "label": "Индиана",
+            "lat": 40.2735,
+            "lon": -86.1269
+          },
+          {
+            "label": "Виргиния",
+            "lat": 37.9268,
+            "lon": -78.0249
+          },
+          {
+            "label": "Калифорния",
+            "lat": 36.7783,
+            "lon": -119.4179
+          }
+        ]
+      }
+    },
+    {
+      "id": "ov_036",
+      "type": "stat",
+      "composition": "CountUpBar",
+      "scene_id": "scene_155",
+      "anchor": "более тридцати американских штатов",
+      "start": 1160.44,
+      "duration_sec": 3.7,
+      "props": {
+        "value": "30",
+        "label": "штатов",
+        "suffix": "+"
+      }
+    },
+    {
+      "id": "ov_037",
+      "type": "name",
+      "composition": "NameLabel",
+      "scene_id": "scene_159",
+      "anchor": "Керри Бак",
+      "start": 1182.83,
+      "duration_sec": 3.7,
+      "props": {
+        "name": "Керри Бак",
+        "sub": "Жертва стерилизации"
+      }
+    },
+    {
+      "id": "ov_038",
+      "type": "name",
+      "composition": "NameLabel",
+      "scene_id": "scene_161",
+      "anchor": "Оливер Уэнделл Холмс-младший",
+      "start": 1199.09,
+      "duration_sec": 3.7,
+      "props": {
+        "name": "Оливер Уэнделл Холмс-младший",
+        "sub": "Судья Верховного суда США"
+      }
+    },
+    {
+      "id": "ov_039",
+      "type": "quote",
+      "composition": "QuoteCard",
+      "scene_id": "scene_162",
+      "anchor": "«Трёх поколений идиотов достаточно»",
+      "start": 1207.93,
+      "duration_sec": 4.5,
+      "props": {
+        "text": "Трёх поколений идиотов достаточно",
+        "author": "Оливер Уэнделл Холмс-младший"
+      }
+    },
+    {
+      "id": "ov_040",
+      "type": "stat",
+      "composition": "CountUpBar",
+      "scene_id": "scene_164",
+      "anchor": "более шестидесяти тысяч человек",
+      "start": 1219.07,
+      "duration_sec": 3.7,
+      "props": {
+        "value": "60000",
+        "label": "стерилизовано",
+        "suffix": "+"
+      }
+    },
+    {
+      "id": "ov_041",
+      "type": "stat",
+      "composition": "CountUpBar",
+      "scene_id": "scene_165",
+      "anchor": "свыше двадцати тысяч операций",
+      "start": 1223.56,
+      "duration_sec": 3.7,
+      "props": {
+        "value": "20000",
+        "label": "операций",
+        "suffix": "+"
+      }
+    },
+    {
+      "id": "ov_042",
+      "type": "name",
+      "composition": "NameLabel",
+      "scene_id": "scene_168",
+      "anchor": "Гитлер в «Майн кампф»",
+      "start": 1241.71,
+      "duration_sec": 3.7,
+      "props": {
+        "name": "Адольф Гитлер",
+        "sub": "Майн кампф"
+      }
+    },
+    {
+      "id": "ov_043",
+      "type": "stat",
+      "composition": "CountUpBar",
+      "scene_id": "scene_170",
+      "anchor": "тысяча девятьсот восьмидесятых годах",
+      "start": 1266.84,
+      "duration_sec": 3.7,
+      "props": {
+        "value": "1980",
+        "label": "год",
+        "suffix": "None"
+      }
+    },
+    {
+      "id": "ov_044",
+      "type": "name",
+      "composition": "NameLabel",
+      "scene_id": "scene_174",
+      "anchor": "Aktion T4",
+      "start": 1285.42,
+      "duration_sec": 3.7,
+      "props": {
+        "name": "Aktion T4",
+        "sub": "Нацистская программа"
+      }
+    },
+    {
+      "id": "ov_045",
+      "type": "stat",
+      "composition": "CountUpBar",
+      "scene_id": "scene_180",
+      "anchor": "более семидесяти тысяч человек",
+      "start": 1328.81,
+      "duration_sec": 3.7,
+      "props": {
+        "value": "70000",
+        "label": "убито",
+        "suffix": "+"
+      }
+    },
+    {
+      "id": "ov_046",
+      "type": "name",
+      "composition": "NameLabel",
+      "scene_id": "scene_183",
+      "anchor": "Лебенсборн",
+      "start": 1353.69,
+      "duration_sec": 3.7,
+      "props": {
+        "name": "Лебенсборн",
+        "sub": "Нацистская программа"
+      }
+    },
+    {
+      "id": "ov_047",
+      "type": "timeline",
+      "composition": "Timeline",
+      "scene_id": "scene_193",
+      "anchor": "до тысяча девятьсот семьдесят шестого года",
+      "start": 1421.89,
+      "duration_sec": 5.0,
+      "props": {
+        "title": "Евгеника в Швеции",
+        "events": [
+          {
+            "year": "1934",
+            "label": "Закон о стерилизации"
+          },
+          {
+            "year": "1976",
+            "label": "Закрытие программы"
+          },
+          {
+            "year": "1999",
+            "label": "Признание преступлением"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ov_048",
+      "type": "ratio",
+      "composition": "Pictograph",
+      "scene_id": "scene_212",
+      "anchor": "до семнадцати женщин",
+      "start": 1586.18,
+      "duration_sec": 3.7,
+      "props": {
+        "filled": 1,
+        "total": 17,
+        "label": "мужчин к женщинам"
+      }
+    },
+    {
+      "id": "ov_049",
+      "type": "stat",
+      "composition": "CountUpBar",
+      "scene_id": "scene_235",
+      "anchor": "за последние пятьдесят лет",
+      "start": 1729.76,
+      "duration_sec": 3.7,
+      "props": {
+        "value": "50",
+        "label": "лет",
+        "suffix": "None"
+      }
+    },
+    {
+      "id": "ov_050",
+      "type": "stat",
+      "composition": "CountUpBar",
+      "scene_id": "scene_239",
+      "anchor": "почти на четверть",
+      "start": 1764.0,
+      "duration_sec": 3.7,
+      "props": {
+        "value": "25",
+        "label": "уменьшение рогов",
+        "suffix": "%"
+      }
+    },
+    {
+      "id": "ov_051",
+      "type": "percent",
+      "composition": "DonutProportion",
+      "scene_id": "scene_243",
+      "anchor": "на девяносто процентов",
+      "start": 1791.25,
+      "duration_sec": 3.7,
+      "props": {
+        "percent": 90.0,
+        "label": "падение популяции"
+      }
+    },
+    {
+      "id": "ov_052",
+      "type": "compare",
+      "composition": "BarCompare",
+      "scene_id": "scene_244",
+      "anchor": "с двух процентов до тридцати трёх",
+      "start": 1800.66,
+      "duration_sec": 4.5,
+      "props": {
+        "title": "Бесбивневые слоны",
+        "items": [
+          {
+            "label": "До войны",
+            "value": 2.0
+          },
+          {
+            "label": "После войны",
+            "value": 33.0
+          }
+        ]
+      }
+    },
+    {
+      "id": "ov_053",
+      "type": "timeline",
+      "composition": "Timeline",
+      "scene_id": "scene_254",
+      "anchor": "В тысяча девятьсот пятьдесят девятом году",
+      "start": 1848.43,
+      "duration_sec": 5.0,
+      "props": {
+        "title": "Эксперимент Беляева",
+        "events": [
+          {
+            "year": "1959",
+            "label": "Начало эксперимента"
+          },
+          {
+            "year": "1969",
+            "label": "10 поколений"
+          },
+          {
+            "year": "2019",
+            "label": "60 поколений"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ov_054",
+      "type": "name",
+      "composition": "NameLabel",
+      "scene_id": "scene_254",
+      "anchor": "Дмитрий Беляев",
+      "start": 1852.29,
+      "duration_sec": 3.7,
+      "props": {
+        "name": "Дмитрий Беляев",
+        "sub": "Советский генетик"
+      }
+    },
+    {
+      "id": "ov_055",
+      "type": "stat",
+      "composition": "CountUpBar",
+      "scene_id": "scene_262",
+      "anchor": "Через десять поколений",
+      "start": 1902.2,
+      "duration_sec": 3.7,
+      "props": {
+        "value": "10",
+        "label": "поколений",
+        "suffix": "None"
+      }
+    },
+    {
+      "id": "ov_056",
+      "type": "stat",
+      "composition": "CountUpBar",
+      "scene_id": "scene_272",
+      "anchor": "больше шестидесяти лет",
+      "start": 1947.43,
+      "duration_sec": 3.7,
+      "props": {
+        "value": "60",
+        "label": "лет",
+        "suffix": "+"
+      }
+    },
+    {
+      "id": "ov_057",
+      "type": "percent",
+      "composition": "DonutProportion",
+      "scene_id": "scene_280",
+      "anchor": "Около восьми процентов человеческого генома",
+      "start": 2013.09,
+      "duration_sec": 3.7,
+      "props": {
+        "percent": 8.0,
+        "label": "ДНК вирусов"
+      }
+    },
+    {
+      "id": "ov_058",
+      "type": "percent",
+      "composition": "DonutProportion",
+      "scene_id": "scene_281",
+      "anchor": "всего полтора процента",
+      "start": 2024.31,
+      "duration_sec": 3.7,
+      "props": {
+        "percent": 1.5,
+        "label": "человеческих генов"
+      }
+    },
+    {
+      "id": "ov_059",
+      "type": "name",
+      "composition": "NameLabel",
+      "scene_id": "scene_284",
+      "anchor": "ген синцитин",
+      "start": 2038.24,
+      "duration_sec": 3.7,
+      "props": {
+        "name": "Синцитин",
+        "sub": "Вирусный ген"
+      }
+    },
+    {
+      "id": "ov_060",
+      "type": "timeline",
+      "composition": "Timeline",
+      "scene_id": "scene_300",
+      "anchor": "В две тысячи двадцать первом году",
+      "start": 2135.09,
+      "duration_sec": 5.0,
+      "props": {
+        "title": "Химеры обезьян",
+        "events": [
+          {
+            "year": "2021",
+            "label": "Публикация работы"
+          },
+          {
+            "year": "20",
+            "label": "Дней эксперимента"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ov_061",
+      "type": "stat",
+      "composition": "CountUpBar",
+      "scene_id": "scene_303",
+      "anchor": "двадцать дней",
+      "start": 2162.58,
+      "duration_sec": 3.7,
+      "props": {
+        "value": "20",
+        "label": "дней",
+        "suffix": "None"
+      }
+    },
+    {
+      "id": "ov_062",
+      "type": "stat",
+      "composition": "CountUpBar",
+      "scene_id": "scene_330",
+      "anchor": "одной тысячи двухсот восьмидесяти человек",
+      "start": 2344.2,
+      "duration_sec": 3.7,
+      "props": {
+        "value": "1280",
+        "label": "человек",
+        "suffix": "None"
+      }
+    }
+  ],
+  "model": "google/gemini-2.5-flash",
+  "n_scenes": 317
+}

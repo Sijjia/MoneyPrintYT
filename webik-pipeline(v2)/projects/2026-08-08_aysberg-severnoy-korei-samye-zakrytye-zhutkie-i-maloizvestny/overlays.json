@@ -1,0 +1,620 @@
+{
+ "overlays": [
+  {
+   "id": "ov_001",
+   "type": "stat",
+   "composition": "RedactedDossier",
+   "scene_id": "scene_006",
+   "anchor": "тысяча девятьсот двенадцатом году",
+   "start": 21.94,
+   "duration_sec": 3.7,
+   "props": {
+    "value": "1912",
+    "label": "Время остановилось",
+    "suffix": ""
+   }
+  },
+  {
+   "id": "ov_002",
+   "type": "stat",
+   "composition": "RedactedDossier",
+   "scene_id": "scene_006",
+   "anchor": "пятьдесят одна каста",
+   "start": 27.09,
+   "duration_sec": 3.7,
+   "props": {
+    "value": "51",
+    "label": "Каст лояльности",
+    "suffix": ""
+   }
+  },
+  {
+   "id": "ov_003",
+   "type": "name",
+   "composition": "NameLabel",
+   "scene_id": "scene_021",
+   "anchor": "Юрий Ирсенович Ким",
+   "start": 119.45,
+   "duration_sec": 3.7,
+   "props": {
+    "name": "Юрий Ирсенович Ким",
+    "sub": "Ким Чен Ир · 1941"
+   }
+  },
+  {
+   "id": "ov_004",
+   "type": "stat",
+   "composition": "PropagandaPoster",
+   "scene_id": "scene_032",
+   "anchor": "тридцать восьмой параллели",
+   "start": 189.22,
+   "duration_sec": 3.7,
+   "props": {
+    "value": "38",
+    "label": "Параллель",
+    "suffix": ""
+   }
+  },
+  {
+   "id": "ov_005",
+   "type": "timeline",
+   "composition": "Timeline",
+   "scene_id": "scene_034",
+   "anchor": "четырнадцатого октября тысяча девятьсот сорок пятого года",
+   "start": 207.18,
+   "duration_sec": 5.0,
+   "props": {
+    "title": "Приход к власти",
+    "events": [
+     {
+      "year": "1945",
+      "label": "Ким Ир Сен"
+     },
+     {
+      "year": "1948",
+      "label": "КНДР"
+     }
+    ]
+   }
+  },
+  {
+   "id": "ov_006",
+   "type": "stat",
+   "composition": "PropagandaPoster",
+   "scene_id": "scene_045",
+   "anchor": "пятнадцатое апреля тысяча девятьсот двенадцатого года",
+   "start": 295.04,
+   "duration_sec": 3.7,
+   "props": {
+    "value": "1912",
+    "label": "Год рождения Ким Ир Сена",
+    "suffix": ""
+   }
+  },
+  {
+   "id": "ov_007",
+   "type": "phrase",
+   "composition": "KineticPhrase",
+   "scene_id": "scene_046",
+   "anchor": "календарю чучхе",
+   "start": 306.29,
+   "duration_sec": 4.0,
+   "props": {
+    "phrase": "Календарь чучхе",
+    "highlight": [
+     0
+    ]
+   }
+  },
+  {
+   "id": "ov_008",
+   "type": "name",
+   "composition": "NameLabel",
+   "scene_id": "scene_048",
+   "anchor": "Ким Ир Сен умер",
+   "start": 318.75,
+   "duration_sec": 3.7,
+   "props": {
+    "name": "Ким Ир Сен",
+    "sub": "Вечный президент"
+   }
+  },
+  {
+   "id": "ov_009",
+   "type": "name",
+   "composition": "NameLabel",
+   "scene_id": "scene_049",
+   "anchor": "Ким Чен Ир",
+   "start": 333.93,
+   "duration_sec": 3.7,
+   "props": {
+    "name": "Ким Чен Ир",
+    "sub": "Дорогой руководитель"
+   }
+  },
+  {
+   "id": "ov_010",
+   "type": "stat",
+   "composition": "PropagandaPoster",
+   "scene_id": "scene_055",
+   "anchor": "двадцать пять миллионов человек",
+   "start": 378.41,
+   "duration_sec": 3.7,
+   "props": {
+    "value": "25000000",
+    "label": "Население КНДР",
+    "suffix": ""
+   }
+  },
+  {
+   "id": "ov_011",
+   "type": "phrase",
+   "composition": "KineticPhrase",
+   "scene_id": "scene_075",
+   "anchor": "система сонбун",
+   "start": 497.74,
+   "duration_sec": 4.0,
+   "props": {
+    "phrase": "Система сонбун",
+    "highlight": [
+     0
+    ]
+   }
+  },
+  {
+   "id": "ov_012",
+   "type": "compare",
+   "composition": "BarCompare",
+   "scene_id": "scene_090",
+   "anchor": "от семисот граммов риса в день для высокопоставленных чиновников до девяноста граммов для нетрудоспособных жителей провинции",
+   "start": 612.17,
+   "duration_sec": 4.5,
+   "props": {
+    "title": "Дневной паёк",
+    "items": [
+     {
+      "label": "Чиновники",
+      "value": 700.0
+     },
+     {
+      "label": "Нетрудоспособные",
+      "value": 90.0
+     }
+    ]
+   }
+  },
+  {
+   "id": "ov_013",
+   "type": "phrase",
+   "composition": "KineticPhrase",
+   "scene_id": "scene_091",
+   "anchor": "Три столовых ложки",
+   "start": 619.05,
+   "duration_sec": 4.0,
+   "props": {
+    "phrase": "Три столовых ложки",
+    "highlight": [
+     0,
+     1
+    ]
+   }
+  },
+  {
+   "id": "ov_014",
+   "type": "stat",
+   "composition": "PropagandaPoster",
+   "scene_id": "scene_094",
+   "anchor": "двести десять граммов",
+   "start": 628.58,
+   "duration_sec": 3.7,
+   "props": {
+    "value": "210",
+    "label": "Паёк военнослужащего",
+    "suffix": "г"
+   }
+  },
+  {
+   "id": "ov_015",
+   "type": "name",
+   "composition": "NameLabel",
+   "scene_id": "scene_118",
+   "anchor": "Ким Чен Ир",
+   "start": 744.91,
+   "duration_sec": 3.7,
+   "props": {
+    "name": "Ким Чен Ир",
+    "sub": "Умер в 2011"
+   }
+  },
+  {
+   "id": "ov_016",
+   "type": "stat",
+   "composition": "PropagandaPoster",
+   "scene_id": "scene_135",
+   "anchor": "сто пять этажей",
+   "start": 837.64,
+   "duration_sec": 3.7,
+   "props": {
+    "value": "105",
+    "label": "Этажей отеля Рюгён",
+    "suffix": ""
+   }
+  },
+  {
+   "id": "ov_017",
+   "type": "timeline",
+   "composition": "Timeline",
+   "scene_id": "scene_137",
+   "anchor": "Стройка началась в тысяча девятьсот восемьдесят седьмом году",
+   "start": 854.36,
+   "duration_sec": 5.0,
+   "props": {
+    "title": "Отель Рюгён",
+    "events": [
+     {
+      "year": "1987",
+      "label": "Начало стройки"
+     },
+     {
+      "year": "1992",
+      "label": "Стройка встала"
+     },
+     {
+      "year": "2008",
+      "label": "Попытка оживить"
+     }
+    ]
+   }
+  },
+  {
+   "id": "ov_018",
+   "type": "stat",
+   "composition": "SurveillanceTerminal",
+   "scene_id": "scene_154",
+   "anchor": "двести двадцать тысяч жертв",
+   "start": 967.44,
+   "duration_sec": 3.7,
+   "props": {
+    "value": "220000",
+    "label": "Официальные жертвы голода",
+    "suffix": ""
+   }
+  },
+  {
+   "id": "ov_019",
+   "type": "stat",
+   "composition": "SurveillanceTerminal",
+   "scene_id": "scene_155",
+   "anchor": "двух-трёх миллионах погибших",
+   "start": 974.15,
+   "duration_sec": 3.7,
+   "props": {
+    "value": "2000000",
+    "label": "Реальные жертвы голода",
+    "suffix": "+"
+   }
+  },
+  {
+   "id": "ov_020",
+   "type": "evidence",
+   "composition": "EvidenceFrame",
+   "scene_id": "scene_161",
+   "anchor": "спутниковые снимки",
+   "start": 1006.52,
+   "duration_sec": 3.5,
+   "props": {
+    "label": "СПУТНИКОВЫЕ СНИМКИ",
+    "sub": "Ночная Корея"
+   }
+  },
+  {
+   "id": "ov_021",
+   "type": "phrase",
+   "composition": "KineticPhrase",
+   "scene_id": "scene_169",
+   "anchor": "Бюро тридцать девять",
+   "start": 1056.7,
+   "duration_sec": 4.0,
+   "props": {
+    "phrase": "Бюро тридцать девять",
+    "highlight": [
+     0,
+     1
+    ]
+   }
+  },
+  {
+   "id": "ov_022",
+   "type": "map",
+   "composition": "MapPins",
+   "scene_id": "scene_173",
+   "anchor": "экспорт в Китай, Японию, Южную Корею",
+   "start": 1089.79,
+   "duration_sec": 5.0,
+   "props": {
+    "title": "Куда экспортировали мет",
+    "places": [
+     {
+      "label": "Китай",
+      "lat": 35.8617,
+      "lon": 104.1954
+     },
+     {
+      "label": "Япония",
+      "lat": 36.2048,
+      "lon": 138.2529
+     },
+     {
+      "label": "Южная Корея",
+      "lat": 35.9078,
+      "lon": 127.7669
+     }
+    ]
+   }
+  },
+  {
+   "id": "ov_023",
+   "type": "phrase",
+   "composition": "KineticPhrase",
+   "scene_id": "scene_177",
+   "anchor": "фальшивые стодолларовые купюры качества «супернот»",
+   "start": 1114.51,
+   "duration_sec": 4.0,
+   "props": {
+    "phrase": "Фальшивые купюры «супернот»",
+    "highlight": [
+     0,
+     1
+    ]
+   }
+  },
+  {
+   "id": "ov_024",
+   "type": "name",
+   "composition": "NameLabel",
+   "scene_id": "scene_188",
+   "anchor": "Мегуми Ёкота",
+   "start": 1183.85,
+   "duration_sec": 3.7,
+   "props": {
+    "name": "Мегуми Ёкота",
+    "sub": "Похищена в 1977"
+   }
+  },
+  {
+   "id": "ov_025",
+   "type": "stat",
+   "composition": "SurveillanceTerminal",
+   "scene_id": "scene_193",
+   "anchor": "семнадцать случаев похищений",
+   "start": 1220.13,
+   "duration_sec": 3.7,
+   "props": {
+    "value": "17",
+    "label": "Официально похищено",
+    "suffix": ""
+   }
+  },
+  {
+   "id": "ov_026",
+   "type": "stat",
+   "composition": "SurveillanceTerminal",
+   "scene_id": "scene_203",
+   "anchor": "восемьдесят один миллион",
+   "start": 1285.65,
+   "duration_sec": 3.7,
+   "props": {
+    "value": "81000000",
+    "label": "Украдено у Бангладеш",
+    "suffix": "$"
+   }
+  },
+  {
+   "id": "ov_027",
+   "type": "stat",
+   "composition": "SurveillanceTerminal",
+   "scene_id": "scene_204",
+   "anchor": "двести тысяч компьютеров",
+   "start": 1294.75,
+   "duration_sec": 3.7,
+   "props": {
+    "value": "200000",
+    "label": "Атаковано WannaCry",
+    "suffix": ""
+   }
+  },
+  {
+   "id": "ov_028",
+   "type": "name",
+   "composition": "NameLabel",
+   "scene_id": "scene_206",
+   "anchor": "группой — Lazarus",
+   "start": 1301.6,
+   "duration_sec": 3.7,
+   "props": {
+    "name": "Lazarus",
+    "sub": "Хакерская группа КНДР"
+   }
+  },
+  {
+   "id": "ov_029",
+   "type": "timeline",
+   "composition": "Timeline",
+   "scene_id": "scene_219",
+   "anchor": "В две тысячи девятом году архивы КГБ Украины рассекретили документы",
+   "start": 1383.83,
+   "duration_sec": 5.0,
+   "props": {
+    "title": "Шпионаж КНДР",
+    "events": [
+     {
+      "year": "1991",
+      "label": "Распад СССР"
+     },
+     {
+      "year": "2009",
+      "label": "Рассекречены архивы КГБ"
+     }
+    ]
+   }
+  },
+  {
+   "id": "ov_030",
+   "type": "name",
+   "composition": "NameLabel",
+   "scene_id": "scene_243",
+   "anchor": "Квон Хёк",
+   "start": 1492.27,
+   "duration_sec": 3.7,
+   "props": {
+    "name": "Квон Хёк",
+    "sub": "Перебежчик из КНДР"
+   }
+  },
+  {
+   "id": "ov_031",
+   "type": "stat",
+   "composition": "RedactedDossier",
+   "scene_id": "scene_243",
+   "anchor": "лагере номер двадцать два",
+   "start": 1499.23,
+   "duration_sec": 3.7,
+   "props": {
+    "value": "22",
+    "label": "Лагерь",
+    "suffix": ""
+   }
+  },
+  {
+   "id": "ov_032",
+   "type": "evidence",
+   "composition": "EvidenceFrame",
+   "scene_id": "scene_255",
+   "anchor": "спутниковые снимки",
+   "start": 1555.95,
+   "duration_sec": 3.5,
+   "props": {
+    "label": "СПУТНИКОВЫЕ СНИМКИ",
+    "sub": "Лагерь 22"
+   }
+  },
+  {
+   "id": "ov_033",
+   "type": "phrase",
+   "composition": "KineticPhrase",
+   "scene_id": "scene_262",
+   "anchor": "наказание трёх поколений",
+   "start": 1611.77,
+   "duration_sec": 4.0,
+   "props": {
+    "phrase": "Наказание трёх поколений",
+    "highlight": [
+     0,
+     1
+    ]
+   }
+  },
+  {
+   "id": "ov_034",
+   "type": "compare",
+   "composition": "BarCompare",
+   "scene_id": "scene_282",
+   "anchor": "двадцать-сорок семей",
+   "start": 1721.26,
+   "duration_sec": 4.5,
+   "props": {
+    "title": "Инминбан",
+    "items": [
+     {
+      "label": "Семей в комитете",
+      "value": 20.0
+     },
+     {
+      "label": "Семей в комитете",
+      "value": 40.0
+     }
+    ]
+   }
+  },
+  {
+   "id": "ov_035",
+   "type": "name",
+   "composition": "NameLabel",
+   "scene_id": "scene_286",
+   "anchor": "Ким Ир Сена и Ким Чен Ира",
+   "start": 1749.2,
+   "duration_sec": 3.7,
+   "props": {
+    "name": "Ким Ир Сен и Ким Чен Ир",
+    "sub": "Портреты в каждом доме"
+   }
+  },
+  {
+   "id": "ov_036",
+   "type": "name",
+   "composition": "NameLabel",
+   "scene_id": "scene_311",
+   "anchor": "Чан Сон Тхэка",
+   "start": 1876.17,
+   "duration_sec": 3.7,
+   "props": {
+    "name": "Чан Сон Тхэк",
+    "sub": "Дядя Ким Чен Ына"
+   }
+  },
+  {
+   "id": "ov_037",
+   "type": "stat",
+   "composition": "RedactedDossier",
+   "scene_id": "scene_321",
+   "anchor": "Двадцать пять миллионов человек",
+   "start": 1944.19,
+   "duration_sec": 3.7,
+   "props": {
+    "value": "25000000",
+    "label": "Население КНДР",
+    "suffix": ""
+   }
+  },
+  {
+   "id": "ov_038",
+   "type": "stat",
+   "composition": "RedactedDossier",
+   "scene_id": "scene_331",
+   "anchor": "девяносто граммов риса",
+   "start": 2000.91,
+   "duration_sec": 3.7,
+   "props": {
+    "value": "90",
+    "label": "Дневной паёк",
+    "suffix": "г"
+   }
+  },
+  {
+   "id": "ov_burst",
+   "type": "burst",
+   "composition": "CollapseBurst",
+   "scene_id": "scene_205",
+   "start": 1298.0,
+   "duration_sec": 3.6,
+   "props": {
+    "title": "",
+    "accent": "#d92828"
+   }
+  },
+  {
+   "id": "ov_theft",
+   "type": "map",
+   "composition": "TheftRoutes",
+   "scene_id": "scene_211",
+   "start": 1329.1,
+   "duration_sec": 6.0,
+   "props": {
+    "title": "МАРШРУТЫ КРАЖ",
+    "accent": "#ff5050"
+   }
+  }
+ ],
+ "model": "google/gemini-2.5-flash",
+ "n_scenes": 316
+}
