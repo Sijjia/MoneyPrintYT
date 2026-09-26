@@ -12,6 +12,10 @@ export type IcebergIntroProps = {
   title?: string;
   sub?: string;
   accent?: string;
+  tags?: string[];        // опц.: имена сабреддитов/феноменов, медленно всплывающие в глубине (Reddit-тема)
+  levelWord?: string;     // «УРОВЕНЬ» / «LEVEL»
+  levels?: { n: string; t: string }[];   // подписи 4 уровней (n=номер, t=название)
+  durationInFrames?: number;              // чтобы длина бралась из props (calculateMetadata)
 };
 
 const rnd = (i: number, s = 1) => {
@@ -24,6 +28,9 @@ export const IcebergIntro: React.FC<IcebergIntroProps> = ({
   title = "АЙСБЕРГ",
   sub = "СЕВЕРНОЙ КОРЕИ",
   accent = PALETTE.red,
+  tags = [],
+  levelWord = "УРОВЕНЬ",
+  levels: levelsProp,
 }) => {
   const frame = useCurrentFrame();
   const { durationInFrames } = useVideoConfig();
@@ -40,7 +47,12 @@ export const IcebergIntro: React.FC<IcebergIntroProps> = ({
   // подводная часть
   const botPts = "700,470 1300,470 1250,640 1180,760 1210,900 1120,1030 980,1140 900,1030 830,900 860,760 780,640 700,470";
 
-  const levels = [
+  const LVL_Y = [640, 800, 960, 1120];
+  const DEF_LEVELS = [{ n: "1", t: "ВЕРХУШКА" }, { n: "2", t: "ВОДНАЯ ГЛАДЬ" },
+                      { n: "3", t: "ПОГРУЖЕНИЕ" }, { n: "4", t: "БЕЗДНА" }];
+  const levels = ((levelsProp && levelsProp.length ? levelsProp : DEF_LEVELS).slice(0, 4)
+    ).map((lv, i) => ({ y: LVL_Y[i], n: lv.n, t: lv.t }));
+  const _unused_levels = [
     { y: 640, n: "1", t: "ВЕРХУШКА" },
     { y: 800, n: "2", t: "ВОДНАЯ ГЛАДЬ" },
     { y: 960, n: "3", t: "ПОГРУЖЕНИЕ" },
@@ -80,12 +92,41 @@ export const IcebergIntro: React.FC<IcebergIntroProps> = ({
               <g key={i} opacity={on}>
                 <line x1="1120" y1={lv.y} x2="1560" y2={lv.y} stroke={accent} strokeWidth="2" strokeDasharray="8 6" />
                 <circle cx="1120" cy={lv.y} r="10" fill={accent} style={{ filter: `drop-shadow(0 0 8px ${accent})` }} />
-                <text x="1580" y={lv.y - 8} fill={PALETTE.cream} fontSize="30" fontWeight="800" style={{ fontFamily: fontFamily("oswald") }}>УРОВЕНЬ {lv.n}</text>
+                <text x="1580" y={lv.y - 8} fill={PALETTE.cream} fontSize="30" fontWeight="800" style={{ fontFamily: fontFamily("oswald") }}>{levelWord} {lv.n}</text>
                 <text x="1580" y={lv.y + 24} fill={accent} fontSize="22" letterSpacing="2" style={{ fontFamily: fontFamily("oswald") }}>{lv.t}</text>
               </g>
             );
           })}
         </svg>
+
+        {/* Reddit-тема: имена сабреддитов/феноменов, тускло всплывают в подводной глубине */}
+        {tags.map((tg, i) => {
+          // держим имена в теле подводного айсберга и ЛЕВЕЕ маркеров уровней (те начинаются ~x1120)
+          const col = i % 2;
+          const bx = col ? 940 : 730;
+          const by = 560 + (i / Math.max(1, tags.length)) * 570 + rnd(i, 5) * 26;
+          const app = interpolate(frame, [30 + i * 7, 60 + i * 7], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+          const fl = Math.sin((frame + i * 20) / 40) * 6;   // лёгкое всплывание
+          return (
+            <div key={`tg${i}`} style={{ position: "absolute", left: bx + rnd(i, 3) * 40, top: by + fl,
+              color: PALETTE.cream, fontSize: 25, fontWeight: 700, letterSpacing: 1, opacity: app * 0.42,
+              textShadow: `0 0 12px ${accent}88`, whiteSpace: "nowrap" }}>{tg}</div>
+          );
+        })}
+      </AbsoluteFill>
+
+      {/* дрейф частиц (планктон/пузыри) — «движение медиа» на всю глубину */}
+      <AbsoluteFill style={{ opacity: intro * 0.6, pointerEvents: "none" }}>
+        {Array.from({ length: 34 }).map((_, i) => {
+          const x = rnd(i, 7) * 100;
+          const baseY = rnd(i, 8) * 100;
+          const rise = (baseY - (frame * (0.6 + rnd(i, 9) * 0.7)) / 10) % 100;
+          const y = (rise + 100) % 100;
+          const sz = 2 + rnd(i, 10) * 4;
+          return <div key={`p${i}`} style={{ position: "absolute", left: `${x}%`, top: `${y}%`, width: sz, height: sz,
+            borderRadius: "50%", background: i % 5 === 0 ? accent : "#bfe0f0", opacity: 0.18 + rnd(i, 11) * 0.22,
+            filter: "blur(0.5px)" }} />;
+        })}
       </AbsoluteFill>
 
       {/* туман у воды + виньетка */}

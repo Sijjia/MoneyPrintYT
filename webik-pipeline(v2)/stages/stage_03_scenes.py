@@ -197,10 +197,35 @@ def run(project_dir: Path, feedback: Optional[str] = None) -> dict:
         raise
 
 
+_LVL_ORD = {1: "Первый", 2: "Второй", 3: "Третий", 4: "Четвёртый", 5: "Пятый"}
+_ORD_TO_NUM = {"первый": 1, "второй": 2, "третий": 3, "четвёртый": 4, "четвертый": 4, "пятый": 5}
+
+
 def _level_announce_text(title: str) -> str:
-    """«ПЕРВЫЙ УРОВЕНЬ. ВЕРХУШКА АЙСБЕРГА» → «Первый уровень. Верхушка айсберга.»"""
-    parts = [p.strip().capitalize() for p in title.split(".") if p.strip()]
-    return ". ".join(parts) + "." if parts else title
+    """Озвучка объявления уровня: «Первый уровень. Верхушка айсберга.» (порядковое, НЕ «Уровень один»).
+    Понимает и «УРОВЕНЬ 1: ИМЯ», и «ПЕРВЫЙ УРОВЕНЬ. ИМЯ»."""
+    import re
+    t = title.strip()
+    num = None
+    m = re.search(r"\b(\d+)\b", t)
+    if m:
+        num = int(m.group(1))
+    else:
+        for w, n in _ORD_TO_NUM.items():
+            if re.search(rf"\b{w}\b", t, re.I):
+                num = n
+                break
+    # имя уровня — то, что после ':' либо после слова «уровень …»
+    if ":" in t:
+        name = t.split(":", 1)[1]
+    else:
+        name = re.sub(r"(?i)\b(первый|второй|третий|четвёртый|четвертый|пятый)?\s*уровень\b\.?\s*\d*", "", t)
+    name = name.strip(" .:—-").capitalize()
+    if num in _LVL_ORD and name:
+        return f"{_LVL_ORD[num]} уровень. {name}."
+    # фолбэк: прежнее поведение
+    parts = [p.strip().capitalize() for p in t.split(".") if p.strip()]
+    return ". ".join(parts) + "." if parts else t
 
 
 def _theme_announce_text(title: str) -> str:
@@ -279,9 +304,13 @@ def _split_script_sections(script_text: str) -> list:
         if ln.startswith("## "):
             _flush(cur)
             header = ln[3:].strip()
-            if "ЗАКЛЮЧ" in header.upper():
+            hu = header.upper()
+            if "ЗАКЛЮЧ" in hu:
                 cur = {"level": max(level_counter, 1), "section": "outro",
                        "label": "заключение", "lines": [ln]}
+            elif any(k in hu for k in ("ВСТУПЛЕНИ", "ВВЕДЕНИ", "INTRO", "ХУК")):
+                # интро-заголовок — НЕ уровень (иначе метки уровней сдвигаются на один)
+                cur = {"level": 0, "section": "intro", "label": "intro", "lines": [ln]}
             else:
                 level_counter += 1
                 cur_level = level_counter

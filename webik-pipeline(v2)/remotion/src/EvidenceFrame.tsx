@@ -11,7 +11,7 @@ import {
 import { PALETTE, fontFamily, FontName } from "./theme";
 
 export type EvidenceFrameProps = {
-  /** Метка-штамп, напр. "АРХИВ", "ДОКУМЕНТ", "ФОТО". */
+  /** Метка-штамп, напр. "ARCHIVE", "ДОКУМЕНТ", "ФОТО". */
   label?: string;
   /** Подпись под штампом: дата/место/источник. */
   sub?: string;
@@ -65,7 +65,7 @@ const Corner: React.FC<{ corner: "tl" | "tr" | "bl" | "br"; g: number; color: st
 
 // Архивный приём: подать кадр как вещдок — уголки-рамка + штамп + скан-линии.
 export const EvidenceFrame: React.FC<EvidenceFrameProps> = ({
-  label = "АРХИВ",
+  label = "ARCHIVE",
   sub = "",
   bgImage = null,
   accent = PALETTE.red,

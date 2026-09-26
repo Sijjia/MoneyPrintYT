@@ -34,7 +34,7 @@ sys.path.insert(0, str(ROOT))
 from PIL import Image, ImageDraw, ImageFont, ImageFilter  # noqa
 
 # ── ЕДИНЫЙ СТИЛЬ ТЕКСТА КАНАЛА (менять тут — меняется на всех превью разом) ────
-FONT_PATH = r"C:\Windows\Fonts\seguibl.ttf"   # Segoe UI Black, полная кириллица
+FONT_PATH = str(ROOT / "assets" / "thumb_fonts" / "RobotoCondensed-Bold.ttf")  # Roboto Condensed Bold — как в опубл. Айсберг ГТА/Reddit (жирный, умеренно узкий, кириллица)
 COLOR_TOP = (255, 255, 255)                   # верхнее слово — белое
 COLOR_BOT = (226, 8, 8)                       # нижнее слово — красное
 W4K, H4K = 3840, 2160
@@ -97,16 +97,30 @@ def render_text(base_path: Path, top: str, bot: str, out_path: Path):
     im = Image.open(base_path).convert("RGBA")
     if im.size != (W4K, H4K):
         im = im.resize((W4K, H4K), Image.LANCZOS)
+    # гарантийный «поярче/поконтрастнее/понасыщеннее» пас (Айдар: превью каждый раз слишком тёмные)
+    from PIL import ImageEnhance
+    rgb = im.convert("RGB")
+    rgb = ImageEnhance.Brightness(rgb).enhance(1.12)
+    rgb = ImageEnhance.Contrast(rgb).enhance(1.18)
+    rgb = ImageEnhance.Color(rgb).enhance(1.18)
+    im = rgb.convert("RGBA")
     probe = ImageDraw.Draw(im)
-    maxw = int(W4K * 0.52)
-    f_top = _fit(probe, top, maxw, cap=350)
-    f_bot = _fit(probe, bot, maxw, cap=420)
-    x = 120
-    sw_t, sw_b = max(3, f_top.size // 22), max(3, f_bot.size // 22)
+    # КРУПНЫЙ текст (как «Айсберг ГТА/Reddit»); можно переопределить env-ами
+    maxw = int(W4K * float(os.environ.get("TXT_MAXW", "0.56")))
+    cap_top = int(os.environ.get("TXT_CAP_TOP", "470"))
+    cap_bot = int(os.environ.get("TXT_CAP_BOT", "560"))
+    vcenter = float(os.environ.get("TXT_VCENTER", "0.50"))  # доля высоты — центр текстового блока
+    f_top = _fit(probe, top, maxw, cap=cap_top)
+    f_bot = _fit(probe, bot, maxw, cap=cap_bot)
+    x = 110
+    sw_t, sw_b = max(3, f_top.size // 20), max(3, f_bot.size // 20)
     tb = probe.textbbox((0, 0), top, font=f_top, stroke_width=sw_t)
     bb = probe.textbbox((0, 0), bot, font=f_bot, stroke_width=sw_b)
-    y_bot = H4K - 150 - (bb[3] - bb[1])
-    y_top = y_bot - (tb[3] - tb[1]) - int(f_top.size * 0.16)
+    th, bh = tb[3] - tb[1], bb[3] - bb[1]
+    gap = int(f_top.size * 0.14)
+    block_h = th + gap + bh
+    y_top = int(H4K * vcenter - block_h / 2)          # блок центрируем по высоте
+    y_bot = y_top + th + gap
     top_xy = (x, y_top - tb[1])
     # нижнее слово центрируем по горизонтальному центру слова АЙСБЕРГ (не уводим вправо)
     top_cx = x + (tb[0] + tb[2]) / 2
@@ -134,14 +148,15 @@ def render_text(base_path: Path, top: str, bot: str, out_path: Path):
 # ── стиль-преамбула + концепты ───────────────────────────────────────────────
 STYLE = (
     "Professional 4K (3840x2160, strict 16:9) YouTube thumbnail. PHOTOREALISTIC documentary "
-    "photography — looks like a REAL photograph, not CGI, not 3D render, not illustration, not cartoon. "
-    "DARK and GRIM mood: low-key lighting, heavy deep shadows, muted desaturated colors, subtle film "
-    "grain, cold and unsettling, cinematic horror-documentary. NO neon, NO glowing saturated colors, "
-    "NO glossy plastic look. Composition like the reference: LEFT HALF a massive photorealistic ICEBERG "
-    "(peak above the near-black ocean and the huge submerged mass below the waterline, cold desaturated "
-    "blue-grey, very dark). A subtle vertical seam down the center blends the cold-dark-blue left into a "
-    "shadow-heavy, near-black right side lit by a single dim hard light (grim, cold, understated — NOT "
-    "bright, NOT crimson, NOT neon). "
+    "photography — looks like a REAL sharp high-detail photograph, not CGI, not 3D render, not "
+    "illustration, not cartoon. BRIGHT, PUNCHY and HIGH-CONTRAST, vivid saturated colors, crisp and "
+    "clean, strong dramatic KEY LIGHT hitting the main subject so it POPS and reads instantly even as a "
+    "small thumbnail — cinematic but eye-catching, NOT dark, NOT murky, NOT washed-out, NOT muddy. "
+    "Composition like the reference: LEFT HALF a massive photorealistic ICEBERG (bright sunlit peak above "
+    "a deep-blue ocean and the huge submerged mass below the waterline, vivid turquoise-blue, clearly "
+    "visible and well-lit). A vertical seam down the center blends the bright-blue left into a colorful, "
+    "well-lit right side where the themed subject is BRIGHTLY lit and fully visible (rich color, strong "
+    "highlights, clear detail — never sinking into black). Overall exposure bright and lively. "
 )
 NO_TEXT = (
     "ABSOLUTELY NO text, letters, words, captions, numbers or watermark anywhere in the image. "

@@ -1,75 +1,58 @@
-"""Ставит отрендеренное интро на V3 вместо стоков scene_001..004.
-
-Интро (remotion IntroFootage) уже синхронизировано по словам из assets/alignment.json
-и само содержит всю графику первых 55 секунд, поэтому старые кино-оверлеи V8,
-попадающие в эту зону, снимаются — иначе они лягут поверх интро.
-"""
-import sys
+"""Кинематографичное интро: рендер IcebergIntro (Reddit-тема: айсберг+ныряющая камера+4 уровня+
+всплывающие имена сабреддитов+дрейф частиц) и overwrite на V3 поверх сцен 001-004. Premiere открыт."""
+import json, os, subprocess, sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT))
 import pymiere
 from pymiere.wrappers import time_from_seconds
+from services.premiere_template.timeline_ops import import_media
 
-from services.premiere.effects import apply_dip_to_black_fade, find_clip_by_timeline_start, mute_linked_audio
-from services.premiere_template.media_swap import ensure_premiere_open
-from services.premiere_template.timeline_ops import clear_zone_es, import_media
+P = ROOT / "projects" / "2026-09-13_aysberg-reddit-strannaya-i-trevozhnaya-storona"
+REMOTION = ROOT / "remotion"
+GFX = P / "assets" / "gfx"; GFX.mkdir(parents=True, exist_ok=True)
+MANIFEST = P / "assets" / "images" / "manifest.json"
+FPS = 30
+END = 20.30   # конец сцены 004 (конец интро-нарратива), начало с 0.0
 
-PROJECT_DIR = (Path(__file__).resolve().parent.parent / "projects"
-               / "2026-07-04_aysberg-religioznogo-terrora-samye-zhestkie-i-maloizvestnye-")
-PRPROJ = PROJECT_DIR / "project_template.prproj"
-INTRO_DIR = PROJECT_DIR / "assets" / "intro"
-# Premiere держит уже импортированный файл — каждый новый рендер кладём под новым именем,
-# берём самый свежий
-_variants = sorted(INTRO_DIR.glob("intro_*.mov"), key=lambda p: p.stat().st_mtime)
-INTRO = _variants[-1] if _variants else INTRO_DIR / "intro_main.mov"
-
-BODY_TRACK = 2      # V3 — основной видеослой
-OVERLAY_TRACK = 7   # V8 — кино-оверлеи
-OVERLAY_AUDIO = 10  # A11 — связанный звук оверлеев
-
-INTRO_END = 58.40   # до карточки уровня (scene_005 @58.52)
-ZONE = 58.0
+TAGS = ["r/nosleep", "Эффект Манделы", "This Man", "Backrooms", "Cicada 3301", "r/A858",
+        "11B-X-1371", "Blue Whale", "«Момо»", "9MOTHER9HORSE9EYES9", "Lake City Quiet Pills",
+        "Swamps of Dagobah"]
 
 
 def main() -> int:
-    if not INTRO.exists():
-        print(f"нет файла интро: {INTRO}")
-        return 1
-    ensure_premiere_open(PRPROJ)
+    frames = round(END * FPS)
+    props = {"title": "АЙСБЕРГ", "sub": "REDDIT", "accent": "#ff4500", "tags": TAGS,
+             "durationInFrames": frames}
+    pf = REMOTION / "_intro_reddit.json"; pf.write_text(json.dumps(props, ensure_ascii=False), encoding="utf-8")
+    out = GFX / "intro_reddit.mp4"
+    if out.exists():
+        out.unlink()
+    print(f"рендер IcebergIntro {END:.1f}с ({frames}f)…", flush=True)
+    r = subprocess.run(f'npx remotion render IcebergIntro "{os.path.relpath(out,REMOTION).replace(os.sep,"/")}" '
+                       f'--props="{os.path.relpath(pf,REMOTION).replace(os.sep,"/")}" --codec=h264 --muted --log=error',
+                       cwd=str(REMOTION), shell=True, capture_output=True, text=True)
+    pf.unlink(missing_ok=True)
+    if not (out.exists() and out.stat().st_size > 80000):
+        print(f"✗ рендер упал: {r.stderr[-500:]}"); return 1
+
     seq = pymiere.objects.app.project.activeSequence
-    print(f"секвенция: {seq.name}")
-
-    print(f"[1] снимаем старые клипы из зоны 0-{ZONE:.0f}с")
-    for kind, idx, label in (("videoTracks", BODY_TRACK, "V3"),
-                             ("videoTracks", OVERLAY_TRACK, "V8"),
-                             ("audioTracks", OVERLAY_AUDIO, "A11")):
-        print(f"    {label}: снято {clear_zone_es(kind, idx, ZONE)}")
-
-    print("[2] импорт интро")
-    item = import_media(INTRO)
+    v3 = seq.videoTracks[2]
+    item = import_media(out.resolve())
     if item is None:
-        print("не удалось импортировать интро")
-        return 1
-
-    print("[3] укладка на V3 @ 0.00")
-    v3 = seq.videoTracks[BODY_TRACK]
+        print("✗ import"); return 1
     v3.overwriteClip(item, time_from_seconds(0.0))
-    clip = find_clip_by_timeline_start(v3, 0.0)
-    if clip is None:
-        print("клип не найден после укладки")
-        return 1
-    if clip.end.seconds > INTRO_END + 0.05:
-        clip.end = time_from_seconds(INTRO_END)
-    mute_linked_audio(clip)
-    # проявление уже внутри самого интро — гасим только хвост перед карточкой уровня
-    apply_dip_to_black_fade(clip, fade_in_sec=0.0, fade_out_sec=0.4, do_fade_in=False, do_fade_out=True)
-    print(f"    интро 0.00-{clip.end.seconds:.2f}")
 
+    man = json.loads(MANIFEST.read_text(encoding="utf-8"))
+    for n in (1, 2, 3, 4):
+        man[f"scene_{n:03d}"] = {"path": str(out.resolve()), "query": "intro: IcebergIntro Reddit",
+                                 "kind": "video", "source": "gfx-intro"}
+    MANIFEST.write_text(json.dumps(man, ensure_ascii=False, indent=1), encoding="utf-8")
     pymiere.objects.app.project.save()
-    print("проект сохранён")
+    print(f"✓ интро уложено на V3 0:00–{int(END//60)}:{int(END%60):02d} ({frames}f), сохранено", flush=True)
     return 0
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    sys.exit(main())

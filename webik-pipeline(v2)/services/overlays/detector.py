@@ -360,6 +360,7 @@ def detect_overlays(
     min_gap_sec: float = 12.0,
     type_caps: Optional[Dict[str, int]] = None,
     model: str = DETECT_MODEL,
+    system: str = SYSTEM,
 ) -> Dict[str, Any]:
     """Главный вход. Возвращает {"overlays": [...]} готовый к рендеру.
 
@@ -377,7 +378,7 @@ def detect_overlays(
     llm = ClaudeService(model=model)
     prompt = _build_prompt(rows, max_per_level)
     # низкая температура — стабильный набор между прогонами (меньше «пропаданий»)
-    data = llm.call_json(prompt, max_tokens=8000, temperature=0.15, system=SYSTEM)
+    data = llm.call_json(prompt, max_tokens=16000, temperature=0.15, system=system)
 
     raw = data.get("overlays", data) if isinstance(data, dict) else data
     if not isinstance(raw, list):

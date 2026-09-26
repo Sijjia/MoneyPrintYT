@@ -1,0 +1,33 @@
+"""Экспорт активной секвенции «Айсберг Reddit» (RU) в H.264 1080p (High Quality 1080 HD) → E:\\...\\_RU.mp4.
+Premiere открыт. exportAsMediaDirect блокирует до конца рендера (~15-20 мин для 25:48)."""
+import sys, time
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+import pymiere
+
+PRESET = r"C:\Program Files\Adobe\Adobe Premiere Pro 2025\CEP\extensions\com.adobe.frameio.v4\assets\epr\High Quality 1080 HD.epr"
+OUT = r"E:\video for ytb\Webik\Айсберг Reddit\Айсберг Reddit_RU.mp4"
+WORKAREA_ENTIRE = 0
+
+
+def main() -> int:
+    if not Path(PRESET).exists():
+        print("НЕТ пресета:", PRESET); return 1
+    seq = pymiere.objects.app.project.activeSequence
+    print(f"секвенция: {seq.name} → {OUT}", flush=True)
+    try:
+        pymiere.core.eval_script('app.project.save();"OK"')
+    except Exception:
+        pass
+    t0 = time.time()
+    ok = seq.exportAsMediaDirect(OUT, PRESET, WORKAREA_ENTIRE)
+    dt = time.time() - t0
+    out = Path(OUT)
+    size = out.stat().st_size // (1024 * 1024) if out.exists() else 0
+    print(f"РЕНДЕР ГОТОВ за {dt/60:.1f}мин | файл {'есть' if out.exists() else 'НЕТ'} {size}MB | ret={ok}", flush=True)
+    return 0 if out.exists() and size > 1 else 1
+
+
+if __name__ == "__main__":
+    sys.exit(main())

@@ -73,7 +73,7 @@ def run(
         })
 
         log.info("Отправляю запрос в Claude...")
-        outline = claude.call_json(prompt, max_tokens=8000, temperature=1.0)
+        outline = claude.call_json(prompt, max_tokens=16000, temperature=1.0)
 
         # Валидация структуры
         _validate_outline(outline, expected_levels=levels)

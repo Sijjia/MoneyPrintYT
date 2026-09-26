@@ -14,6 +14,23 @@ import { TuskErosion } from "./TuskErosion";
 import { RatioViz17 } from "./RatioViz17";
 import { PrionBrain } from "./PrionBrain";
 import { LastHuman } from "./LastHuman";
+import { CancelledDossier } from "./CancelledDossier";
+import { FilmStrip } from "./FilmStrip";
+import { DramaFreeze } from "./DramaFreeze";
+import { MoneyCounter } from "./MoneyCounter";
+import { NewsHeadline } from "./NewsHeadline";
+import { QuoteCardDW } from "./QuoteCardDW";
+import { UncannyCGI } from "./UncannyCGI";
+import { SplitCompare } from "./SplitCompare";
+import { StudioTimeline } from "./StudioTimeline";
+import { GlitchLeak } from "./GlitchLeak";
+import { Mascot } from "./Mascot";
+import { GTARecordsStage } from "./GTARecordsStage";
+import { BigfootHunt } from "./BigfootHunt";
+import { UFOScene } from "./UFOScene";
+import { KurtajHack } from "./KurtajHack";
+import { MascotOutro } from "./MascotOutro";
+import { PortraitQuote } from "./PortraitQuote";
 import { NameLabel } from "./NameLabel";
 import { KineticPhrase } from "./KineticPhrase";
 import { EvidenceFrame } from "./EvidenceFrame";
@@ -21,6 +38,15 @@ import { CountUpBar } from "./CountUpBar";
 import { BarCompare } from "./BarCompare";
 import { PropagandaPoster } from "./PropagandaPoster";
 import { SurveillanceTerminal } from "./SurveillanceTerminal";
+import { ARGSignal } from "./ARGSignal";
+import { BreakingAlert } from "./BreakingAlert";
+import { AccountHijack } from "./AccountHijack";
+import { StolenCounter } from "./StolenCounter";
+import { BeamingTrade } from "./BeamingTrade";
+import { NewsAlert } from "./NewsAlert";
+import { LaunderFlow } from "./LaunderFlow";
+import { RobloxTimeline } from "./RobloxTimeline";
+import { MythReveal } from "./MythReveal";
 import { RedactedDossier } from "./RedactedDossier";
 import { PropagandaHall } from "./PropagandaHall";
 import { SurveillanceGrid } from "./SurveillanceGrid";
@@ -32,11 +58,31 @@ import { AbyssDescent } from "./AbyssDescent";
 import { CyberIntrusion } from "./CyberIntrusion";
 import { ForcedMourning } from "./ForcedMourning";
 import { IronCells } from "./IronCells";
+import { RedditThread } from "./RedditThread";
+import { GangesGhats } from "./GangesGhats";
+import { NagaUnderworld } from "./NagaUnderworld";
+import { SkeletonLake } from "./SkeletonLake";
+import { FortCurse } from "./FortCurse";
+import { VaultDoorB } from "./VaultDoorB";
+import { ThugStrangler } from "./ThugStrangler";
+import { KumbhaMela } from "./KumbhaMela";
+import { RatTemple } from "./RatTemple";
+import { TwinVillage } from "./TwinVillage";
+import { BirdFall } from "./BirdFall";
+import { GuruDossier } from "./GuruDossier";
+import { KarniCurse } from "./KarniCurse";
+import { SentinelIsland } from "./SentinelIsland";
+import { CrowdSilhouette } from "./CrowdSilhouette";
+import { EnumShowcase } from "./EnumShowcase";
+import { HexCipher } from "./HexCipher";
+import { LiminalSpace } from "./LiminalSpace";
+import { DocuFrame } from "./DocuFrame";
 import { RationHunger } from "./RationHunger";
 import { Abduction } from "./Abduction";
 import { TheftRoutes } from "./TheftRoutes";
 import { CollapseBurst } from "./CollapseBurst";
 import { IcebergIntro } from "./IcebergIntro";
+import { OutroReflection } from "./OutroReflection";
 import { Pictograph } from "./Pictograph";
 import { DonutProportion } from "./DonutProportion";
 import { Timeline } from "./Timeline";
@@ -160,6 +206,87 @@ export const RemotionRoot: React.FC = () => {
         width={W}
         height={H}
         defaultProps={{ value: "81000000", label: "украдено", suffix: " $" }}
+      />
+      <Composition
+        id="BreakingAlert"
+        component={BreakingAlert}
+        durationInFrames={150}
+        fps={30}
+        width={W}
+        height={H}
+        defaultProps={{ kicker: "СРОЧНО", headline: "БОСТОН ПАРАЛИЗОВАН: ПОДОЗРИТЕЛЬНЫЕ УСТРОЙСТВА В 10 ГОРОДАХ", cities: 10, reveal: "Это была реклама мультфильма про говорящую котлету.", stamp: "ЭТО БЫЛА РЕКЛАМА", showMooninite: true }}
+      />
+      <Composition
+        id="AccountHijack"
+        component={AccountHijack}
+        durationInFrames={150}
+        fps={30}
+        width={W}
+        height={H}
+        defaultProps={{ caption: "Украденный cookie даёт вход в обход пароля и 2FA.", target: "victim_2007", mode: "hijack" }}
+      />
+      <Composition
+        id="StolenCounter"
+        component={StolenCounter}
+        durationInFrames={140}
+        fps={30}
+        width={W}
+        height={H}
+        defaultProps={{ value: 610000, prefix: "", suffix: "", label: "УГНАНО АККАУНТОВ", sub: "за три месяца", caption: "Прибыль хакеров — около двухсот двадцати пяти тысяч долларов." }}
+      />
+      <Composition
+        id="BeamingTrade"
+        component={BeamingTrade}
+        durationInFrames={140}
+        fps={30}
+        width={W}
+        height={H}
+        defaultProps={{ itemName: "Sparkle Time Fedora", itemSub: "LIMITED · MIDNIGHT BLUE", price: "$13 605", caption: "Один краденый предмет — тринадцать тысяч долларов реальных денег." }}
+      />
+      <Composition
+        id="NewsAlert"
+        component={NewsAlert}
+        durationInFrames={140}
+        fps={30}
+        width={W}
+        height={H}
+        defaultProps={{ kicker: "АРЕСТ", headline: "ПОЛИЦИЯ ЛЬВОВА ЗАДЕРЖАЛА ТРОИХ ХАКЕРОВ ROBLOX", outlet: "BleepingComputer", location: "Львов, Украина", caption: "Скомпрометировано 610 000 аккаунтов, прибыль ~$225 000." }}
+      />
+      <Composition
+        id="LaunderFlow"
+        component={LaunderFlow}
+        durationInFrames={150}
+        fps={30}
+        width={W}
+        height={H}
+        defaultProps={{ caption: "Roblox зарабатывает свои тридцать процентов на каждой транзакции в цепочке." }}
+      />
+      <Composition
+        id="RobloxTimeline"
+        component={RobloxTimeline}
+        durationInFrames={160}
+        fps={30}
+        width={W}
+        height={H}
+        defaultProps={{ caption: "От DynaBlocks до платформы с миллиардом пользователей." }}
+      />
+      <Composition
+        id="MythReveal"
+        component={MythReveal}
+        durationInFrames={150}
+        fps={30}
+        width={W}
+        height={H}
+        defaultProps={{ subject: "Bigfoot", myth: "В San Andreas якобы спрятан снежный человек — его искали годами.", truth: "Его там никогда не было. Все скриншоты — моды и фотошоп.", caption: "Rockstar подтвердила: Bigfoot в игре нет." }}
+      />
+      <Composition
+        id="ARGSignal"
+        component={ARGSignal}
+        durationInFrames={150}
+        fps={30}
+        width={W}
+        height={H}
+        defaultProps={{ mode: "signal", caption: "Скрытые сайты, коды, послания в эфире.", code: "as://hidden/delilah" }}
       />
       <Composition
         id="RedactedDossier"
@@ -304,6 +431,18 @@ export const RemotionRoot: React.FC = () => {
         width={W}
         height={H}
         defaultProps={{ title: "АЙСБЕРГ", sub: "СЕВЕРНОЙ КОРЕИ" }}
+        calculateMetadata={({ props }) => ({
+          durationInFrames: (props as { durationInFrames?: number }).durationInFrames ?? 450,
+        })}
+      />
+      <Composition
+        id="OutroReflection"
+        component={OutroReflection}
+        durationInFrames={2037}
+        fps={30}
+        width={W}
+        height={H}
+        defaultProps={{ shots: [], accent: "#ff4500", brand: "REDDIT", riseFrom: 440 }}
       />
 
       <Composition
@@ -753,6 +892,114 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="LastHuman" component={LastHuman} durationInFrames={270} fps={30} width={W} height={H}
         calculateMetadata={({ props }: any) => (props?.durationInFrames ? { durationInFrames: props.durationInFrames } : {})}
         defaultProps={{ title: "МЫ ОСТАЛИСЬ ОДНИ", sub: "потому что были опаснее", accent: "#1fa48a" }} />
+      <Composition id="Mascot" component={Mascot} durationInFrames={180} fps={30} width={W} height={H}
+        calculateMetadata={({ props }: any) => (props?.durationInFrames ? { durationInFrames: props.durationInFrames } : {})}
+        defaultProps={{ position: "left", scale: 0.9, jitter: 1, accent: "#e2080d" }} />
+      <Composition id="GTARecordsStage" component={GTARecordsStage} durationInFrames={1600} fps={30} width={W} height={H}
+        calculateMetadata={({ props }: any) => (props?.durationInFrames ? { durationInFrames: props.durationInFrames } : {})}
+        defaultProps={{ accent: "#ff2d78", accent2: "#25e0c8", segments: [] }} />
+      <Composition id="BigfootHunt" component={BigfootHunt} durationInFrames={2300} fps={30} width={W} height={H}
+        calculateMetadata={({ props }: any) => (props?.durationInFrames ? { durationInFrames: props.durationInFrames } : {})}
+        defaultProps={{ accent: "#8be04e", segments: [] }} />
+      <Composition id="UFOScene" component={UFOScene} durationInFrames={1900} fps={30} width={W} height={H}
+        calculateMetadata={({ props }: any) => (props?.durationInFrames ? { durationInFrames: props.durationInFrames } : {})}
+        defaultProps={{ accent: "#5ef0c8", segments: [] }} />
+      <Composition id="KurtajHack" component={KurtajHack} durationInFrames={2250} fps={30} width={W} height={H}
+        calculateMetadata={({ props }: any) => (props?.durationInFrames ? { durationInFrames: props.durationInFrames } : {})}
+        defaultProps={{ accent: "#37e0a0", segments: [] }} />
+      <Composition id="MascotOutro" component={MascotOutro} durationInFrames={640} fps={30} width={W} height={H}
+        calculateMetadata={({ props }: any) => (props?.durationInFrames ? { durationInFrames: props.durationInFrames } : {})}
+        defaultProps={{ accent: "#ff2d55", segments: [] }} />
+      <Composition id="PortraitQuote" component={PortraitQuote} durationInFrames={180} fps={30} width={W} height={H}
+        calculateMetadata={({ props }: any) => (props?.durationInFrames ? { durationInFrames: props.durationInFrames } : {})}
+        defaultProps={{ photo: "portrait/katzenberg.jpg", accent: "#d9282f" }} />
+      <Composition id="CancelledDossier" component={CancelledDossier} durationInFrames={240} fps={30} width={W} height={H}
+        calculateMetadata={({ props }: any) => (props?.durationInFrames ? { durationInFrames: props.durationInFrames } : {})}
+        defaultProps={{ videoSrc: "videos/dw_boo.mp4", accent: "#d9282f" }} />
+      <Composition id="FilmStrip" component={FilmStrip} durationInFrames={210} fps={30} width={W} height={H}
+        calculateMetadata={({ props }: any) => (props?.durationInFrames ? { durationInFrames: props.durationInFrames } : {})}
+        defaultProps={{ videoSrc: "videos/dw_boo.mp4", accent: "#d9282f" }} />
+      <Composition id="DramaFreeze" component={DramaFreeze} durationInFrames={180} fps={30} width={W} height={H}
+        calculateMetadata={({ props }: any) => (props?.durationInFrames ? { durationInFrames: props.durationInFrames } : {})}
+        defaultProps={{ videoSrc: "videos/dw_boo.mp4", accent: "#d9282f" }} />
+      <Composition id="MoneyCounter" component={MoneyCounter} durationInFrames={210} fps={30} width={W} height={H}
+        calculateMetadata={({ props }: any) => (props?.durationInFrames ? { durationInFrames: props.durationInFrames } : {})}
+        defaultProps={{ accent: "#d9282f" }} />
+      <Composition id="NewsHeadline" component={NewsHeadline} durationInFrames={210} fps={30} width={W} height={H}
+        calculateMetadata={({ props }: any) => (props?.durationInFrames ? { durationInFrames: props.durationInFrames } : {})}
+        defaultProps={{ accent: "#d9282f" }} />
+      <Composition id="QuoteCardDW" component={QuoteCardDW} durationInFrames={210} fps={30} width={W} height={H}
+        calculateMetadata={({ props }: any) => (props?.durationInFrames ? { durationInFrames: props.durationInFrames } : {})}
+        defaultProps={{ accent: "#d9282f" }} />
+      <Composition id="UncannyCGI" component={UncannyCGI} durationInFrames={180} fps={30} width={W} height={H}
+        calculateMetadata={({ props }: any) => (props?.durationInFrames ? { durationInFrames: props.durationInFrames } : {})}
+        defaultProps={{ videoSrc: "videos/dw_boo.mp4", accent: "#7fd14f" }} />
+      <Composition id="SplitCompare" component={SplitCompare} durationInFrames={200} fps={30} width={W} height={H}
+        calculateMetadata={({ props }: any) => (props?.durationInFrames ? { durationInFrames: props.durationInFrames } : {})}
+        defaultProps={{ videoSrc: "videos/dw_boo.mp4", accent: "#d9282f" }} />
+      <Composition id="StudioTimeline" component={StudioTimeline} durationInFrames={240} fps={30} width={W} height={H}
+        calculateMetadata={({ props }: any) => (props?.durationInFrames ? { durationInFrames: props.durationInFrames } : {})}
+        defaultProps={{ accent: "#d9282f" }} />
+      <Composition id="GlitchLeak" component={GlitchLeak} durationInFrames={180} fps={30} width={W} height={H}
+        calculateMetadata={({ props }: any) => (props?.durationInFrames ? { durationInFrames: props.durationInFrames } : {})}
+        defaultProps={{ videoSrc: "videos/dw_boo.mp4", accent: "#d9282f" }} />
+      <Composition id="RedditThread" component={RedditThread} durationInFrames={160} fps={30} width={W} height={H}
+        calculateMetadata={({ props }: any) => (props?.durationInFrames ? { durationInFrames: props.durationInFrames } : {})}
+        defaultProps={{ subreddit: "r/nosleep", title: "Здесь всё правда. Не нарушайте правило.", author: "u/anonymous", upvotes: 48200, comments: "10.6k", awardText: "ХУДОЖКА", accent: "#ff4500", caption: "Сабреддит, где каждую историю читают как реальную." }} />
+      <Composition id="HexCipher" component={HexCipher} durationInFrames={170} fps={30} width={W} height={H}
+        calculateMetadata={({ props }: any) => (props?.durationInFrames ? { durationInFrames: props.durationInFrames } : {})}
+        defaultProps={{ subreddit: "r/A858DE45F56D9BC9", decoded: "WE CANNOT DISCLOSE THE PURPOSE", label: "ФРАГМЕНТ ДЕКОДИРОВАН", status: "Проект A858 завершён.", caption: "Тысячи блоков кода. Расшифрована — горстка." }} />
+      <Composition id="LiminalSpace" component={LiminalSpace} durationInFrames={160} fps={30} width={W} height={H}
+        calculateMetadata={({ props }: any) => (props?.durationInFrames ? { durationInFrames: props.durationInFrames } : {})}
+        defaultProps={{ title: "BACKROOMS", sub: "УРОВЕНЬ 0", caption: "Одна фотография, ставшая целой мифологией." }} />
+      <Composition id="DocuFrame" component={DocuFrame} durationInFrames={150} fps={30} width={W} height={H}
+        calculateMetadata={({ props }: any) => (props?.durationInFrames ? { durationInFrames: props.durationInFrames } : {})}
+        defaultProps={{ imgSrc: "real/scene_019.jpg", kicker: "АРХИВ", title: "Камера Нельсона Манделы, Роббен-Айленд", source: "Wikimedia Commons" }} />
+      <Composition id="GangesGhats" component={GangesGhats} durationInFrames={170} fps={30} width={W} height={H}
+        calculateMetadata={({ props }: any) => (props?.durationInFrames ? { durationInFrames: props.durationInFrames } : {})}
+        defaultProps={{ kicker: "ВАРАНАСИ", title: "ГОРОД, ГДЕ ГОРЯТ КОСТРЫ", accent: "#ff8a2a", caption: "Древнейший живой город планеты, где смерть — это бизнес." }} />
+      <Composition id="NagaUnderworld" component={NagaUnderworld} durationInFrames={190} fps={30} width={W} height={H}
+        calculateMetadata={({ props }: any) => (props?.durationInFrames ? { durationInFrames: props.durationInFrames } : {})}
+        defaultProps={{ kicker: "ПАТАЛА", title: "ПОДЗЕМНЫЙ МИР ЗМЕЕЛЮДЕЙ", accent: "#e8b84a", caption: "Семь миров под землёй, где правят наги." }} />
+      <Composition id="SkeletonLake" component={SkeletonLake} durationInFrames={180} fps={30} width={W} height={H}
+        calculateMetadata={({ props }: any) => (props?.durationInFrames ? { durationInFrames: props.durationInFrames } : {})}
+        defaultProps={{ kicker: "РУПКУНД", title: "ОЗЕРО ИЗ СОТЕН СКЕЛЕТОВ", accent: "#8fd3e6", caption: "ДНК показала: скелеты — из трёх разных эпох." }} />
+      <Composition id="FortCurse" component={FortCurse} durationInFrames={180} fps={30} width={W} height={H}
+        calculateMetadata={({ props }: any) => (props?.durationInFrames ? { durationInFrames: props.durationInFrames } : {})}
+        defaultProps={{ kicker: "ФОРТ БХАНГАРХ", title: "ОФИЦИАЛЬНО ПРОКЛЯТОЕ МЕСТО", accent: "#d98a3a", caption: "Единственный памятник Индии с запретом входа после заката." }} />
+      <Composition id="VaultDoorB" component={VaultDoorB} durationInFrames={185} fps={30} width={W} height={H}
+        calculateMetadata={({ props }: any) => (props?.durationInFrames ? { durationInFrames: props.durationInFrames } : {})}
+        defaultProps={{ kicker: "ПАДМАНАБХАСВАМИ", title: "ДВЕРЬ, КОТОРУЮ НЕЛЬЗЯ ОТКРЫВАТЬ", accent: "#e3b23c", caption: "Пять комнат — 22 миллиарда. Шестая осталась закрытой." }} />
+      <Composition id="ThugStrangler" component={ThugStrangler} durationInFrames={185} fps={30} width={W} height={H}
+        calculateMetadata={({ props }: any) => (props?.durationInFrames ? { durationInFrames: props.durationInFrames } : {})}
+        defaultProps={{ kicker: "ТХАГИ", title: "КУЛЬТ ДУШИТЕЛЕЙ БОГИНИ КАЛИ", accent: "#e5c53a", caption: "Убивали не ради денег — ради богини." }} />
+      <Composition id="KumbhaMela" component={KumbhaMela} durationInFrames={185} fps={30} width={W} height={H}
+        calculateMetadata={({ props }: any) => (props?.durationInFrames ? { durationInFrames: props.durationInFrames } : {})}
+        defaultProps={{ kicker: "КУМБХА-МЕЛА", title: "КРУПНЕЙШЕЕ СОБРАНИЕ ЛЮДЕЙ НА ЗЕМЛЕ", countText: "120 000 000", countLabel: "паломников в одном месте", accent: "#ffb44a", caption: "Событие такого масштаба, что его видно из космоса." }} />
+      <Composition id="RatTemple" component={RatTemple} durationInFrames={180} fps={30} width={W} height={H}
+        calculateMetadata={({ props }: any) => (props?.durationInFrames ? { durationInFrames: props.durationInFrames } : {})}
+        defaultProps={{ kicker: "ХРАМ КАРНИ МАТА", title: "25 ТЫСЯЧ СВЯЩЕННЫХ КРЫС", countText: "25 000", countLabel: "священных крыс в храме", accent: "#c9a24a", caption: "Увидеть белую крысу — величайшая удача." }} />
+      <Composition id="TwinVillage" component={TwinVillage} durationInFrames={180} fps={30} width={W} height={H}
+        calculateMetadata={({ props }: any) => (props?.durationInFrames ? { durationInFrames: props.durationInFrames } : {})}
+        defaultProps={{ kicker: "КОДИНХИ", title: "ДЕРЕВНЯ БЛИЗНЕЦОВ", countText: "400", countLabel: "пар близнецов", multiplier: "×6 среднемировой нормы", accent: "#6fd0c8", caption: "Генетики не нашли объяснения." }} />
+      <Composition id="BirdFall" component={BirdFall} durationInFrames={180} fps={30} width={W} height={H}
+        calculateMetadata={({ props }: any) => (props?.durationInFrames ? { durationInFrames: props.durationInFrames } : {})}
+        defaultProps={{ kicker: "ДЖАТИНГА", title: "ДЕРЕВНЯ, ГДЕ ПТИЦЫ ПАДАЮТ С НЕБА", strip: "полоса 1,5 км × 200 м", accent: "#7fa8d8", caption: "Огни деревни сбивают птицам природный компас." }} />
+      <Composition id="GuruDossier" component={GuruDossier} durationInFrames={185} fps={30} width={W} height={H}
+        calculateMetadata={({ props }: any) => (props?.durationInFrames ? { durationInFrames: props.durationInFrames } : {})}
+        defaultProps={{ kicker: "ГУРУ-ПРЕСТУПНИКИ", name: "«БОГОЧЕЛОВЕК» ПОД СУДОМ", followers: "миллионы последователей", verdict: "ПОЖИЗНЕННОЕ ЗАКЛЮЧЕНИЕ", charge: "насилие · мошенничество", accent: "#d24a3a", caption: "За белыми одеждами — бездна насилия." }} />
+      <Composition id="KarniCurse" component={KarniCurse} durationInFrames={478} fps={30} width={W} height={H}
+        calculateMetadata={({ props }: any) => (props?.durationInFrames ? { durationInFrames: props.durationInFrames } : {})}
+        defaultProps={{ kicker: "ЛЕГЕНДА КАРНИ МАТЫ", title: "ПРОКЛЯТИЕ БОГА СМЕРТИ", caption: "Род Карни после смерти рождается крысами — минуя власть Ямы, а потом снова людьми" }} />
+      <Composition id="SentinelIsland" component={SentinelIsland} durationInFrames={185} fps={30} width={W} height={H}
+        calculateMetadata={({ props }: any) => (props?.durationInFrames ? { durationInFrames: props.durationInFrames } : {})}
+        defaultProps={{ kicker: "СЕВЕРНЫЙ СЕНТИНЕЛ", title: "ОСТРОВ, КУДА НЕЛЬЗЯ СТУПАТЬ", bufferText: "запретная зона · 5 км буфер", accent: "#e0483a", caption: "Последнее неконтактное племя планеты." }} />
+      <Composition id="CrowdSilhouette" component={CrowdSilhouette} durationInFrames={190} fps={30} width={W} height={H}
+        calculateMetadata={({ props }: any) => (props?.durationInFrames ? { durationInFrames: props.durationInFrames } : {})}
+        defaultProps={{ kicker: "ИНДИЯ", title: "1,4 МИЛЛИАРДА ЧЕЛОВЕК", countText: "1 400 000 000", countLabel: "человек", stats: [{ value: "22", label: "официальных языка" }, { value: "29", label: "штатов-«стран»" }], accent: "#d24a2a", light: true, caption: "Каждый штат — по сути отдельная страна." }} />
+      <Composition id="EnumShowcase" component={EnumShowcase} durationInFrames={180} fps={30} width={W} height={H}
+        calculateMetadata={({ props }: any) => (props?.durationInFrames ? { durationInFrames: props.durationInFrames } : {})}
+        defaultProps={{ kicker: "АЮРВЕДА", title: "ТЫСЯЧЕЛЕТНИЕ ЗНАНИЯ О РАСТЕНИЯХ", items: [{ img: "enum/turmeric.jpg", label: "КУРКУМА", sub: "противовоспалительное" }, { img: "enum/neem.jpg", label: "НИМ", sub: "антисептик" }, { img: "enum/ashwagandha.jpg", label: "АШВАГАНДА", sub: "адаптоген" }], accent: "#e0a52a", caption: "Многие подтверждены современной фармакологией." }} />
     </>
   );
 };
