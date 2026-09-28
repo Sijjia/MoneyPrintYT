@@ -14,7 +14,7 @@ from tests.ru_pronounce_reddit import normalize as ru_norm   # латиница�
 PROJECT = ROOT / "projects" / "2026-09-22_aysberg-indii-misticheskaya-i-zagadochnaya-storona-strany"
 VOICE = PROJECT / "assets" / "voice"
 SEGDIR = VOICE / "_segs"
-TEMPLATE = "01a038b6-0be6-7091-b6cd-6b090d4b0f3c"  # v3 + ru (утверждён)
+TEMPLATE = "01a0e9bc-a29d-7128-84b5-355e67b11a7e"  # Webik-v4 (eleven_v4 + ru, тот же диктор M1CSR3PJ...) — Айдар: v3 в утиль
 
 LVL_PAUSE = " {{pause=1.6}} "
 TOPIC_PAUSE = " {{pause=0.5}} "

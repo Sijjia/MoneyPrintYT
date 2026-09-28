@@ -19,7 +19,7 @@ def ru_norm(t): return t   # EN: без русского нормализато�
 PROJECT = ROOT / "projects" / "2026-09-22_aysberg-indii-misticheskaya-i-zagadochnaya-storona-strany_EN"
 VOICE = PROJECT / "assets" / "voice"
 SEGDIR = VOICE / "_segs"
-TEMPLATE = "01a08c8b-6803-70dd-a561-d2bff381efce"  # Debik-EN-Teen (hLygPNd2..., утверждён Айдаром)
+TEMPLATE = "01a0e9de-5ff9-709f-b9c2-5e06b98de129"  # Debik-EN-v4 (eleven_v4 + тот же EN-диктор hLygPNd2) — v4 переход
 
 LVL_PAUSE = " {{pause=1.6}} "     # драматичная пауза ПОСЛЕ анонса уровня
 TOPIC_PAUSE = " {{pause=0.5}} "   # мягкий «вдох» ПЕРЕД новой темой (абзац), не обрыв

@@ -311,10 +311,11 @@ class LumeanTTS:
         eleven_v3: длинная пауза = многоточие/[pause] (SSML break v3 не поддерживает).
         """
         pat = re.compile(r"\[пауза\s+([0-9]+(?:[.,][0-9]+)?)\s*с\]", re.IGNORECASE)
-        if self.model_id == "eleven_v3":
+        if self.model_id in ("eleven_v3", "eleven_v4"):
+            # v3 и v4 = теговые модели (audio tags), SSML <break> не поддерживают
             def rep_v3(m):
                 sec = float(m.group(1).replace(",", "."))
-                # v3: чем длиннее — тем сильнее тег
+                # чем длиннее — тем сильнее тег
                 return " [long pause] " if sec >= 1.5 else " [pause] "
             return pat.sub(rep_v3, text)
 
